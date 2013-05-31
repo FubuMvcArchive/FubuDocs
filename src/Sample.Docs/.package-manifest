@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Role>module</Role>
+  <Name>Sample.Docs</Name>
+  <ContentFileSet Exclude="fubu-content/*;bin/*;obj/*;*.zip;repositories.config;packages.config;Web.config;Web.Debug.config;Web.Release.config;*.user;*.csproj">
+    <DeepSearch>true</DeepSearch>
+  </ContentFileSet>
+  <assembly>Sample.Docs</assembly>
+</package>

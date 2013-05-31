@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Topic title="Working with FubuWorld Docs" name="FubuWorldRoot">
+  <HowTo>
+  
+    <Topic title="What is FubuWorld?"/>
+    <Topic title="Starting a new FubuWorld Documentation Project"/>
+    <Topics>
+      <Topic title="The 'Topic' Navigation Structure">
+        <Topic title="Topic Navigation"/>
+        <Topic title="Adding a New Topic"/>
+        <Topic title="Spark Layout for a Topic"/>
+      </Topic>
+    </Topics>
+
+    <FubuDocsRunner>
+      <Topic title="Working with FubuDocsRunner">
+        <Topic title="Running a Documentation Project" />
+        <Topic title="Add a Single Topic" />
+        <Topic title="Generating the Entire Topic Tree"/>
+        <Topic title="Bottling the FubuWorld Project"/>
+      </Topic>
+    </FubuDocsRunner>
+  
+    <ViewHelpers>
+      <Topic title="Documentation View Helpers">
+        <Topic title="Embedding Code Snippets"/>
+        <Topic title="Embedding Diagnostics Visualizations"/>
+        <Topic title="Embedding Unit Test Results"/>
+        <Topic title="Embedding Command Line Results"/>
+      </Topic>
+    </ViewHelpers>
+
+  </HowTo>
+</Topic>

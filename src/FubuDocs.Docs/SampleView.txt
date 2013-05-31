@@ -1,0 +1,13 @@
+﻿<!--Title: CHANGEME-->
+
+<markdown>
+Put content here.
+
+<Section name="Some Section" id="section1">
+content for this section
+</Section>
+
+<Section name="Another Section" id="section2">
+content for this section
+</Section>
+</markdown>

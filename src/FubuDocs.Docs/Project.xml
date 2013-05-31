@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<ProjectRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TagLine>Frictionless documentation tooling</TagLine>
+  <Description>Create technical documentation the idiomatic FubuMVC way</Description>
+  <Name>FubuDocs</Name>
+  <TwitterHandle>fubumvc</TwitterHandle>
+  <GitHubPage>https://github.com/DarthFubuMVC/FubuWorld</GitHubPage>
+  <UserGroupUrl>https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel</UserGroupUrl>
+  <BuildServerUrl>http://build.fubu-project.org/project.html?projectId=project51</BuildServerUrl>
+  <TeamCityBuildType>bt88</TeamCityBuildType>
+  <BottleName>FubuDocs.Docs</BottleName>
+  <PluginTo />
+  <Nugets />
+  <Url>fubudocs</Url>
+</ProjectRoot>

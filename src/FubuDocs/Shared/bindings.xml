@@ -1,0 +1,35 @@
+﻿<?xml version="1.0"?>
+<bindings>
+  <element name="Stylesheet">#this.Asset('@href');</element>
+  <element name="Script">#this.Asset('@src');</element>
+  <element name="Scripts">this.WriteScriptTags()</element>
+  <element name="Styles">this.WriteCssTags()</element>
+  <element name="Image">this.ImageFor('@src')</element>
+  <element name="Partial">this.Partial&lt;@model&gt;()</element>
+  <element name="TableOfContents">this.TableOfContents()</element>
+  <element name="Section">
+    <start>this.SectionFor('@title', '@id')</start>
+    <end>"&lt;/section&gt;"</end>
+  </element>
+
+  <element name="Command">
+    <start>this.SectionForCommand('@app', '@command')</start>
+    <end>this.BodyForCommand('@app', '@command') + "&lt;/section&gt;"</end>
+  </element>
+  
+  <element name="ProjectSummary">this.ProjectSummary()</element>
+  <element name="Snippet">this.BottleSnippetFor('@name')</element>
+  <element name="LinkToSnippet">this.LinkToSnippet('@name')</element>
+  <element name="LinkToCodeFile">this.LinkToCodeFile('@name')</element>
+  <element name="EmbedFile">this.CodeFile('@name')</element>
+
+  <element name="TopicLink">this.LinkToTopic('@name', null)</element>
+  <element name="ExternalTopicLink">this.LinkToExternalTopic('@name', '@title')</element>
+
+  <element name="ProjectLink">this.ProjectLink('@name')</element>
+
+  <element name="Info">
+    <start>"&lt;div class=\"alert alert-info\"&gt;&lt;i class=\"icon-info-sign\"&gt;&lt;/i&gt;"</start>
+    <end>"&lt;/div&gt;"</end>
+  </element>
+</bindings>

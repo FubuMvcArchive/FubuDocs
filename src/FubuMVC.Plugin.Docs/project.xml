@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ProjectRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TagLine>A member of the Fubu family of projects</TagLine>
+  <Name>FubuMVC.Plugin</Name>
+  <GitHubPage>http://github.com/DarthFubuMVC/FubuMVC.Plugin</GitHubPage>
+  <UserGroupUrl>https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel</UserGroupUrl>
+  <BuildServerUrl>http://build.fubu-project.org/project.html?projectId=[CHANGEME]&amp;tab=projectOverview</BuildServerUrl>
+  <BottleName>FubuMVC.Plugin.Docs</BottleName>
+  <PluginTo>fubumvc</PluginTo>
+  <Nugets />
+  <Url>fubumvc.plugin</Url>
+</ProjectRoot>

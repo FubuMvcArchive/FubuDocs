@@ -1,0 +1,21 @@
+﻿<viewdata model="FubuDocs.Topics.SplashChrome" />
+<use namespace="FubuDocs.Navigation" />
+<use namespace="FubuDocs.Topics" />
+<use namespace="FubuMVC.TwitterBootstrap" />
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+      !{this.Get<ITopicContext>().Project.Name}
+    </title>
+    <commonHeader />
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="container">
+      <Partial model="FubuDocs.Shared.TopNavigation" />
+    </div>
+    !{Model.InnerContent}
+    <Script src="topics.js"/>
+    <commonFooter />
+  </body>
+</html>

@@ -1,0 +1,8 @@
+﻿<use master="" />
+<viewdata model="FubuWorld.PoweredByFubu" />
+<Script src="request-diagnostics.js" />
+<script type="text/html" id="request-diagnostics-template" data-title="Request Diagnostics">
+    <p>This request was powered by FubuMVC</p>
+    <br/>
+    <a class="btn btn-large btn-inverse" href="!{Model.CurrentRequest.ReportUrl}">View Request Details</a>
+</script>

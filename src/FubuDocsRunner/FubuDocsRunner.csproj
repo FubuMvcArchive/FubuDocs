@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A90E1BBE-8F1B-49D9-B5E0-F5ABC3B1AFAF}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FubuDocsRunner</RootNamespace>
+    <AssemblyName>FubuDocsRunner</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bottles">
+      <HintPath>..\packages\Bottles\lib\Bottles.dll</HintPath>
+    </Reference>
+    <Reference Include="Bottles.Services">
+      <HintPath>..\packages\Bottles.Services\lib\net40\Bottles.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Fubu">
+      <HintPath>..\packages\fubu\lib\net40\Fubu.exe</HintPath>
+    </Reference>
+    <Reference Include="FubuCore">
+      <HintPath>..\packages\FubuCore\lib\FubuCore.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuLocalization">
+      <HintPath>..\packages\FubuLocalization\lib\FubuLocalization.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.CodeSnippets">
+      <HintPath>..\packages\FubuMVC.CodeSnippets\lib\net40\FubuMVC.CodeSnippets.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Core">
+      <HintPath>..\packages\FubuMVC.Core\lib\net40\FubuMVC.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Core.Assets">
+      <HintPath>..\packages\FubuMVC.Core.Assets\lib\net40\FubuMVC.Core.Assets.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Core.UI">
+      <HintPath>..\packages\FubuMVC.Core.UI\lib\net40\FubuMVC.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Core.View">
+      <HintPath>..\packages\FubuMVC.Core.View\lib\net40\FubuMVC.Core.View.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.JQueryUI">
+      <HintPath>..\packages\FubuMVC.JQueryUI\lib\net40\FubuMVC.JQueryUI.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Katana">
+      <HintPath>..\packages\FubuMVC.Katana\lib\net40\FubuMVC.Katana.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.OwinHost">
+      <HintPath>..\packages\FubuMVC.OwinHost\lib\net40\FubuMVC.OwinHost.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Spark">
+      <HintPath>..\packages\FubuMVC.Spark\lib\net40\FubuMVC.Spark.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.StructureMap">
+      <HintPath>..\packages\FubuMVC.StructureMap\lib\net40\FubuMVC.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlTags">
+      <HintPath>..\packages\HtmlTags\lib\4.0\HtmlTags.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin.Host.HttpListener">
+      <HintPath>..\packages\FubuMVC.Katana\lib\net40\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting">
+      <HintPath>..\packages\FubuMVC.Katana\lib\net40\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Extensions">
+      <HintPath>..\packages\Owin.Extensions\lib\net40\Owin.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin.Types">
+      <HintPath>..\packages\Owin.Types\lib\net40\Owin.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Spark">
+      <HintPath>..\packages\Spark\lib\NET40\Spark.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap\lib\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebDriver">
+      <HintPath>..\packages\Selenium.WebDriver\lib\net40\WebDriver.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BottleCommand.cs" />
+    <Compile Include="DocActionInput.cs" />
+    <Compile Include="Exports\DownloadTokenParser.cs" />
+    <Compile Include="Exports\DownloadAsset.cs" />
+    <Compile Include="Exports\DownloadContext.cs" />
+    <Compile Include="Exports\DownloadManager.cs" />
+    <Compile Include="Exports\DownloadPlan.cs" />
+    <Compile Include="Exports\DownloadReport.cs" />
+    <Compile Include="Exports\DownloadToken.cs" />
+    <Compile Include="Exports\DownloadUrl.cs" />
+    <Compile Include="Exports\ExportApplication.cs" />
+    <Compile Include="Exports\ExportCommand.cs" />
+    <Compile Include="Exports\HtmlElement.cs" />
+    <Compile Include="Exports\IDownloadReportVisitor.cs" />
+    <Compile Include="Exports\IDownloadStep.cs" />
+    <Compile Include="Exports\IDownloadTokenStrategy.cs" />
+    <Compile Include="Exports\IPageSource.cs" />
+    <Compile Include="Exports\ItemDownloaded.cs" />
+    <Compile Include="Exports\SmokeCommand.cs" />
+    <Compile Include="Exports\OverrideRootPath.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Running\DocumentPackageLoader.cs" />
+    <Compile Include="Running\FubuDocsApplication.cs" />
+    <Compile Include="Running\HomeEndpoint.cs" />
+    <Compile Include="Running\MainDocumentLinkedPackageLoader.cs" />
+    <Compile Include="Running\RunCommand.cs" />
+    <Compile Include="Running\RunFubuWorldRegistry.cs" />
+    <Compile Include="Running\RunInput.cs" />
+    <Compile Include="SnippetsCommand.cs" />
+    <Compile Include="Topics\AddTopicsCommand.cs" />
+    <Compile Include="Topics\BatchAdderController.cs" />
+    <Compile Include="Topics\AddTopicsInput.cs" />
+    <Compile Include="Topics\ITopicFileSystem.cs" />
+    <Compile Include="Topics\ListCommand.cs" />
+    <Compile Include="Topics\ReorderCommand.cs" />
+    <Compile Include="Topics\TodoTextReport.cs" />
+    <Compile Include="Topics\TopicFileSystem.cs" />
+    <Compile Include="Topics\TopicTextReport.cs" />
+    <Compile Include="Topics\TopicToken.cs" />
+    <Compile Include="Topics\TopicTokenType.cs" />
+    <Compile Include="Topics\WhatNext.cs" />
+    <Compile Include="WebsiteDirectoryFinder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Application.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\_global.spark" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FubuDocs\FubuDocs.csproj">
+      <Project>{88235A8D-937D-474D-9675-ECA446E01899}</Project>
+      <Name>FubuDocs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FubuDocs.Docs\FubuDocs.Docs.csproj">
+      <Project>{8D41BF7E-B4B6-4CAF-8C7A-94D09B2F2826}</Project>
+      <Name>FubuWorld.Docs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FubuWorld\FubuWorld.csproj">
+      <Project>{6F5C4733-AF68-4591-9802-21425E6877C4}</Project>
+      <Name>FubuWorld</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="nuspec.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="file-patterns.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

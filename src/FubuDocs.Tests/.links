@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<links xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <include>..\Sample.Docs</include>
+  <include>..\Imported.Docs</include>
+  <include>..\FubuMVC.Plugin.Docs</include>
+  <include>..\FubuDocs.Docs</include>
+</links>

@@ -1,0 +1,34 @@
+﻿<use namespace="FubuWorld.Navigation" />
+<use namespace="FubuMVC.TwitterBootstrap" />
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+      <use:title>FubuDocs</use:title>
+    </title>
+    <commonHeader />
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="container">
+      
+      <Partial model="FubuDocs.Shared.TopNavigation" />
+
+      <div id="nav-follow" class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            !{this.TwitterNavBarFor(FubuWorldKeys.Main)}
+            <use content="navigation" />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <use content="masthead" />
+        <use content="view" />
+      </div>
+
+    </div>
+    <Scripts />
+    <commonFooter />
+  </body>
+</html>

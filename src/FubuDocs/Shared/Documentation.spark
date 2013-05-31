@@ -1,0 +1,9 @@
+﻿<use master="Application" />
+<div class="row">
+    <div class="span3 bs-docs-sidebar">
+        <use content="docnav" />
+    </div>
+    <div class="span9">
+        <use content="docs" />
+    </div>
+</div>

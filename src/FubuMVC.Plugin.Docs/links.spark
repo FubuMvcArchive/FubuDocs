@@ -1,0 +1,10 @@
+﻿<!--Title: Page with Links-->
+<markdown>
+  <TopicLink name="something" />
+  <ExternalTopicLink name="fubumvc/colors/red" />
+  <br></br>
+
+  <ProjectLink name="FubuDocs" />
+  <ProjectLink name="NotReal" />
+  
+</markdown>

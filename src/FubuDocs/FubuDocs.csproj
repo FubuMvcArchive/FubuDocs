@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{88235A8D-937D-474D-9675-ECA446E01899}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FubuDocs</RootNamespace>
+    <AssemblyName>FubuDocs</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bottles">
+      <HintPath>..\packages\Bottles\lib\Bottles.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuCore">
+      <HintPath>..\packages\FubuCore\lib\FubuCore.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuLocalization">
+      <HintPath>..\packages\FubuLocalization\lib\FubuLocalization.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.CodeSnippets">
+      <HintPath>..\packages\FubuMVC.CodeSnippets\lib\net40\FubuMVC.CodeSnippets.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Core">
+      <HintPath>..\packages\FubuMVC.Core\lib\net40\FubuMVC.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Core.Assets">
+      <HintPath>..\packages\FubuMVC.Core.Assets\lib\net40\FubuMVC.Core.Assets.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Core.UI">
+      <HintPath>..\packages\FubuMVC.Core.UI\lib\net40\FubuMVC.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Core.View">
+      <HintPath>..\packages\FubuMVC.Core.View\lib\net40\FubuMVC.Core.View.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Diagnostics">
+      <HintPath>..\packages\FubuMVC.Diagnostics\lib\net40\FubuMVC.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.JQueryUI">
+      <HintPath>..\packages\FubuMVC.JQueryUI\lib\net40\FubuMVC.JQueryUI.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Media">
+      <HintPath>..\packages\FubuMVC.Media\lib\net40\FubuMVC.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Navigation">
+      <HintPath>..\packages\FubuMVC.Navigation\lib\net40\FubuMVC.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.SlickGrid">
+      <HintPath>..\packages\FubuMVC.SlickGrid\lib\net40\FubuMVC.SlickGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Spark">
+      <HintPath>..\packages\FubuMVC.Spark\lib\net40\FubuMVC.Spark.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.TwitterBootstrap">
+      <HintPath>..\packages\FubuMVC.TwitterBootstrap\lib\net40\FubuMVC.TwitterBootstrap.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Validation">
+      <HintPath>..\packages\FubuMVC.Validation\lib\FubuMVC.Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuValidation">
+      <HintPath>..\packages\FubuValidation\lib\FubuValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuValidation.StructureMap">
+      <HintPath>..\packages\FubuValidation\lib\FubuValidation.StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlTags">
+      <HintPath>..\packages\HtmlTags\lib\4.0\HtmlTags.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Spark">
+      <HintPath>..\packages\Spark\lib\NET40\Spark.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonAssemblyInfo.cs">
+      <Link>CommonAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AllProjectsModel.cs" />
+    <Compile Include="AllTopicsEndpoint.cs" />
+    <Compile Include="CLI\ArgumentsTag.cs" />
+    <Compile Include="CLI\CommandDocumentationSource.cs" />
+    <Compile Include="CLI\CommandSectionTag.cs" />
+    <Compile Include="CLI\CommandUsagePageExtensions.cs" />
+    <Compile Include="CLI\FlagsTag.cs" />
+    <Compile Include="CLI\ICommandDocumentationSource.cs" />
+    <Compile Include="CLI\SingleUsageTag.cs" />
+    <Compile Include="CLI\UsageTableTag.cs" />
+    <Compile Include="Exporting\ExportAttribute.cs" />
+    <Compile Include="Exporting\UrlList.cs" />
+    <Compile Include="Exporting\UrlQueryEndpoint.cs" />
+    <Compile Include="FubuDocsKeys.cs" />
+    <Compile Include="FubuDocsExtension.cs" />
+    <Compile Include="FubuWorldRegistry.cs" />
+    <Compile Include="Infrastructure\Binders\RequestLogPropertyBinder.cs" />
+    <Compile Include="Infrastructure\EditorLauncher.cs" />
+    <Compile Include="Infrastructure\FubuDocsPackageLoader.cs" />
+    <Compile Include="Navigation\FubuDocsPageExtensions.cs" />
+    <Compile Include="Navigation\SectionTag.cs" />
+    <Compile Include="Navigation\TopicExtensions.cs" />
+    <Compile Include="Navigation\TopicTreeBuilder.cs" />
+    <Compile Include="Navigation\TopLeftTopicNavigationTag.cs" />
+    <Compile Include="PoweredByFubu.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\TopNavigation.cs" />
+    <Compile Include="Snippets\SnippetRequest.cs" />
+    <Compile Include="Snippets\SnippetEndpoints.cs" />
+    <Compile Include="Snippets\SnippetsModel.cs" />
+    <Compile Include="Snippets\SnippetsTableTag.cs" />
+    <Compile Include="Todos\TodoEndpoint.cs" />
+    <Compile Include="Todos\TodoModel.cs" />
+    <Compile Include="Todos\TodoTableTag.cs" />
+    <Compile Include="Todos\TodoTask.cs" />
+    <Compile Include="Tools\ProjectEndpoints.cs" />
+    <Compile Include="Tools\ToolsEndpoints.cs" />
+    <Compile Include="Topics\DocumentationProjectLoader.cs" />
+    <Compile Include="Topics\FubuDocsPackageLoader.cs" />
+    <Compile Include="Topics\ITopicContext.cs" />
+    <Compile Include="Topics\ITopicFile.cs" />
+    <Compile Include="Topics\ITopicNode.cs" />
+    <Compile Include="Topics\OrderedTopic.cs" />
+    <Compile Include="Topics\ProjectRoot.cs" />
+    <Compile Include="Topics\PublishedNuget.cs" />
+    <Compile Include="Topics\SparkTopicFile.cs" />
+    <Compile Include="Topics\SplashChrome.cs" />
+    <Compile Include="Topics\StringExtensions.cs" />
+    <Compile Include="Topics\Topic.cs" />
+    <Compile Include="Topics\TopicBehavior.cs" />
+    <Compile Include="Topics\TopicBehaviorNode.cs" />
+    <Compile Include="Topics\TopicBuilder.cs" />
+    <Compile Include="Topics\TopicChrome.cs" />
+    <Compile Include="Topics\TopicFolder.cs" />
+    <Compile Include="Topics\TopicGraph.cs" />
+    <Compile Include="Topics\TopicLoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="content\images\facebook-icon.png" />
+    <Content Include="content\images\fubuproject.png" />
+    <Content Include="content\images\fubuworld.png" />
+    <Content Include="content\images\github-icon.png" />
+    <Content Include="content\images\google-plus-icon.png" />
+    <Content Include="content\images\header-bg.jpg" />
+    <Content Include="content\images\twitter-icon.png" />
+    <Content Include="content\scripts\build-status.js" />
+    <Content Include="content\scripts\fubuworld.js" />
+    <Content Include="content\scripts\fubudocs-tools.js" />
+    <Content Include="content\scripts\request-diagnostics.js" />
+    <Content Include="content\scripts\snippets.js" />
+    <Content Include="content\scripts\toastr.js" />
+    <Content Include="content\scripts\topics.js" />
+    <Content Include="content\styles\fubuworld.core.css" />
+    <Content Include="content\styles\sons-of-obsidian.css" />
+    <Content Include="content\styles\sunburst.css" />
+    <Content Include="content\styles\toastr-responsive.css" />
+    <Content Include="content\styles\toastr.css" />
+    <Content Include="Shared\bindings.xml">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AllTopics.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="fubudocs.asset.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="fubudocs.view.config" />
+    <None Include="PoweredByFubu.spark" />
+    <None Include="project.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Application.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\TopNavigation.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\_commonFooter.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\_commonHeader.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\Documentation.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Shared\_global.spark" />
+    <None Include="Snippets\snippets.spark" />
+    <None Include="Snippets\snippet.spark" />
+    <None Include="Todos\todos.spark" />
+    <None Include="Tools\Project.spark" />
+    <None Include="Tools\Tools.spark" />
+    <None Include="Topics\Splash.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Topics\Topic.spark">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup>
+    <EmbeddedResource Include="pak-WebContent.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="pak-Data.zip" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="pak-Config.zip" />
+  </ItemGroup>
+</Project>
