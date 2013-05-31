@@ -15,6 +15,7 @@ require 'fuburake'
 	sln.fubudocs_enabled = true
 	
 	sln.ci_steps = ["gem:archive"]
+    sln.assembly_bottle 'FubuDocs'
 end
 
 BUILD_NUMBER = @solution.options[:build_number]
