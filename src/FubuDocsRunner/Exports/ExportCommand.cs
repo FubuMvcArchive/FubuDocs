@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using FubuCore;
 using FubuCore.CommandLine;
+using FubuDocs.Infrastructure;
 using FubuDocsRunner.Running;
 using FubuMVC.Katana;
 
@@ -12,6 +14,11 @@ namespace FubuDocsRunner.Exports
 {
     public class ExportInput : RunInput
     {
+	    public ExportInput()
+	    {
+		    IncludeProjectsFlag = "";
+	    }
+
         [Description("The directory to output the application")]
         public string Output { get; set; }
         
@@ -21,6 +28,10 @@ namespace FubuDocsRunner.Exports
 
         [Description("Output report of all downloaded files")]
         public bool VerboseFlag { get; set; }
+
+		[Description("Comma separate list of the projects to include in the export (e.g., fubudocs, myproject)")]
+		[FlagAlias("include-projects", 'i')]
+		public string IncludeProjectsFlag { get; set; }
 
         public IEnumerable<IDownloadReportVisitor> Visitors()
         {
@@ -66,7 +77,13 @@ namespace FubuDocsRunner.Exports
             {
                 _fileSystem.DeleteDirectory(input.Output);
 
-                // TODO -- It sure would be nice to turn off the pre-compile work so we don't get a ton of console errors
+				var projects = input
+					.IncludeProjectsFlag
+					.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries)
+					.Select(x => x.Trim());
+
+	            projects.Each(BottlesFilter.Include);
+
                 var application = new FubuDocsExportingApplication(_solutionDirectory).BuildApplication();
                 using (var server = application.RunEmbedded(_solutionDirectory))
                 {

@@ -4,6 +4,7 @@ namespace FubuDocs
 {
     public class FubuDocsKeys : StringToken
     {
+		public static readonly FubuDocsKeys Main = new FubuDocsKeys("Main");
         public static readonly FubuDocsKeys Fubu = new FubuDocsKeys("Fubu");
         public static readonly FubuDocsKeys MailingList = new FubuDocsKeys("Join our vibrant mailing list");
 

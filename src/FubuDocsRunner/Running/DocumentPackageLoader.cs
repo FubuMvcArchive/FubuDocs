@@ -6,6 +6,7 @@ using Bottles;
 using Bottles.Diagnostics;
 using Bottles.Manifest;
 using FubuCore;
+using FubuDocs.Infrastructure;
 using FubuDocs.Topics;
 
 namespace FubuDocsRunner.Running
@@ -13,8 +14,6 @@ namespace FubuDocsRunner.Running
     public class DocumentPackageLoader : IPackageLoader
     {
         private readonly string _directory;
-
-
 
         public DocumentPackageLoader(string directory)
         {
@@ -26,9 +25,9 @@ namespace FubuDocsRunner.Running
             var reader = new PackageManifestReader(new FileSystem(), folder => folder);
             var docDirs = TopicLoader.FindDocumentDirectories(_directory);
 
-            return docDirs.Select(dir => {
-                return reader.LoadFromFolder(dir);
-            });
+            return docDirs
+				.Where(BottlesFilter.ShouldLoad)
+				.Select(reader.LoadFromFolder);
         }
     }
 }

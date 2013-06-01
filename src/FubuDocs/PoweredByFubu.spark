@@ -1,5 +1,5 @@
 ﻿<use master="" />
-<viewdata model="FubuWorld.PoweredByFubu" />
+<viewdata model="FubuDocs.PoweredByFubu" />
 <Script src="request-diagnostics.js" />
 <script type="text/html" id="request-diagnostics-template" data-title="Request Diagnostics">
     <p>This request was powered by FubuMVC</p>

@@ -1,10 +1,10 @@
 ﻿<meta charset="utf-8" />
-<meta name="description" content="FubuWorld" />
-<meta name="author" content="FubuWorld" />
+<meta name="description" content="FubuDocs" />
+<meta name="author" content="FubuDocs" />
 #{this.Asset('twitterbootstrap');}
-<Stylesheet href="fubuworld.core.css" />
+<Stylesheet href="fubudocs.core.css" />
 <Script src="fubudocs-tools.js" />
-<Script src="fubuworld.js" />
+<Script src="FubuDocs.js" />
 <use content="head" />
 <Styles />
 <link media="screen" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300">

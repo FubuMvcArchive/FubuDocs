@@ -142,6 +142,7 @@
     <Compile Include="Exports\StubDownloader.cs" />
     <Compile Include="Exporting\UrlQueryEndpointTester.cs" />
     <Compile Include="Infrastructure\Binders\RequestLogPropertyBinderTester.cs" />
+    <Compile Include="Infrastructure\BottlesFilterTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Todos\TodoTaskTester.cs" />
     <Compile Include="Topics\can_build_behavior_for_topic_chain.cs" />
@@ -162,6 +163,10 @@
     <Compile Include="Topics\when_building_a_behavior_chain.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FubuDocs.Docs\FubuDocs.Docs.csproj">
+      <Project>{8d41bf7e-b4b6-4caf-8c7a-94d09b2f2826}</Project>
+      <Name>FubuDocs.Docs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FubuDocsRunner\FubuDocsRunner.csproj">
       <Project>{A90E1BBE-8F1B-49D9-B5E0-F5ABC3B1AFAF}</Project>
       <Name>FubuDocsRunner</Name>

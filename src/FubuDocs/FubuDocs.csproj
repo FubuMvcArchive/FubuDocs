@@ -123,6 +123,7 @@
     <Compile Include="Infrastructure\Binders\RequestLogPropertyBinder.cs" />
     <Compile Include="Infrastructure\EditorLauncher.cs" />
     <Compile Include="Infrastructure\FubuDocsPackageLoader.cs" />
+    <Compile Include="Infrastructure\BottlesFilter.cs" />
     <Compile Include="Navigation\FubuDocsPageExtensions.cs" />
     <Compile Include="Navigation\SectionTag.cs" />
     <Compile Include="Navigation\TopicExtensions.cs" />
@@ -170,13 +171,13 @@
     <Content Include="content\images\header-bg.jpg" />
     <Content Include="content\images\twitter-icon.png" />
     <Content Include="content\scripts\build-status.js" />
-    <Content Include="content\scripts\fubuworld.js" />
+    <Content Include="content\scripts\fubudocs.js" />
     <Content Include="content\scripts\fubudocs-tools.js" />
     <Content Include="content\scripts\request-diagnostics.js" />
     <Content Include="content\scripts\snippets.js" />
     <Content Include="content\scripts\toastr.js" />
     <Content Include="content\scripts\topics.js" />
-    <Content Include="content\styles\fubuworld.core.css" />
+    <Content Include="content\styles\fubudocs.core.css" />
     <Content Include="content\styles\sons-of-obsidian.css" />
     <Content Include="content\styles\sunburst.css" />
     <Content Include="content\styles\toastr-responsive.css" />

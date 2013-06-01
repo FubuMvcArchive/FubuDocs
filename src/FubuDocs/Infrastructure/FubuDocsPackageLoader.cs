@@ -56,7 +56,9 @@ namespace FubuDocs.Infrastructure
         {
             IEnumerable<Assembly> assemblies = FindAssemblies(list);
             return assemblies
-                .Select(assem => {
+				.Where(BottlesFilter.ShouldLoad)
+                .Select(assem => 
+				{
                     Console.WriteLine("Loading documentation assembly " + assem);
                     return new AssemblyPackageInfo(assem);
                 });
@@ -70,23 +72,15 @@ namespace FubuDocs.Infrastructure
         // TODO -- this is so common here and in FubuMVC, just get something into FubuCore
         public static IEnumerable<Assembly> AssembliesFromPath(string path)
         {
-            var assemblyPaths = Directory.GetFiles(path)
-                .Where(file =>
-                       Path.GetExtension(file).Equals(
-                           ".exe",
-                           StringComparison.OrdinalIgnoreCase)
-                       ||
-                       Path.GetExtension(file).Equals(
-                           ".dll",
-                           StringComparison.OrdinalIgnoreCase)).Where(x => Path.GetFileNameWithoutExtension(x).EndsWith(".Docs")).ToArray();
+	        var assemblyPaths = findAssemblyPaths(path);
 
             Console.WriteLine("Found " + assemblyPaths.Join(", "));
 
+	        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
             foreach (string assemblyPath in assemblyPaths)
             {
-                Assembly assembly =
-                    AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(
-                        x => x.GetName().Name == Path.GetFileNameWithoutExtension(assemblyPath));
+	            var name = Path.GetFileNameWithoutExtension(assemblyPath);
+                Assembly assembly = assemblies.FirstOrDefault(x => x.GetName().Name == name);
 
                 if (assembly == null)
                 {
@@ -105,6 +99,25 @@ namespace FubuDocs.Infrastructure
                 }
             }
         }
+
+		private static IEnumerable<string> findAssemblyPaths(string path)
+		{
+			return Directory
+				.GetFiles(path)
+				.Where(file => isExecutable(file) || isAssembly(file))
+				.Where(x => Path.GetFileNameWithoutExtension(x).EndsWith(".Docs"))
+				.ToArray();
+		}
+
+		private static bool isExecutable(string file)
+		{
+			return Path.GetExtension(file).Equals(".exe", StringComparison.OrdinalIgnoreCase);
+		}
+
+		private static bool isAssembly(string file)
+		{
+			return Path.GetExtension(file).Equals(".dll", StringComparison.OrdinalIgnoreCase);
+		}
 
         public string IgnoreAssembly { get; set; }
     }

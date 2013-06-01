@@ -1,4 +1,4 @@
-﻿<use namespace="FubuWorld.Navigation" />
+﻿<use namespace="FubuDocs.Navigation" />
 <use namespace="FubuMVC.TwitterBootstrap" />
 <!doctype html>
 <html lang="en">
@@ -16,7 +16,7 @@
       <div id="nav-follow" class="navbar">
         <div class="navbar-inner">
           <div class="container">
-            !{this.TwitterNavBarFor(FubuWorldKeys.Main)}
+            !{this.TwitterNavBarFor(FubuDocsKeys.Main)}
             <use content="navigation" />
           </div>
         </div>
