@@ -20,4 +20,4 @@ end
 
 BUILD_NUMBER = @solution.options[:build_number]
 
-load File.expand_path('../fubudocs/rakefile', __FILE__)
+load File.expand_path('../fubudocs/Rakefile', __FILE__)
