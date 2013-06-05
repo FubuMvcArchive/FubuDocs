@@ -52,7 +52,9 @@ namespace FubuDocs.Tests.Topics
             PublishedNuget.GatherNugetsIntoProject(project,directory);
 
             // There's a second nuspec for testing that throws this off
-            project.Nugets.ShouldBeEmpty();
+			project.Nugets.Select(x => x.ToString()).ShouldHaveTheSameElementsAs(
+"Name: FubuDocs, Description: Frictionless documentation tooling"
+				);
 
         }
 

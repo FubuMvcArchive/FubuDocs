@@ -1,11 +1,16 @@
 <?xml version="1.0"?>
-<ProjectRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<ProjectRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <TagLine>A member of the Fubu family of projects</TagLine>
   <Name>Imported</Name>
   <GitHubPage>http://github.com/DarthFubuMVC/Imported</GitHubPage>
   <UserGroupUrl>https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel</UserGroupUrl>
   <BuildServerUrl>http://build.fubu-project.org/project.html?projectId=[CHANGEME]&amp;tab=projectOverview</BuildServerUrl>
   <BottleName>Imported.Docs</BottleName>
-  <Nugets />
+  <Nugets>
+    <PublishedNuget>
+      <Name>FubuDocs</Name>
+      <Description>Frictionless documentation tooling</Description>
+    </PublishedNuget>
+  </Nugets>
   <Url>imported</Url>
 </ProjectRoot>
