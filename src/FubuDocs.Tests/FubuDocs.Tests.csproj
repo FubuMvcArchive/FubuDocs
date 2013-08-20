@@ -34,6 +34,9 @@
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles\lib\Bottles.dll</HintPath>
     </Reference>
+    <Reference Include="Fubu, Version=0.9.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <ExecutableExtension>.exe</ExecutableExtension>
+    </Reference>
     <Reference Include="FubuCore">
       <HintPath>..\packages\FubuCore\lib\FubuCore.dll</HintPath>
     </Reference>
@@ -144,6 +147,7 @@
     <Compile Include="Infrastructure\Binders\RequestLogPropertyBinderTester.cs" />
     <Compile Include="Infrastructure\BottlesFilterTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Running\RunInputTester.cs" />
     <Compile Include="Todos\TodoTaskTester.cs" />
     <Compile Include="Topics\can_build_behavior_for_topic_chain.cs" />
     <Compile Include="Topics\can_load_plugin_projects_and_make_the_associations.cs" />

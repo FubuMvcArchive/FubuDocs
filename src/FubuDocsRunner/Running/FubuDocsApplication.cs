@@ -11,7 +11,7 @@ namespace FubuDocsRunner.Running
     {
         public FubuApplication BuildApplication()
         {
-            return FubuApplication.For<RunFubuWorldRegistry>()
+            return FubuApplication.For<RunFubuDocsRegistry>()
                                   .StructureMap(new Container())
                                   .Packages(x => {
                                       var directories = AppDomain.CurrentDomain.SetupInformation.AppDomainInitializerArguments;
@@ -32,7 +32,7 @@ namespace FubuDocsRunner.Running
 
         public FubuApplication BuildApplication()
         {
-            return FubuApplication.For<RunFubuWorldRegistry>()
+            return FubuApplication.For<RunFubuDocsRegistry>()
                                   .StructureMap(new Container())
                                   .Packages(x =>
                                   {

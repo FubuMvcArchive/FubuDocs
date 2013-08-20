@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace FubuDocsRunner.Running
 {
-    public class HomeEndpoint
+    public class DefaultHomeEndpoint
     {
         public FubuContinuation Index()
         {

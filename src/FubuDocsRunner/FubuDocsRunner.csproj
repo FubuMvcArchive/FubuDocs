@@ -143,10 +143,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Running\DocumentPackageLoader.cs" />
     <Compile Include="Running\FubuDocsApplication.cs" />
-    <Compile Include="Running\HomeEndpoint.cs" />
+    <Compile Include="Running\DefaultHomeEndpoint.cs" />
     <Compile Include="Running\MainDocumentLinkedPackageLoader.cs" />
     <Compile Include="Running\RunCommand.cs" />
-    <Compile Include="Running\RunFubuWorldRegistry.cs" />
+    <Compile Include="Running\RunFubuDocsRegistry.cs" />
     <Compile Include="Running\RunInput.cs" />
     <Compile Include="SnippetsCommand.cs" />
     <Compile Include="Topics\AddTopicsCommand.cs" />

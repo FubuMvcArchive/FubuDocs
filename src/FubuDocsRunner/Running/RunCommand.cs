@@ -41,7 +41,7 @@ namespace FubuDocsRunner.Running
                     x.Setup.ApplicationBase = runnerDirectory;
                 });
 
-                _application.Start(input);
+                _application.Start(input.ToRequest());
 
                 tellUserWhatToDo();
                 ConsoleKeyInfo key = Console.ReadKey();

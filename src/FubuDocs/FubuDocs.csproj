@@ -43,6 +43,9 @@
     <Reference Include="FubuMVC.CodeSnippets">
       <HintPath>..\packages\FubuMVC.CodeSnippets\lib\net40\FubuMVC.CodeSnippets.dll</HintPath>
     </Reference>
+    <Reference Include="FubuMVC.CodeSnippets.Docs">
+      <HintPath>..\packages\FubuMVC.CodeSnippets.Docs\lib\net40\FubuMVC.CodeSnippets.Docs.dll</HintPath>
+    </Reference>
     <Reference Include="FubuMVC.Core">
       <HintPath>..\packages\FubuMVC.Core\lib\net40\FubuMVC.Core.dll</HintPath>
     </Reference>
