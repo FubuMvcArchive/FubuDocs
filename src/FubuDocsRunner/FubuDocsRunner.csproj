@@ -141,6 +141,7 @@
     <Compile Include="Exports\OverrideRootPath.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Running\ApplicationRootPackageLoader.cs" />
     <Compile Include="Running\DocumentPackageLoader.cs" />
     <Compile Include="Running\FubuDocsApplication.cs" />
     <Compile Include="Running\DefaultHomeEndpoint.cs" />

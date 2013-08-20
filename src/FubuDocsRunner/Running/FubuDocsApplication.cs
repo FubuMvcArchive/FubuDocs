@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using FubuDocs.Infrastructure;
 using FubuMVC.Core;
 using FubuMVC.StructureMap;
+using HtmlTags;
 using StructureMap;
+using System.Linq;
+using FubuCore;
 
 namespace FubuDocsRunner.Running
 {
@@ -14,8 +17,18 @@ namespace FubuDocsRunner.Running
             return FubuApplication.For<RunFubuDocsRegistry>()
                                   .StructureMap(new Container())
                                   .Packages(x => {
-                                      var directories = AppDomain.CurrentDomain.SetupInformation.AppDomainInitializerArguments;
-                                      directories.Each(directory => x.Loader(new DocumentPackageLoader(directory)));
+                                      var directories =
+                                          JsonUtil.Get<FubuDocsDirectories>(
+                                              AppDomain.CurrentDomain.SetupInformation.AppDomainInitializerArguments
+                                                       .FirstOrDefault());
+
+                                      x.Loader(new DocumentPackageLoader(directories.Solution));
+
+                                      if (directories.ApplicationRoot.IsNotEmpty())
+                                      {
+                                          x.Loader(new ApplicationRootPackageLoader(directories.ApplicationRoot));
+                                      }
+
                                       x.Loader(new FubuDocsPackageLoader());
                                   });
         }

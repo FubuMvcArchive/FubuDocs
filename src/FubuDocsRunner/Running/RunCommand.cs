@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Fubu.Running;
 using FubuCore;
 using FubuCore.CommandLine;
+using HtmlTags;
 
 namespace FubuDocsRunner.Running
 {
@@ -33,10 +34,18 @@ namespace FubuDocsRunner.Running
 
             _solutionDirectory = Environment.CurrentDirectory;
 
+            var directories = new FubuDocsDirectories
+            {
+                Solution = Environment.CurrentDirectory,
+                ApplicationRoot = input.RootFlag.ToFullPath()
+            };
+
+
             try
             {
                 _application = new RemoteApplication(x => {
-                    x.Setup.AppDomainInitializerArguments = new[] {_solutionDirectory};
+                    
+                    x.Setup.AppDomainInitializerArguments = new[] { JsonUtil.ToJson(directories) };
 
                     x.Setup.ApplicationBase = runnerDirectory;
                 });
@@ -79,5 +88,11 @@ namespace FubuDocsRunner.Running
             Console.WriteLine("Trying to clean out the contents of " + explodedBottlesDirectory);
             fileSystem.CleanDirectory(explodedBottlesDirectory);
         }
+    }
+
+    public class FubuDocsDirectories
+    {
+        public string Solution;
+        public string ApplicationRoot;
     }
 }

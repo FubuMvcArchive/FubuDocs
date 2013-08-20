@@ -32,6 +32,9 @@ namespace FubuDocsRunner.Running
         [Description("Start the default browser to the home page of this application")]
         public bool OpenFlag { get; set; }
 
+        [Description("Specify the directory for a hosting application for your documentation.  Will be loaded as a FubuMVC Bottle")]
+        public string RootFlag { get; set; }
+
 
         public ApplicationRequest ToRequest()
         {

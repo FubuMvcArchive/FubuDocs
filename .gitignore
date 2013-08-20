@@ -41,3 +41,5 @@ src/Sample.Docs/snippets
 pages
 Gemfile.lock
 fubudocs/*.gem
+src/FubuDocs/snippets
+src/FubuDocs.Docs/snippets
