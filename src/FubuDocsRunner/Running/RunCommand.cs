@@ -13,7 +13,6 @@ namespace FubuDocsRunner.Running
     {
         private readonly IFileSystem fileSystem = new FileSystem();
         private RemoteApplication _application;
-        private string _solutionDirectory;
 
         public override bool Execute(RunInput input)
         {
@@ -31,14 +30,7 @@ namespace FubuDocsRunner.Running
 
             Task.WaitAll(bottling, cleaning);
 
-
-            _solutionDirectory = Environment.CurrentDirectory;
-
-            var directories = new FubuDocsDirectories
-            {
-                Solution = Environment.CurrentDirectory,
-                ApplicationRoot = input.RootFlag.ToFullPath()
-            };
+            var directories = input.ToDirectories();
 
 
             try
@@ -93,6 +85,6 @@ namespace FubuDocsRunner.Running
     public class FubuDocsDirectories
     {
         public string Solution;
-        public string ApplicationRoot;
+        public string Host;
     }
 }

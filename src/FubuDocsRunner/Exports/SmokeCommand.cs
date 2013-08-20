@@ -27,9 +27,6 @@ namespace FubuDocsRunner.Exports
 
         public override bool Execute(RunInput input)
         {
-            var solutionDirectory = Environment.CurrentDirectory;
-
-
             string runnerDirectory = Assembly.GetExecutingAssembly().Location.ParentDirectory();
 
             AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
@@ -48,8 +45,10 @@ namespace FubuDocsRunner.Exports
 
             try
             {
+                var directories = input.ToDirectories();
+
                 // TODO -- It sure would be nice to turn off the pre-compile work so we don't get a ton of console errors
-                using (var server = new FubuDocsExportingApplication(solutionDirectory).BuildApplication().RunEmbedded(solutionDirectory))
+                using (var server = new FubuDocsExportingApplication(directories).BuildApplication().RunEmbedded(directories.Solution))
                 {
                     var model = server.Endpoints.Get<UrlQueryEndpoint>(x => x.get_urls()).ReadAsJson<UrlList>();
                     var count = model.Urls.Length;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Bottles;
 using FubuDocs.Infrastructure;
 using FubuMVC.Core;
 using FubuMVC.StructureMap;
@@ -17,41 +18,41 @@ namespace FubuDocsRunner.Running
             return FubuApplication.For<RunFubuDocsRegistry>()
                                   .StructureMap(new Container())
                                   .Packages(x => {
-                                      var directories =
-                                          JsonUtil.Get<FubuDocsDirectories>(
-                                              AppDomain.CurrentDomain.SetupInformation.AppDomainInitializerArguments
-                                                       .FirstOrDefault());
+                                      var json = AppDomain.CurrentDomain.SetupInformation.AppDomainInitializerArguments.FirstOrDefault();
+                                      var directories = JsonUtil.Get<FubuDocsDirectories>(json);
 
-                                      x.Loader(new DocumentPackageLoader(directories.Solution));
-
-                                      if (directories.ApplicationRoot.IsNotEmpty())
-                                      {
-                                          x.Loader(new ApplicationRootPackageLoader(directories.ApplicationRoot));
-                                      }
-
-                                      x.Loader(new FubuDocsPackageLoader());
+                                      ConfigureLoaders(x, directories);
                                   });
+        }
+
+        public static void ConfigureLoaders(IPackageFacility x, FubuDocsDirectories directories)
+        {
+            x.Loader(new DocumentPackageLoader(directories.Solution));
+
+            if (directories.Host.IsNotEmpty())
+            {
+                Console.WriteLine("Loading hosting application at " + directories.Host);
+                x.Loader(new ApplicationRootPackageLoader(directories.Host));
+            }
+
+            x.Loader(new FubuDocsPackageLoader());
         }
     }
 
     public class FubuDocsExportingApplication : IApplicationSource
     {
-        private readonly string _directory;
+        private readonly FubuDocsDirectories _directories;
 
-        public FubuDocsExportingApplication(string directory)
+        public FubuDocsExportingApplication(FubuDocsDirectories directories)
         {
-            _directory = directory;
+            _directories = directories;
         }
 
         public FubuApplication BuildApplication()
         {
             return FubuApplication.For<RunFubuDocsRegistry>()
                                   .StructureMap(new Container())
-                                  .Packages(x =>
-                                  {
-                                      x.Loader(new DocumentPackageLoader(_directory));
-                                      x.Loader(new FubuDocsPackageLoader());
-                                  });
+                                  .Packages(x => FubuDocsApplication.ConfigureLoaders(x, _directories));
         }
     }
 }

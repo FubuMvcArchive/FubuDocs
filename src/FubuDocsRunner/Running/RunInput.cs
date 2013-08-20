@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Reflection;
 using Fubu.Running;
@@ -33,7 +34,7 @@ namespace FubuDocsRunner.Running
         public bool OpenFlag { get; set; }
 
         [Description("Specify the directory for a hosting application for your documentation.  Will be loaded as a FubuMVC Bottle")]
-        public string RootFlag { get; set; }
+        public string HostFlag { get; set; }
 
 
         public ApplicationRequest ToRequest()
@@ -46,6 +47,15 @@ namespace FubuDocsRunner.Running
                 BrowserFlag = BrowserFlag,
                 BuildFlag = BuildFlag,
                 OpenFlag = OpenFlag
+            };
+        }
+
+        public FubuDocsDirectories ToDirectories()
+        {
+            return new FubuDocsDirectories
+            {
+                Host = HostFlag,
+                Solution = Environment.CurrentDirectory
             };
         }
     }

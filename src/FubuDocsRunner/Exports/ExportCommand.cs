@@ -33,6 +33,7 @@ namespace FubuDocsRunner.Exports
 		[FlagAlias("include-projects", 'i')]
 		public string IncludeProjectsFlag { get; set; }
 
+
         public IEnumerable<IDownloadReportVisitor> Visitors()
         {
             if (VerboseFlag)
@@ -51,7 +52,6 @@ namespace FubuDocsRunner.Exports
     public class ExportCommand : FubuCommand<ExportInput>
     {
         private readonly IFileSystem _fileSystem = new FileSystem();
-        private string _solutionDirectory;
 
         public override bool Execute(ExportInput input)
         {
@@ -71,7 +71,8 @@ namespace FubuDocsRunner.Exports
             Task.WaitAll(bottling, cleaning);
 
 
-            _solutionDirectory = Environment.CurrentDirectory;
+            var directories = input.ToDirectories();
+
 
             try
             {
@@ -84,8 +85,8 @@ namespace FubuDocsRunner.Exports
 
 	            projects.Each(BottlesFilter.Include);
 
-                var application = new FubuDocsExportingApplication(_solutionDirectory).BuildApplication();
-                using (var server = application.RunEmbedded(_solutionDirectory))
+                var application = new FubuDocsExportingApplication(directories).BuildApplication();
+                using (var server = application.RunEmbedded(directories.Solution))
                 {
                     server.Export(export =>
                     {
