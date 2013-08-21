@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Bottles;
 using FubuDocs.Infrastructure;
 using FubuMVC.Core;
+using FubuMVC.Core.Packaging;
 using FubuMVC.StructureMap;
 using HtmlTags;
 using StructureMap;
@@ -27,6 +28,12 @@ namespace FubuDocsRunner.Running
 
         public static void ConfigureLoaders(IPackageFacility x, FubuDocsDirectories directories)
         {
+            // dirty, dirty hack
+            if (directories.Host.IsNotEmpty())
+            {
+                FubuMvcPackageFacility.PhysicalRootPath = directories.Host.TrimEnd('/').TrimEnd('\\');
+            }
+
             x.Loader(new DocumentPackageLoader(directories.Solution));
 
             if (directories.Host.IsNotEmpty())

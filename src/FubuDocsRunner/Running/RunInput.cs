@@ -42,7 +42,7 @@ namespace FubuDocsRunner.Running
             return new ApplicationRequest
             {
                 ApplicationFlag = typeof (FubuDocsApplication).Name,
-                DirectoryFlag = Assembly.GetExecutingAssembly().Location.ParentDirectory(),
+                DirectoryFlag = HostFlag ?? Assembly.GetExecutingAssembly().Location.ParentDirectory(),
                 WatchedFlag = WatchedFlag,
                 BrowserFlag = BrowserFlag,
                 BuildFlag = BuildFlag,
