@@ -96,12 +96,15 @@ namespace FubuDocsRunner.Exports
 
 
                     var contentUrls = findInitialContentUrlList(server);
+                    Console.WriteLine("Downloading initial batch of {0} urls", contentUrls.Count());
                     contentUrls.Each(x => x.Write(server.Endpoints, input, report));
 
                     var cache = server.Services.GetInstance<IAccessedCache>();
                     while (cache.Any())
                     {
                         var moreUrls = cache.Dequeue();
+                        Console.WriteLine("Downloading an additional {0} discovered url's", moreUrls.Count());
+
                         moreUrls.Each(x => x.Write(server.Endpoints, input, report));
                     }
 
@@ -123,6 +126,8 @@ namespace FubuDocsRunner.Exports
                 return false;
             }
 
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadLine();
             return true;
         }
 
@@ -163,6 +168,11 @@ namespace FubuDocsRunner.Exports
 
         public ContentUrl(string relativePath)
         {
+            if (relativePath.StartsWith("../"))
+            {
+                throw new Exception("Shouldn't be doing this");
+            }
+
             _relativePath = relativePath.TrimStart('/');
         }
 
@@ -176,12 +186,22 @@ namespace FubuDocsRunner.Exports
             var localPath = ToLocalPath(input.Output);
             var localDirectory = localPath.ParentDirectory();
 
-            fileSystem.CreateDirectory(localDirectory); // Just making sure
-            var content = endpoints.Get(RelativePath).ReadAsText();
 
-            report.AddColumnData(RelativePath, localPath);
 
-            fileSystem.WriteStringToFile(localPath, content);
+            try
+            {
+                fileSystem.CreateDirectory(localDirectory); // Just making sure
+                var content = endpoints.Get(RelativePath).ReadAsText();
+
+                report.AddColumnData(RelativePath, localPath);
+
+                fileSystem.WriteStringToFile(localPath, content);
+            }
+            catch (Exception e)
+            {
+                ConsoleWriter.Write(ConsoleColor.Red, "Failed to write {0} to {1}".ToFormat(RelativePath, localPath));
+                Console.WriteLine(e);
+            }
         }
 
         public string ToLocalPath(string root)

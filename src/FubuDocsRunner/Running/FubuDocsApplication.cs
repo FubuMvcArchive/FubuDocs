@@ -5,7 +5,9 @@ using FubuDocs.Infrastructure;
 using FubuDocsRunner.Exports;
 using FubuMVC.Core;
 using FubuMVC.Core.Assets;
+using FubuMVC.Core.Assets.Http;
 using FubuMVC.Core.Packaging;
+using FubuMVC.Core.Urls;
 using FubuMVC.StructureMap;
 using HtmlTags;
 using StructureMap;
@@ -75,6 +77,8 @@ namespace FubuDocsRunner.Running
             Services(x => {
                 x.ReplaceService<IAssetTagWriter, ExportAssetTagWriter>();
                 x.ReplaceService<IAssetUrls, ExportAssetUrls>();
+                x.ReplaceService<IContentWriter, ExportContentWriter>();
+                x.ReplaceService<IUrlRegistry, ExportUrlRegistry>();
                 x.SetServiceIfNone<IAccessedCache, AccessedCache>();
             });
         }

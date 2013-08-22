@@ -4,8 +4,11 @@ using System.Threading.Tasks;
 using Fubu.Running;
 using FubuCore;
 using FubuCore.CommandLine;
+using FubuMVC.Core.Http;
 using HtmlTags;
 using FubuDocs.Topics;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace FubuDocsRunner.Running
 {
@@ -89,11 +92,25 @@ namespace FubuDocsRunner.Running
         public string Host;
         public string RelativeStartingUrl;
 
-        public string CorrectUrl(string url)
+        public string ToRelativeContentUrl(string url, ICurrentHttpRequest request)
         {
-            if (RelativeStartingUrl.IsEmpty()) return url.TrimStart('/');
+            var current = request.RelativeUrl().TrimStart('/');
+            var contentUrl = url.TrimStart('/');
 
-            return RelativeStartingUrl.AppendUrl(url);
+            if (current == string.Empty)
+            {
+                return contentUrl;
+            }
+
+            var prepend = current.Split('/').Select(x => "..").Join("/");
+            var relativeUrl = prepend.AppendUrl(contentUrl);
+
+            return relativeUrl;
+
+
+//            if (RelativeStartingUrl.IsEmpty()) return url.TrimStart('/');
+//
+//            return RelativeStartingUrl.AppendUrl(url);
         }
     }
 }

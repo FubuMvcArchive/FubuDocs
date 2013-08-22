@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using FubuCore;
+using FubuMVC.Core.Assets;
+using FubuMVC.Core.Assets.Files;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Nodes;
 using FubuMVC.Core.Resources.PathBased;
@@ -22,10 +25,12 @@ namespace FubuDocs.Exporting
         }
 
         private readonly BehaviorGraph _graph;
+        private readonly IAssetFileGraph _assetFiles;
 
-        public UrlQueryEndpoint(BehaviorGraph graph)
+        public UrlQueryEndpoint(BehaviorGraph graph, IAssetFileGraph assetFiles)
         {
             _graph = graph;
+            _assetFiles = assetFiles;
         }
 
         public UrlList get_urls()
@@ -58,6 +63,14 @@ namespace FubuDocs.Exporting
                 if (ShouldIgnore(pattern)) continue;
 
                 yield return pattern;
+            }
+
+            foreach (var assetFile in _assetFiles.AllFiles())
+            {
+                if (assetFile.Name.Contains("diagnostics")) continue;
+                if (assetFile.Name.Contains("slickgrid")) continue;
+
+                yield return AssetUrls.DetermineRelativeAssetUrl(assetFile.Folder, assetFile.Name);
             }
         }
 
