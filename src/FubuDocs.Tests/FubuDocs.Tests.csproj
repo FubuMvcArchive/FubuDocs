@@ -127,22 +127,6 @@
     <Compile Include="Commands\Topics\TopicFileSystemTester.cs" />
     <Compile Include="Commands\TopicTextReportSmokeTester.cs" />
     <Compile Include="debugging.cs" />
-    <Compile Include="Exports\AnchorTagStrategyTester.cs" />
-    <Compile Include="Exports\CssUrlStrategyTester.cs" />
-    <Compile Include="Exports\download_files_and_make_them_relative.cs" />
-    <Compile Include="Exports\integrated_plan_execution_with_additonal_urls_and_assets.cs" />
-    <Compile Include="Exports\DownloadTokenParserTester.cs" />
-    <Compile Include="Exports\ImgTagStrategyTester.cs" />
-    <Compile Include="Exports\integrated_plan_execution_with_assets.cs" />
-    <Compile Include="Exports\LinkTagStrategyTester.cs" />
-    <Compile Include="Exports\download_a_url_with_assets.cs" />
-    <Compile Include="Exports\DownloadScenario.cs" />
-    <Compile Include="Exports\DownloadTokenTester.cs" />
-    <Compile Include="Exports\download_an_asset_file.cs" />
-    <Compile Include="Exports\HtmlElementTester.cs" />
-    <Compile Include="Exports\ScriptTagStrategyTester.cs" />
-    <Compile Include="Exports\StubPageSource.cs" />
-    <Compile Include="Exports\StubDownloader.cs" />
     <Compile Include="Exporting\UrlQueryEndpointTester.cs" />
     <Compile Include="Infrastructure\Binders\RequestLogPropertyBinderTester.cs" />
     <Compile Include="Infrastructure\BottlesFilterTester.cs" />
@@ -186,6 +170,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Topics.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Exports\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

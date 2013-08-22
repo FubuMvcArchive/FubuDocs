@@ -36,20 +36,6 @@ namespace FubuDocsRunner.Exports
 		[Description("Comma separate list of the projects to include in the export (e.g., fubudocs, myproject)")]
 		[FlagAlias("include-projects", 'i')]
 		public string IncludeProjectsFlag { get; set; }
-
-
-        public IEnumerable<IDownloadReportVisitor> Visitors()
-        {
-            if (VerboseFlag)
-            {
-                yield return new DisplayDownloadReport();
-            }
-
-            if (RootPathFlag.IsNotEmpty())
-            {
-                yield return new OverrideRootPath(RootPathFlag);
-            }
-        }
     }
 
     [CommandDescription("Exports static html content for all of the documentation projects in the specified folder")]
@@ -110,13 +96,6 @@ namespace FubuDocsRunner.Exports
 
 
                     report.WriteToConsole();
-
-
-//                    server.Export(export =>
-//                    {
-//                        export.OutputTo(input.Output);
-//                        input.Visitors().Each(export.AddVisitor);
-//                    });
                 }  
 
             }
