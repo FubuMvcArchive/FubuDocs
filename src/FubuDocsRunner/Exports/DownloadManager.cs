@@ -27,6 +27,8 @@ namespace FubuDocsRunner.Exports
                         // swallow it
                         return;
                     }
+
+                    Console.WriteLine("Failed while trying to download '{0}' to {1}", url, filePath);
                     
                     throw;
                 }

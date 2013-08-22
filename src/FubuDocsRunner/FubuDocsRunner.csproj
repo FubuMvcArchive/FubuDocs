@@ -11,7 +11,8 @@
     <RootNamespace>FubuDocsRunner</RootNamespace>
     <AssemblyName>FubuDocsRunner</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -117,6 +118,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="WebDriver">
@@ -135,6 +137,7 @@
     <Compile Include="Exports\DownloadToken.cs" />
     <Compile Include="Exports\DownloadUrl.cs" />
     <Compile Include="Exports\ExportApplication.cs" />
+    <Compile Include="Exports\ExportAssetTagWriter.cs" />
     <Compile Include="Exports\ExportCommand.cs" />
     <Compile Include="Exports\HtmlElement.cs" />
     <Compile Include="Exports\IDownloadReportVisitor.cs" />

@@ -7,7 +7,9 @@ namespace FubuDocs.Topics
     {
          public static string AppendUrl(this string url, string part)
          {
-             return (url + "/" + part).Replace("//", "/").Trim('/');
+             var composite = (url ?? string.Empty).TrimEnd('/') + "/" + part.TrimStart('/');
+
+             return composite.TrimEnd('/');
          }
 
         public static string ChildUrl(this string url)

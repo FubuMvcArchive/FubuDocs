@@ -55,7 +55,8 @@ namespace FubuDocsRunner.Running
             return new FubuDocsDirectories
             {
                 Host = HostFlag,
-                Solution = Environment.CurrentDirectory
+                Solution = Environment.CurrentDirectory,
+                RelativeStartingUrl = UrlFlag
             };
         }
     }

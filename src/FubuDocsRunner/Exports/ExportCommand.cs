@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using FubuCore;
 using FubuCore.CommandLine;
+using FubuCore.Util.TextWriting;
+using FubuDocs.Exporting;
 using FubuDocs.Infrastructure;
 using FubuDocsRunner.Running;
+using FubuMVC.Core.Endpoints;
 using FubuMVC.Katana;
 
 namespace FubuDocsRunner.Exports
@@ -88,11 +92,28 @@ namespace FubuDocsRunner.Exports
                 var application = new FubuDocsExportingApplication(directories).BuildApplication();
                 using (var server = application.RunEmbedded(directories.Solution))
                 {
-                    server.Export(export =>
+                    var report = startReport();
+
+
+                    var contentUrls = findInitialContentUrlList(server);
+                    contentUrls.Each(x => x.Write(server.Endpoints, input, report));
+
+                    var cache = server.Services.GetInstance<IAccessedCache>();
+                    while (cache.Any())
                     {
-                        export.OutputTo(input.Output);
-                        input.Visitors().Each(export.AddVisitor);
-                    });
+                        var moreUrls = cache.Dequeue();
+                        moreUrls.Each(x => x.Write(server.Endpoints, input, report));
+                    }
+
+
+                    report.WriteToConsole();
+
+
+//                    server.Export(export =>
+//                    {
+//                        export.OutputTo(input.Output);
+//                        input.Visitors().Each(export.AddVisitor);
+//                    });
                 }  
 
             }
@@ -105,11 +126,92 @@ namespace FubuDocsRunner.Exports
             return true;
         }
 
+        private static List<ContentUrl> findInitialContentUrlList(EmbeddedFubuMvcServer server)
+        {
+            var urls = server.Endpoints.Get<UrlQueryEndpoint>(x => x.get_urls())
+                             .ReadAsJson<UrlList>();
+
+            var contentUrls = urls.Urls.Select(x => new ContentUrl(x)).ToList();
+            contentUrls.Sort();
+            return contentUrls;
+        }
+
+        private static TextReport startReport()
+        {
+            var report = new TextReport();
+            report.StartColumns(2);
+            report.AddColumnData("Url", "File");
+            report.AddDivider('-');
+            return report;
+        }
+
         private void cleanExplodedBottleContents(string runnerDirectory)
         {
             string explodedBottlesDirectory = runnerDirectory.AppendPath("fubu-content");
             Console.WriteLine("Trying to clean out the contents of " + explodedBottlesDirectory);
             _fileSystem.CleanDirectory(explodedBottlesDirectory);
+        }
+    }
+
+
+
+    public class ContentUrl : IComparable<ContentUrl>
+    {
+        private static readonly IFileSystem fileSystem = new FileSystem();
+
+        private readonly string _relativePath;
+
+        public ContentUrl(string relativePath)
+        {
+            _relativePath = relativePath.TrimStart('/');
+        }
+
+        public string RelativePath
+        {
+            get { return _relativePath; }
+        }
+
+        public void Write(EndpointDriver endpoints, ExportInput input, TextReport report)
+        {
+            var localPath = ToLocalPath(input.Output);
+            var localDirectory = localPath.ParentDirectory();
+
+            fileSystem.CreateDirectory(localDirectory); // Just making sure
+            var content = endpoints.Get(RelativePath).ReadAsText();
+
+            report.AddColumnData(RelativePath, localPath);
+
+            fileSystem.WriteStringToFile(localPath, content);
+        }
+
+        public string ToLocalPath(string root)
+        {
+            // if _content is in here, do it differently
+            if (_relativePath.Contains("_content"))
+            {
+                return root.AppendPath(_relativePath.Split('/'));
+            }
+
+            return root.AppendPath(_relativePath.Split('/')).AppendPath("index.html");
+        }
+
+        public int Depth
+        {
+            get { 
+                if (_relativePath.IsEmpty()) return 0;
+
+                return _relativePath.Split('/').Count();
+            }
+        }
+
+        public int CompareTo(ContentUrl other)
+        {
+            if (Depth != other.Depth)
+            {
+                return Depth.CompareTo(other.Depth);
+            }
+
+            return _relativePath.CompareTo(other._relativePath);
         }
     }
 }

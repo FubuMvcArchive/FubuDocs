@@ -80,7 +80,9 @@ namespace FubuDocs.Exporting
 
         public static bool ShouldIgnore(string pattern)
         {
-            return IgnoredPatterns.Any(pattern.StartsWith);
+            var match = "/" + pattern.TrimStart('/');
+
+            return IgnoredPatterns.Any(match.StartsWith);
         }
     }
 }

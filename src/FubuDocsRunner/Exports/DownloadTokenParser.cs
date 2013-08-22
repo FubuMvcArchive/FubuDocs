@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using FubuCore;
 
 namespace FubuDocsRunner.Exports
 {
@@ -40,7 +42,35 @@ namespace FubuDocsRunner.Exports
 
         public static IEnumerable<DownloadToken> TokensFor(DownloadToken token, string source)
         {
-            return Strategies.SelectMany(strategy => strategy.TokensFor(token, source));
+            return Strategies.SelectMany(strategy => {
+                try
+                {
+                    return strategy.TokensFor(token, source);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error determining download tokens for '{0}' with {1}", token.RelativeUrl, strategy);
+
+                    throw new MalformedDownloadTokenException(token, ex);
+                }
+            });
+        }
+
+        
+    }
+
+    public class MalformedDownloadTokenException : Exception
+    {
+        private readonly DownloadToken _token;
+
+        public MalformedDownloadTokenException(DownloadToken token, Exception inner) : base("", inner)
+        {
+            _token = token;
+        }
+
+        public override string Message
+        {
+            get { return "Failed to create download tokens for '{0}'".ToFormat(_token.RelativeUrl); }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace FubuDocsRunner.Exports
             var source = _source.SourceFor(_token);
             var path = _token.GetLocalPath(context.Plan.OutputDirectory);
 
-            source = source.Replace(_token.BaseUrl, "");
+            source = source.Replace(_token.BaseUrl.TrimEnd('/') + "/", "");
 
             using (var writer = new StreamWriter(File.Open(path, FileMode.CreateNew)))
             {

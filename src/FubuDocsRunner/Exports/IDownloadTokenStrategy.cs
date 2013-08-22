@@ -24,15 +24,28 @@ namespace FubuDocsRunner.Exports
 
         public IEnumerable<DownloadToken> TokensFor(DownloadToken token, string source)
         {
+            var list = new List<DownloadToken>();
+
             var matches = _regex.Matches(source);
             foreach (Match match in matches)
             {
                 var value = HtmlElement.GetAttributeValue(match.Value, _attribute);
                 if (value.IsNotEmpty() && value.StartsWith("/"))
                 {
-                    yield return DownloadToken.For(token.BaseUrl, value);
+                    try
+                    {
+                        list.Add(DownloadToken.For(token.BaseUrl, value));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Error in parsing a page for links");
+                        Console.WriteLine(source);
+                        throw new MalformedDownloadTokenException(token, e);
+                    }
                 }
             }
+
+            return list;
         }
     }
 
@@ -74,6 +87,7 @@ namespace FubuDocsRunner.Exports
 
         public IEnumerable<DownloadToken> TokensFor(DownloadToken token, string source)
         {
+            var list = new List<DownloadToken>();
             var matches = Expression.Matches(source);
             foreach (Match match in matches)
             {
@@ -83,9 +97,25 @@ namespace FubuDocsRunner.Exports
                     value = value.Replace("url", "").Replace("\"", "").Replace("'", "").Replace("(", "").Replace(")", "").Trim().Replace(token.BaseUrl, "");
                     var relative = BuildRelativePath(token.RelativeUrl, value);
 
-                    yield return DownloadToken.For(token.BaseUrl, relative);
+                    if (relative.Contains("<span>") || relative.Contains("</span>"))
+                    {
+                        Console.WriteLine("Ignoring link " + relative);
+                        continue;
+                    }
+
+                    try
+                    {
+                        list.Add(DownloadToken.For(token.BaseUrl, relative));
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Ignoring link " + relative);
+                    }
+
                 }
             }
+
+            return list;
         }
 
         public static string BuildRelativePath(string origin, string relativePath)

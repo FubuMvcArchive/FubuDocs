@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using Bottles;
 using FubuDocs.Infrastructure;
+using FubuDocsRunner.Exports;
 using FubuMVC.Core;
+using FubuMVC.Core.Assets;
 using FubuMVC.Core.Packaging;
 using FubuMVC.StructureMap;
 using HtmlTags;
@@ -57,9 +59,24 @@ namespace FubuDocsRunner.Running
 
         public FubuApplication BuildApplication()
         {
-            return FubuApplication.For<RunFubuDocsRegistry>()
-                                  .StructureMap(new Container())
+            var container = new Container();
+            container.Inject(_directories);
+
+            return FubuApplication.For<FubuDocsExportingRegistry>()
+                                  .StructureMap(container)
                                   .Packages(x => FubuDocsApplication.ConfigureLoaders(x, _directories));
+        }
+    }
+
+    public class FubuDocsExportingRegistry : RunFubuDocsRegistry
+    {
+        public FubuDocsExportingRegistry()
+        {
+            Services(x => {
+                x.ReplaceService<IAssetTagWriter, ExportAssetTagWriter>();
+                x.ReplaceService<IAssetUrls, ExportAssetUrls>();
+                x.SetServiceIfNone<IAccessedCache, AccessedCache>();
+            });
         }
     }
 }

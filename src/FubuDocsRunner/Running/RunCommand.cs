@@ -5,6 +5,7 @@ using Fubu.Running;
 using FubuCore;
 using FubuCore.CommandLine;
 using HtmlTags;
+using FubuDocs.Topics;
 
 namespace FubuDocsRunner.Running
 {
@@ -86,5 +87,13 @@ namespace FubuDocsRunner.Running
     {
         public string Solution;
         public string Host;
+        public string RelativeStartingUrl;
+
+        public string CorrectUrl(string url)
+        {
+            if (RelativeStartingUrl.IsEmpty()) return url.TrimStart('/');
+
+            return RelativeStartingUrl.AppendUrl(url);
+        }
     }
 }

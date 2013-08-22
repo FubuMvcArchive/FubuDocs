@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using FubuCore;
 using FubuMVC.Core.Runtime;
+using FubuDocs.Topics;
 
 namespace FubuDocsRunner.Exports
 {
@@ -18,6 +19,12 @@ namespace FubuDocsRunner.Exports
             Url = url;
             Parts = parts;
             LocalPath = localPath;
+
+            var uri = new Uri(url);
+            if (!uri.IsWellFormedOriginalString())
+            {
+                throw new Exception("Url '{0}' is malformed".ToFormat(url));
+            }
 
             _fileSystem = new FileSystem();
         }
@@ -101,7 +108,7 @@ namespace FubuDocsRunner.Exports
             relativePath = relativePath.Replace(baseUrl, "");
 
             //var isAsset = true;
-            var url = baseUrl + relativePath;
+            var url = baseUrl.AppendUrl(relativePath);
             //var lastIndex = relativePath.LastIndexOf('.');
 
             // TODO -- This is naive. We might need to make the execution deferred and go off the mime type

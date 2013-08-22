@@ -45,9 +45,6 @@
   <ItemGroup>
     <None Include=".package-manifest" />
     <None Include="index.spark" />
-    <None Include="splash.spark">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="content\images\ico-cog-big.png" />
