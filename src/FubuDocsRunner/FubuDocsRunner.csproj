@@ -129,6 +129,7 @@
     <Compile Include="BottleCommand.cs" />
     <Compile Include="DocActionInput.cs" />
     <Compile Include="Exports\AccessedCache.cs" />
+    <Compile Include="Exports\ContentUrl.cs" />
     <Compile Include="Exports\ExportAssetTagWriter.cs" />
     <Compile Include="Exports\ExportAssetUrls.cs" />
     <Compile Include="Exports\ExportCommand.cs" />

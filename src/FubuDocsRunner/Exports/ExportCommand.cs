@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -11,7 +10,6 @@ using FubuCore.Util.TextWriting;
 using FubuDocs.Exporting;
 using FubuDocs.Infrastructure;
 using FubuDocsRunner.Running;
-using FubuMVC.Core.Endpoints;
 using FubuMVC.Katana;
 
 namespace FubuDocsRunner.Exports
@@ -45,9 +43,9 @@ namespace FubuDocsRunner.Exports
 
         public override bool Execute(ExportInput input)
         {
-            string runnerDirectory = Assembly.GetExecutingAssembly().Location.ParentDirectory();
+            var runnerDirectory = Assembly.GetExecutingAssembly().Location.ParentDirectory();
 
-            Task bottling = Task.Factory.StartNew(() =>
+            var bottling = Task.Factory.StartNew(() =>
             {
                 if (!input.NoBottlingFlag)
                 {
@@ -55,7 +53,7 @@ namespace FubuDocsRunner.Exports
                 }
             });
 
-            Task cleaning = Task.Factory.StartNew(() => { cleanExplodedBottleContents(runnerDirectory); });
+            var cleaning = Task.Factory.StartNew(() => { cleanExplodedBottleContents(runnerDirectory); });
 
 
             Task.WaitAll(bottling, cleaning);
@@ -83,7 +81,7 @@ namespace FubuDocsRunner.Exports
 
                     var contentUrls = findInitialContentUrlList(server);
                     Console.WriteLine("Downloading initial batch of {0} urls", contentUrls.Count());
-                    contentUrls.Each(x => x.Write(server.Endpoints, input, report));
+                    contentUrls.Each(x => x.Write(server, input, report));
 
                     var cache = server.Services.GetInstance<IAccessedCache>();
                     while (cache.Any())
@@ -91,7 +89,7 @@ namespace FubuDocsRunner.Exports
                         var moreUrls = cache.Dequeue();
                         Console.WriteLine("Downloading an additional {0} discovered url's", moreUrls.Count());
 
-                        moreUrls.Each(x => x.Write(server.Endpoints, input, report));
+                        moreUrls.Each(x => x.Write(server, input, report));
                     }
 
 
@@ -105,8 +103,6 @@ namespace FubuDocsRunner.Exports
                 return false;
             }
 
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadLine();
             return true;
         }
 
@@ -131,86 +127,9 @@ namespace FubuDocsRunner.Exports
 
         private void cleanExplodedBottleContents(string runnerDirectory)
         {
-            string explodedBottlesDirectory = runnerDirectory.AppendPath("fubu-content");
+            var explodedBottlesDirectory = runnerDirectory.AppendPath("fubu-content");
             Console.WriteLine("Trying to clean out the contents of " + explodedBottlesDirectory);
             _fileSystem.CleanDirectory(explodedBottlesDirectory);
-        }
-    }
-
-
-
-    public class ContentUrl : IComparable<ContentUrl>
-    {
-        private static readonly IFileSystem fileSystem = new FileSystem();
-
-        private readonly string _relativePath;
-
-        public ContentUrl(string relativePath)
-        {
-            if (relativePath.StartsWith("../"))
-            {
-                throw new Exception("Shouldn't be doing this");
-            }
-
-            _relativePath = relativePath.TrimStart('/');
-        }
-
-        public string RelativePath
-        {
-            get { return _relativePath; }
-        }
-
-        public void Write(EndpointDriver endpoints, ExportInput input, TextReport report)
-        {
-            var localPath = ToLocalPath(input.Output);
-            var localDirectory = localPath.ParentDirectory();
-
-
-
-            try
-            {
-                fileSystem.CreateDirectory(localDirectory); // Just making sure
-                var content = endpoints.Get(RelativePath).ReadAsText();
-
-                report.AddColumnData(RelativePath, localPath);
-
-                fileSystem.WriteStringToFile(localPath, content);
-            }
-            catch (Exception e)
-            {
-                ConsoleWriter.Write(ConsoleColor.Red, "Failed to write {0} to {1}".ToFormat(RelativePath, localPath));
-                Console.WriteLine(e);
-            }
-        }
-
-        public string ToLocalPath(string root)
-        {
-            // if _content is in here, do it differently
-            if (_relativePath.Contains("_content"))
-            {
-                return root.AppendPath(_relativePath.Split('/'));
-            }
-
-            return root.AppendPath(_relativePath.Split('/')).AppendPath("index.html");
-        }
-
-        public int Depth
-        {
-            get { 
-                if (_relativePath.IsEmpty()) return 0;
-
-                return _relativePath.Split('/').Count();
-            }
-        }
-
-        public int CompareTo(ContentUrl other)
-        {
-            if (Depth != other.Depth)
-            {
-                return Depth.CompareTo(other.Depth);
-            }
-
-            return _relativePath.CompareTo(other._relativePath);
         }
     }
 }
