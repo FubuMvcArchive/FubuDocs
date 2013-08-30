@@ -23,13 +23,6 @@ namespace FubuDocsRunner.Exports
 
         [Description("The directory to output the application")]
         public string Output { get; set; }
-        
-        [Description("Override the root path forcing all urls to be relative (e.g., 'make everything relative to /ripple')")]
-        [FlagAlias("root", 'r')]
-        public string RootPathFlag { get; set; }
-
-        [Description("Output report of all downloaded files")]
-        public bool VerboseFlag { get; set; }
 
 		[Description("Comma separate list of the projects to include in the export (e.g., fubudocs, myproject)")]
 		[FlagAlias("include-projects", 'i')]
@@ -64,7 +57,8 @@ namespace FubuDocsRunner.Exports
 
             try
             {
-                _fileSystem.DeleteDirectory(input.Output);
+                _fileSystem.CreateDirectory(input.Output);
+                _fileSystem.CleanDirectory(input.Output);
 
 				var projects = input
 					.IncludeProjectsFlag
