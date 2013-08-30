@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using FubuDocs.Navigation;
+using FubuMVC.Core.Http;
 using FubuTestingSupport;
 using NUnit.Framework;
 using System.Linq;
@@ -31,7 +32,11 @@ namespace FubuDocs.Tests.Topics
         public void write_the_table_of_contents_tag_includes_the_newly_imported_project()
         {
             var topic = ObjectMother.TopicGraph.ProjectFor("FubuMVC").Index;
-            var html = new TableOfContentsTag(topic).ToString();
+            var html = new TableOfContentsTag(topic, new StandInCurrentHttpRequest
+            {
+                TheRelativeUrl = "something",
+                TheRawUrl = "/something"
+            }).ToString();
 
             Debug.WriteLine(html);
 

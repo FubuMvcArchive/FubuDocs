@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace FubuDocs.Topics
 {
+    // TODO -- this should be in FubuCore itself.
     public static class StringExtensions
     {
          public static string AppendUrl(this string url, string part)

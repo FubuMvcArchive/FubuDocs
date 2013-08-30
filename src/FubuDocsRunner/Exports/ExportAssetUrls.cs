@@ -2,6 +2,7 @@
 using FubuMVC.Core.Assets;
 using FubuMVC.Core.Assets.Files;
 using FubuMVC.Core.Http;
+using FubuDocs;
 
 namespace FubuDocsRunner.Exports
 {
@@ -26,7 +27,7 @@ namespace FubuDocsRunner.Exports
 
             _cache.Enqueue(url);
 
-            return _directories.ToRelativeContentUrl(url, _request);
+            return _request.ToRelativeUrl(url);
         }
     }
 }

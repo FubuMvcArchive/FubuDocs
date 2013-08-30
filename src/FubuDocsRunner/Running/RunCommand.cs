@@ -4,11 +4,7 @@ using System.Threading.Tasks;
 using Fubu.Running;
 using FubuCore;
 using FubuCore.CommandLine;
-using FubuMVC.Core.Http;
 using HtmlTags;
-using FubuDocs.Topics;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace FubuDocsRunner.Running
 {
@@ -83,34 +79,6 @@ namespace FubuDocsRunner.Running
             string explodedBottlesDirectory = runnerDirectory.AppendPath("fubu-content");
             Console.WriteLine("Trying to clean out the contents of " + explodedBottlesDirectory);
             fileSystem.CleanDirectory(explodedBottlesDirectory);
-        }
-    }
-
-    public class FubuDocsDirectories
-    {
-        public string Solution;
-        public string Host;
-        public string RelativeStartingUrl;
-
-        public string ToRelativeContentUrl(string url, ICurrentHttpRequest request)
-        {
-            var current = request.RelativeUrl().TrimStart('/');
-            var contentUrl = url.TrimStart('/');
-
-            if (current == string.Empty)
-            {
-                return contentUrl;
-            }
-
-            var prepend = current.Split('/').Select(x => "..").Join("/");
-            var relativeUrl = prepend.AppendUrl(contentUrl);
-
-            return relativeUrl;
-
-
-//            if (RelativeStartingUrl.IsEmpty()) return url.TrimStart('/');
-//
-//            return RelativeStartingUrl.AppendUrl(url);
         }
     }
 }

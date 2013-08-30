@@ -5,6 +5,7 @@ using FubuMVC.Core.Http;
 using FubuMVC.Core.Runtime;
 using HtmlTags;
 using FubuCore;
+using FubuDocs;
 
 namespace FubuDocsRunner.Exports
 {
@@ -36,9 +37,8 @@ namespace FubuDocsRunner.Exports
         {
             var rawUrl = tag.Attr(attrName);
             _cache.Enqueue(rawUrl);
-            var relativeUrl = _directories.ToRelativeContentUrl(rawUrl, _request);
 
-            
+            var relativeUrl = _request.ToRelativeUrl(rawUrl);
 
             tag.Attr(attrName, relativeUrl);
         }

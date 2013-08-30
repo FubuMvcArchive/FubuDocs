@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using FubuMVC.Core.Http;
 using FubuMVC.Core.Registration.Routes;
 using FubuMVC.Core.Urls;
+using FubuDocs;
 
 namespace FubuDocsRunner.Exports
 {
@@ -10,11 +12,13 @@ namespace FubuDocsRunner.Exports
     {
         private readonly UrlRegistry _inner;
         private readonly IAccessedCache _cache;
+        private readonly ICurrentHttpRequest _currentRequest;
 
-        public ExportUrlRegistry(UrlRegistry inner, IAccessedCache cache)
+        public ExportUrlRegistry(UrlRegistry inner, IAccessedCache cache, ICurrentHttpRequest currentRequest)
         {
             _inner = inner;
             _cache = cache;
+            _currentRequest = currentRequest;
         }
 
         public string UrlFor(object model, string categoryOrHttpMethod = null)
@@ -22,7 +26,7 @@ namespace FubuDocsRunner.Exports
             var url = _inner.UrlFor(model, categoryOrHttpMethod);
             _cache.Enqueue(url);
 
-            return url;
+            return _currentRequest.ToRelativeUrl(url);
         }
 
         public string UrlFor<T>(string categoryOrHttpMethod = null) where T : class
@@ -30,7 +34,7 @@ namespace FubuDocsRunner.Exports
             var url = _inner.UrlFor<T>(categoryOrHttpMethod);
             _cache.Enqueue(url);
 
-            return url;
+            return _currentRequest.ToRelativeUrl(url);
         }
 
         public string UrlFor(Type handlerType, MethodInfo method = null, string categoryOrHttpMethodOrHttpMethod = null)
@@ -38,7 +42,7 @@ namespace FubuDocsRunner.Exports
             var url = _inner.UrlFor(handlerType, method, categoryOrHttpMethodOrHttpMethod);
             _cache.Enqueue(url);
 
-            return url;
+            return _currentRequest.ToRelativeUrl(url);
         }
 
         public string UrlFor<TController>(Expression<Action<TController>> expression, string categoryOrHttpMethod = null)
@@ -46,7 +50,7 @@ namespace FubuDocsRunner.Exports
             var url = _inner.UrlFor(expression, categoryOrHttpMethod);
             _cache.Enqueue(url);
 
-            return url;
+            return _currentRequest.ToRelativeUrl(url);
         }
 
         public string UrlForNew(Type entityType)
@@ -74,7 +78,7 @@ namespace FubuDocsRunner.Exports
             var url = _inner.UrlFor(modelType, parameters, categoryOrHttpMethod);
             _cache.Enqueue(url);
 
-            return url;
+            return _currentRequest.ToRelativeUrl(url);
         }
     }
 }

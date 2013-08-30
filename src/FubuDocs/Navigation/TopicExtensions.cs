@@ -3,6 +3,7 @@ using System.Web;
 using FubuCore;
 using FubuDocs.Topics;
 using FubuMVC.CodeSnippets;
+using FubuMVC.Core.Http;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.UI;
 using FubuMVC.Core.Urls;
@@ -65,7 +66,7 @@ namespace FubuDocs.Navigation
                 throw new ArgumentOutOfRangeException("name", "Topic '{0}' cannot be found.  Try:\n{1}".ToFormat(name, available));
             }
 
-            return new TopicLinkTag(topic, title);
+            return new TopicLinkTag(page.Get<ICurrentHttpRequest>(), topic, title);
         }
 
         public static HtmlTag LinkToExternalTopic(this IFubuPage page, string name, string title)
@@ -76,7 +77,7 @@ namespace FubuDocs.Navigation
                 return new HtmlTag("span").Text("*LINK TO " + name + "*");
             }
 
-            return new TopicLinkTag(topic, title);
+            return new TopicLinkTag(page.Get<ICurrentHttpRequest>(), topic, title);
         }
 
 
@@ -88,7 +89,7 @@ namespace FubuDocs.Navigation
                 return new HtmlTag("span").Text("LINK TO PROJECT '{0}'".ToFormat(name));
             }
 
-            return new LinkTag(project.Name, project.Home.AbsoluteUrl).Attr("title", project.Description);
+            return new LinkTag(project.Name, page.Get<ICurrentHttpRequest>().ToRelativeUrl(project.Home.AbsoluteUrl)).Attr("title", project.Description);
         }
 
         public static string ProjectIndexUrl(this IFubuPage page, string name)
@@ -99,7 +100,7 @@ namespace FubuDocs.Navigation
                 return "#";
             }
 
-            return project.Index.AbsoluteUrl;
+            return page.Get<ICurrentHttpRequest>().ToRelativeUrl(project.Index.AbsoluteUrl);
         }
 
         public static HtmlTag RootLink(this IFubuPage page)
@@ -120,23 +121,12 @@ namespace FubuDocs.Navigation
             }
 
             // TODO -- Maybe include the project logo if it's specified?
+            var homeUrl = page.Get<ICurrentHttpRequest>().ToRelativeUrl(project.Home.AbsoluteUrl);
             return new HtmlTag("a")
-                .Attr("href", project.Home.AbsoluteUrl)
+                .Attr("href", homeUrl)
                 .Attr("title", project.TagLine)
                 .AddClass("project-logo")
                 .Append("span", span => span.Text(project.Name));
-        }
-    }
-
-    public class TopicLinkTag : HtmlTag
-    {
-        public TopicLinkTag(Topic topic, string title) : base("a")
-        {
-            Attr("href", topic.AbsoluteUrl);
-
-            if (title.IsEmpty()) title = topic.Title;
-            Text(title);
-            Attr("data-key", topic.Name);
         }
     }
 }

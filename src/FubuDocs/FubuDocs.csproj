@@ -88,9 +88,6 @@
     <Reference Include="FubuValidation">
       <HintPath>..\packages\FubuValidation\lib\FubuValidation.dll</HintPath>
     </Reference>
-    <Reference Include="FubuValidation.StructureMap">
-      <HintPath>..\packages\FubuValidation\lib\FubuValidation.StructureMap.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlTags">
       <HintPath>..\packages\HtmlTags\lib\4.0\HtmlTags.dll</HintPath>
     </Reference>
@@ -120,6 +117,7 @@
     <Compile Include="CLI\ICommandDocumentationSource.cs" />
     <Compile Include="CLI\SingleUsageTag.cs" />
     <Compile Include="CLI\UsageTableTag.cs" />
+    <Compile Include="CurrentHttpRequestExtensions.cs" />
     <Compile Include="Exporting\ExportAttribute.cs" />
     <Compile Include="Exporting\UrlList.cs" />
     <Compile Include="Exporting\UrlQueryEndpoint.cs" />
@@ -131,10 +129,14 @@
     <Compile Include="Infrastructure\FubuDocsPackageLoader.cs" />
     <Compile Include="Infrastructure\BottlesFilter.cs" />
     <Compile Include="Navigation\FubuDocsPageExtensions.cs" />
+    <Compile Include="Navigation\NamedTopicLinkTag.cs" />
     <Compile Include="Navigation\SectionTag.cs" />
+    <Compile Include="Navigation\TableOfContentsTag.cs" />
     <Compile Include="Navigation\TopicExtensions.cs" />
+    <Compile Include="Navigation\TopicLinkTag.cs" />
     <Compile Include="Navigation\TopicTreeBuilder.cs" />
     <Compile Include="Navigation\TopLeftTopicNavigationTag.cs" />
+    <Compile Include="Navigation\TopRightTopicNavigationTag.cs" />
     <Compile Include="PoweredByFubu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\TopNavigation.cs" />

@@ -8,6 +8,7 @@ using FubuCore.Util.TextWriting;
 using FubuDocs.Topics;
 using FubuMVC.Core.Runtime;
 using FubuMVC.Katana;
+using System.Collections.Generic;
 
 namespace FubuDocsRunner.Exports
 {
@@ -24,7 +25,17 @@ namespace FubuDocsRunner.Exports
                 throw new Exception("Shouldn't be doing this");
             }
 
-            _relativePath = relativePath.TrimStart('/');
+            if (relativePath.StartsWith("http://"))
+            {
+                var segments = new Uri(relativePath).Segments;
+                _relativePath = segments.Where(x => x != "/").Join("/");
+            }
+            else
+            {
+                _relativePath = relativePath.TrimStart('/');
+            }
+
+            
         }
 
         public string RelativePath

@@ -17,9 +17,6 @@ namespace FubuDocsRunner.Running
         [Description("Disables the bottle and code snippet scanning while this command runs")]
         public bool NoBottlingFlag { get; set; }
 
-        [Description("If set, the relative starting url at which to open the browser")]
-        public string UrlFlag { get; set; }
-
         [Description("Open a 'watched' browser with WebDriver to refresh the page on content or application recycles")]
         public bool WatchedFlag { get; set; }
 
@@ -55,8 +52,7 @@ namespace FubuDocsRunner.Running
             return new FubuDocsDirectories
             {
                 Host = HostFlag,
-                Solution = Environment.CurrentDirectory,
-                RelativeStartingUrl = UrlFlag
+                Solution = Environment.CurrentDirectory
             };
         }
     }
