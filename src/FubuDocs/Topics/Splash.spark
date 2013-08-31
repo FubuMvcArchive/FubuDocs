@@ -12,7 +12,7 @@
   </head>
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
     <div class="container">
-      <Partial model="FubuDocs.Shared.TopNavigation" />
+      <TopNavigation />
     </div>
     !{Model.InnerContent}
     <Script src="topics.js"/>

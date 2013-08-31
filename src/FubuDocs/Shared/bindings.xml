@@ -35,4 +35,5 @@
 
   <element name="MailingList">this.MailingList('@text')</element>
   <element name="SocialIcons">this.SocialIcons()</element>
+  <element name="TopNavigation">this.Partial&lt;FubuDocs.Shared.TopNavigation&gt;()</element>
 </bindings>
