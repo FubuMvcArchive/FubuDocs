@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FubuCore;
 using FubuDocs.Topics;
 using FubuMVC.Core.Http;
 using HtmlTags;
@@ -16,6 +17,7 @@ namespace FubuDocs.Navigation
             _topic = context.Current;
         }
 
+        [MarkedForTermination]
         public HtmlTag Title()
         {
             return

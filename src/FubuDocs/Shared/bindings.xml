@@ -32,4 +32,7 @@
     <start>"&lt;div class=\"alert alert-info\"&gt;&lt;i class=\"icon-info-sign\"&gt;&lt;/i&gt;"</start>
     <end>"&lt;/div&gt;"</end>
   </element>
+
+  <element name="MailingList">this.MailingList('@text')</element>
+  
 </bindings>

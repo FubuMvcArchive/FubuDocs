@@ -8,12 +8,13 @@ using HtmlTags;
 
 namespace FubuDocs.Shared
 {
+    [MarkedForTermination]
     public class TopNavigation
     {
-        public HtmlTag MailingList { get; set; }
         public TagList Social { get; set; }
     }
 
+    [MarkedForTermination]
     public class NavigationEndpoint
     {
         private readonly ITopicContext _context;
@@ -35,12 +36,6 @@ namespace FubuDocs.Shared
             }
 
             navigation.Social = new TagList(SocialIconsFor(project));
-
-            if (project.UserGroupUrl.IsNotEmpty())
-            {
-                navigation.MailingList = new HtmlTag("em")
-                    .Append("a", a => a.Attr("href", project.UserGroupUrl).Text(FubuDocsKeys.MailingList));
-            }
 
             return navigation;
         }

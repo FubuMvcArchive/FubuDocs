@@ -218,9 +218,6 @@
     <None Include="Shared\_commonHeader.spark">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Shared\Documentation.spark">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Shared\_global.spark" />
     <None Include="Snippets\snippets.spark" />
     <None Include="Snippets\snippet.spark" />

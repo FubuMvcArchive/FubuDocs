@@ -12,7 +12,7 @@
   <div class="span6">
     <div class="top-header text-right">
       <em>
-        !{Model.MailingList}
+        <MailingList text="Join our vibrant mailing list" />
       </em>
       <div class="social">
         !{Model.Social}

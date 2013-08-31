@@ -16,7 +16,6 @@
       <div id="nav-follow" class="navbar">
         <div class="navbar-inner">
           <div class="container">
-            !{this.TwitterNavBarFor(FubuDocsKeys.Main)}
             <use content="navigation" />
           </div>
         </div>

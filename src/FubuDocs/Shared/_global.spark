@@ -4,6 +4,4 @@
 ﻿<use namespace="FubuMVC.CodeSnippets" />
 <use namespace="FubuDocs" />
 <use namespace="FubuDocs.Navigation" />
-<use namespace="FubuDocs" />
-<use namespace="FubuDocs.Navigation" />
 <use namespace="System.Linq" />

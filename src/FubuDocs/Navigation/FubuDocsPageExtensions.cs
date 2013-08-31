@@ -27,6 +27,7 @@ namespace FubuDocs.Navigation
             return !context.File.Contains("fubu-content");
         }
 
+        [MarkedForTermination("Going to change this quite a bit")]
         public static HtmlTag AuthoringTopic(this IFubuPage page)
         {
             var tag = new HtmlTag("div").AddClass("alert").AddClass("alert-block").AddClass("authoring");

@@ -128,5 +128,15 @@ namespace FubuDocs.Navigation
                 .AddClass("project-logo")
                 .Append("span", span => span.Text(project.Name));
         }
+
+        public static HtmlTag MailingList(this IFubuPage page, string text)
+        {
+            var project = page.Get<ITopicContext>().Project;
+
+            if (project.UserGroupUrl.IsEmpty()) return LiteralTag.Empty();
+
+            return new HtmlTag("em")
+                    .Append("a", a => a.Attr("href", project.UserGroupUrl).Text(text));
+        }
     }
 }
