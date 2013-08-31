@@ -5,7 +5,9 @@ require 'fuburake'
 	sln.compile = {
 		:solutionfile => 'src/FubuDocs.sln'
 	}
-
+	
+	sln.clean = ['src/FubuDocsRunner/bin/Debug/fubu-content']
+	
 	sln.assembly_info = {
 		:product_name => "FubuDocs",
 		:copyright => 'Copyright 2008-2013 Jeremy D. Miller, et al. All rights reserved.'
@@ -21,3 +23,8 @@ end
 BUILD_NUMBER = @solution.options[:build_number]
 
 load File.expand_path('../fubudocs/Rakefile', __FILE__)
+
+
+task :open => [:compile] do
+  sh 'src/FubuDocsRunner/bin/Debug/FubuDocsRunner.exe run --open'
+end

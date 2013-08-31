@@ -105,13 +105,14 @@ namespace FubuDocs.Navigation
             return page.Get<ICurrentHttpRequest>().ToRelativeUrl(project.Index.AbsoluteUrl);
         }
 
-        public static HtmlTag RootLink(this IFubuPage page)
+        public static HtmlTag RootLink(this IFubuPage page, string text)
         {
             var root = page.Get<IUrlRegistry>().UrlFor<AllTopicsEndpoint>(x => x.get_topics());
             return new HtmlTag("a")
+                .AddClass("root-link")
                 .Attr("href", root)
-                .Attr("title", FubuDocsKeys.Fubu)
-                .Append("span", span => span.Text(FubuDocsKeys.Fubu));
+                .Attr("title", text)
+                .Append("span", span => span.Text(text));
         }
 
         public static HtmlTag ProjectLogo(this IFubuPage page)

@@ -13,7 +13,7 @@
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
     <div class="container">
       
-      <TopNavigation />
+      <NavigationBar />
 
       <div id="nav-follow" class="navbar">
         <div class="navbar-inner">
