@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <title>
-      <use:title>FubuDocs</use:title>
+      <use:title><ProjectName /></use:title>
     </title>
     <commonHeader />
   </head>

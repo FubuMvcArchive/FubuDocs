@@ -136,7 +136,7 @@ namespace FubuDocs.Navigation
         {
             var project = page.Get<ITopicContext>().Project;
 
-            if (project.UserGroupUrl.IsEmpty()) return LiteralTag.Empty();
+            if (project == null || project.UserGroupUrl.IsEmpty()) return LiteralTag.Empty();
 
             return new HtmlTag("em")
                     .Append("a", a => a.Attr("href", project.UserGroupUrl).Text(text));
@@ -147,6 +147,22 @@ namespace FubuDocs.Navigation
             var project = page.Get<ITopicContext>().Project;
 
             return new TagList(determineSocialIcons(project, page.Get<IAssetUrls>()));
+        }
+
+        public static string ProjectName(this IFubuPage page)
+        {
+            var project = page.Get<ITopicContext>().Project;
+            return project == null ? string.Empty : project.Name;
+        }
+
+        public static string TopicTitle(this IFubuPage page)
+        {
+            var context = page.Get<ITopicContext>();
+            if (context.Current != null) return context.Current.Title;
+
+            if (context.Project != null) return context.Project.Name;
+
+            return string.Empty;
         }
 
         private static IEnumerable<HtmlTag> determineSocialIcons(ProjectRoot project, IAssetUrls urls)

@@ -5,9 +5,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>
-      !{this.Get<ITopicContext>().Project.Name}
-    </title>
+    <title><ProjectName/></title>
     <commonHeader />
   </head>
   <body data-spy="scroll" data-target=".bs-docs-sidebar">

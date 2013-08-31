@@ -121,7 +121,6 @@
     <Compile Include="Exporting\ExportAttribute.cs" />
     <Compile Include="Exporting\UrlList.cs" />
     <Compile Include="Exporting\UrlQueryEndpoint.cs" />
-    <Compile Include="FubuDocsKeys.cs" />
     <Compile Include="FubuDocsExtension.cs" />
     <Compile Include="FubuWorldRegistry.cs" />
     <Compile Include="Infrastructure\Binders\RequestLogPropertyBinder.cs" />

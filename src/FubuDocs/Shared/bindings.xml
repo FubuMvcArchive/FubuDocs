@@ -40,4 +40,9 @@
   <element name="RootLink">this.RootLink('@text')</element>
   <element name="ProjectLogo">this.ProjectLogo()</element>
   <element name="InnerContent">Model.InnerContent</element>
+  <element name="ProjectName">this.ProjectName()</element>
+  <element name="TopicTitle">this.TopicTitle()</element>
+  <element name="TopTopicNavigation">this.TopTopicNavigation()</element>
+  <element name="AuthoringTopic">this.AuthoringTopic()</element>
+  <element name="LeftTopicNavigation">this.LeftTopicNavigation()</element>
 </bindings>
