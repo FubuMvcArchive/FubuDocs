@@ -34,5 +34,5 @@
   </element>
 
   <element name="MailingList">this.MailingList('@text')</element>
-  
+  <element name="SocialIcons">this.SocialIcons()</element>
 </bindings>

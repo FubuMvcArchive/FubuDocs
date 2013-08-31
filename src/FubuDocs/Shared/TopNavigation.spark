@@ -15,7 +15,7 @@
         <MailingList text="Join our vibrant mailing list" />
       </em>
       <div class="social">
-        !{Model.Social}
+        <SocialIcons />
       </div>
     </div>
   </div>
