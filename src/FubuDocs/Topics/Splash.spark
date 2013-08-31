@@ -14,7 +14,7 @@
     <div class="container">
       <NavigationBar />
     </div>
-    !{Model.InnerContent}
+    <InnerContent />
     <Script src="topics.js"/>
     <commonFooter />
   </body>

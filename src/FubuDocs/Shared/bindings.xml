@@ -39,4 +39,5 @@
 
   <element name="RootLink">this.RootLink('@text')</element>
   <element name="ProjectLogo">this.ProjectLogo()</element>
+  <element name="InnerContent">Model.InnerContent</element>
 </bindings>
