@@ -34,13 +34,15 @@
             <LeftTopicNavigation />
           </div>
           <div class="span9">
-            !{this.Get<TopicTreeBuilder>().Title()}
-             <InnerContent />
-            </div>
+            <h1 class="no-margin"><TopicTitle /></h1>
+            <hr class="header-line"></hr>
+
+            <InnerContent />
+          </div>
         </div>
       </div>
     </div>
-    <Script src="topics.js"/>
+    
     <commonFooter />
   </body>
 </html>

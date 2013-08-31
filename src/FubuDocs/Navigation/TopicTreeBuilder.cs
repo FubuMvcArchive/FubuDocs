@@ -17,15 +17,6 @@ namespace FubuDocs.Navigation
             _topic = context.Current;
         }
 
-        [MarkedForTermination]
-        public HtmlTag Title()
-        {
-            return
-                new HtmlTag("h1").AddClass("no-margin")
-                                 .Text(_topic.Title)
-                                 .After(new HtmlTag("hr").AddClass("header-line"));
-        }
-
         public IEnumerable<HtmlTag> BuildTopTopicLinks()
         {
             yield return new TopLeftTopicNavigationTag(_topic, _request);
