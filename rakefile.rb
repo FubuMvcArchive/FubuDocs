@@ -6,7 +6,7 @@ require 'fuburake'
 		:solutionfile => 'src/FubuDocs.sln'
 	}
 	
-	sln.clean = ['src/FubuDocsRunner/bin/Debug/fubu-content']
+	sln.clean = ['src/FubuDocsRunner/bin/Debug/fubu-content', 'src/Host/fubu-content']
 	
 	sln.assembly_info = {
 		:product_name => "FubuDocs",
