@@ -2,8 +2,8 @@
 <meta charset="utf-8" />
 <meta name="description" content="FubuDocs" />
 <meta name="author" content="FubuDocs" />
-#{this.Asset('twitterbootstrap');}
-<Stylesheet href="fubudocs.core.css" />
+#{this.OptionalAsset('fubudocs.theme.css');}
+<Stylesheet href="fubudocs" />
 <Script src="fubudocs-tools.js" />
 <Script src="FubuDocs.js" />
 <use content="head" />

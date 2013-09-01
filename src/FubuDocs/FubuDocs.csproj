@@ -140,6 +140,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\TopNavigation.cs" />
     <Compile Include="Skinning\HostHomeEndpoint.cs" />
+    <Compile Include="Skinning\HostStylePolicy.cs" />
     <Compile Include="Skinning\OverrideChrome.cs" />
     <Compile Include="Skinning\SpecialView.cs" />
     <Compile Include="Skinning\SpecialViewWriter.cs" />

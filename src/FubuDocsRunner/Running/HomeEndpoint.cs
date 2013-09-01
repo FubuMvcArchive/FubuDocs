@@ -19,6 +19,7 @@ namespace FubuDocsRunner.Running
         public FubuContinuation Index()
         {
             var chain = _graph.BehaviorFor<HostHomeEndpoint>(x => x.Render());
+            
             if (chain.Output.Writers.OfType<SpecialView<HostHome>>().Any())
             {
                 return FubuContinuation.TransferTo<HostHomeEndpoint>(x => x.Render());

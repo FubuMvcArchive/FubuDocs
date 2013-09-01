@@ -22,7 +22,6 @@ namespace FubuDocs.Skinning
             TryReplace<SplashChrome>(graph, "SplashChrome.spark");
             TryReplace<TopNavigation>(graph, "NavigationBar.spark");
             TryReplace<HostHome>(graph, "Index.spark");
-
         }
 
         public void TryReplace<T>(BehaviorGraph graph, string fileName)
