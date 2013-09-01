@@ -74,6 +74,12 @@ namespace FubuDocs.Infrastructure
         {
 	        var assemblyPaths = findAssemblyPaths(path);
 
+            if (!assemblyPaths.Any())
+            {
+                Console.WriteLine("Found no *.Docs assemblies in " + path);
+                yield break;
+            }
+
             Console.WriteLine("Found " + assemblyPaths.Join(", "));
 
 	        var assemblies = AppDomain.CurrentDomain.GetAssemblies();

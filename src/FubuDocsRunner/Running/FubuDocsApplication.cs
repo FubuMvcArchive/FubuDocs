@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using Bottles;
-using FubuDocs.Infrastructure;
 using FubuDocsRunner.Exports;
 using FubuMVC.Core;
 using FubuMVC.Core.Assets;
@@ -13,6 +11,7 @@ using HtmlTags;
 using StructureMap;
 using System.Linq;
 using FubuCore;
+using FubuDocsPackageLoader = FubuDocs.Infrastructure.FubuDocsPackageLoader;
 
 namespace FubuDocsRunner.Running
 {
@@ -45,8 +44,14 @@ namespace FubuDocsRunner.Running
                 Console.WriteLine("Loading hosting application at " + directories.Host);
                 x.Loader(new ApplicationRootPackageLoader(directories.Host));
             }
+            else
+            {
+                x.Loader(new CurrentDirectoryLoader(directories));
+            }
 
             x.Loader(new FubuDocsPackageLoader());
+
+            
         }
     }
 

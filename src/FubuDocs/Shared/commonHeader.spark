@@ -7,5 +7,6 @@
 <Script src="fubudocs-tools.js" />
 <Script src="FubuDocs.js" />
 <use content="head" />
+<Stylesheet href="fubudocs.theme.css" />
 <Styles />
 <link media="screen" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300">
