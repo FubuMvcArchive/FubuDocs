@@ -1,0 +1,11 @@
+﻿<!--Title: Add Topics in a Batch-->
+
+<Command app="fubudocs" command="add-topics">
+The add-topics command allows you to quickly create skeleton topics in order for a single topic folder in the form:
+
+<pre>
+key=title
+/folder=title
+key=title
+</pre>
+</Command>

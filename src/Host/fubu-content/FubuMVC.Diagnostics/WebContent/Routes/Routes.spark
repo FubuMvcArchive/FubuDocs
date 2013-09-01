@@ -1,0 +1,14 @@
+﻿<viewdata model="FubuMVC.Diagnostics.Routes.RouteExplorerModel" />
+<use master="" />
+<use namespace="FubuMVC.Diagnostics.Routes" />
+<use namespace="System.Linq" />
+<use namespace="FubuMVC.TwitterBootstrap" />
+﻿<use namespace="FubuMVC.Core.Assets" />
+
+<Script src="diagnostics/routes.js" />
+
+<h1>Route Explorer</h1>
+  
+!{Model.RoutesTable}
+
+!{this.Modal("routeModal").Label("Route/Chain Visualization").AddCloseButton("Close")}

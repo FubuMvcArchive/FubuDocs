@@ -1,8 +1,11 @@
+using System.Diagnostics;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.Registration.Routes;
+using FubuMVC.Core.View.Model;
 using FubuMVC.Spark;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace FubuDocsRunner.Running
 {
@@ -12,10 +15,9 @@ namespace FubuDocsRunner.Running
         {
             AlterSettings<SparkEngineSettings>(x => x.PrecompileViews = false);
             Policies.Add<UseDefaultHomeRouteIfNone>();
+            Policies.Add<OverrideChrome>();
         }
     }
-
-
 
     [ConfigurationType(ConfigurationType.ModifyRoutes)]
     public class UseDefaultHomeRouteIfNone : IConfigurationAction

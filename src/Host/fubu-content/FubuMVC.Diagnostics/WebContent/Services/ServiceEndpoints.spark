@@ -1,0 +1,25 @@
+﻿<viewdata model="FubuMVC.Diagnostics.Services.ServiceViewModel" />
+<use master="" />
+
+
+
+<div class="container-fluid">
+  <div class="row-fluid">
+
+    <div class="span3 well">
+      <p>
+        Service registrations applied by FubuMVC.  This is not the complete state of your application's IoC container, but it does provide the details of what FubuMVC itself added to your IoC container.  This report also excludes behavior chains that are registered into your container as <code>IActionBehavior</code>
+      </p>
+
+    </div>
+
+    <div class="span9">
+      !{Model.Tags}
+    </div>
+
+
+  </div>
+
+</div>
+
+

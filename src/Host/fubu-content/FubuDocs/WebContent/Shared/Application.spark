@@ -1,0 +1,33 @@
+﻿<use namespace="FubuDocs.Navigation" />
+<use namespace="FubuMVC.TwitterBootstrap" />
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+      <use:title><ProjectName /></use:title>
+    </title>
+    <commonHeader />
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="container">
+      
+      <NavigationBar />
+
+      <div id="nav-follow" class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <use content="navigation" />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <use content="masthead" />
+        <use content="view" />
+      </div>
+
+    </div>
+    <Scripts />
+    <commonFooter />
+  </body>
+</html>

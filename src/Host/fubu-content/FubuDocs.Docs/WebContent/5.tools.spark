@@ -1,0 +1,16 @@
+<!--Title: Authoring Tools-->
+
+<markdown>
+If you are running a documentation project in development mode ("development" mode is the default for <code>fubudocs run</code>), you will see an authoring toolbar in each topic page just above the title.  That toolbar contains:
+
+1. A link showing the full path to the topic on your computer.  Clicking this link will open the topic file in a text editor.  You can change the text editor in the _Tools_ page.
+1. On the top right is the last modified timestamp of the topic file at the time that the page was rendered.
+1. A link to the _Tools_ page.  This page allows you to override the default Notepad as your text editor and shows you all the active projects loaded into the running application.
+1. A link to the current project page.  The project page shows you all the topics, their keys, url's, and a link to edit each file.  
+1. A link to the TODO's page that acts like the _Task List_ window in Visual Studio.Net
+1. A link to the Code Snippets page that shows you all the code snippets by name available to the currently loaded documentation projects
+1. A link to the View Helpers documentation page as a convenience
+  
+
+</markdown>
+

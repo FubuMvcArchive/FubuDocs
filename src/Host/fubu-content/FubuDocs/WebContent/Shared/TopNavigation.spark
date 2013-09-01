@@ -1,0 +1,22 @@
+﻿<viewdata model="FubuDocs.Shared.TopNavigation" />
+<use namespace="FubuDocs" />
+<use namespace="FubuDocs.Navigation" />
+
+<div class="row">
+  <div class="span6">
+    <p class="logo">
+      <RootLink text="Fubu" />
+      <ProjectLogo />
+    </p>
+  </div>
+  <div class="span6">
+    <div class="top-header text-right">
+      <em>
+        <MailingList text="Join our vibrant mailing list" />
+      </em>
+      <div class="social">
+        <SocialIcons />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title><TopicTitle /></title>
+    <commonHeader />
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="container">
+      <div style="border:thin solid orange">
+      <NavigationBar />
+	  </div>
+	  
+	  <hr></hr>
+
+	  <div style="border:thin solid purple">
+      <TopTopicNavigation />
+	  </div>
+	  
+      <hr />
+	  
+      <div class="row">
+	    <div style="border:thin solid blue">
+        <AuthoringTopic />
+		</div>
+		
+        <div class="row">
+          <div class="span3 sidebar" style="border:thin solid red">
+            <LeftTopicNavigation />
+          </div>
+          <div class="span9">
+            <h1 class="no-margin"><TopicTitle /></h1>
+            
+			<div class="border:thin solid green">
+            <InnerContent />
+			</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <commonFooter />
+  </body>
+</html>

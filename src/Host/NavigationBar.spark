@@ -1,0 +1,3 @@
+<div class="row">
+CUSTOM NAVIGATION BAR | <RootLink text="Fubu" /> | <ProjectLogo /> | <MailingList text="Join our vibrant mailing list" /> | <SocialIcons />
+</div>

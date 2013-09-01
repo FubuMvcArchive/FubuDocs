@@ -1,0 +1,7 @@
+﻿<viewdata model="FubuDocs.Todos.TodoModel"/>
+
+<Script src="topics.js" />
+
+<h1>TODO Task Manager</h1>
+
+${Model.Tag}

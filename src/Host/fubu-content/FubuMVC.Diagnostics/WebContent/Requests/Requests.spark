@@ -1,0 +1,16 @@
+﻿<viewdata model="FubuMVC.Diagnostics.Requests.RequestsViewModel" />
+<use master="" />
+<use namespace="FubuMVC.Diagnostics.Requests" />
+<use namespace="System.Linq" />
+<use namespace="FubuMVC.TwitterBootstrap" />
+﻿<use namespace="FubuMVC.Core.Assets" />
+
+<Script src="diagnostics/requests.js"/>
+
+<h1>Request Explorer</h1>
+  
+!{Model.Table}
+
+
+
+

@@ -1,0 +1,6 @@
+﻿<viewdata model="FubuMVC.CodeSnippets.Snippet" />
+<use master=""/>
+
+<h5>&lt;Snippet name="${Model.Name}" /&gt;</h5>
+<hr />
+!{this.CodeSnippet(Model.Name)}

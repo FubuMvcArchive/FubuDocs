@@ -1,4 +1,5 @@
-﻿<Script src="topics.js"/>
+﻿<viewdata model="FubuDocs.Shared.CommonFooter" />
+<Script src="topics.js"/>
 <Scripts />
 <footer class="footer">
   <div class="container">

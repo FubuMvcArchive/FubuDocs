@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title><ProjectName/></title>
+    <commonHeader />
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div style="border:thin solid blue">
+      <NavigationBar />
+    </div>
+	
+	<div style="border:thin solid red">
+    <InnerContent />
+	</div>
+
+    <commonFooter />
+  </body>
+</html>

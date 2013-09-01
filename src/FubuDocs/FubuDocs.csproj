@@ -211,10 +211,10 @@
     <None Include="Shared\TopNavigation.spark">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Shared\_commonFooter.spark">
+    <None Include="Shared\commonFooter.spark">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Shared\_commonHeader.spark">
+    <None Include="Shared\commonHeader.spark">
       <SubType>Designer</SubType>
     </None>
     <None Include="Shared\_global.spark" />

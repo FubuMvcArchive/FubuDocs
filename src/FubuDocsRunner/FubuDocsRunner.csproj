@@ -145,6 +145,7 @@
     <Compile Include="Running\DefaultHomeEndpoint.cs" />
     <Compile Include="Running\FubuDocsDirectories.cs" />
     <Compile Include="Running\MainDocumentLinkedPackageLoader.cs" />
+    <Compile Include="Running\OverrideChrome.cs" />
     <Compile Include="Running\RunCommand.cs" />
     <Compile Include="Running\RunFubuDocsRegistry.cs" />
     <Compile Include="Running\RunInput.cs" />

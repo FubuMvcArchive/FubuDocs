@@ -1,0 +1,14 @@
+﻿<viewdata model="FubuDocs.Shared.CommonFooter" />
+<Script src="topics.js"/>
+<Scripts />
+<footer class="footer">
+  <div class="container">
+    <use content="footer" />
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>
+      Powered by <a href="http://github.com/DarthFubuMVC/FubuDocs">FubuDocs</a>.
+    </p>
+  </div>
+</footer>

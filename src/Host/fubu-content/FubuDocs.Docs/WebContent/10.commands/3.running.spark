@@ -1,0 +1,7 @@
+﻿<!--Title: Running your FubuDocs Project-->
+
+<markdown>
+  <Command app="fubudocs" command="run">
+The run command will load your documentation into a FubuMVC application running locally in an embedded Katana server.
+  </Command>
+</markdown>
