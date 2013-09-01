@@ -43,3 +43,4 @@ Gemfile.lock
 fubudocs/*.gem
 src/FubuDocs/snippets
 src/FubuDocs.Docs/snippets
+src/Host/fubu-content
