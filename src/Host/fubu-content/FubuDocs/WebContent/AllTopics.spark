@@ -1,6 +1,0 @@
-﻿<viewdata model="FubuDocs.AllProjectsModel"/>
-
-<h1>All Projects</h1>
-
-<br></br>
-	!{Model.Topics}

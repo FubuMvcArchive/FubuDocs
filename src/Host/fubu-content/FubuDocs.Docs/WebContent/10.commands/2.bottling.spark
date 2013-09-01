@@ -1,8 +1,0 @@
-﻿<!--Title: Bottling the FubuDocs Projects-->
-
-<markdown>
-  <Command app="fubudocs" command="bottle">
-The bottle command needs to be executed before compiling the FubuDocs project in order to package up the content into the compiled assembly.  The <ProjectLink name="FubuRake" /> project applies this command automatically if fubudocs is enabled.
-  </Command>
-
-</markdown>

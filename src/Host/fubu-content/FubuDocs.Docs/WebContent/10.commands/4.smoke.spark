@@ -1,5 +1,0 @@
-﻿<!--Title: Smoke Testing a Documentation Project-->
-
-<Command app="fubudocs" command="smoke">
-The smoke command will run your FubuDocs application and try to exercise each endpoint in the system looking for an HTTP 200 status code.  Use the smoke command just to do a sanity check on your content.
-</Command>

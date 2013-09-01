@@ -1,5 +1,0 @@
-﻿<!--Title: List Topics-->
-
-<Command app="fubudocs" command="list">
-The list command outputs a quick list of all the topic data (keys, url's, and titles) for the current folder.
-</Command>
