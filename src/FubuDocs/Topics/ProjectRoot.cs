@@ -41,6 +41,9 @@ namespace FubuDocs.Topics
         public Topic Splash { get; set; }
 
         [XmlIgnore]
+        public string Version { get; set; }
+
+        [XmlIgnore]
         public string Filename { get; set; }
 
         public PublishedNuget[] Nugets { get; set; }

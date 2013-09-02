@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using FubuCore;
 using FubuCore.Util;
 using FubuMVC.Core.Registration;
-using FubuCore;
 using FubuMVC.Core.View;
 using FubuMVC.Core.View.Model;
 using FubuMVC.Spark.SparkModel;
@@ -32,7 +33,7 @@ namespace FubuDocs.Topics
 
         public static bool IsTopic(ITemplate descriptor)
         {
-            string path = descriptor.ViewPath.Replace("\\", "/");
+            var path = descriptor.ViewPath.Replace("\\", "/");
 
             if (path.Contains("/Samples/") || path.Contains("/Examples/")) return false;
             if (path.Contains("/samples/") || path.Contains("/examples/")) return false;
@@ -52,17 +53,53 @@ namespace FubuDocs.Topics
 
         public ProjectRoot LoadProject(string bottleName, string folder)
         {
-            IEnumerable<ITopicFile> files = FindFilesFromBottle(bottleName);
-            ProjectRoot project = ProjectRoot.LoadFrom(folder.AppendPath(ProjectRoot.File));
-            
+            var files = FindFilesFromBottle(bottleName);
+            var project = ProjectRoot.LoadFrom(folder.AppendPath(ProjectRoot.File));
+
+            findProjectVersion(bottleName, folder, project);
+
             return CorrelateProject(project, files);
+        }
+
+        private static void findProjectVersion(string bottleName, string folder, ProjectRoot project)
+        {
+            try
+            {
+                var assembly = Assembly.Load(bottleName);
+                if (assembly != null)
+                {
+                    project.Version = assembly.GetName().Version.ToString();
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Could not load the assembly for " + bottleName);
+
+                var assemblyFileName = bottleName + ".dll";
+                var file = new FileSystem().FindFiles(folder, FileSet.Deep(assemblyFileName)).FirstOrDefault();
+                if (file != null)
+                {
+                    try
+                    {
+                        var assembly = Assembly.LoadFrom(file);
+                        if (assembly != null)
+                        {
+                            project.Version = assembly.GetName().Version.ToString();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Unable to find a version for assembly at " + file);
+                    }
+                }
+            }
         }
 
         public static ProjectRoot CorrelateProject(ProjectRoot project, IEnumerable<ITopicFile> files)
         {
             var folders = new Cache<string, TopicFolder>(raw => new TopicFolder(raw, project));
             files.GroupBy(x => (x.Folder ?? String.Empty)).Each(@group => {
-                TopicFolder topicFolder = folders[@group.Key];
+                var topicFolder = folders[@group.Key];
                 var folderTopics = @group.Select(file => new Topic(topicFolder, file)).ToArray();
 
                 topicFolder.AddFiles(folderTopics);
@@ -79,13 +116,13 @@ namespace FubuDocs.Topics
             folders.Each(x => {
                 if (x.Raw == String.Empty) return;
 
-                string rawParent = x.Raw.ParentUrl();
+                var rawParent = x.Raw.ParentUrl();
 
 
                 folders.WithValue(rawParent, parent => parent.Add(x));
             });
 
-            TopicFolder masterFolder = folders[String.Empty];
+            var masterFolder = folders[String.Empty];
             IEnumerable<Topic> topLevelSubjects = masterFolder.TopLevelTopics().ToArray();
             project.Index = topLevelSubjects.FirstOrDefault(x => x.IsIndex);
             project.Splash = project.Index.ChildNodes.FirstOrDefault(x => x.Key.EndsWith("/splash"));
