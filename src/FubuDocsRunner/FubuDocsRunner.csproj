@@ -138,6 +138,7 @@
     <Compile Include="Exports\ExportUrlRegistry.cs" />
     <Compile Include="Exports\IAccessedCache.cs" />
     <Compile Include="Exports\SmokeCommand.cs" />
+    <Compile Include="GhPagesCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Running\ApplicationRootPackageLoader.cs" />
