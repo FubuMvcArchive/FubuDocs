@@ -20,6 +20,12 @@ namespace FubuDocs.Navigation
 {
     public static class TopicExtensions
     {
+        public static string CurrentVersion(this IFubuPage page)
+        {
+            var project = page.Get<ITopicContext>().Project;
+            return project == null ? "Any Version" : project.Version;
+        }
+
         public static HtmlTag BottleSnippetFor(this IFubuPage page, string snippetName)
         {
             var project = page.Get<ITopicContext>().Project;

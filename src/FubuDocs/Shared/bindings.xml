@@ -48,4 +48,5 @@
   <element name="TopTopicNavigation">this.TopTopicNavigation()</element>
   <element name="AuthoringTopic">this.AuthoringTopic()</element>
   <element name="LeftTopicNavigation">this.LeftTopicNavigation()</element>
+  <element name="CurrentVersion">this.CurrentVersion()</element>
 </bindings>

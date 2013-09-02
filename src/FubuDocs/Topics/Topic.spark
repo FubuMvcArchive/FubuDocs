@@ -5,7 +5,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title><TopicTitle /></title>
+    <title>
+      <ProjectName/> - <TopicTitle /></title>
     <commonHeader />
   </head>
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
@@ -30,6 +31,11 @@
             <h3 class="half-margin">Topics</h3>
             <ul id="page-toc" class="nav nav-tabs nav-stacked affix">
             </ul>
+            <br/>
+            <h3>
+              <ProjectName/> v<CurrentVersion/>
+            </h3>
+
             <br/>
             <LeftTopicNavigation />
           </div>
