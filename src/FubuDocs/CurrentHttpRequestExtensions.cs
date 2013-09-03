@@ -11,9 +11,10 @@ namespace FubuDocs
     {
         public static string ToRelativeUrl(this ICurrentHttpRequest request, string url)
         {
-            if (request.RelativeUrl().IsEmpty()) return url;
+            var requestUrl = request.RelativeUrl();
+            if (requestUrl.IsEmpty() || requestUrl == "/") return url.TrimStart('/');
 
-            var current = request.RelativeUrl().TrimStart('/');
+            var current = requestUrl.TrimStart('/');
             var contentUrl = url.TrimStart('/');
 
             if (current == string.Empty)

@@ -21,6 +21,16 @@ namespace FubuDocs.Topics
 
             TopicGraph.AllTopics.ConfigureRelationships();
 
+            if (TopicGraph.AllTopics.Projects.Count() == 1)
+            {
+                var project = TopicGraph.AllTopics.Projects.Single();
+                project.AllTopics().Each(x => {
+                    x.Url = x.Url.MoveUp();
+                });
+
+                project.Home.Url = string.Empty;
+            }
+
             TopicGraph.AllTopics.Projects.Each(project => {
                 project.AllTopics().Each(topic => graph.AddChain(topic.BuildChain()));
 

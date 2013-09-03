@@ -132,7 +132,8 @@ namespace FubuDocs.Navigation
             }
 
             // TODO -- Maybe include the project logo if it's specified?
-            var homeUrl = page.Get<ICurrentHttpRequest>().ToRelativeUrl(project.Home.AbsoluteUrl);
+            var homeUrl = 
+                page.Get<ICurrentHttpRequest>().ToRelativeUrl(project.Home.AbsoluteUrl);
             return new HtmlTag("a")
                 .Attr("href", homeUrl)
                 .Attr("title", project.TagLine)

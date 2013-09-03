@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
+using FubuCore;
 
 namespace FubuDocs.Topics
 {
@@ -22,6 +23,16 @@ namespace FubuDocs.Topics
         {
             url = url.Trim('/');
             return url.Contains("/") ? url.Split('/').Reverse().Skip(1).Reverse().Join("/") : string.Empty;
+        }
+
+        public static string MoveUp(this string relativeUrl)
+        {
+            if (relativeUrl.IsEmpty()) return relativeUrl;
+
+            var segments = relativeUrl.Split('/');
+            if (segments.Count() == 1) return string.Empty;
+
+            return segments.Skip(1).Join("/");
         }
     }
 }

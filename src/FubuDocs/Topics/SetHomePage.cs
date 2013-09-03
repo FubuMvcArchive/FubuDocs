@@ -12,8 +12,6 @@ namespace FubuDocs.Topics
     {
         public void Configure(BehaviorGraph graph)
         {
-            bool removeHomeEndpoint = false;
-            var homeChain = graph.BehaviorFor<HomeEndpoint>(x => x.Index());
 
             if (TopicGraph.AllTopics.Projects.Count() == 1)
             {
@@ -21,8 +19,7 @@ namespace FubuDocs.Topics
                 var chain = graph.Behaviors.FirstOrDefault(x => x.Route != null && x.GetRoutePattern().EqualsIgnoreCase(project.Url));
                 if (chain != null)
                 {
-                    chain.AddRouteAlias(new RouteDefinition(""));
-                    removeHomeEndpoint = true;
+                    chain.Route = new RouteDefinition("");
                 }
             }
             else
@@ -30,15 +27,15 @@ namespace FubuDocs.Topics
                 var chain = graph.BehaviorFor<HostHomeEndpoint>(x => x.Render());
                 if (chain.Output.Writers.Any(x => x is SpecialView<HostHome>))
                 {
-                    chain.AddRouteAlias(new RouteDefinition(""));
-                    removeHomeEndpoint = true;
+                    chain.Route = new RouteDefinition("");
+                }
+                else
+                {
+                    graph.BehaviorFor<AllTopicsEndpoint>(x => x.get_topics())
+                        .Route = new RouteDefinition("");
                 }
             }
 
-            if (removeHomeEndpoint)
-            {
-                graph.RemoveChain(homeChain);
-            }
         }
     }
 }

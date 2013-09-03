@@ -20,7 +20,7 @@ namespace FubuDocs.Exporting
         {
             IgnoredPatterns = new[]
             {
-                "/_fubu", "/_diagnostics", "/_content", "/_about"
+                "/_fubu", "/_diagnostics", "/_content", "/_about", "urls"
             };
         }
 
@@ -35,9 +35,17 @@ namespace FubuDocs.Exporting
 
         public UrlList get_urls()
         {
+            var urls = findUrls().ToArray();
+            if (!urls.Contains(string.Empty))
+            {
+                var list = new List<string>(urls);
+                list.Insert(0, string.Empty);
+                urls = list.ToArray();
+            }
+
             return new UrlList
             {
-                Urls = findUrls().ToArray()
+                Urls = urls
             };
         }
 
@@ -63,6 +71,11 @@ namespace FubuDocs.Exporting
                 if (ShouldIgnore(pattern)) continue;
 
                 yield return pattern;
+
+                foreach ( var route in chain.AdditionalRoutes)
+                {
+                    yield return route.Pattern;
+                }
             }
 
             foreach (var assetFile in _assetFiles.AllFiles())
