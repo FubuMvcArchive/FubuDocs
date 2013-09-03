@@ -14,13 +14,13 @@ namespace FubuDocs.Exporting
 {
     public class UrlQueryEndpoint
     {
-        private static readonly string[] IgnoredPatterns;
+        public static readonly string[] IgnoredPatterns;
 
         static UrlQueryEndpoint()
         {
             IgnoredPatterns = new[]
             {
-                "/_fubu", "/_diagnostics", "/_content", "/_about", "urls"
+                "/_fubu", "/_diagnostics", "/_content", "/_about", "/urls", "/project"
             };
         }
 

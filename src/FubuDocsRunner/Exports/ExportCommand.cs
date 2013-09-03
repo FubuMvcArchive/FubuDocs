@@ -11,6 +11,7 @@ using FubuCore.Util.TextWriting;
 using FubuDocs.Exporting;
 using FubuDocs.Infrastructure;
 using FubuDocsRunner.Running;
+using FubuMVC.Core;
 using FubuMVC.Katana;
 
 namespace FubuDocsRunner.Exports
@@ -81,6 +82,7 @@ namespace FubuDocsRunner.Exports
 
 	            projects.Each(BottlesFilter.Include);
 
+                FubuMode.Mode(string.Empty);
                 var application = new FubuDocsExportingApplication(directories).BuildApplication();
                 using (var server = application.RunEmbedded(directories.Solution))
                 {
@@ -157,9 +159,23 @@ namespace FubuDocsRunner.Exports
             Console.WriteLine("Attempting to push the new documentation to " + input.GitFlag);
 
             var steps = new PublishToGhPages(input);
+            _fileSystem.CleanDirectory(steps.DefaultDirectory); 
+            _fileSystem.DeleteDirectory(steps.DefaultDirectory); 
+
             try
             {
-                return steps.RunSteps();
+                var success = steps.RunSteps();
+
+                if (success)
+                {
+                    ConsoleWriter.Write(ConsoleColor.Green, "Successfully published to " + input.GitFlag);
+                }
+                else
+                {
+                    ConsoleWriter.Write(ConsoleColor.Yellow, "Failed to publish to " + input.GitFlag);
+                }
+
+                return success;
             }
             catch (Exception ex)
             {
@@ -168,18 +184,25 @@ namespace FubuDocsRunner.Exports
             }
             finally
             {
-                new FileSystem().DeleteDirectory(steps.DefaultDirectory);                
+                try
+                {
+                    new FileSystem().DeleteDirectory(steps.DefaultDirectory);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Unable to clean up the directory " + steps.DefaultDirectory);
+                }               
             }
         }
     }
 
     public class PublishToGhPages : StepCollection
     {
-        public PublishToGhPages(ExportInput input) : base(Path.GetTempPath().AppendPath(input.RepoName()))
+        public PublishToGhPages(ExportInput input) : base(Environment.CurrentDirectory.AppendPath(input.RepoName()))
         {
             Add = new GitStep
             {
-                Directory = Path.GetTempPath(),
+                Directory = Environment.CurrentDirectory,
                 Command = "clone {0} {1}".ToFormat(input.GitFlag, input.RepoName())
             };
 
@@ -200,9 +223,10 @@ namespace FubuDocsRunner.Exports
                 Command = "add ."
             };
 
+            var commitMessage = input.MessageFlag ?? "Automatic generation of docs at " + DateTime.UtcNow.ToString();
             Add = new GitStep
             {
-                Command = "commit -a -m \"0\"".ToFormat(input.MessageFlag)
+                Command = "commit -a -m \"0\"".ToFormat(commitMessage)
             };
 
             Add = new GitStep
@@ -237,7 +261,11 @@ namespace FubuDocsRunner.Exports
                 var destinationFile = _destination.AppendPath(relativePath);
 
                 Console.WriteLine("Copying {0} to {1}", x, destinationFile);
+
+                fileSystem.Copy(x, destinationFile);
             });
+
+            fileSystem.WriteStringToFile(_destination.AppendPath(".nojekyll"), "Just a marker");
 
             return true;
         }

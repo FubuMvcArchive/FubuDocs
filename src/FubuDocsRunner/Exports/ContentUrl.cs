@@ -38,6 +38,11 @@ namespace FubuDocsRunner.Exports
             
         }
 
+        public override string ToString()
+        {
+            return string.Format("RelativePath: {0}", RelativePath);
+        }
+
         public string RelativePath
         {
             get { return _relativePath; }

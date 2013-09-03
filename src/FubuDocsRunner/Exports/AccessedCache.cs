@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using FubuDocs.Exporting;
 
 namespace FubuDocsRunner.Exports
 {
@@ -10,7 +11,7 @@ namespace FubuDocsRunner.Exports
  
         public void Enqueue(string url)
         {
-            if (url.Contains("_fubu")) return;
+            if (UrlQueryEndpoint.IgnoredPatterns.Any(x => url.Contains(x))) return;
 
             url = url.TrimStart('/');
             while (url.StartsWith("../"))
