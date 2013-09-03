@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using Bottles;
+using FubuDocs.Topics;
 using FubuDocsRunner.Exports;
 using FubuMVC.Core;
 using FubuMVC.Core.Assets;
@@ -43,6 +45,8 @@ namespace FubuDocsRunner.Running
             {
                 Console.WriteLine("Loading hosting application at " + directories.Host);
                 x.Loader(new ApplicationRootPackageLoader(directories.Host));
+
+                TopicLoader.ApplicationBottle = Path.GetFileName(directories.Host);
             }
             else
             {

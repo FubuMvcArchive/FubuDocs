@@ -30,6 +30,7 @@ namespace FubuDocs
 
             registry.ReplaceSettings(TopicGraph.AllTopics);
             registry.Policies.Add<DocumentationProjectLoader>();
+            registry.Policies.Add<SetHomePage>();
         }
     }
 }

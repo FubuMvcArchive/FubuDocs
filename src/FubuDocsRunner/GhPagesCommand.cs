@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.IO;
 using FubuCore.CommandLine;
 using FubuCore;
@@ -9,25 +6,11 @@ using System.Linq;
 
 namespace FubuDocsRunner
 {
-    public class GhPagesInput
-    {
-        [Description("The reference to the git repo where you want the gh-pages branch")]
-        public string GitRepository { get; set; }
-    }
-
     [CommandDescription("Seeds the gh-pages branch for a given git repository", Name = "gh-pages")]
     public class GhPagesCommand : FubuCommand<GhPagesInput>
     {
         private string _clonedDirectory;
-        private readonly List<IStep> _steps = new List<IStep>();
-
-        private IStep step
-        {
-            set
-            {
-                _steps.Add(value);
-            }
-        }
+        private StepCollection _steps;
 
         public override bool Execute(GhPagesInput input)
         {
@@ -37,6 +20,7 @@ namespace FubuDocsRunner
             var name = Path.GetFileNameWithoutExtension(input.GitRepository.Split('/').Last());
 
             _clonedDirectory = Path.GetTempPath().AppendPath(name);
+            _steps = new StepCollection(_clonedDirectory);
 
             if (fileSystem.DirectoryExists(_clonedDirectory))
             {
@@ -45,7 +29,7 @@ namespace FubuDocsRunner
 
             buildOutSteps(input, name);
 
-            var success = runSteps();
+            var success = _steps.RunSteps();
 
 
             Console.WriteLine("Deleting " + _clonedDirectory);
@@ -54,119 +38,42 @@ namespace FubuDocsRunner
             return success;
         }
 
-        private bool runSteps()
-        {
-            _steps.OfType<GitStep>().Each(x => x.Directory = x.Directory ?? _clonedDirectory);
 
-            foreach (var x in _steps)
-            {
-                Console.WriteLine(x.Description());
-                try
-                {
-                    if (!x.Execute()) return false;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    return false;
-                }
-            }
-
-            return true;
-        }
 
         private void buildOutSteps(GhPagesInput input, string name)
         {
-            step = new GitStep
+            _steps.Add = new GitStep
             {
                 Directory = Path.GetTempPath(),
                 Command = "clone {0} {1}".ToFormat(input.GitRepository, name)
             };
 
-            step = new GitStep
+            _steps.Add = new GitStep
             {
                 Command = "checkout --orphan gh-pages"
             };
 
-            step = new GitStep
+            _steps.Add = new GitStep
             {
                 Command = "rm -rf ."
             };
 
-            step = new PlaceholderStep(_clonedDirectory);
+            _steps.Add = new PlaceholderStep(_clonedDirectory);
 
-            step = new GitStep
+            _steps.Add = new GitStep
             {
                 Command = "add ."
             };
 
-            step = new GitStep
+            _steps.Add = new GitStep
             {
                 Command = "commit -a -m \"initial clean slate\""
             };
 
-            step = new GitStep
+            _steps.Add = new GitStep
             {
                 Command = "push origin gh-pages"
             };
         }
-    }
-
-    public interface IStep
-    {
-        string Description();
-        bool Execute();
-    }
-
-    public class PlaceholderStep : IStep
-    {
-        private readonly string _directory;
-        private string _file;
-
-        public PlaceholderStep(string directory)
-        {
-            _directory = directory;
-            _file = _directory.AppendPath("readme.txt");
-        }
-
-        public string Description()
-        {
-            return "Write file " + _file;
-        }
-
-        public bool Execute()
-        {
-            new FileSystem().WriteStringToFile(_file, "Replace this file w/ real contents!");
-            return true;
-        }
-    }
-
-    public class GitStep : IStep
-    {
-        public string Command;
-        public string Directory;
-        public string Description()
-        {
-            return "'git {0}' in {1}".ToFormat(Command, Directory);
-        }
-
-        public bool Execute()
-        {
-            var git = new ProcessStartInfo
-            {
-                UseShellExecute = true,
-                FileName = "git",
-                CreateNoWindow = true,
-                WorkingDirectory = Directory,
-                Arguments = Command
-            };
-
-            var process = System.Diagnostics.Process.Start(git);
-            process.WaitForExit();
-
-            return process.ExitCode == 0;
-        }
-
-
     }
 }

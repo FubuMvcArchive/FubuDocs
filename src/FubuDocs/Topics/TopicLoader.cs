@@ -15,6 +15,13 @@ namespace FubuDocs.Topics
     // Only testing w/ integration tests.
     public class TopicLoader
     {
+        /// <summary>
+        /// Have to track this to help with topic loading in the case of
+        /// the FubuMVC "application" being the one and only FubuDocs
+        /// project because the files will be loaded against "Application"
+        /// </summary>
+        public static string ApplicationBottle;
+
         private readonly ISparkTemplateRegistry _sparkTemplates;
 
         public TopicLoader(ISparkTemplateRegistry sparkTemplates)
@@ -45,7 +52,9 @@ namespace FubuDocs.Topics
 
         public IEnumerable<ITopicFile> FindFilesFromBottle(string bottleName)
         {
-            return _sparkTemplates.Where(x => x.Origin == bottleName)
+            var searchBottle = bottleName == ApplicationBottle ? "Application" : bottleName;
+
+            return _sparkTemplates.Where(x => x.Origin == searchBottle)
                                   .OfType<Template>()
                                   .Where(IsTopic)
                                   .Select(x => new SparkTopicFile(new ViewDescriptor<Template>(x)));
@@ -63,6 +72,26 @@ namespace FubuDocs.Topics
 
         private static void findProjectVersion(string bottleName, string folder, ProjectRoot project)
         {
+            var assemblyFileName = bottleName + ".dll";
+            var file = new FileSystem().FindFiles(folder, FileSet.Deep(assemblyFileName)).FirstOrDefault();
+            if (file != null)
+            {
+                try
+                {
+                    var assembly = Assembly.LoadFrom(file);
+                    if (assembly != null)
+                    {
+                        project.Version = assembly.GetName().Version.ToString();
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Unable to find a version for assembly at " + file);
+                }
+            }
+
+            if (project.Version.IsNotEmpty()) return;
+
             try
             {
                 var assembly = Assembly.Load(bottleName);
@@ -74,24 +103,6 @@ namespace FubuDocs.Topics
             catch (Exception)
             {
                 Console.WriteLine("Could not load the assembly for " + bottleName);
-
-                var assemblyFileName = bottleName + ".dll";
-                var file = new FileSystem().FindFiles(folder, FileSet.Deep(assemblyFileName)).FirstOrDefault();
-                if (file != null)
-                {
-                    try
-                    {
-                        var assembly = Assembly.LoadFrom(file);
-                        if (assembly != null)
-                        {
-                            project.Version = assembly.GetName().Version.ToString();
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Unable to find a version for assembly at " + file);
-                    }
-                }
             }
         }
 

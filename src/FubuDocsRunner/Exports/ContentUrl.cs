@@ -45,7 +45,7 @@ namespace FubuDocsRunner.Exports
 
         public void Write(EmbeddedFubuMvcServer server, ExportInput input, TextReport report)
         {
-            var localPath = ToLocalPath(input.Output);
+            var localPath = ToLocalPath(input.OutputFlag);
             var localDirectory = localPath.ParentDirectory();
 
             try

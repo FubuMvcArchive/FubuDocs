@@ -1,6 +1,6 @@
 ﻿using System;
-using FubuMVC.Core.Http;
 using System.Linq;
+using FubuMVC.Core.Http;
 
 namespace FubuDocs.Topics
 {
@@ -19,7 +19,8 @@ namespace FubuDocs.Topics
         public TopicContext(ICurrentChain currentChain)
         {
             _topic = new Lazy<Topic>(() => {
-                var node = currentChain.OriginatingChain.OfType<TopicBehaviorNode>().FirstOrDefault();
+                var node = currentChain.OriginatingChain.OfType<TopicBehaviorNode>().FirstOrDefault()
+                           ?? currentChain.Current.OfType<TopicBehaviorNode>().FirstOrDefault();
                 return node == null ? null : node.Topic;
             });
         }
@@ -28,7 +29,19 @@ namespace FubuDocs.Topics
         {
             get { return _topic.Value; }
         }
-        public ProjectRoot Project { get { return _topic.Value == null ? null : _topic.Value.Project; } }
+
+        public ProjectRoot Project
+        {
+            get
+            {
+                if (TopicGraph.AllTopics.Projects.Count() == 1)
+                {
+                    return TopicGraph.AllTopics.Projects.Single();
+                }
+
+                return _topic.Value == null ? null : _topic.Value.Project;
+            }
+        }
 
         public string File
         {

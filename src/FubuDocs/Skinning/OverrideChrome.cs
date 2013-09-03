@@ -21,6 +21,7 @@ namespace FubuDocs.Skinning
             TryReplace<TopicChrome>(graph, "TopicChrome.spark");
             TryReplace<SplashChrome>(graph, "SplashChrome.spark");
             TryReplace<TopNavigation>(graph, "NavigationBar.spark");
+            
             TryReplace<HostHome>(graph, "Index.spark");
         }
 

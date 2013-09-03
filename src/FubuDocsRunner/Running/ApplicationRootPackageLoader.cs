@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using Bottles;
 using Bottles.Diagnostics;
 using FubuMVC.Core.Packaging;
@@ -16,7 +17,7 @@ namespace FubuDocsRunner.Running
 
         public IEnumerable<IPackageInfo> Load(IPackageLog log)
         {
-            yield return new ContentOnlyPackageInfo(_directory, "Host");
+            yield return new ContentOnlyPackageInfo(_directory, Path.GetFileName(_directory));
         }
     }
 }
