@@ -81,7 +81,7 @@ namespace FubuDocs.Topics
                     var assembly = Assembly.LoadFrom(file);
                     if (assembly != null)
                     {
-                        project.Version = assembly.GetName().Version.ToString();
+                        project.Version = assembly.GetName().Version.ToString().Split('.').Take(3).Join(".");
                     }
                 }
                 catch (Exception)
