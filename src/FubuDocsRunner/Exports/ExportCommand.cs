@@ -21,27 +21,22 @@ namespace FubuDocsRunner.Exports
 	    public ExportInput()
 	    {
 		    IncludeProjectsFlag = "";
-	        OutputFlag = Path.GetTempPath().AppendPath("fubudocs-export");
+	        Output = Path.GetTempPath().AppendPath("fubudocs-export");
 	        MessageFlag = "FubuDocs export at " + DateTime.UtcNow.ToGmtFormattedDate();
 	    }
 
-        [Description("The directory to output the application, default is to the temp directory")]
-        public string OutputFlag { get; set; }
+        [Description("The directory to output the exported content")]
+        public string Output { get; set; }
 
 		[Description("Comma separate list of the projects to include in the export (e.g., fubudocs, myproject)")]
 		[FlagAlias("include-projects", 'i')]
 		public string IncludeProjectsFlag { get; set; }
 
-        [Description("If specified, attempts to copy and commit the new content to the gh-pages branch of this repo")]
-        public string GitFlag { get; set; }
-
         [Description("Specify the git commit message if exporting directly to gh-pages")]
         public string MessageFlag { get; set; }
 
-        public string RepoName()
-        {
-            return GitFlag.IsEmpty() ? null : Path.GetFileNameWithoutExtension(GitFlag.Split('/').Last());
-        }
+        [Description("Delete any existing content in the export directory first")]
+        public bool CleanFlag { get; set; }
     }
 
     [CommandDescription("Exports static html content for all of the documentation projects in the specified folder")]
@@ -72,8 +67,11 @@ namespace FubuDocsRunner.Exports
 
             try
             {
-                _fileSystem.CreateDirectory(input.OutputFlag);
-                _fileSystem.CleanDirectory(input.OutputFlag);
+                _fileSystem.CreateDirectory(input.Output);
+                if (input.CleanFlag)
+                {
+                    _fileSystem.CleanDirectory(input.Output);
+                }
 
 				var projects = input
 					.IncludeProjectsFlag
@@ -94,11 +92,6 @@ namespace FubuDocsRunner.Exports
             {
                 Console.WriteLine(e);
                 return false;
-            }
-
-            if (input.GitFlag.IsNotEmpty())
-            {
-                return publishToGhPages(input);
             }
 
             return true;
@@ -154,120 +147,7 @@ namespace FubuDocsRunner.Exports
             _fileSystem.CleanDirectory(explodedBottlesDirectory);
         }
 
-        private bool publishToGhPages(ExportInput input)
-        {
-            Console.WriteLine("Attempting to push the new documentation to " + input.GitFlag);
-
-            var steps = new PublishToGhPages(input);
-            _fileSystem.CleanDirectory(steps.DefaultDirectory); 
-            _fileSystem.DeleteDirectory(steps.DefaultDirectory); 
-
-            try
-            {
-                var success = steps.RunSteps();
-
-                if (success)
-                {
-                    ConsoleWriter.Write(ConsoleColor.Green, "Successfully published to " + input.GitFlag);
-                }
-                else
-                {
-                    ConsoleWriter.Write(ConsoleColor.Yellow, "Failed to publish to " + input.GitFlag);
-                }
-
-                return success;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                return false;
-            }
-            finally
-            {
-                try
-                {
-                    new FileSystem().DeleteDirectory(steps.DefaultDirectory);
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Unable to clean up the directory " + steps.DefaultDirectory);
-                }               
-            }
-        }
     }
 
-    public class PublishToGhPages : StepCollection
-    {
-        public PublishToGhPages(ExportInput input) : base(Environment.CurrentDirectory.AppendPath(input.RepoName()))
-        {
-            Add = new GitStep
-            {
-                Directory = Environment.CurrentDirectory,
-                Command = "clone {0} {1}".ToFormat(input.GitFlag, input.RepoName())
-            };
 
-            Add = new GitStep
-            {
-                Command = "checkout gh-pages"
-            };
-
-            Add = new GitStep
-            {
-                Command = "rm -rf ."
-            };
-
-            Add = new CopyContent(input.OutputFlag, DefaultDirectory);
-
-            Add = new GitStep
-            {
-                Command = "add ."
-            };
-
-            var commitMessage = input.MessageFlag ?? "Automatic generation of docs at " + DateTime.UtcNow.ToString();
-            Add = new GitStep
-            {
-                Command = "commit -a -m \"0\"".ToFormat(commitMessage)
-            };
-
-            Add = new GitStep
-            {
-                Command = "push origin gh-pages"
-            };
-        }
-    }
-
-    public class CopyContent : IStep
-    {
-        private readonly string _source;
-        private readonly string _destination;
-
-        public CopyContent(string source, string destination)
-        {
-            _source = source;
-            _destination = destination;
-        }
-
-        public string Description()
-        {
-            return "Copy all files from {0} to {1}".ToFormat(_source, _destination);
-        }
-
-        public bool Execute()
-        {
-            var fileSystem = new FileSystem();
-            var files = fileSystem.FindFiles(_source, FileSet.Everything());
-            files.Each(x => {
-                var relativePath = x.PathRelativeTo(_source);
-                var destinationFile = _destination.AppendPath(relativePath);
-
-                Console.WriteLine("Copying {0} to {1}", x, destinationFile);
-
-                fileSystem.Copy(x, destinationFile);
-            });
-
-            fileSystem.WriteStringToFile(_destination.AppendPath(".nojekyll"), "Just a marker");
-
-            return true;
-        }
-    }
 }
