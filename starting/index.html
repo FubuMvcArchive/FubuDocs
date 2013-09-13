@@ -1,0 +1,156 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+      FubuDocs - Starting</title>
+    
+<meta charset="utf-8"/>
+<meta name="description" content="FubuDocs"/>
+<meta name="author" content="FubuDocs"/>
+
+
+
+
+<link href="../_content/styles/sons-of-obsidian.css" rel="stylesheet" type="text/css" />
+<link href="../_content/styles/toastr.css" rel="stylesheet" type="text/css" />
+<link href="../_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="../_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
+<link href="../_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
+<link href="../_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
+
+<link media="screen" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300">
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="container">
+      
+      
+
+<div class="row">
+  <div class="span6">
+    <p class="logo">
+      <a href="../topics" title="Fubu" class="root-link"><span>Fubu</span></a>
+      <a href=".." title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
+    </p>
+  </div>
+  <div class="span6">
+    <div class="top-header text-right">
+      <em>
+        <em><a href="https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel">Join our vibrant mailing list</a></em>
+      </em>
+      <div class="social">
+        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="../_content/images/twitter-icon.png" /></a>
+<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="../_content/images/github-icon.png" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="nav-follow" class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav"><li><a href="../index" data-key="index">Index &#187;</a></li><li class="active"><a href="../starting" data-key="starting">Starting &#187;</a></li></ul>
+<ul class="nav" style="float:right"><li><a href="../index" title="Index">Previous</a></li><li><a href="../splashpages" title="Splash Pages">Next</a></li></ul>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="row">
+        
+
+        <div class="row">
+          <div class="span3 sidebar">
+            <h3 class="half-margin">Topics</h3>
+            <ul id="page-toc" class="nav nav-tabs nav-stacked affix">
+            </ul>
+            <br/>
+            <h3>
+              FubuDocs v0.9.0
+            </h3>
+
+            <br/>
+            <h3 class="no-margin">Next</h3>
+<p><a href="../splashpages" data-key="splashpages">Splash Pages</a></p>
+<h3 class="no-margin">Previous</h3>
+<p><a href="../index" data-key="index">Index</a></p>
+          </div>
+          <div class="span9">
+            <h1 class="no-margin">Starting</h1>
+            <hr class="header-line"></hr>
+
+            <p><section><h4 id="csproj" class="section-header">Starting a new Document Project</h4>
+The first step is to simply create a new Visual Studio class library project named with the suffix <em>.Docs</em> like <em>FubuCore.Docs</em> or <em>FubuMVC.Docs</em>.  You do not need any other references or nugets to get started, but you can add other dependencies as needed for authoring examples if you wish.  </p>
+
+<p>Assuming that you're using <span>LINK TO PROJECT &#39;FubuRake&#39;</span> for the build script, all you need to do is to follow the instructions at <span><em>LINK TO fuburake/fubudocs</em></span>.</p>
+
+<p>You can immediately launch your new FubuDocs project in a FubuMVC hosted website by either running <code>fubudocs run</code> from the command line at the root of your source repository or by using the <code>rake docs:run</code> Rake task.
+FubuDocs will typically run your documentation website at <code>http://localhost:5050</code>, but the actual port number can vary if there's a conflict.</p>
+
+<p>There's no need to do anything else, but do note that the first time you run the documentation project, the <code>fubudocs run</code> command will
+call the <code>fubudocs bottle</code> command first to seed the documentation project with the project.xml file described in the next section and the "table of contents" page that you can alter later. </section></p>
+
+<p><section><h4 id="project-xml" class="section-header">project.xml</h4>
+FubuWorld looks for a file named "project.xml" in the root of each documentation project for data that is common to all documentation projects.  This file contains metadata about the documentation project that FubuDocs uses to generate navigation elements and our standard project summary information.</p>
+
+<p>Again using FubuCore as an example, that file would look like the following:</p>
+
+<pre data-linenums="1" class="prettyprint lang-xml">
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;ProjectRoot xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;&gt;
+  &lt;Name&gt;FubuCore&lt;/Name&gt;
+  &lt;GitHubPage&gt;http://github.com/DarthFubuMVC/FubuCore&lt;/GitHubPage&gt;
+  &lt;UserGroupUrl&gt;https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel&lt;/UserGroupUrl&gt;
+  &lt;BuildServerUrl&gt;http://build.fubu-project.org/project.html?projectId=project6&amp;amp;tab=projectOverview&lt;/BuildServerUrl&gt;
+  &lt;BottleName&gt;FubuCore.Docs&lt;/BottleName&gt;
+  &lt;Url&gt;fubucore&lt;/Url&gt;
+&lt;/ProjectRoot&gt;
+</pre>
+
+<p>The elements of note are:</p>
+
+<ul>
+<li><strong>Name</strong> - the user facing name for this content</li>
+<li><strong>Tagline</strong> - short description of the documentation project</li>
+<li><strong>Description</strong> - longer description of the documentation project</li>
+<li><strong>GitHubPage</strong> - link to the code repository that is covered by this documentation project</li>
+<li><strong>UserGroupUrl</strong> - link to the user group for questions about this content</li>
+<li><strong>BuildServerUrl</strong> - link to the specific project page on TeamCity</li>
+<li><strong>BottleName</strong> - just the name of this bottle.  Typically just the assembly name.</li>
+<li><strong>Url</strong> - the root url for all topics in this documentation project</li>
+<li><strong>NugetWhiteList</strong> - an optional comma delimited list of the nuget's published by this code repository</li>
+<li><strong>PluginTo</strong> - optional parent name of another documentation project for relationships like FubuMVC.CodeSnippets to FubuMVC</li>
+<li><strong>TeamCityBuildType</strong> - the TeamCity build id.  Should look like "bt93"</li>
+</ul>
+
+<p>Do note that the <code>rake docs:bottle</code> task can make some reasonable guesses about many of these values based on the documentation project name. </section></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+<script type="text/javascript" src="../_content/scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../_content/scripts/prettify.js"></script>
+<script type="text/javascript" src="../_content/scripts/bootstrap-prettify.js"></script>
+<script type="text/javascript" src="../_content/scripts/fubudocs.js"></script>
+<script type="text/javascript" src="../_content/scripts/toastr.js"></script>
+<script type="text/javascript" src="../_content/scripts/twitter/bootstrap.min.js"></script>
+<script type="text/javascript" src="../_content/scripts/fubudocs-tools.js"></script>
+<script type="text/javascript" src="../_content/scripts/twitter/bootstrap-affix.js"></script>
+<script type="text/javascript" src="../_content/scripts/topics.js"></script>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>
+      Powered by <a href="http://github.com/DarthFubuMVC/FubuDocs">FubuDocs</a>.
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
