@@ -1,0 +1,161 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+      FubuDocs - Topic View Helpers</title>
+    
+<meta charset="utf-8"/>
+<meta name="description" content="FubuDocs"/>
+<meta name="author" content="FubuDocs"/>
+
+
+
+
+<link href="../../_content/styles/sons-of-obsidian.css" rel="stylesheet" type="text/css" />
+<link href="../../_content/styles/toastr.css" rel="stylesheet" type="text/css" />
+<link href="../../_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../../_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="../../_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
+<link href="../../_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
+<link href="../../_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
+
+<link media="screen" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300">
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div class="container">
+      
+      
+
+<div class="row">
+  <div class="span6">
+    <p class="logo">
+      <a href="../../topics" title="Fubu" class="root-link"><span>Fubu</span></a>
+      <a href="../../fubudocs" title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
+    </p>
+  </div>
+  <div class="span6">
+    <div class="top-header text-right">
+      <em>
+        <em><a href="https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel">Join our vibrant mailing list</a></em>
+      </em>
+      <div class="social">
+        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="../../_content/images/twitter-icon.png" /></a>
+<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="../../_content/images/github-icon.png" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <div id="nav-follow" class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav"><li><a href="../../fubudocs/index" data-key="index">Index &#187;</a></li><li class="active"><a href="../../fubudocs/viewhelpers" data-key="viewhelpers">Topic View Helpers &#187;</a></li></ul>
+<ul class="nav" style="float:right"><li><a href="../../fubudocs/codesnippets" title="Code Snippets">Previous</a></li><li><a href="../../fubudocs/cli" title="Command Line Documentation">Next</a></li></ul>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="row">
+        
+
+        <div class="row">
+          <div class="span3 sidebar">
+            <h3 class="half-margin">Topics</h3>
+            <ul id="page-toc" class="nav nav-tabs nav-stacked affix">
+            </ul>
+            <br/>
+            <h3>
+              FubuDocs v0.9.0
+            </h3>
+
+            <br/>
+            <h3 class="no-margin">Next</h3>
+<p><a href="../../fubudocs/cli" data-key="cli">Command Line Documentation</a></p>
+<h3 class="no-margin">Previous</h3>
+<p><a href="../../fubudocs/codesnippets" data-key="codesnippets">Code Snippets</a></p>
+          </div>
+          <div class="span9">
+            <h1 class="no-margin">Topic View Helpers</h1>
+            <hr class="header-line"></hr>
+
+            <!--Title: Topic View Helpers-->
+<p><section><h4 id="topics" class="section-header">Link to a Topic in the same Project</h4>
+To link to a topic within the same project, just use:</p>
+
+<pre data-linenums="12" class="prettyprint lang-html">
+&lt;TopicLink name=&quot;codesnippets&quot; /&gt;
+</pre>
+
+<p>which renders:</p>
+
+<!-- SAMPLE: using-topic-link -->
+<a href="../../fubudocs/codesnippets" data-key="codesnippets">Code Snippets</a>
+<!-- ENDSAMPLE --></section>
+
+<section><h4 id="external-link" class="section-header">Link to a Topic in a different Project</h4>
+
+To link to a topic in a different project, use:
+<!-- SAMPLE: using-external-link -->
+<a href="../../fubudocs/codesnippets" data-key="codesnippets">More about Code Snippets</a>
+<!-- ENDSAMPLE -->
+
+<p>Note that in the second usage you'll need to specify the project name as part of the name.<br />
+</section></p>
+
+<p><section><h4 id="projects" class="section-header">Link to another Project</h4></p>
+
+<pre data-linenums="33" class="prettyprint lang-html">
+&lt;ProjectLink name=&quot;FubuMVC.CodeSnippets&quot; /&gt;
+</pre>
+
+<p><!-- SAMPLE: ProjectLink -->
+<span>LINK TO PROJECT &#39;FubuMVC.CodeSnippets&#39;</span>
+<!-- ENDSAMPLE -->
+</section></p>
+
+<p><section><h4 id="toc" class="section-header">Table of Contents</h4></p>
+
+<p>You can add a table of contents for all the topics beneath the current topic by using the <code>&lt;TableOfContents&gt;</code> binding.
+</section></p>
+
+<p><section><h4 id="summary" class="section-header">Project Summary</h4>
+You can display the project summary for the current project with the <code>&lt;ProjectSummary&gt;</code> binding.</section></p>
+
+<p><section><h4 id="balloons" class="section-header">Information Balloons</h4>
+As a convenience method, use the <code>&lt;Info&gt;</code> binding as a shortcut for Twitter Bootstrap balloons like this:</p>
+
+<p><div class="alert alert-info"><i class="icon-info-sign"></i>I'm an informational bullet!</div></section></p>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+<script type="text/javascript" src="../../_content/scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../../_content/scripts/prettify.js"></script>
+<script type="text/javascript" src="../../_content/scripts/bootstrap-prettify.js"></script>
+<script type="text/javascript" src="../../_content/scripts/fubudocs.js"></script>
+<script type="text/javascript" src="../../_content/scripts/toastr.js"></script>
+<script type="text/javascript" src="../../_content/scripts/twitter/bootstrap.min.js"></script>
+<script type="text/javascript" src="../../_content/scripts/fubudocs-tools.js"></script>
+<script type="text/javascript" src="../../_content/scripts/twitter/bootstrap-affix.js"></script>
+<script type="text/javascript" src="../../_content/scripts/topics.js"></script>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>
+      Powered by <a href="http://github.com/DarthFubuMVC/FubuDocs">FubuDocs</a>.
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
