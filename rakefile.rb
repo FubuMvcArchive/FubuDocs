@@ -18,6 +18,9 @@ require 'fuburake'
 	
 	sln.ci_steps = ["gem:archive"]
     sln.assembly_bottle 'FubuDocs'
+	
+	# TODO -- add this later:  , :include_in_ci => true
+	sln.export_docs({:repository => 'git@github.com:DarthFubuMVC/FubuDocs.git', :include => 'FubuDocs'})
 end
 
 BUILD_NUMBER = @solution.options[:build_number]

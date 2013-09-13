@@ -67,6 +67,8 @@ namespace FubuDocsRunner.Exports
             {
                 ConsoleWriter.Write(ConsoleColor.Red, "Failed to write {0} to {1}".ToFormat(RelativePath, localPath));
                 Console.WriteLine(e);
+
+                throw;
             }
         }
 
