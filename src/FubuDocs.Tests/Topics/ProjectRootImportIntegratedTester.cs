@@ -36,7 +36,7 @@ namespace FubuDocs.Tests.Topics
             {
                 TheRelativeUrl = "something",
                 TheRawUrl = "/something"
-            }).ToString();
+            }, new FubuDocsDirectories()).ToString();
 
             Debug.WriteLine(html);
 

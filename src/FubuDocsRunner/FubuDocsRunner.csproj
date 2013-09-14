@@ -144,7 +144,6 @@
     <Compile Include="Running\CurrentDirectoryLoader.cs" />
     <Compile Include="Running\DocumentPackageLoader.cs" />
     <Compile Include="Running\FubuDocsApplication.cs" />
-    <Compile Include="Running\FubuDocsDirectories.cs" />
     <Compile Include="Running\MainDocumentLinkedPackageLoader.cs" />
     <Compile Include="Running\RunCommand.cs" />
     <Compile Include="Running\RunFubuDocsRegistry.cs" />

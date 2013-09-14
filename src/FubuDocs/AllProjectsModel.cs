@@ -12,10 +12,12 @@ namespace FubuDocs
     public class AllProjectsModel
     {
         private readonly ICurrentHttpRequest _request;
+        private readonly FubuDocsDirectories _directories;
 
-        public AllProjectsModel(ICurrentHttpRequest request)
+        public AllProjectsModel(ICurrentHttpRequest request, FubuDocsDirectories directories)
         {
             _request = request;
+            _directories = directories;
         }
 
         public HtmlTag Topics
@@ -25,20 +27,20 @@ namespace FubuDocs
                 var projects = TopicGraph.AllTopics.Projects
                                          .OrderBy(x => x.Name);
 
-                return new ProjectTableTag(_request, projects);
+                return new ProjectTableTag(_request, _directories, projects);
             }
         }
     }
 
     public class ProjectTableTag : TableTag
     {
-        public ProjectTableTag(ICurrentHttpRequest request, IEnumerable<ProjectRoot> projects)
+        public ProjectTableTag(ICurrentHttpRequest request, FubuDocsDirectories directories, IEnumerable<ProjectRoot> projects)
         {
             AddClass("table");
 
             projects.Each(project => {
                 AddBodyRow(row => {
-                    row.Cell().Append(new TopicLinkTag(request, project.Home, null));
+                    row.Cell().Append(new TopicLinkTag(request, directories, project.Home, null));
                     row.Cell(project.TagLine).AddClass("project-description");
                 });
             });

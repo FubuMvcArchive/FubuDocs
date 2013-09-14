@@ -7,15 +7,17 @@ namespace FubuDocs
     public class AllTopicsEndpoint
     {
         private readonly ICurrentHttpRequest _request;
+        private readonly FubuDocsDirectories _directories;
 
-        public AllTopicsEndpoint(ICurrentHttpRequest request)
+        public AllTopicsEndpoint(ICurrentHttpRequest request, FubuDocsDirectories directories)
         {
             _request = request;
+            _directories = directories;
         }
 
         public AllProjectsModel get_topics()
         {
-            return new AllProjectsModel(_request);
+            return new AllProjectsModel(_request, _directories);
         }
     }
 }

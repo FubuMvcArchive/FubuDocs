@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 using FubuDocs.Topics;
 using FubuMVC.Core.Http;
@@ -9,6 +10,18 @@ namespace FubuDocs
     // TODO -- this should be in FubuMVC itself
     public static class CurrentHttpRequestExtensions
     {
+        public static string ToRelativeUrl(this ICurrentHttpRequest request, FubuDocsDirectories directories, string url)
+        {
+            var relativeUrl = directories.RootUrls ? url : request.ToRelativeUrl(url);
+
+            if (directories.UseIndexHtml && !Path.HasExtension(relativeUrl))
+            {
+                relativeUrl = relativeUrl.AppendUrl("index.html");
+            }
+
+            return relativeUrl;
+        }
+
         public static string ToRelativeUrl(this ICurrentHttpRequest request, string url)
         {
             var requestUrl = request.RelativeUrl();

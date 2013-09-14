@@ -4,6 +4,7 @@ using System.IO;
 using Bottles;
 using Bottles.Diagnostics;
 using FubuCore;
+using FubuDocs;
 using FubuDocs.Topics;
 using FubuMVC.Core.Packaging;
 

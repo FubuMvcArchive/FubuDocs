@@ -35,7 +35,10 @@ namespace FubuDocsRunner.Exports
                 _relativePath = relativePath.TrimStart('/');
             }
 
-            
+            if (_relativePath.EndsWith("index.html"))
+            {
+                _relativePath = _relativePath.ParentUrl();
+            }
         }
 
         public override string ToString()

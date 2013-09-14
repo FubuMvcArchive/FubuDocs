@@ -8,7 +8,7 @@ namespace FubuDocs.Navigation
     {
         private readonly ICurrentHttpRequest _request;
 
-        public TopRightTopicNavigationTag(Topic node, ICurrentHttpRequest request)
+        public TopRightTopicNavigationTag(Topic node, ICurrentHttpRequest request, FubuDocsDirectories directories)
             : base("ul")
         {
             _request = request;
@@ -19,7 +19,7 @@ namespace FubuDocs.Navigation
             if (previous != null)
             {
                 Add("li/a")
-                    .Attr("href", _request.ToRelativeUrl(previous.AbsoluteUrl))
+                    .Attr("href", _request.ToRelativeUrl(directories, previous.AbsoluteUrl))
                     .Text("Previous")
                     .Attr("title", previous.Title);
             }
@@ -28,7 +28,7 @@ namespace FubuDocs.Navigation
             if (next != null)
             {
                 Add("li/a")
-                    .Attr("href", _request.ToRelativeUrl(next.AbsoluteUrl))
+                    .Attr("href", _request.ToRelativeUrl(directories, next.AbsoluteUrl))
                     .Text("Next")
                     .Attr("title", next.Title);
             }

@@ -108,6 +108,7 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AllProjectsModel.cs" />
+    <Compile Include="FubuDocsDirectories.cs" />
     <Compile Include="HomeEndpoint.cs" />
     <Compile Include="CLI\ArgumentsTag.cs" />
     <Compile Include="CLI\CommandDocumentationSource.cs" />

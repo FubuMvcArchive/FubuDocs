@@ -38,7 +38,7 @@ namespace FubuDocsRunner.Exports
             var rawUrl = tag.Attr(attrName);
             _cache.Enqueue(rawUrl);
 
-            var relativeUrl = _request.ToRelativeUrl(rawUrl);
+            var relativeUrl = _request.ToRelativeUrl(_directories, rawUrl);
 
             tag.Attr(attrName, relativeUrl);
         }

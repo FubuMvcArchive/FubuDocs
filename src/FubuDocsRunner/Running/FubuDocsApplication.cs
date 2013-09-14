@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Bottles;
+using FubuDocs;
 using FubuDocs.Topics;
 using FubuDocsRunner.Exports;
 using FubuMVC.Core;

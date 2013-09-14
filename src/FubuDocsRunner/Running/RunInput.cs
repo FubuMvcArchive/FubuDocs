@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Reflection;
 using Fubu.Running;
 using FubuCore;
+using FubuDocs;
 
 namespace FubuDocsRunner.Running
 {
@@ -34,6 +35,7 @@ namespace FubuDocsRunner.Running
         public string HostFlag { get; set; }
 
 
+
         public ApplicationRequest ToRequest()
         {
             return new ApplicationRequest
@@ -47,12 +49,13 @@ namespace FubuDocsRunner.Running
             };
         }
 
-        public FubuDocsDirectories ToDirectories()
+        public virtual FubuDocsDirectories ToDirectories()
         {
             return new FubuDocsDirectories
             {
                 Host = HostFlag,
-                Solution = Environment.CurrentDirectory
+                Solution = Environment.CurrentDirectory,
+                RootUrls = true
             };
         }
     }

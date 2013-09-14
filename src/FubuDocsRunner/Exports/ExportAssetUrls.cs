@@ -27,7 +27,7 @@ namespace FubuDocsRunner.Exports
 
             _cache.Enqueue(url);
 
-            return _request.ToRelativeUrl(url);
+            return _request.ToRelativeUrl(_directories, url);
         }
     }
 }

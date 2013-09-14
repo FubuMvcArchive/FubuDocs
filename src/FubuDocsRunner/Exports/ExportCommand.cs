@@ -8,14 +8,24 @@ using System.Threading.Tasks;
 using FubuCore;
 using FubuCore.CommandLine;
 using FubuCore.Util.TextWriting;
+using FubuDocs;
 using FubuDocs.Exporting;
 using FubuDocs.Infrastructure;
+using FubuDocs.Topics;
 using FubuDocsRunner.Running;
 using FubuMVC.Core;
+using FubuMVC.Core.Urls;
 using FubuMVC.Katana;
 
 namespace FubuDocsRunner.Exports
 {
+    public enum ExportMode
+    {
+        GhPagesRooted,
+        GhPagesChildFolder,
+        HtmlDump
+    }
+
     public class ExportInput : RunInput
     {
 	    public ExportInput()
@@ -28,6 +38,9 @@ namespace FubuDocsRunner.Exports
         [Description("The directory to output the exported content")]
         public string Output { get; set; }
 
+        [Description("Change the way url's are treated in the exported html content")]
+        public ExportMode ModeFlag {get;set;}
+
 		[Description("Comma separate list of the projects to include in the export (e.g., fubudocs, myproject)")]
 		[FlagAlias("include-projects", 'i')]
 		public string IncludeProjectsFlag { get; set; }
@@ -37,6 +50,33 @@ namespace FubuDocsRunner.Exports
 
         [Description("Delete any existing content in the export directory first")]
         public bool CleanFlag { get; set; }
+
+        [Description("If selected, all url's in the exported pages will be absolute url's")]
+        public bool RootFlag { get; set; }
+
+        public override FubuDocsDirectories ToDirectories()
+        {
+            var directories = base.ToDirectories();
+
+            if (ModeFlag == ExportMode.HtmlDump)
+            {
+                directories.RootUrls = false;
+                directories.UseIndexHtml = true;
+            }
+            else if (ModeFlag == ExportMode.GhPagesRooted)
+            {
+                directories.RootUrls = true;
+                directories.UseIndexHtml = false;
+            }
+            else
+            {
+                directories.RootUrls = false;
+                directories.UseIndexHtml = false;
+            }
+
+
+            return directories;
+        }
     }
 
     [CommandDescription("Exports static html content for all of the documentation projects in the specified folder")]
@@ -56,14 +96,13 @@ namespace FubuDocsRunner.Exports
                 }
             });
 
-            var cleaning = Task.Factory.StartNew(() => { cleanExplodedBottleContents(runnerDirectory); });
+            var cleaning = Task.Factory.StartNew(() => cleanExplodedBottleContents(runnerDirectory));
 
 
             Task.WaitAll(bottling, cleaning);
 
 
             var directories = input.ToDirectories();
-
 
             try
             {
@@ -123,8 +162,13 @@ namespace FubuDocsRunner.Exports
 
         private static List<ContentUrl> findInitialContentUrlList(EmbeddedFubuMvcServer server)
         {
-            var urls = server.Endpoints.Get<UrlQueryEndpoint>(x => x.get_urls())
-                             .ReadAsJson<UrlList>();
+            var url = server.Services.GetInstance<IUrlRegistry>().UrlFor<UrlQueryEndpoint>(x => x.get_urls());
+            if (url.EndsWith("index.html"))
+            {
+                url = url.ParentUrl();
+            }
+
+            var urls = server.Endpoints.Get(url).ReadAsJson<UrlList>();
 
             var contentUrls = urls.Urls.Select(x => new ContentUrl(x)).ToList();
             contentUrls.Sort();

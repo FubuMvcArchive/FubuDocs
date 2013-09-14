@@ -76,7 +76,7 @@ namespace FubuDocs.Navigation
                 throw new ArgumentOutOfRangeException("name", "Topic '{0}' cannot be found.  Try:\n{1}".ToFormat(name, available));
             }
 
-            return new TopicLinkTag(page.Get<ICurrentHttpRequest>(), topic, title);
+            return new TopicLinkTag(page.Get<ICurrentHttpRequest>(), page.Get<FubuDocsDirectories>(), topic, title);
         }
 
         public static HtmlTag LinkToExternalTopic(this IFubuPage page, string name, string title)
@@ -87,7 +87,7 @@ namespace FubuDocs.Navigation
                 return new HtmlTag("span").Text("*LINK TO " + name + "*");
             }
 
-            return new TopicLinkTag(page.Get<ICurrentHttpRequest>(), topic, title);
+            return new TopicLinkTag(page.Get<ICurrentHttpRequest>(), page.Get<FubuDocsDirectories>(), topic, title);
         }
 
 
@@ -99,7 +99,7 @@ namespace FubuDocs.Navigation
                 return new HtmlTag("span").Text("LINK TO PROJECT '{0}'".ToFormat(name));
             }
 
-            return new LinkTag(project.Name, page.Get<ICurrentHttpRequest>().ToRelativeUrl(project.Home.AbsoluteUrl)).Attr("title", project.Description);
+            return new LinkTag(project.Name, page.Get<ICurrentHttpRequest>().ToRelativeUrl(page.Get<FubuDocsDirectories>(), project.Home.AbsoluteUrl)).Attr("title", project.Description);
         }
 
         public static string ProjectIndexUrl(this IFubuPage page, string name)
@@ -110,7 +110,7 @@ namespace FubuDocs.Navigation
                 return "#";
             }
 
-            return page.Get<ICurrentHttpRequest>().ToRelativeUrl(project.Index.AbsoluteUrl);
+            return page.Get<ICurrentHttpRequest>().ToRelativeUrl(page.Get<FubuDocsDirectories>(), project.Index.AbsoluteUrl);
         }
 
         public static HtmlTag RootLink(this IFubuPage page, string text)
@@ -132,8 +132,8 @@ namespace FubuDocs.Navigation
             }
 
             // TODO -- Maybe include the project logo if it's specified?
-            var homeUrl = 
-                page.Get<ICurrentHttpRequest>().ToRelativeUrl(project.Home.AbsoluteUrl);
+            var homeUrl =
+                page.Get<ICurrentHttpRequest>().ToRelativeUrl(page.Get<FubuDocsDirectories>(), project.Home.AbsoluteUrl);
             return new HtmlTag("a")
                 .Attr("href", homeUrl)
                 .Attr("title", project.TagLine)
