@@ -16,6 +16,8 @@ namespace FubuDocsHarness
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            FubuMode.Mode(FubuMode.Development);
+
             FubuApplication.For<FubuDocsHarnessRegistry>().StructureMap(new Container()).Bootstrap();
         }
 

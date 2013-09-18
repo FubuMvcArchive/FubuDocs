@@ -153,7 +153,6 @@
     <Compile Include="Todos\TodoTableTag.cs" />
     <Compile Include="Todos\TodoTask.cs" />
     <Compile Include="Tools\ProjectEndpoints.cs" />
-    <Compile Include="Tools\ToolsEndpoints.cs" />
     <Compile Include="Topics\DocumentationProjectLoader.cs" />
     <Compile Include="Topics\FubuDocsPackageLoader.cs" />
     <Compile Include="Topics\ITopicContext.cs" />
@@ -229,7 +228,6 @@
     <None Include="Snippets\snippet.spark" />
     <None Include="Todos\todos.spark" />
     <None Include="Tools\Project.spark" />
-    <None Include="Tools\Tools.spark" />
     <None Include="Topics\Splash.spark">
       <SubType>Designer</SubType>
     </None>

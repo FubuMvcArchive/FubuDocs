@@ -30,7 +30,7 @@ namespace FubuDocs.Navigation
         [MarkedForTermination("Going to change this quite a bit")]
         public static HtmlTag AuthoringTopic(this IFubuPage page)
         {
-            var tag = new HtmlTag("div").AddClass("alert").AddClass("alert-block").AddClass("authoring");
+            var tag = new HtmlTag("div").AddClass("authoring");
             
             if (FubuMode.InDevelopment())
             {
@@ -38,16 +38,23 @@ namespace FubuDocs.Navigation
                 var url = page.Urls.UrlFor<FileRequest>();
                 var topic = context.Current;
 
-                var firstLine = tag.Add("div");
-                firstLine.Add("a").Data("url", url).Data("key", topic.Key).Attr("href", "#").AddClass("edit-link").Text(context.File);
+                if (context.File != null)
+                {
+                    var firstLine = tag.Add("div");
+                    firstLine.Add("a")
+                        .Data("url", url)
+                        .Data("key", topic.Key)
+                        .Attr("href", "#")
+                        .AddClass("edit-link")
+                        .Text(context.File);
 
-                var lastUpdated = File.GetLastWriteTimeUtc(context.File).ToLocalTime();
-                firstLine.Add("span").AddClass("last-updated").Text("File changed at: " + lastUpdated).AddClass("file-changed");
-
+                    var lastUpdated = File.GetLastWriteTimeUtc(context.File).ToLocalTime();
+                    firstLine.Add("span")
+                        .AddClass("last-updated")
+                        .Text("File changed at: " + lastUpdated)
+                        .AddClass("file-changed");
+                }
                 var secondLine = tag.Add("div");
-                var toolsUrl = page.Urls.UrlFor<ToolsEndpoints>(x => x.get_tools());
-                secondLine.Add("a").Text("Tools").Attr("href", toolsUrl);
-                secondLine.Add("span").Text(" | ");
 
                 var projectUrl = page.Urls.UrlFor(new ProjectRequest {Name = context.Project.Name});
                 secondLine.Add("a").Text(context.Project.Name + " Project Page").Attr("href", projectUrl);

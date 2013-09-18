@@ -9,6 +9,9 @@
     <commonHeader />
   </head>
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div>
+      <AuthoringTopic />
+    </div>
     <div class="container">
       <NavigationBar />
     </div>

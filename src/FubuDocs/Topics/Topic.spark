@@ -10,6 +10,9 @@
     <commonHeader />
   </head>
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
+    <div>
+      <AuthoringTopic />
+    </div>
     <div class="container">
       
       <NavigationBar />
@@ -24,7 +27,7 @@
       <hr />
       <div class="row">
         <use content="masthead" />
-        <AuthoringTopic />
+        
 
         <div class="row">
           <div class="span3 sidebar">
