@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using FubuMVC.Core;
+using FubuMVC.Core.Continuations;
 using FubuMVC.Spark;
 using FubuMVC.StructureMap;
 using StructureMap;
@@ -57,6 +58,14 @@ namespace FubuDocsHarness
         public FubuDocsHarnessRegistry()
         {
             AlterSettings<SparkEngineSettings>(x => x.PrecompileViews = false);
+        }
+    }
+
+    public class HomeEndpoint
+    {
+        public FubuContinuation Index()
+        {
+            return FubuContinuation.RedirectTo("/project/fubudocs");
         }
     }
 }

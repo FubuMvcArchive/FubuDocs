@@ -5,20 +5,23 @@
 
 
 
-<h4>Project Properties</h4>
+<h2 style="margin-bottom:10px">Project Properties</h2>
 !{this.FormFor(Model)}
 <dl class="dl-horizontal">
-!{this.Edit(x => x.Project.Name)}
-!{this.Edit(x => x.Project.Description)}
-!{this.Edit(x => x.Project.GitHubPage)}
-!{this.Edit(x => x.Project.UserGroupUrl)}
-!{this.Edit(x => x.Project.BuildServerUrl)}
-!{this.Edit(x => x.Project.BottleName)}
-!{this.Edit(x => x.Project.PluginTo)}
+  !{this.Edit(x => x.Project.Name)}
+  !{this.Edit(x => x.Project.Description)}
+  !{this.Edit(x => x.Project.GitHubPage)}
+  !{this.Edit(x => x.Project.UserGroupUrl)}
+  !{this.Edit(x => x.Project.BuildServerUrl)}
+  !{this.Edit(x => x.Project.BottleName)}
+  !{this.Edit(x => x.Project.PluginTo)}
+  !{this.Edit(x => x.Project.TagLine)}
+  !{this.Edit(x => x.Project.TeamCityBuildType)}
+  !{this.Edit(x => x.Project.TwitterHandle)}
 </dl>
-<input type="submit" value="Save" /><input type="reset" value="Reset" />
+<input type="submit" value="Save" class="btn" /><input type="reset" value="Reset"  class="btn" />
 
 !{this.EndForm()}
 
-<h4>Topics</h4>
+<h2>Topics</h2>
 !{Model.Topics}
