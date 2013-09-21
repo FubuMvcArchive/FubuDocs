@@ -24,7 +24,7 @@ namespace FubuDocs
         {
             get
             {
-                var projects = TopicGraph.AllTopics.Projects
+                var projects = TopicGraph.AllTopics.Projects.Where(x => x.Name != "Host")
                                          .OrderBy(x => x.Name);
 
                 return new ProjectTableTag(_request, _directories, projects);

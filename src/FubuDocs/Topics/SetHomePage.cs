@@ -12,7 +12,6 @@ namespace FubuDocs.Topics
     {
         public void Configure(BehaviorGraph graph)
         {
-
             if (TopicGraph.AllTopics.Projects.Count() == 1)
             {
                 var project = TopicGraph.AllTopics.Projects.Single();

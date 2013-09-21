@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Bottles;
+using FubuCore;
+using FubuCore.Logging;
+using FubuDocs.Skinning;
 using FubuMVC.Core;
 using FubuMVC.Core.Registration;
 
@@ -11,6 +15,7 @@ namespace FubuDocs.Topics
     {
         private TopicLoader _loader;
 
+
         public void Configure(BehaviorGraph graph)
         {
             _loader = new TopicLoader(graph);
@@ -19,14 +24,25 @@ namespace FubuDocs.Topics
                     pak.ForFolder(BottleFiles.WebContentFolder, dir => LoadPackage(pak, dir, graph));
                 });
 
+            var directories = graph.Settings.Get<FubuDocsDirectories>();
+            if (directories.Host.IsNotEmpty() && !directories.Host.EndsWith(".Docs"))
+            {
+                var project = _loader.LoadProject("Application", directories.Host);
+                project.Name = "Host";
+                project.Url = "";
+                project.Home.Url = string.Empty;
+
+                project.Index.Descendents().Each(x => x.Url = x.Url.TrimStart('/'));
+
+                TopicGraph.AllTopics.AddProject(project);
+            }
+
             TopicGraph.AllTopics.ConfigureRelationships();
 
             if (TopicGraph.AllTopics.Projects.Count() == 1)
             {
                 var project = TopicGraph.AllTopics.Projects.Single();
-                project.AllTopics().Each(x => {
-                    x.Url = x.Url.MoveUp();
-                });
+                project.AllTopics().Each(x => { x.Url = x.Url.MoveUp(); });
 
                 project.Home.Url = string.Empty;
             }
@@ -43,7 +59,7 @@ namespace FubuDocs.Topics
 
         public void LoadPackage(IPackageInfo pak, string directory, BehaviorGraph graph)
         {
-            ProjectRoot root = _loader.LoadProject(pak.Name, directory);
+            var root = _loader.LoadProject(pak.Name, directory);
 
 
             TopicGraph.AllTopics.AddProject(root);

@@ -22,14 +22,15 @@ namespace FubuDocsRunner.Running
     {
         public FubuApplication BuildApplication()
         {
-            return FubuApplication.For<RunFubuDocsRegistry>()
-                                  .StructureMap(new Container())
-                                  .Packages(x => {
-                                      var json = AppDomain.CurrentDomain.SetupInformation.AppDomainInitializerArguments.FirstOrDefault();
-                                      var directories = JsonUtil.Get<FubuDocsDirectories>(json);
+            var json = AppDomain.CurrentDomain.SetupInformation.AppDomainInitializerArguments.FirstOrDefault();
+            var directories = JsonUtil.Get<FubuDocsDirectories>(json);
 
-                                      ConfigureLoaders(x, directories);
-                                  });
+            var container = new Container();
+            container.Inject(directories);
+
+            return FubuApplication.For(new RunFubuDocsRegistry(directories))
+                                  .StructureMap(container)
+                                  .Packages(x => ConfigureLoaders(x, directories));
         }
 
         public static void ConfigureLoaders(IPackageFacility x, FubuDocsDirectories directories)
@@ -74,7 +75,7 @@ namespace FubuDocsRunner.Running
             var container = new Container();
             container.Inject(_directories);
 
-            return FubuApplication.For<FubuDocsExportingRegistry>()
+            return FubuApplication.For(new FubuDocsExportingRegistry(_directories))
                                   .StructureMap(container)
                                   .Packages(x => FubuDocsApplication.ConfigureLoaders(x, _directories));
         }
@@ -82,7 +83,7 @@ namespace FubuDocsRunner.Running
 
     public class FubuDocsExportingRegistry : RunFubuDocsRegistry
     {
-        public FubuDocsExportingRegistry()
+        public FubuDocsExportingRegistry(FubuDocsDirectories directories) : base(directories)
         {
             Services(x => {
                 x.ReplaceService<IAssetTagWriter, ExportAssetTagWriter>();

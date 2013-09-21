@@ -70,7 +70,8 @@ namespace FubuDocs.Topics
         public static ProjectRoot LoadFrom(string file)
         {
             var project = new FileSystem().LoadFromFile<ProjectRoot>(file);
-            if (project.Url.IsEmpty())
+
+            if (project.Url.IsEmpty() && project.Name.IsNotEmpty()) // if project name is empty, it's the host
             {
                 project.Url = project.Name.ToLower();
             }

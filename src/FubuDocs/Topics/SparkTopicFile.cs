@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
+using FubuCore;
 using FubuMVC.Core.View;
 using FubuMVC.Core.View.Model;
 using FubuMVC.Spark;

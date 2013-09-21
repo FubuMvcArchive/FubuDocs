@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web.UI.WebControls;
 using FubuCore;
 using FubuCore.Util;
 using FubuDocs.Shared;
@@ -16,11 +19,17 @@ namespace FubuDocs.Skinning
     [ConfigurationType(ConfigurationType.Attributes)]
     public class OverrideChrome : IConfigurationAction
     {
+        public const string TopicChromeFile = "TopicChrome.spark";
+        public const string SplashChromeFile = "SplashChrome.spark";
+        public const string NavigationBarFile = "NavigationBar.spark";
+
+        public static readonly IList<string> ReservedNames = new List<string>{TopicChromeFile, SplashChromeFile, NavigationBarFile};
+
         public void Configure(BehaviorGraph graph)
         {
-            TryReplace<TopicChrome>(graph, "TopicChrome.spark");
-            TryReplace<SplashChrome>(graph, "SplashChrome.spark");
-            TryReplace<TopNavigation>(graph, "NavigationBar.spark");
+            TryReplace<TopicChrome>(graph, TopicChromeFile);
+            TryReplace<SplashChrome>(graph, SplashChromeFile);
+            TryReplace<TopNavigation>(graph, NavigationBarFile);
             
             TryReplace<HostHome>(graph, "Index.spark");
         }

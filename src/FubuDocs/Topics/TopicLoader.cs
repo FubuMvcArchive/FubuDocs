@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography;
 using FubuCore;
 using FubuCore.Util;
+using FubuDocs.Skinning;
 using FubuMVC.Core.Registration;
 using FubuMVC.Core.View;
 using FubuMVC.Core.View.Model;
@@ -46,6 +48,9 @@ namespace FubuDocs.Topics
             if (path.Contains("/samples/") || path.Contains("/examples/")) return false;
 
             if (descriptor.RelativePath().StartsWith("snippets")) return false;
+
+            var filename = Path.GetFileName(descriptor.FilePath);
+            if (OverrideChrome.ReservedNames.Contains(filename)) return false;
 
             return true;
         }
