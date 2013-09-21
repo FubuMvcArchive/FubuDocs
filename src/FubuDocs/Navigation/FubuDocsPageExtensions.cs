@@ -31,10 +31,10 @@ namespace FubuDocs.Navigation
         public static HtmlTag AuthoringTopic(this IFubuPage page)
         {
             var tag = new HtmlTag("div").AddClass("authoring");
-            
-            if (FubuMode.InDevelopment())
+            var context = page.Get<ITopicContext>();
+
+            if (FubuMode.InDevelopment() && context.Current != null)
             {
-                var context = page.Get<ITopicContext>();
                 var url = page.Urls.UrlFor<FileRequest>();
                 var topic = context.Current;
 

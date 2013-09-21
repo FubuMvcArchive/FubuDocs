@@ -189,9 +189,7 @@ namespace FubuDocs.Topics
 
         public static IEnumerable<string> FindDocumentDirectories(string directory)
         {
-            if (!Directory.Exists(directory.AppendPath("src"))) return new string[0];
-
-            return Directory.GetDirectories(directory.AppendPath("src"), "*.Docs", SearchOption.TopDirectoryOnly);
+            return Directory.GetDirectories(directory, "*.Docs", SearchOption.AllDirectories).Where(x => !x.Contains("fubu-content") && !x.Contains("snippets"));
         }
     }
 
