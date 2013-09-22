@@ -11,7 +11,7 @@ namespace FubuDocs.Tests.Topics
         public void uses_the_assembly_version()
         {
             ObjectMother.TopicGraph.ProjectFor("FubuDocs")
-                        .Version.ShouldEqual("0.9.0"); // this is going to have to change over time
+                        .Version.ShouldEqual("0.9.5"); // this is going to have to change over time
         }
     }
 }

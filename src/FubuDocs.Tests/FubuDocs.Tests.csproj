@@ -119,13 +119,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\ListCommandSmokeTester.cs" />
     <Compile Include="Commands\SnippetsCommandSmokeTester.cs" />
-    <Compile Include="Commands\TodoTextReportSmokeTester.cs" />
-    <Compile Include="Commands\Topics\BatchAdderControllerTester.cs" />
-    <Compile Include="Commands\Topics\ReorderCommandTester.cs" />
-    <Compile Include="Commands\Topics\TopicFileSystemTester.cs" />
-    <Compile Include="Commands\TopicTextReportSmokeTester.cs" />
     <Compile Include="debugging.cs" />
     <Compile Include="Exporting\UrlQueryEndpointTester.cs" />
     <Compile Include="Infrastructure\Binders\RequestLogPropertyBinderTester.cs" />

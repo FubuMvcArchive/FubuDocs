@@ -149,18 +149,6 @@
     <Compile Include="Running\RunFubuDocsRegistry.cs" />
     <Compile Include="Running\RunInput.cs" />
     <Compile Include="SnippetsCommand.cs" />
-    <Compile Include="Topics\AddTopicsCommand.cs" />
-    <Compile Include="Topics\BatchAdderController.cs" />
-    <Compile Include="Topics\AddTopicsInput.cs" />
-    <Compile Include="Topics\ITopicFileSystem.cs" />
-    <Compile Include="Topics\ListCommand.cs" />
-    <Compile Include="Topics\ReorderCommand.cs" />
-    <Compile Include="Topics\TodoTextReport.cs" />
-    <Compile Include="Topics\TopicFileSystem.cs" />
-    <Compile Include="Topics\TopicTextReport.cs" />
-    <Compile Include="Topics\TopicToken.cs" />
-    <Compile Include="Topics\TopicTokenType.cs" />
-    <Compile Include="Topics\WhatNext.cs" />
     <Compile Include="WebsiteDirectoryFinder.cs" />
   </ItemGroup>
   <ItemGroup>
