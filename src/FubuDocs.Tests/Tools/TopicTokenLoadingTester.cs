@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.UI;
 using FubuCore;
 using FubuDocs.Tools;
+using FubuDocs.Topics;
 using FubuTestingSupport;
 using NUnit.Framework;
 
@@ -22,9 +23,7 @@ namespace FubuDocs.Tests.Tools
                 .ParentDirectory()
                 .AppendPath("Sample.Docs");
 
-            var fileSystem = new TopicFileSystem(directory);
-
-            root = fileSystem.LoadIndex();
+            root = TopicToken.LoadIndex(directory);
         }
 
         [Test]
@@ -54,7 +53,7 @@ namespace FubuDocs.Tests.Tools
         [Test]
         public void key_of_the_root()
         {
-            root.Key.ShouldEqual("fubumvc");
+            root.Key.ShouldEqual("index");
         }
 
         [Test]
@@ -74,8 +73,27 @@ fubumvc/nested
 fubumvc/deep/d
 ".ReadLines();
 
-            root.Children.Select(x => x.Key)
+            root.Children.Select(x => x.FullKey)
                 .ShouldHaveTheSameElementsAs(expected);
+        }
+
+
+        [Test]
+        public void find_some_comments()
+        {
+            TopicBuilder.FindComments(@"
+a
+b
+<!--Title: foo-->
+c
+d
+<!--Url: bar-->
+e
+f
+").Each(x => Debug.WriteLine(x));
+
+
+
         }
     }
 }

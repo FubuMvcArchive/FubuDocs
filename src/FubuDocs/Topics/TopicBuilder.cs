@@ -65,8 +65,16 @@ namespace FubuDocs.Topics
 
         private static IEnumerable<string> findComments(string file)
         {
+            var text = FileSystem.ReadStringFromFile(file);
+
+            return FindComments(text);
+        }
+
+        public static IEnumerable<string> FindComments(string text)
+        {
             var regex = @"<!--(.*?)-->";
-            var matches = Regex.Matches(FileSystem.ReadStringFromFile(file), regex);
+
+            var matches = Regex.Matches(text, regex);
             foreach (Match match in matches)
             {
                 yield return match.Groups[1].Value.Trim();
