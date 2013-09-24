@@ -193,7 +193,7 @@ namespace FubuDocs.Tools
         {
             yield return _deltas.OfType<DeleteTopic>();
             yield return _deltas.OfType<DeleteFolder>();
-            yield return _deltas.OfType<CreateFolder>().OrderBy(x => x.Rank).ThenBy(x => x.Folder);
+            yield return _deltas.OfType<CreateFolder>().OrderBy(x => x.Folder);
             yield return _deltas.OfType<NewTopic>();
             yield return _deltas.OfType<MoveTopic>();
             yield return _deltas.OfType<RewriteTitle>();
@@ -216,105 +216,6 @@ namespace FubuDocs.Tools
     {
         void Prepare();
         void Execute();
-    }
-
-    public class DeleteFolder : IDelta
-    {
-        private readonly string _folder;
-
-        public DeleteFolder(string folder)
-        {
-            _folder = folder;
-        }
-
-        public void Prepare()
-        {
-            
-        }
-
-        public void Execute()
-        {
-            TopicToken.FileSystem.DeleteDirectory(_folder);
-        }
-    }
-
-    public class CreateFolder : IDelta
-    {
-        private readonly string _folder;
-
-        public CreateFolder(string folder)
-        {
-            _folder = folder;
-        }
-
-        public int Rank
-        {
-            get
-            {
-                return _folder.Replace("\\", "/").Split('/').Length;
-            }
-        }
-
-        public string Folder
-        {
-            get
-            {
-                return _folder;
-            }
-        }
-
-        public void Prepare()
-        {
-            TopicToken.FileSystem.CreateDirectory(_folder);
-        }
-
-        public void Execute()
-        {
-            
-        }
-    }
-
-    public class MoveTopic : IDelta
-    {
-        private readonly string _original;
-        private readonly string _moved;
-        private string _contents;
-
-        public MoveTopic(string original, string moved)
-        {
-            _original = original;
-            _moved = moved;
-        }
-
-        public void Prepare()
-        {
-            _contents = TopicToken.FileSystem.ReadStringFromFile(_original);
-        }
-
-        public void Execute()
-        {
-            TopicToken.FileSystem.WriteStringToFile(_moved, _contents);
-        }
-    }
-
-    public class DeleteTopic : IDelta
-    {
-        private readonly TopicToken _token;
-
-        public DeleteTopic(TopicToken token)
-        {
-            _token = token;
-        }
-
-        public void Prepare()
-        {
-            
-        }
-
-        public void Execute()
-        {
-            TopicToken.FileSystem.DeleteFile(_token.File);
-        }
     }
 
     public class NewTopic : IDelta
