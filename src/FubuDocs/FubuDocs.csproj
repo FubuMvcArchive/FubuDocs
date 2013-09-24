@@ -156,6 +156,7 @@
     <Compile Include="Tools\DeleteFolder.cs" />
     <Compile Include="Tools\DeleteTopic.cs" />
     <Compile Include="Tools\MoveTopic.cs" />
+    <Compile Include="Tools\NewTopic.cs" />
     <Compile Include="Tools\ProjectEndpoints.cs" />
     <Compile Include="Tools\ToolsClasses.cs" />
     <Compile Include="Topics\DocumentationProjectLoader.cs" />

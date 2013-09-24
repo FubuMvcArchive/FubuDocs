@@ -218,39 +218,6 @@ namespace FubuDocs.Tools
         void Execute();
     }
 
-    public class NewTopic : IDelta
-    {
-        private readonly TopicToken _token;
-
-        public NewTopic(TopicToken token)
-        {
-            _token = token;
-        }
-
-        public void Prepare()
-        {
-        }
-
-        public void Execute()
-        {
-            TopicToken.FileSystem.AlterFlatFile(_token.File, list =>
-            {
-                list.Add("<!--Title: {0}-->".ToFormat(_token.Title));
-
-                if (_token.Url.IsNotEmpty())
-                {
-                    list.Add("<!-- Url: {0} -->".ToFormat(_token.Url));
-                }
-
-                list.Add("");
-                list.Add("<markdown>");
-                list.Add("TODO(Write some content!)");
-                list.Add("</markdown>");
-                list.Add("");
-            });
-        }
-    }
-
     public class RewriteTitle : IDelta
     {
         private readonly string _file;

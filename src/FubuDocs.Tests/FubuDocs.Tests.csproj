@@ -127,6 +127,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Running\RunInputTester.cs" />
     <Compile Include="Todos\TodoTaskTester.cs" />
+    <Compile Include="Tools\NewTopicTester.cs" />
     <Compile Include="Tools\TopicTokenLoadingTester.cs" />
     <Compile Include="Tools\TopicTokenTester.cs" />
     <Compile Include="Topics\can_build_behavior_for_topic_chain.cs" />
