@@ -5,12 +5,13 @@ using System.IO;
 using System.Linq;
 using FubuCore;
 using FubuDocs.Topics;
+using FubuMVC.Spark.SparkModel;
 
 namespace FubuDocs.Tools
 {
     public class TopicToken
     {
-        private readonly IList<TopicToken> Children = new List<TopicToken>();
+        public readonly IList<TopicToken> Children = new List<TopicToken>();
 
         public TopicToken(Topic topic)
         {
@@ -19,11 +20,21 @@ namespace FubuDocs.Tools
             Url = topic.Url;
             File = topic.File.FilePath;
 
-            // Need to go down here
-            
+            var child = topic.FirstChild;
+            while (child != null)
+            {
+                Children.Add(new TopicToken(child));
+                child = child.NextSibling;
+            }
+
         }
 
         public string File;
+
+        public TopicToken FindChild(string key)
+        {
+            return Children.FirstOrDefault(x => x.Key == key);
+        }
 
 
         public Guid Id = Guid.NewGuid();
@@ -31,6 +42,13 @@ namespace FubuDocs.Tools
         public string Title;
         public string Url;
 
+        public bool IsIndex
+        {
+            get
+            {
+                return Path.GetFileNameWithoutExtension(File).EqualsIgnoreCase("index");
+            }
+        }
     }
 
     public class TopicFileSystem
@@ -43,6 +61,11 @@ namespace FubuDocs.Tools
             _directory = directory;
         }
 
+        public TopicToken LoadIndex()
+        {
+            var root = TopicLoader.LoadFromFolder(_directory);
+            return new TopicToken(root.Index);
+        }
 
         public string WriteFile(TopicToken token, int order)
         {
