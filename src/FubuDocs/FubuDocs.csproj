@@ -162,7 +162,10 @@
     <Compile Include="Tools\ProjectEndpoints.cs" />
     <Compile Include="Tools\RewriteTitle.cs" />
     <Compile Include="Tools\RewriteUrl.cs" />
+    <Compile Include="Tools\TopicListItemTag.cs" />
+    <Compile Include="Tools\TopicNodeTag.cs" />
     <Compile Include="Tools\TopicToken.cs" />
+    <Compile Include="Tools\TopicTreeTag.cs" />
     <Compile Include="Topics\DocumentationProjectLoader.cs" />
     <Compile Include="Topics\FubuDocsPackageLoader.cs" />
     <Compile Include="Topics\ITopicContext.cs" />
@@ -195,6 +198,7 @@
     <Content Include="content\scripts\build-status.js" />
     <Content Include="content\scripts\fubudocs.js" />
     <Content Include="content\scripts\fubudocs-tools.js" />
+    <Content Include="content\scripts\jquery.nestable.js" />
     <Content Include="content\scripts\request-diagnostics.js" />
     <Content Include="content\scripts\snippets.js" />
     <Content Include="content\scripts\toastr.js" />

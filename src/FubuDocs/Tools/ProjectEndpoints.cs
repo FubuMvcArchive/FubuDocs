@@ -1,4 +1,5 @@
-﻿using FubuDocs.Navigation;
+﻿using FubuCore.Util;
+using FubuDocs.Navigation;
 using FubuDocs.Topics;
 using FubuMVC.Core.Ajax;
 using FubuMVC.Core.Urls;
@@ -7,26 +8,66 @@ using System.Collections.Generic;
 
 namespace FubuDocs.Tools
 {
+    public interface ITopicTokenCache
+    {
+        TopicToken TopicStructureFor(string projectName);
+        void RewriteTopicStructure(string projectName, TopicToken newStructure);
+    }
+
+    public class TopicTokenCache : ITopicTokenCache
+    {
+        private readonly Cache<string, TopicToken> _tokens;
+
+        public TopicTokenCache()
+        {
+            _tokens = new Cache<string, TopicToken>(name => {
+                var project = TopicGraph.AllTopics.ProjectFor(name);
+
+                return new TopicToken(project.Index);
+            });
+        }
+
+        public TopicToken TopicStructureFor(string projectName)
+        {
+            return _tokens[projectName];
+        }
+
+        public void RewriteTopicStructure(string projectName, TopicToken newStructure)
+        {
+            var original = _tokens[projectName];
+
+            var collector = new DeltaCollector(original, newStructure);
+            collector.ExecuteDeltas();
+
+            // Want the new one in on the next try.
+            _tokens.Remove(projectName);
+        }
+    }
+
     public class ProjectEndpoints
     {
         private readonly IUrlRegistry _urls;
+        private readonly ITopicTokenCache _tokenCache;
 
-        public ProjectEndpoints(IUrlRegistry urls)
+        public ProjectEndpoints(IUrlRegistry urls, ITopicTokenCache tokenCache)
         {
             _urls = urls;
+            _tokenCache = tokenCache;
         }
 
         public ProjectViewModel get_project_Name(ProjectRequest request)
         {
             var project = TopicGraph.AllTopics.TryFindProject(request.Name);
 
-            
+            var root = _tokenCache.TopicStructureFor(request.Name);
         
             return new ProjectViewModel
             {
                 Name = project.Name,
                 Project = project,
-                Topics = new AllTopicsTag(_urls.UrlFor<FileRequest>(), project)
+                Topics = new TopicTreeTag(root)
+                
+                //new AllTopicsTag(_urls.UrlFor<FileRequest>(), project)
             };
         }
 
@@ -85,6 +126,6 @@ namespace FubuDocs.Tools
         public string Name { get; set; }
         public ProjectRoot Project { get; set; }
 
-        public AllTopicsTag Topics { get; set; }
+        public HtmlTag Topics { get; set; }
     }
 }

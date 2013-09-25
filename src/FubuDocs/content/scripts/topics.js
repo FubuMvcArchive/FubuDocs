@@ -29,4 +29,6 @@
         e.preventDefault();
         return false;
     });
+
+    $('#topic-tree').nestable({});
 });

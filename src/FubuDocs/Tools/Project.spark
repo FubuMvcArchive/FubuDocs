@@ -1,9 +1,25 @@
 ﻿<viewdata model="FubuDocs.Tools.ProjectViewModel" />
 <Script src="topics.js" />
+<Script src="jquery.nestable.js" />
 
 
-
-
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href="#">Topics</a>
+  </li>
+  <li>
+    <a href="#">Properties</a>
+  </li>
+  <li>
+    <a href="#">TODO Explorer</a>
+  </li>
+  <li>
+    <a href="#">Code Snippets</a>
+  </li>
+  <li>
+    <a href="#">Files</a>
+  </li>
+</ul>
 
 <h2 style="margin-bottom:10px">Project Properties</h2>
 !{this.FormFor(Model)}

@@ -1,13 +1,11 @@
-﻿using System;
-using FubuCore.Binding;
+﻿using FubuCore.Binding;
 using FubuDocs.CLI;
 using FubuDocs.Infrastructure.Binders;
 using FubuDocs.Navigation;
+using FubuDocs.Tools;
 using FubuDocs.Topics;
 using FubuMVC.Core;
 using FubuMVC.Core.View;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace FubuDocs
 {
@@ -23,6 +21,7 @@ namespace FubuDocs
             });
 
             registry.Services(x => {
+                x.SetServiceIfNone<ITopicTokenCache, TopicTokenCache>();
                 x.AddService<IPropertyBinder, RequestLogPropertyBinder>();
                 x.ReplaceService<ITopicContext, TopicContext>();
                 x.ReplaceService<ICommandDocumentationSource, CommandDocumentationSource>();
