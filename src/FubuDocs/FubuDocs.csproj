@@ -155,13 +155,14 @@
     <Compile Include="Tools\CreateFolder.cs" />
     <Compile Include="Tools\DeleteFolder.cs" />
     <Compile Include="Tools\DeleteTopic.cs" />
+    <Compile Include="Tools\DeltaCollector.cs" />
     <Compile Include="Tools\IDelta.cs" />
     <Compile Include="Tools\MoveTopic.cs" />
     <Compile Include="Tools\NewTopic.cs" />
     <Compile Include="Tools\ProjectEndpoints.cs" />
     <Compile Include="Tools\RewriteTitle.cs" />
     <Compile Include="Tools\RewriteUrl.cs" />
-    <Compile Include="Tools\ToolsClasses.cs" />
+    <Compile Include="Tools\TopicToken.cs" />
     <Compile Include="Topics\DocumentationProjectLoader.cs" />
     <Compile Include="Topics\FubuDocsPackageLoader.cs" />
     <Compile Include="Topics\ITopicContext.cs" />
