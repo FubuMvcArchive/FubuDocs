@@ -42,20 +42,53 @@ namespace FubuDocs.Tools
             Children.Each(x => x.assignOrders());
         }
 
-        public IEnumerable<IDelta> DetermineDeltas(TopicToken original)
+        public IEnumerable<IDelta> DetermineDeltas(TopicToken originalRoot)
         {
-            /* TODO --
-             * 1.) if original is null, return NewTopic
-             * 2.) if original is not null, and the path is different, return MoveContent
-             * 3.) if original is not null and the title is different
-             * 4.) if original is not null and the url is different
-             */
+            var original = originalRoot.Find(Id);
+            if (original == null)
+            {
+                yield return new NewTopic(this);
+            }
+            else
+            {
+                if (original.File != File)
+                {
+                    yield return new MoveTopic(original.File, File);
+                }
 
-              throw new NotImplementedException();
+                if (original.Title != Title)
+                {
+                    yield return new RewriteTitle(File, Title);
+                }
+
+                if (original.Url != Url)
+                {
+                    yield return new RewriteUrl(File, Url);
+                }
+            }
         } 
 
         public TopicToken()
         {
+        }
+
+        public TopicToken Clone()
+        {
+            var clone = new TopicToken
+            {
+                Url = Url,
+                Key = Key,
+                FullKey = FullKey,
+                Title = Title,
+                File = File,
+                Folder = Folder,
+                Id = Id
+            };
+
+            clone.Children.AddRange(Children.Select(x => x.Clone()));
+            clone.assignOrders();
+
+            return clone;
         }
 
         public void AddChild(TopicToken child)
