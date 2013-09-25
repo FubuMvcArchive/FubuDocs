@@ -27,7 +27,6 @@ namespace FubuDocs.Navigation
             return !context.File.Contains("fubu-content");
         }
 
-        [MarkedForTermination("Going to change this quite a bit")]
         public static HtmlTag AuthoringTopic(this IFubuPage page)
         {
             var tag = new HtmlTag("div").AddClass("authoring");
@@ -58,19 +57,6 @@ namespace FubuDocs.Navigation
 
                 var projectUrl = page.Urls.UrlFor(new ProjectRequest {Name = context.Project.Name});
                 secondLine.Add("a").Text(context.Project.Name + " Project Page").Attr("href", projectUrl);
-                secondLine.Add("span").Text(" | ");
-
-                var todoUrl = page.Urls.UrlFor<TodoEndpoint>(x => x.get_todos());
-                secondLine.Add("a").Text("TODO's").Attr("href", todoUrl);
-                secondLine.Add("span").Text(" | ");
-
-                var snippetsUrl = page.Urls.UrlFor<SnippetEndpoints>(x => x.get_snippets());
-                secondLine.Add("a").Text("Code Snippets").Attr("href", snippetsUrl);
-                secondLine.Add("span").Text(" | ");
-
-                var viewHelpersTag = page.LinkToExternalTopic("fubudocs/viewhelpers", "View Helpers").Attr("target", "_blank");
-                secondLine.Append(viewHelpersTag);
-
             }
             else
             {

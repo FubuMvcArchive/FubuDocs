@@ -148,8 +148,6 @@
     <Compile Include="Snippets\SnippetEndpoints.cs" />
     <Compile Include="Snippets\SnippetsModel.cs" />
     <Compile Include="Snippets\SnippetsTableTag.cs" />
-    <Compile Include="Todos\TodoEndpoint.cs" />
-    <Compile Include="Todos\TodoModel.cs" />
     <Compile Include="Todos\TodoTableTag.cs" />
     <Compile Include="Todos\TodoTask.cs" />
     <Compile Include="Tools\CreateFolder.cs" />
@@ -240,7 +238,6 @@
     <None Include="Shared\_global.spark" />
     <None Include="Snippets\snippets.spark" />
     <None Include="Snippets\snippet.spark" />
-    <None Include="Todos\todos.spark" />
     <None Include="Tools\Project.spark">
       <SubType>Designer</SubType>
     </None>

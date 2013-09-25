@@ -32,14 +32,7 @@ namespace FubuDocs.Snippets
             EditorLauncher.LaunchFile(file.Path);
         }
 
-        public SnippetsModel get_snippets()
-        {
-            return new SnippetsModel
-            {
-                Tag = new SnippetsTableTag(_urls, _cache.All())
-            };
-        }
-        
+
     }
 
 }

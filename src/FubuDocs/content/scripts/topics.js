@@ -31,4 +31,6 @@
     });
 
     $('#topic-tree').nestable({});
+
+    $('#topics-tab').click();
 });

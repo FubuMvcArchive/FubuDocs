@@ -1,6 +1,10 @@
-﻿using FubuCore.Util;
+﻿using System.Linq;
+using FubuCore.Util;
 using FubuDocs.Navigation;
+using FubuDocs.Snippets;
+using FubuDocs.Todos;
 using FubuDocs.Topics;
+using FubuMVC.CodeSnippets;
 using FubuMVC.Core.Ajax;
 using FubuMVC.Core.Urls;
 using HtmlTags;
@@ -48,11 +52,13 @@ namespace FubuDocs.Tools
     {
         private readonly IUrlRegistry _urls;
         private readonly ITopicTokenCache _tokenCache;
+        private readonly ISnippetCache _cache;
 
-        public ProjectEndpoints(IUrlRegistry urls, ITopicTokenCache tokenCache)
+        public ProjectEndpoints(IUrlRegistry urls, ITopicTokenCache tokenCache, ISnippetCache cache)
         {
             _urls = urls;
             _tokenCache = tokenCache;
+            _cache = cache;
         }
 
         public ProjectViewModel get_project_Name(ProjectRequest request)
@@ -60,14 +66,16 @@ namespace FubuDocs.Tools
             var project = TopicGraph.AllTopics.TryFindProject(request.Name);
 
             var root = _tokenCache.TopicStructureFor(request.Name);
-        
+
+            var fileUrl = _urls.UrlFor<FileRequest>();
             return new ProjectViewModel
             {
                 Name = project.Name,
                 Project = project,
-                Topics = new TopicTreeTag(root)
-                
-                //new AllTopicsTag(_urls.UrlFor<FileRequest>(), project)
+                Topics = new TopicTreeTag(root),
+                Files = new AllTopicsTag(fileUrl, project),
+                Snippets = new SnippetsTableTag(_urls, _cache.All()),
+                TodoList = new TodoTableTag(fileUrl, TodoTask.FindAllTodos().OrderBy(x => x.File).ThenBy(x => x.Line))
             };
         }
 
@@ -126,6 +134,10 @@ namespace FubuDocs.Tools
         public string Name { get; set; }
         public ProjectRoot Project { get; set; }
 
+
         public HtmlTag Topics { get; set; }
+        public HtmlTag Files { get; set; }
+        public HtmlTag Snippets { get; set; }
+        public HtmlTag TodoList { get; set; }
     }
 }

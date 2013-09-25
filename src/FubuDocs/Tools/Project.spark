@@ -1,27 +1,68 @@
 ﻿<viewdata model="FubuDocs.Tools.ProjectViewModel" />
-<Script src="topics.js" />
-<Script src="jquery.nestable.js" />
+<use master=""/>
+
+<html>
+  <head>
+    <commonHeader />
+    <style>
+      input[type="text"]{
+        height: 25px;
+      }
+      
+      h2 {
+        margin-bottom: 20px;
+      }
+      
+      .nav-tabs {
+        margin-bottom: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <h2>
+      !{Model.Name}
+      <span style="float:right;font-size:smaller">
+        <a href="/!{Model.Project.Home.AbsoluteUrl}">back to content</a>
+      </span>
+    </h2>
 
 
-<ul class="nav nav-tabs">
-  <li class="active">
-    <a href="#">Topics</a>
+
+<ul class="nav nav-tabs" id="tabs">
+  <li>
+    <a href="#topics" data-toggle="tab" id="topics-tab">Topics</a>
   </li>
   <li>
-    <a href="#">Properties</a>
+    <a href="#properties" data-toggle="tab">Properties</a>
   </li>
   <li>
-    <a href="#">TODO Explorer</a>
+    <a href="#todo" data-toggle="tab">TODO Explorer</a>
   </li>
   <li>
-    <a href="#">Code Snippets</a>
+    <a href="#snippets" data-toggle="tab">Code Snippets</a>
   </li>
   <li>
-    <a href="#">Files</a>
+    <a href="#files" data-toggle="tab">Files</a>
   </li>
 </ul>
 
-<h2 style="margin-bottom:10px">Project Properties</h2>
+<div class="tab-content">
+
+  <div id="todo" class="tab-pane">
+    !{Model.TodoList}
+  </div>
+
+  <div id="snippets" class="tab-pane">
+    !{Model.Snippets}
+  </div>
+
+  <div id="files" class="tab-pane">
+    !{Model.Files}
+  </div>
+  
+<div id="properties" class="tab-pane">
 !{this.FormFor(Model)}
 <dl class="dl-horizontal">
   !{this.Edit(x => x.Project.Name)}
@@ -37,7 +78,21 @@
 </dl>
 <input type="submit" value="Save" class="btn" /><input type="reset" value="Reset"  class="btn" />
 
-!{this.EndForm()}
+  !{this.EndForm()}
+</div>
 
-<h2>Topics</h2>
-!{Model.Topics}
+
+<div id="topics" class="tab-pane">
+  !{Model.Topics}
+</div>
+
+</div>
+
+
+    <Script src="topics.js" />
+    <Script src="jquery.nestable.js" />
+    <Script src="twitter/bootstrap-tabs.js" />
+    <Scripts />
+    <commonFooter />
+  </body>
+</html>
