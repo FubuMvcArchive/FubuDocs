@@ -194,6 +194,7 @@
     <Content Include="content\images\header-bg.jpg" />
     <Content Include="content\images\twitter-icon.png" />
     <Content Include="content\scripts\build-status.js" />
+    <Content Include="content\scripts\topic-editor.js" />
     <Content Include="content\scripts\fubudocs.js" />
     <Content Include="content\scripts\fubudocs-tools.js" />
     <Content Include="content\scripts\jquery.nestable.js" />

@@ -29,8 +29,5 @@
         e.preventDefault();
         return false;
     });
-
-    $('#topic-tree').nestable({});
-
-    $('#topics-tab').click();
 });
+

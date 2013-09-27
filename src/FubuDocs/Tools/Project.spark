@@ -81,6 +81,19 @@
   !{this.EndForm()}
 </div>
 
+  <div id="inline-editor" style="display:none">
+    <form class="form-inline topic-editor">
+      <input type="text" class="input-small title input-xlarge" placeholder="Title"/>
+      <input type="text" class="input-small key input-small" placeholder="Key"/>
+
+      <div class="input-append">
+        <input type="text" class="input-small url input-small" placeholder="Url"/>
+        <small>
+          <a href="#">Reset</a>
+        </small>
+      </div>
+    </form>
+  </div>
 
 <div id="topics" class="tab-pane container-fluid" >
   <div class="row-fluid">
@@ -88,41 +101,41 @@
       !{Model.Topics}
     </div>
     <div class="span6">
-      <form class="form-inline topic-editor">
-        <input type="text" class="input-small title input-xlarge" placeholder="Title"/>
-        <input type="text" class="input-small key input-small" placeholder="Key"/>
-        <input type="text" class="input-small url input-small" placeholder="Url"/>
-      </form>
 
 
-      <form class="form-horizontal">
+
+
+      <form class="form-horizontal" id="add-topic-form">
+        <h3 class="text-center" style="margin-bottom:15px">
+          Add child topics to <em id="parent-title">the parent title</em>
+        </h3>
         <div class="control-group">
           <label class="control-label" for="inputTitle">Title</label>
           <div class="controls">
-            <input type="text" id="inputTitle" placeholder="Title" class="title"/>
+            <input type="text" id="inputTitle" placeholder="Title" tabindex="1" class="title"/>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label" for="inputUrl">Key</label>
           <div class="controls">
-            <input type="text" id="inputKey" placeholder="Key" class="title"/>
+            <input type="text" id="inputKey" placeholder="Key" tabindex="2" class="key"/>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label" for="inputUrl">Url</label>
           <div class="controls">
-            <input type="text" id="inputUrl" placeholder="Url" class="title"/>
+            <input type="text" id="inputUrl" placeholder="Url" class="url" tabindex="3"/>
           </div>
         </div>
         <div class="control-group">
           <label class="control-label" for="inputSections">Sections</label>
           <div class="controls">
-            <textarea rows="5" placeholder="Section Titles" id="inputSections"></textarea>
+            <textarea rows="5" placeholder="Section Titles" class="sections" id="inputSections" tabindex="4"></textarea>
           </div>
         </div>
-        <div class="control-group">
+        <div class="control-group add-topic-link" >
           <div class="controls">
-            <button type="submit" class="btn">Add Topic</button>
+            <button id="add-topic-button" autofocus="true" tabindex="5">Add Topic</button>
           </div>
         </div>
         
@@ -140,6 +153,7 @@
 
 
     <Script src="topics.js" />
+    <Script src="topic-editor.js" />
     <Script src="jquery.nestable.js" />
     <Script src="twitter/bootstrap-tabs.js" />
     <Scripts />
