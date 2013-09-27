@@ -73,29 +73,28 @@ function EditorPane(form) {
     var self = this;
 
     self.edit = function (leaf) {
-        self.reset();
-
         self.leaf = leaf;
+        self.reset();
     };
 
     self.push = function(prop) {
         var val = $('.' + prop, form).val();
-        self.item.set(prop, val);
+        self.leaf.set(prop, val);
     };
 
     self.pull = function(prop) {
-        var val = self.item.get(prop);
+        var val = self.leaf.get(prop);
         $('.' + prop, form).val(val);
     };
 
     self.commit = function() {
-        self.push('topic');
+        self.push('title');
         self.push('url');
         self.push('key');
     };
 
     self.reset = function() {
-        self.pull('topic');
+        self.pull('title');
         self.pull('url');
         self.pull('key');
     };
