@@ -17,6 +17,8 @@
     $('#add-topic-button').click(function() {
         controller.addTopic();
     });
+
+
 });
 
 
@@ -28,6 +30,22 @@ function TopicAdderView() {
     var form = $('#add-topic-form');
 
     var existingEditor = new EditorPane($('#inline-editor'));
+    $('input', existingEditor.form).change(function() {
+        $('.input-append a', existingEditor.form).show();
+    });
+
+    $('#change-current-topic').click(function() {
+        existingEditor.commit();
+        $('.input-append a', existingEditor.form).hide();
+    });
+
+
+    $('#reset-current-topic').click(function () {
+        existingEditor.reset();
+        $('.input-append a', existingEditor.form).hide();
+    });
+    
+
 
     var editor = new EditorPane(form);
 
@@ -35,6 +53,8 @@ function TopicAdderView() {
         $('#topic-editing-content').show();
         $('#inline-editor').show();
         existingEditor.edit(leaf);
+
+        $('.input-append a', existingEditor.form).hide();
 
         $('.parent-title').html(leaf.get('title'));
 
@@ -71,6 +91,7 @@ function TopicController(adder) {
 
 function EditorPane(form) {
     var self = this;
+    self.form = form;
 
     self.edit = function (leaf) {
         self.leaf = leaf;

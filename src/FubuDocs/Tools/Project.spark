@@ -109,7 +109,10 @@
         <div class="input-append">
           <input type="text" class="input-small url input-small" placeholder="Url"/>
           <small>
-            <a href="#">Reset</a>
+            <a href="#" id="change-current-topic">Change</a>
+          </small>
+          <small>
+            <a href="#" id="reset-current-topic">Reset</a>
           </small>
         </div>
       </form>
