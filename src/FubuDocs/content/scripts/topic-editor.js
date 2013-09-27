@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     $('#topic-tree').nestable({ group: 1 });
-    $('#new-leaf:first-child').nestable({ group: 1 });
+    $('#new-leaf').nestable({ group: 1 });
 
     $('#topics-tab').click();
 
@@ -11,11 +11,12 @@
     $('#topic-tree').on('click', 'li.dd-item', function (e) {
         var leaf = new TopicLeaf(this);
         controller.select(leaf);
-        e.stopPropogation();
+        e.stopImmediatePropagation();
     });
 
-    $('#add-topic-button').click(function() {
+    $('#add-topic-button').click(function(e) {
         controller.addTopic();
+        e.stopImmediatePropagation();
     });
 
 
@@ -28,6 +29,7 @@ function TopicAdderView() {
     $('#topic-editing-content').hide();
 
     var form = $('#add-topic-form');
+    
 
     var showExistingButtons = function() {
         $('.input-append a', existingEditor.form).show();
@@ -52,6 +54,8 @@ function TopicAdderView() {
     });
 
     var editor = new EditorPane(form);
+    var newLeaf = new TopicLeaf($('#new-leaf'));
+    editor.edit(newLeaf);
 
     self.activate = function(leaf) {
         $('#topic-editing-content').show();
@@ -66,15 +70,13 @@ function TopicAdderView() {
     };
 
     self.resetNewTopicForm = function() {
-        self.newLeaf = new TopicLeaf($('#new-leaf:first-child'));
-        editor.edit(self.newLeaf);
-
         editor.clear();
     };
 
     self.buildLeaf = function() {
         editor.commit();
-        return self.newLeaf.clone();
+
+        return newLeaf.clone();
     };
 
     self.focusOnKey = function() {
@@ -202,14 +204,14 @@ function TopicLeaf(item) {
     };
 
     self.get = function(key) {
-        return $(item).data(key);
+        return $(item).attr('data-' + key);
     };
 
     self.set = function(key, value) {
-        $(item).data(key, value);
+        $(self.item).attr('data-' + key, value);
         
         if (key == 'title') {
-            $('.topic-title', item).html(value);
+            $('.topic-title', self.item).html(value);
         }
     };
 
@@ -219,6 +221,14 @@ function TopicLeaf(item) {
 
     self.markInactive = function() {
         $(item).removeClass('active-topic');
+    };
+
+    self.appendTo = function (parent) {
+        var li = $(item).get(0);
+        $('ol', parent.item).get(0).appendChild(li);
+
+        var plugin = $('#topic-tree').data("nestable");
+        plugin.setParent($(li));
     };
 
     return self;

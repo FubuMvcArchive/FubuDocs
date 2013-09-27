@@ -93,9 +93,7 @@
       !{Model.Topics}
     </div>
     <div class="span6">
-
-      <!-- style="display:none"-->
-      <div id="new-leaf" >
+      <div style="display:none">
         !{Model.TopicTemplate}
       </div>
 
@@ -119,7 +117,7 @@
 
       <hr></hr>
 
-      <form class="form-horizontal" id="add-topic-form">
+      <div class="form-horizontal" id="add-topic-form">
 
 
         <div class="control-group">
@@ -156,12 +154,12 @@
         </div>
         <div class="control-group add-topic-link" >
           <div class="controls">
-            <button id="add-topic-button" autofocus="true" tabindex="5">Add Topic</button>
+            <button id="add-topic-button" tabindex="5">Add Topic</button>
           </div>
         </div>
         
 
-      </form>
+      </div>
       </div>
       
     </div>

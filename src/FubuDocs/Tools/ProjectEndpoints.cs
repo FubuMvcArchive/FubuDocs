@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using FubuCore.Util;
 using FubuDocs.Navigation;
 using FubuDocs.Snippets;
@@ -135,10 +136,13 @@ namespace FubuDocs.Tools
         {
             TopicTemplate = new TopicListItemTag(new TopicToken
             {
-                Title = string.Empty,
+                Title = "New Topic",
                 Url = string.Empty,
-                Key = string.Empty
+                Key = string.Empty,
+                Id = Guid.Empty
             });
+
+            TopicTemplate.Id("new-leaf");
         }
 
         public string Name { get; set; }
