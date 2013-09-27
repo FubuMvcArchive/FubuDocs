@@ -230,3 +230,10 @@ p { line-height: 1.5em; }
 .add-topic-link button:focus {
     outline: black thin solid !important; 
 }
+
+li.active-topic > div.dd3-content
+{
+    color: #CC3300 !important;
+    background: none !important;
+}
+

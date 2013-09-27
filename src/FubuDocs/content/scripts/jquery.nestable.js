@@ -70,6 +70,7 @@
 
             list.placeEl = $('<div class="' + list.options.placeClass + '"/>');
 
+            // MIGHT HAVE TO DO SOMETHING HERE.
             $.each(this.el.find(list.options.itemNodeName), function(k, el) {
                 list.setParent($(el));
             });

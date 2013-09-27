@@ -131,10 +131,20 @@ namespace FubuDocs.Tools
 
     public class ProjectViewModel
     {
+        public ProjectViewModel()
+        {
+            TopicTemplate = new TopicListItemTag(new TopicToken
+            {
+                Title = string.Empty,
+                Url = string.Empty,
+                Key = string.Empty
+            });
+        }
+
         public string Name { get; set; }
         public ProjectRoot Project { get; set; }
 
-
+        public HtmlTag TopicTemplate { get; set; }
         public HtmlTag Topics { get; set; }
         public HtmlTag Files { get; set; }
         public HtmlTag Snippets { get; set; }

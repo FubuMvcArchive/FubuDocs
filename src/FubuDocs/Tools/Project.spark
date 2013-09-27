@@ -81,19 +81,11 @@
   !{this.EndForm()}
 </div>
 
-  <div id="inline-editor" style="display:none">
-    <form class="form-inline topic-editor">
-      <input type="text" class="input-small title input-xlarge" placeholder="Title"/>
-      <input type="text" class="input-small key input-small" placeholder="Key"/>
 
-      <div class="input-append">
-        <input type="text" class="input-small url input-small" placeholder="Url"/>
-        <small>
-          <a href="#">Reset</a>
-        </small>
-      </div>
-    </form>
-  </div>
+
+
+
+
 
 <div id="topics" class="tab-pane container-fluid" >
   <div class="row-fluid">
@@ -102,13 +94,39 @@
     </div>
     <div class="span6">
 
+      <!-- style="display:none"-->
+      <div id="new-leaf" >
+        !{Model.TopicTemplate}
+      </div>
 
+      <div id="topic-editing-content">
+      <h3>Modify the selected topic <em class="parent-title">the parent title</em>
+    </h3>
+      <form class="form-inline topic-editor" id="inline-editor">
+        <input type="text" class="input-small title input-xlarge" placeholder="Title"/>
+        <input type="text" class="input-small key input-small" placeholder="Key"/>
 
+        <div class="input-append">
+          <input type="text" class="input-small url input-small" placeholder="Url"/>
+          <small>
+            <a href="#">Reset</a>
+          </small>
+        </div>
+      </form>
+
+      <hr></hr>
 
       <form class="form-horizontal" id="add-topic-form">
-        <h3 class="text-center" style="margin-bottom:15px">
-          Add child topics to <em id="parent-title">the parent title</em>
-        </h3>
+
+
+        <div class="control-group">
+          <div class="controls">
+            <h3>
+              Add a child topic
+            </h3>
+          </div>
+        </div>
+
         <div class="control-group">
           <label class="control-label" for="inputTitle">Title</label>
           <div class="controls">
@@ -141,7 +159,7 @@
         
 
       </form>
-      
+      </div>
       
     </div>
 
