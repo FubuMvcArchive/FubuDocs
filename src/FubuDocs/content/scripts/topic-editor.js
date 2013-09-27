@@ -29,23 +29,27 @@ function TopicAdderView() {
 
     var form = $('#add-topic-form');
 
-    var existingEditor = new EditorPane($('#inline-editor'));
-    $('input', existingEditor.form).change(function() {
+    var showExistingButtons = function() {
         $('.input-append a', existingEditor.form).show();
-    });
+    };
+
+    var hideExistingButtons = function() {
+        $('.input-append a', existingEditor.form).hide();
+    };
+
+    var existingEditor = new EditorPane($('#inline-editor'));
+    $('input', existingEditor.form).change(showExistingButtons);
 
     $('#change-current-topic').click(function() {
         existingEditor.commit();
-        $('.input-append a', existingEditor.form).hide();
+        hideExistingButtons();
     });
 
 
     $('#reset-current-topic').click(function () {
         existingEditor.reset();
-        $('.input-append a', existingEditor.form).hide();
+        hideExistingButtons();
     });
-    
-
 
     var editor = new EditorPane(form);
 
@@ -54,11 +58,27 @@ function TopicAdderView() {
         $('#inline-editor').show();
         existingEditor.edit(leaf);
 
-        $('.input-append a', existingEditor.form).hide();
+        hideExistingButtons();
 
         $('.parent-title').html(leaf.get('title'));
 
+        self.resetNewTopicForm();
+    };
+
+    self.resetNewTopicForm = function() {
+        self.newLeaf = new TopicLeaf($('#new-leaf:first-child'));
+        editor.edit(self.newLeaf);
+
         editor.clear();
+    };
+
+    self.buildLeaf = function() {
+        editor.commit();
+        return self.newLeaf.clone();
+    };
+
+    self.focusOnKey = function() {
+        $('.key', form).focus();
     };
 
     return self;
@@ -67,7 +87,7 @@ function TopicAdderView() {
 function TopicController(adder) {
     var self = this;
 
-    self.editor = null;
+    self.current = null;
 
     self.select = function (leaf) {
         if (self.current != null) {
@@ -82,8 +102,24 @@ function TopicController(adder) {
 
     };
 
-    self.addTopic = function() {
-        alert("we're adding a topic now");
+    self.addTopic = function () {
+        var newLeaf = adder.buildLeaf();
+        if (!newLeaf.get('key') || newLeaf.get('key') == '') {
+            alert("'Key' is required");
+            adder.focusOnKey();
+            return;
+        }
+        
+        if (!newLeaf.get('title') || newLeaf.get('title') == '') {
+            newLeaf.set('title', newLeaf.get('key'));
+        }
+
+        if (!newLeaf.get('url') || newLeaf.get('url') == '') {
+            newLeaf.set('url', newLeaf.get('key'));
+        }
+
+        newLeaf.appendTo(self.current);
+        adder.resetNewTopicForm();
     };
 
     return self;
@@ -92,6 +128,30 @@ function TopicController(adder) {
 function EditorPane(form) {
     var self = this;
     self.form = form;
+
+
+    var keyInput = $('.key', form);
+    var titleInput = $('.title', form);
+    var urlInput = $('.url', form);
+    titleInput.change(function() {
+        if (titleInput.val() == '') return;
+
+        var newKey = titleInput.val().toLowerCase().replace(" ", "_");
+
+        if (keyInput.val() == '') {
+            keyInput.val(newKey);
+        }
+        
+        if (urlInput.val() == '') {
+            urlInput.val(newKey);
+        }
+    });
+
+    keyInput.change(function() {
+        if (urlInput.val() == '') {
+            urlInput.val(keyInput.val());
+        }
+    });
 
     self.edit = function (leaf) {
         self.leaf = leaf;
@@ -134,11 +194,12 @@ function EditorPane(form) {
 function TopicLeaf(item) {
     var self = this;
     
-    if (item == null) {
-        // TODO -- go find the template and clone it.    
-    }
-
     self.item = item;
+
+    self.clone = function() {
+        var clonedNode = $(self.item).get(0).cloneNode(true);
+        return new TopicLeaf(clonedNode);
+    };
 
     self.get = function(key) {
         return $(item).data(key);
