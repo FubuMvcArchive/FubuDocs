@@ -22,7 +22,7 @@
   <body>
 
     <h2>
-      !{Model.Name}
+      Topic Manager for !{Model.Name}
       <span style="float:right;font-size:smaller">
         <a href="/!{Model.Project.Home.AbsoluteUrl}">back to content</a>
       </span>
@@ -38,7 +38,7 @@
     <a href="#properties" data-toggle="tab">Properties</a>
   </li>
   <li>
-    <a href="#todo" data-toggle="tab">TODO Explorer</a>
+    <a href="#todo" data-toggle="tab">Task List</a>
   </li>
   <li>
     <a href="#snippets" data-toggle="tab">Code Snippets</a>
@@ -82,8 +82,58 @@
 </div>
 
 
-<div id="topics" class="tab-pane">
-  !{Model.Topics}
+<div id="topics" class="tab-pane container-fluid" >
+  <div class="row-fluid">
+    <div class="span6">
+      !{Model.Topics}
+    </div>
+    <div class="span6">
+      <form class="form-inline topic-editor">
+        <input type="text" class="input-small title input-xlarge" placeholder="Title"/>
+        <input type="text" class="input-small key input-small" placeholder="Key"/>
+        <input type="text" class="input-small url input-small" placeholder="Url"/>
+      </form>
+
+
+      <form class="form-horizontal">
+        <div class="control-group">
+          <label class="control-label" for="inputTitle">Title</label>
+          <div class="controls">
+            <input type="text" id="inputTitle" placeholder="Title" class="title"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputUrl">Key</label>
+          <div class="controls">
+            <input type="text" id="inputKey" placeholder="Key" class="title"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputUrl">Url</label>
+          <div class="controls">
+            <input type="text" id="inputUrl" placeholder="Url" class="title"/>
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="inputSections">Sections</label>
+          <div class="controls">
+            <textarea rows="5" placeholder="Section Titles" id="inputSections"></textarea>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn">Add Topic</button>
+          </div>
+        </div>
+        
+
+      </form>
+      
+      
+    </div>
+
+    
+  </div>
 </div>
 
 </div>
