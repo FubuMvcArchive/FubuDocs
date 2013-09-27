@@ -1,4 +1,5 @@
 ﻿<viewdata model="FubuDocs.Tools.ProjectViewModel" />
+<use namespace="FubuMVC.TwitterBootstrap" />
 <use master=""/>
 
 <html>
@@ -56,6 +57,11 @@
 
   <div id="snippets" class="tab-pane">
     !{Model.Snippets}
+
+    !{this.Modal("snippetModal").Label("Snippet View").AddCloseButton("Close")}
+
+    <Script src="snippets.js" />
+    !{this.CodeSnippet("AddLine").Render(false)}
   </div>
 
   <div id="files" class="tab-pane">
@@ -172,6 +178,7 @@
 
 
     <Script src="topics.js" />
+    <Script src="snippets.js" />
     <Script src="topic-editor.js" />
     <Script src="jquery.nestable.js" />
     <Script src="twitter/bootstrap-tabs.js" />

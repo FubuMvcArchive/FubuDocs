@@ -94,6 +94,8 @@ namespace FubuDocs.Topics
                 return Index;
             }
 
+            if (Splash != null && Splash.Key.EqualsIgnoreCase(key)) return Splash;
+
             var found = Index.Descendents().FirstOrDefault(x => x.Key.EqualsIgnoreCase(key));
             if (found != null) return found;
 

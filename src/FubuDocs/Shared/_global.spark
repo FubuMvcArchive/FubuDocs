@@ -4,4 +4,5 @@
 ﻿<use namespace="FubuMVC.CodeSnippets" />
 <use namespace="FubuDocs" />
 <use namespace="FubuDocs.Navigation" />
+<use namespace="FubuMVC.TwitterBootstrap" />
 <use namespace="System.Linq" />
