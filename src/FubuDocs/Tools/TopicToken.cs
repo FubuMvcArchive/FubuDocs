@@ -16,10 +16,10 @@ namespace FubuDocs.Tools
         public TopicToken(Topic topic)
         {
             File = topic.File.FilePath.ToFullPath();
-            Key = IsIndex ? "index" : topic.Key.Split('/').Last().Split('.').Last();
+            Key = topic.Key.Split('/').Last().Split('.').Last();
             FullKey = topic.Key;
             Title = topic.Title;
-            Url = topic.Url;
+            Url = topic.Url.Split('/').Last();
             Folder = File.ParentDirectory();
 
             var child = topic.FirstChild;

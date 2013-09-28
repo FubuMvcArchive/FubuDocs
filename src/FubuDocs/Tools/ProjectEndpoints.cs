@@ -28,7 +28,10 @@ namespace FubuDocs.Tools
             _tokens = new Cache<string, TopicToken>(name => {
                 var project = TopicGraph.AllTopics.ProjectFor(name);
 
-                return new TopicToken(project.Index);
+                return new TopicToken(project.Index)
+                {
+                    Key = "index" // important for making the UI work
+                };
             });
         }
 
