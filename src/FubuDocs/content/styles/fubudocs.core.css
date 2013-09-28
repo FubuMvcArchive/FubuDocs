@@ -1,8 +1,4 @@
 ﻿
-span.file-changed {
-    float: right;
-}
-
 div.single-command-usage {
     border-left: 5px solid #DDDDDD;
     white-space: pre;
@@ -78,15 +74,11 @@ text-align: right;
 }
 
 .authoring {
-    background-color: black;
-    color: white;
+    border: #cc3300 thin solid;
     font-weight: normal;
-    padding: 3px;
-    margin-bottom: 2px;
-}
-
-.authoring a {
-    color: white;
+    padding: 5px;
+    margin-bottom: 5px;
+    width: 100%;
 }
 
 
@@ -235,5 +227,9 @@ li.active-topic > div.dd3-content
 {
     color: #CC3300 !important;
     background: none !important;
+}
+
+.topic-editing {
+    top: 20px;
 }
 

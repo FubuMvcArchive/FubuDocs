@@ -95,17 +95,16 @@
 
 <div id="topics" class="tab-pane container-fluid" >
   <div class="row-fluid">
-    <div class="span6">
+    <div class="span6 topic-pane">
       !{Model.Topics}
     </div>
-    <div class="span6">
+    <div class="span6 topic-editing">
       <div style="display:none">
         !{Model.TopicTemplate}
       </div>
 
       <div id="topic-editing-content">
-      <h3>Modify the selected topic <em class="parent-title">the parent title</em>
-    </h3>
+      <h3>Modify the selected topic <em class="parent-title">the parent title</em></h3>
       <form class="form-inline topic-editor" id="inline-editor">
         <input type="text" class="input-small title input-xlarge" placeholder="Title"/>
         <input type="text" class="input-small key input-small" placeholder="Key"/>

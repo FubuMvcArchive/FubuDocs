@@ -39,24 +39,23 @@ namespace FubuDocs.Navigation
 
                 if (context.File != null)
                 {
-                    var firstLine = tag.Add("div");
-                    firstLine.Add("a")
+                    tag.Add("div").Add("a")
                         .Data("url", url)
                         .Data("key", topic.Key)
                         .Attr("href", "#")
                         .AddClass("edit-link")
-                        .Text(context.File);
+                        .Text("Edit File")
+                        .Attr("title", context.File);
 
                     var lastUpdated = File.GetLastWriteTimeUtc(context.File).ToLocalTime();
-                    firstLine.Add("span")
+                    tag.Add("div")
                         .AddClass("last-updated")
                         .Text("File changed at: " + lastUpdated)
                         .AddClass("file-changed");
                 }
-                var secondLine = tag.Add("div");
 
                 var projectUrl = page.Urls.UrlFor(new ProjectRequest {Name = context.Project.Name});
-                secondLine.Add("a").Text(context.Project.Name + " Project Page").Attr("href", projectUrl);
+                tag.Add("div").Add("a").Text(context.Project.Name + " Project Page").Attr("href", projectUrl);
             }
             else
             {
