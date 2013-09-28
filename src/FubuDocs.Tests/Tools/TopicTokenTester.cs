@@ -47,7 +47,7 @@ namespace FubuDocs.Tests.Tools
         {
             var topic = new TopicToken
             {
-                Id = Guid.Empty
+                Id = Guid.Empty.ToString()
             };
 
             topic.DetermineDeltas(root)

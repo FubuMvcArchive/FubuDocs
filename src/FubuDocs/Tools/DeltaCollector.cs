@@ -16,8 +16,7 @@ namespace FubuDocs.Tools
             findNewAndDeletedFolders(original, @new);
 
             @new.All().Each(x => {
-                var existing = original.Find(x.Id); // will be null if new
-                var topicDeltas = x.DetermineDeltas(existing);
+                var topicDeltas = x.DetermineDeltas(original);
 
                 _deltas.AddRange(topicDeltas);
             });

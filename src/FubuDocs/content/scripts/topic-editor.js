@@ -24,8 +24,46 @@
 
         e.stopImmediatePropagation();
     });
+
+    $('#reset').click(function() {
+        window.location.href = window.location.href;
+    });
+
+    
+
+
+    $('#submit').click(function() {
+        var clientModel = $('#topic-tree').nestable('serialize');
+        var serverModel = transformClientModel(clientModel[0]);
+
+        var url = $(this).attr('data-url');
+        var json = window.JSON.stringify(serverModel);
+
+        $.ajax({            
+           type: "POST",
+           url: url,
+           data: json,
+           contentType: 'text/json',
+           success: function(data, status, xhr) {
+                alert(data);
+                alert(status);
+                alert(xhr);
+            }
+        });
+
+        $('#json').val(json);
+    });
 });
 
+function transformClientModel(client) {
+    var server = { Url: client.url, Title: client.title, Id: client.id, Key: client.key, Children: [] };
+    for (var i = 0; i < client.children.length; i++) {
+        var serverChild = transformClientModel(client.children[i]);
+        server.Children.push(serverChild);
+    }
+
+    return server;
+};
 
 function TopicAdderView() {
     var self = this;

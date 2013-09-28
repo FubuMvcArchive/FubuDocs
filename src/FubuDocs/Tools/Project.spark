@@ -82,7 +82,8 @@
   !{this.Edit(x => x.Project.TeamCityBuildType)}
   !{this.Edit(x => x.Project.TwitterHandle)}
 </dl>
-<input type="submit" value="Save" class="btn" /><input type="reset" value="Reset"  class="btn" />
+<input type="submit" value="Save" class="btn" />
+  <input type="reset" value="Reset"  class="btn" />
 
   !{this.EndForm()}
 </div>
@@ -99,6 +100,12 @@
       !{Model.Topics}
     </div>
     <div class="span6 topic-editing">
+      <p>
+        <button id="submit" class="btn" data-url="!{Model.SubmitUrl}">Submit Changes</button>
+        <button id="reset" class="btn">Reset</button>
+        
+      </p>
+      
       <div style="display:none">
         !{Model.TopicTemplate}
       </div>
@@ -162,8 +169,8 @@
             <button id="add-topic-button" tabindex="5">Add Topic</button>
           </div>
         </div>
-        
 
+        <textarea rows="20" style="width:100%" id="json"></textarea>
       </div>
       </div>
       

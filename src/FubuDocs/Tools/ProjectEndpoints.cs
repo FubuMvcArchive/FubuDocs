@@ -1,6 +1,5 @@
-﻿using System;
+﻿using System.Diagnostics;
 using System.Linq;
-using FubuCore.Util;
 using FubuDocs.Navigation;
 using FubuDocs.Snippets;
 using FubuDocs.Todos;
@@ -8,50 +7,10 @@ using FubuDocs.Topics;
 using FubuMVC.CodeSnippets;
 using FubuMVC.Core.Ajax;
 using FubuMVC.Core.Urls;
-using HtmlTags;
 using System.Collections.Generic;
 
 namespace FubuDocs.Tools
 {
-    public interface ITopicTokenCache
-    {
-        TopicToken TopicStructureFor(string projectName);
-        void RewriteTopicStructure(string projectName, TopicToken newStructure);
-    }
-
-    public class TopicTokenCache : ITopicTokenCache
-    {
-        private readonly Cache<string, TopicToken> _tokens;
-
-        public TopicTokenCache()
-        {
-            _tokens = new Cache<string, TopicToken>(name => {
-                var project = TopicGraph.AllTopics.ProjectFor(name);
-
-                return new TopicToken(project.Index)
-                {
-                    Key = "index" // important for making the UI work
-                };
-            });
-        }
-
-        public TopicToken TopicStructureFor(string projectName)
-        {
-            return _tokens[projectName];
-        }
-
-        public void RewriteTopicStructure(string projectName, TopicToken newStructure)
-        {
-            var original = _tokens[projectName];
-
-            var collector = new DeltaCollector(original, newStructure);
-            collector.ExecuteDeltas();
-
-            // Want the new one in on the next try.
-            _tokens.Remove(projectName);
-        }
-    }
-
     public class ProjectEndpoints
     {
         private readonly IUrlRegistry _urls;
@@ -77,10 +36,24 @@ namespace FubuDocs.Tools
                 Name = project.Name,
                 Project = project,
                 Topics = new TopicTreeTag(root),
+                SubmitUrl = _urls.UrlFor(new TopicToken{ProjectName = request.Name}, "POST"),
                 Files = new AllTopicsTag(fileUrl, project),
                 Snippets = new SnippetsTableTag(_urls, _cache.All()),
                 TodoList = new TodoTableTag(fileUrl, TodoTask.FindAllTodos().OrderBy(x => x.File).ThenBy(x => x.Line))
             };
+        }
+
+        public AjaxContinuation post_project_ProjectName(TopicToken topic)
+        {
+            var existing = _tokenCache.TopicStructureFor(topic.ProjectName);
+            var collector = new DeltaCollector(existing, topic);
+            collector.OrderedDeltas().Each(x => Debug.WriteLine(x));
+            
+            //collector.ExecuteDeltas();
+
+            // TODO -- need to figure out how to refresh this thing.
+
+            return AjaxContinuation.Successful();
         }
 
         public AjaxContinuation post_project_Name(ProjectViewModel model)
@@ -95,66 +68,5 @@ namespace FubuDocs.Tools
 
             return AjaxContinuation.Successful();
         }
-    }
-
-    public class AllTopicsTag : TableTag
-    {
-        public AllTopicsTag(string fileUrl, ProjectRoot root)
-        {
-            AddClass("table");
-
-            AddHeaderRow(tr => {
-                tr.Header("Title");
-                tr.Header("Key");
-                tr.Header("File");
-            });
-
-            if (root.Splash != null)
-            {
-                addTopic(fileUrl, root.Splash);
-            }
-
-            root.AllTopics().Each(x => addTopic(fileUrl, x));
-        }
-
-        private void addTopic(string fileUrl, Topic topic)
-        {
-            AddBodyRow(row => {
-                row.Cell(topic.Title);
-                row.Cell(topic.Key);
-
-                row.Cell().Add("a").Data("url", fileUrl).Data("key", topic.Key).Attr("href", "#").AddClass("edit-link").Text(topic.File.FilePath);
-            });
-        }
-    }
-
-    public class ProjectRequest
-    {
-        public string Name { get; set; }
-    }
-
-    public class ProjectViewModel
-    {
-        public ProjectViewModel()
-        {
-            TopicTemplate = new TopicListItemTag(new TopicToken
-            {
-                Title = "New Topic",
-                Url = string.Empty,
-                Key = string.Empty,
-                Id = Guid.Empty
-            });
-
-            TopicTemplate.Id("new-leaf");
-        }
-
-        public string Name { get; set; }
-        public ProjectRoot Project { get; set; }
-
-        public HtmlTag TopicTemplate { get; set; }
-        public HtmlTag Topics { get; set; }
-        public HtmlTag Files { get; set; }
-        public HtmlTag Snippets { get; set; }
-        public HtmlTag TodoList { get; set; }
     }
 }

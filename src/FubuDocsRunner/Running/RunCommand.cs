@@ -36,9 +36,7 @@ namespace FubuDocsRunner.Running
             try
             {
                 _application = new RemoteApplication(x => {
-                    
                     x.Setup.AppDomainInitializerArguments = new[] { JsonUtil.ToJson(directories) };
-
                     x.Setup.ApplicationBase = runnerDirectory;
                 });
 

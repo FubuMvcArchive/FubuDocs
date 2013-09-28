@@ -7,6 +7,7 @@ using FubuCore;
 using FubuDocs.Tools;
 using FubuDocs.Topics;
 using FubuTestingSupport;
+using HtmlTags;
 using NUnit.Framework;
 
 namespace FubuDocs.Tests.Tools
@@ -25,6 +26,8 @@ namespace FubuDocs.Tests.Tools
                 .AppendPath("Sample.Docs");
 
             root = TopicToken.LoadIndex(directory);
+
+            Debug.WriteLine(JsonUtil.ToJson(root));
         }
 
         [Test]

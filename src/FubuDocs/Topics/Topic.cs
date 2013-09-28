@@ -112,6 +112,8 @@ namespace FubuDocs.Topics
             var chain = new BehaviorChain();
             chain.Route = new RouteDefinition(Url);
             chain.UrlCategory.Category = Key;
+            
+
             IViewToken viewToken = File.ToViewToken();
 
             if (viewToken.ViewModel != typeof(Topic))

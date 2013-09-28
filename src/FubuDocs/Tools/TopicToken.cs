@@ -97,7 +97,7 @@ namespace FubuDocs.Tools
             assignOrders();
         }
 
-        public TopicToken Find(Guid id)
+        public TopicToken Find(string id)
         {
             return All().FirstOrDefault(x => x.Id == id);
         }
@@ -132,14 +132,15 @@ namespace FubuDocs.Tools
             return Children.FirstOrDefault(x => x.Key == key);
         }
 
-        public Guid Id = Guid.NewGuid();
+        public string Id = Guid.NewGuid().ToString();
         public string Key;
         public string Title;
         public string Url;
         public int Order;
         public string FullKey;
         public string Folder;
-
+        public string ProjectName { get; set; }
+        
         public bool IsIndex
         {
             get
@@ -179,19 +180,27 @@ namespace FubuDocs.Tools
         public void DeterminePaths(string containingFolder)
         {
             assignOrders();
-            var filename = "{0}.{1}".ToFormat(Order, Key);
+
+            var filename = Key.EqualsIgnoreCase("index") ? "index.spark" : "{0}.{1}".ToFormat(Order, Key);
 
             if (Children.Any())
             {
-                var folder = containingFolder.AppendPath(filename);
+                var folder = Key.EqualsIgnoreCase("index") ? containingFolder : containingFolder.AppendPath(filename);
                 File = folder.AppendPath("index.spark");
+                Folder = folder;
 
                 Children.Each(x => x.DeterminePaths(folder));
             }
             else
             {
+                Folder = containingFolder;
                 File = containingFolder.AppendPath(filename + ".spark");
             }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Key: {0}, Title: {1}, Url: {2}", Key, Title, Url);
         }
     }
 }
