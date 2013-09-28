@@ -16,10 +16,14 @@
 
     $('#add-topic-button').click(function(e) {
         controller.addTopic();
-        e.stopImmediatePropagation();
+            e.stopImmediatePropagation();
     });
 
+    $('#topic-tree').on('click', 'a.close', function(e) {
+        $(this).closest('li.dd-item').remove();
 
+        e.stopImmediatePropagation();
+    });
 });
 
 

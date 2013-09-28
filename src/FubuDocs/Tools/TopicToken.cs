@@ -169,7 +169,11 @@ namespace FubuDocs.Tools
         public static TopicToken LoadIndex(string directory)
         {
             var root = TopicLoader.LoadFromFolder(directory);
-            return new TopicToken(root.Index);
+            var token = new TopicToken(root.Index);
+
+            token.Key = "index";
+
+            return token;
         }
 
         public void DeterminePaths(string containingFolder)
@@ -177,17 +181,16 @@ namespace FubuDocs.Tools
             assignOrders();
             var filename = "{0}.{1}".ToFormat(Order, Key);
 
-            if (IsIndex)
+            if (Children.Any())
             {
-                var childFolder = containingFolder.AppendPath(filename);
-                File = childFolder.AppendPath("index.spark");
+                var folder = containingFolder.AppendPath(filename);
+                File = folder.AppendPath("index.spark");
 
-                Children.Each(x => x.DeterminePaths(childFolder));
+                Children.Each(x => x.DeterminePaths(folder));
             }
             else
             {
-                File = containingFolder.AppendPath(filename);
-                Children.Each(x => x.DeterminePaths(containingFolder));
+                File = containingFolder.AppendPath(filename + ".spark");
             }
         }
     }

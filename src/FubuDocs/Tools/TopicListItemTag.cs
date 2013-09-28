@@ -15,7 +15,13 @@ namespace FubuDocs.Tools
             Data("key", token.Key);
 
             Add("div").AddClass("dd-handle").AddClass("dd3-handle");
-            Add("div").AddClass("dd3-content").AddClass("topic-title").Text(token.Title);
+            var contentTag = Add("div").AddClass("dd3-content").AddClass("topic-title").Text(token.Title);
+
+            if (token.Key != "index")
+            {
+                contentTag.Add("a").AddClass("close").Data("dismiss", "alert").Text("&times;").Encoded(false);
+            }
+                
 
             Append(new TopicNodeTag(token.Children));
         }
