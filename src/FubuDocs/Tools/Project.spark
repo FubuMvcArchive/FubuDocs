@@ -113,11 +113,11 @@
       <div id="topic-editing-content">
       <h3>Modify the selected topic <em class="parent-title">the parent title</em></h3>
       <form class="form-inline topic-editor" id="inline-editor">
-        <input type="text" class="input-small title input-xlarge" placeholder="Title"/>
-        <input type="text" class="input-small key input-small" placeholder="Key"/>
+        <input type="text" class="input-small title input-xlarge" placeholder="Title" title="Title"/>
+        <input type="text" class="input-small key input-small" placeholder="Key" title="Key"/>
 
         <div class="input-append">
-          <input type="text" class="input-small url input-small" placeholder="Url"/>
+          <input type="text" class="input-small url input-small" placeholder="Url" title="Url"/>
           <small>
             <a href="#" id="change-current-topic">Change</a>
           </small>

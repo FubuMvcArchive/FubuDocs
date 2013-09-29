@@ -15,7 +15,8 @@ namespace FubuDocs.Tools
             Data("key", token.Key);
 
             Add("div").AddClass("dd-handle").AddClass("dd3-handle");
-            var contentTag = Add("div").AddClass("dd3-content").AddClass("topic-title").Text(token.Title);
+            var contentTag = Add("div").AddClass("dd3-content");
+            contentTag.Add("span").AddClass("topic-title").Text(token.Title);
 
             if (token.Key != "index")
             {
