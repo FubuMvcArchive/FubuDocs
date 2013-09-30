@@ -16,7 +16,7 @@
 
     $('#add-topic-button').click(function(e) {
         controller.addTopic();
-            e.stopImmediatePropagation();
+        e.stopImmediatePropagation();
     });
 
     $('#topic-tree').on('click', 'a.close', function(e) {
@@ -84,15 +84,17 @@ function TopicAdderView() {
     var existingEditor = new EditorPane($('#inline-editor'));
     $('input', existingEditor.form).change(showExistingButtons);
 
-    $('#change-current-topic').click(function() {
+    $('#change-current-topic').click(function(e) {
         existingEditor.commit();
         hideExistingButtons();
+        e.stopImmediatePropagation();
     });
 
 
-    $('#reset-current-topic').click(function () {
+    $('#reset-current-topic').click(function (e) {
         existingEditor.reset();
         hideExistingButtons();
+        e.stopImmediatePropagation();
     });
 
     var editor = new EditorPane(form);
@@ -259,7 +261,7 @@ function TopicLeaf(item) {
         $(self.item).attr('data-' + key, value);
         
         if (key == 'title') {
-            $('.topic-title', self.item).html(value);
+            $('.topic-title:first', self.item).html(value);
         }
     };
 

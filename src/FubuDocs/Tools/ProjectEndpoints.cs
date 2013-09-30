@@ -47,7 +47,8 @@ namespace FubuDocs.Tools
         {
             var existing = _tokenCache.TopicStructureFor(topic.ProjectName);
             var collector = new DeltaCollector(existing, topic);
-            collector.OrderedDeltas().Each(x => Debug.WriteLine(x));
+            var orderedDeltas = collector.OrderedDeltas().ToArray();
+            orderedDeltas.Each(x => Debug.WriteLine(x));
             
             //collector.ExecuteDeltas();
 
