@@ -27,7 +27,10 @@ namespace FubuDocsRunner.Running
 
             return docDirs
 				.Where(BottlesFilter.ShouldLoad)
-				.Select(reader.LoadFromFolder);
+				.Select(dir => {
+                    Console.WriteLine("Loading documentation from folder " + dir);
+				    return reader.LoadFromFolder(dir);
+				});
         }
     }
 }

@@ -38,7 +38,7 @@ namespace FubuDocsRunner.Running
             // dirty, dirty hack
             if (directories.Host.IsNotEmpty())
             {
-                FubuMvcPackageFacility.PhysicalRootPath = directories.Host.TrimEnd('/').TrimEnd('\\');
+                FubuMvcPackageFacility.PhysicalRootPath = directories.Host.TrimEnd('/').TrimEnd('\\').ToFullPath();
             }
 
             x.Loader(new DocumentPackageLoader(directories.Solution));

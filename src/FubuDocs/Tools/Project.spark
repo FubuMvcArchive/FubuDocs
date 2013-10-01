@@ -29,7 +29,7 @@
       </span>
     </h2>
 
-    <div id="alert" class="alert alert-info" style="display:none">The changes were successful, I'll be refreshing myself momentarily....</div>
+    <div id="alert" class="alert alert-info" style="display:none">The changes were successful, I'll be refreshing myself momentarily.  It isn't quick, so don't panic and watch the console window.</div>
 
 
 <ul class="nav nav-tabs" id="tabs">
@@ -62,7 +62,6 @@
     !{this.Modal("snippetModal").Label("Snippet View").AddCloseButton("Close")}
 
     <Script src="snippets.js" />
-    !{this.CodeSnippet("AddLine").Render(false)}
   </div>
 
   <div id="files" class="tab-pane">

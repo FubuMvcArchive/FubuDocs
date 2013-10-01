@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography;
+using Bottles;
 using FubuCore;
 using FubuCore.Util;
 using FubuDocs.Skinning;
