@@ -7,6 +7,7 @@
     var adderView = new TopicAdderView();
     var controller = new TopicController(adderView);
 
+    $("#alert").hide();
 
     $('#topic-tree').on('click', 'li.dd-item', function (e) {
         var leaf = new TopicLeaf(this);
@@ -45,13 +46,11 @@
            data: json,
            contentType: 'text/json',
            success: function(data, status, xhr) {
-                alert(data);
-                alert(status);
-                alert(xhr);
-            }
+               $("#alert").show();
+               $('#tabs').hide();
+               $('.tab-content').hide();
+           }
         });
-
-        $('#json').val(json);
     });
 });
 

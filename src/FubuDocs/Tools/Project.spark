@@ -29,6 +29,7 @@
       </span>
     </h2>
 
+    <div id="alert" class="alert alert-info" style="display:none">The changes were successful, I'll be refreshing myself momentarily....</div>
 
 
 <ul class="nav nav-tabs" id="tabs">
@@ -169,8 +170,6 @@
             <button id="add-topic-button" tabindex="5">Add Topic</button>
           </div>
         </div>
-
-        <textarea rows="20" style="width:100%" id="json"></textarea>
       </div>
       </div>
       
@@ -189,10 +188,8 @@
     <Script src="jquery.nestable.js" />
     <Script src="twitter/bootstrap-tabs.js" />
     <Scripts />
-
-    !{new FubuDocs.Tools.AutoReloadingTag("/minutes", 1000)}
-    
-    
     <commonFooter />
+    
+    !{new FubuMVC.Core.Diagnostics.AutoReloadingTag()}
   </body>
 </html>

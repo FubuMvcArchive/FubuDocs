@@ -45,3 +45,4 @@ src/FubuDocs/snippets
 src/FubuDocs.Docs/snippets
 src/Host/fubu-content
 fubudocs-export
+src/FubuDocsHarness/refresh.config
