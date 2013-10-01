@@ -30,9 +30,6 @@
         window.location.href = window.location.href;
     });
 
-    
-
-
     $('#submit').click(function() {
         var clientModel = $('#topic-tree').nestable('serialize');
         var serverModel = transformClientModel(clientModel[0]);
@@ -51,7 +48,23 @@
                $('.tab-content').hide();
            }
         });
+   });
+
+
+    $('#expand-all').click(function() {
+        $('#topic-tree').nestable("expandAll");
     });
+
+    $('#collapse-all').click(function () {
+        $('#topic-tree').nestable("collapseAll");
+    });
+
+    $('#topic-tree').nestable("collapseAll");
+    var firstItem = $('li.dd-item:first');
+    var plugin = $('#topic-tree').data("nestable");
+    plugin.expandItem(firstItem);
+
+    firstItem.click();
 });
 
 function transformClientModel(client) {

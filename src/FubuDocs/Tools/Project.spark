@@ -101,9 +101,13 @@
     </div>
     <div class="span6 topic-editing">
       <p>
+        <button id="expand-all" class="btn">Expand All</button>
+        <button id="collapse-all" class="btn">Collapse All</button>
+
+        <span style="margin-right:25px">      </span>
+        
         <button id="submit" class="btn" data-url="!{Model.SubmitUrl}">Submit Changes</button>
         <button id="reset" class="btn">Reset</button>
-        
       </p>
       
       <div style="display:none">

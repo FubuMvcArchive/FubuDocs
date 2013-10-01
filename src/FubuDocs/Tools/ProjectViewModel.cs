@@ -13,9 +13,11 @@ namespace FubuDocs.Tools
                 Title = "New Topic",
                 Url = string.Empty,
                 Key = string.Empty,
-                Id = Guid.Empty.ToString()
+                Id = Guid.Empty.ToString(),
+                
             });
 
+            TopicTemplate.AddClass("new-topic");
             TopicTemplate.Id("new-leaf");
         }
 

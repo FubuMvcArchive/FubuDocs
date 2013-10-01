@@ -229,7 +229,11 @@ li.active-topic > div.dd3-content
     background: none !important;
 }
 
-.topic-editing {
+li.new-topic > div.dd3-content {
+    color: green !important;
+}
+
+.topic-editing .topic-title {
     top: 20px;
 }
 
