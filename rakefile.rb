@@ -31,3 +31,8 @@ load File.expand_path('../fubudocs/Rakefile', __FILE__)
 task :open => [:compile] do
   sh 'src/FubuDocsRunner/bin/Debug/FubuDocsRunner.exe run --open'
 end
+
+desc "Outputs the command line usage"
+task :dump_usages => [:compile] do
+  sh 'src/FubuDocsRunner/bin/Debug/FubuDocsRunner.exe dump-usages fubudocs src/FubuDocs.Docs/fubudocs.cli.xml'
+end

@@ -189,6 +189,10 @@
     <Script src="jquery.nestable.js" />
     <Script src="twitter/bootstrap-tabs.js" />
     <Scripts />
+
+    !{new FubuDocs.Tools.AutoReloadingTag("/minutes", 1000)}
+    
+    
     <commonFooter />
   </body>
 </html>

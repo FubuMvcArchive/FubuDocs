@@ -3,112 +3,8 @@
   <ApplicationName>fubudocs</ApplicationName>
   <Commands>
     <CommandReport>
-      <Name>export</Name>
-      <Description>Exports static html content for all of the documentation projects in the specified folder</Description>
-      <Arguments>
-        <ArgumentReport>
-          <Name>output</Name>
-          <Description>The directory to output the application</Description>
-        </ArgumentReport>
-      </Arguments>
-      <Flags>
-        <FlagReport>
-          <UsageDescription>[-r, --root &lt;rootpath&gt;]</UsageDescription>
-          <Description>Override the root path forcing all urls to be relative (e.g., 'make everything relative to /ripple')</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-v, --verbose]</UsageDescription>
-          <Description>Output report of all downloaded files</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-n, --no-bottling]</UsageDescription>
-          <Description>Disables the bottle and code snippet scanning while this command runs</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-u, --url &lt;ur&gt;]</UsageDescription>
-          <Description>If set, the relative starting url at which to open the browser</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-b, --build &lt;build&gt;]</UsageDescription>
-          <Description>If you are running a class library, sets the preference for the profile to load.  As in bin/[BuildFlag].  Default is debug</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-p, --port &lt;port&gt;]</UsageDescription>
-          <Description>IP Port.  Default is 5500</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-a, --application &lt;application&gt;]</UsageDescription>
-          <Description>Specific name of an IApplicationSource class that builds this application</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-d, --directory &lt;directory&gt;]</UsageDescription>
-          <Description>Overrides the directory that is the physical path of the running fubumvc application</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-o, --open]</UsageDescription>
-          <Description>Start the default browser to the home page of this application</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-w, --watched]</UsageDescription>
-          <Description>Open a 'watched' browser with WebDriver to refresh the page on content or application recycles</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-b, --browser Chrome|Firefox]</UsageDescription>
-          <Description>Browser to use in watched.  Default is Firefox because it's more stable. </Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-p, --production-mode]</UsageDescription>
-          <Description>Unless this flag is set, the fubumvc application will run in Development mode</Description>
-        </FlagReport>
-      </Flags>
-      <Usages>
-        <UsageReport>
-          <Description>Exports static html content for all of the documentation projects in the specified folder</Description>
-          <Usage>fubudocs export &lt;output&gt; [-r, --root &lt;rootpath&gt;] [-v, --verbose] [-n, --no-bottling] [-u, --url &lt;ur&gt;] [-b, --build &lt;build&gt;] [-p, --port &lt;port&gt;] [-a, --application &lt;application&gt;] [-d, --directory &lt;directory&gt;] [-o, --open] [-w, --watched] [-b, --browser Chrome|Firefox] [-p, --production-mode]</Usage>
-        </UsageReport>
-      </Usages>
-    </CommandReport>
-    <CommandReport>
-      <Name>reorder</Name>
-      <Description>Reorder the topics and topic folders within the current directory</Description>
-      <Arguments />
-      <Flags>
-        <FlagReport>
-          <UsageDescription>[-f, --file]</UsageDescription>
-          <Description>Directs the command to open a temporary file in which to specify the reordering</Description>
-        </FlagReport>
-      </Flags>
-      <Usages>
-        <UsageReport>
-          <Description>Reorder the topics and topic folders within the current directory</Description>
-          <Usage>fubudocs reorder [-f, --file]</Usage>
-        </UsageReport>
-      </Usages>
-    </CommandReport>
-    <CommandReport>
-      <Name>list</Name>
-      <Description>Lists the topics and/or todo's in a document project directory</Description>
-      <Arguments>
-        <ArgumentReport>
-          <Name>mode</Name>
-          <Description>Choose what gets listed for the current document directory.  Default is 'topics'</Description>
-        </ArgumentReport>
-      </Arguments>
-      <Flags />
-      <Usages>
-        <UsageReport>
-          <Description>Lists all the topics under this directory</Description>
-          <Usage>fubudocs list </Usage>
-        </UsageReport>
-        <UsageReport>
-          <Description>Lists the selected reports for the topics under this directory</Description>
-          <Usage>fubudocs list topics|all|todo</Usage>
-        </UsageReport>
-      </Usages>
-    </CommandReport>
-    <CommandReport>
       <Name>bottle</Name>
-      <Description>Packages up a documentation project as a FubuWorld bottle</Description>
+      <Description>Packages up a documentation project as a FubuDocs bottle</Description>
       <Arguments />
       <Flags>
         <FlagReport>
@@ -122,8 +18,144 @@
       </Flags>
       <Usages>
         <UsageReport>
-          <Description>Packages up a documentation project as a FubuWorld bottle</Description>
+          <Description>Packages up a documentation project as a FubuDocs bottle</Description>
           <Usage>fubudocs bottle [-n, --no-zip] [-d, --directory &lt;directory&gt;]</Usage>
+        </UsageReport>
+      </Usages>
+    </CommandReport>
+    <CommandReport>
+      <Name>export</Name>
+      <Description>Exports static html content for all of the documentation projects in the specified folder</Description>
+      <Arguments>
+        <ArgumentReport>
+          <Name>output</Name>
+          <Description>The directory to output the exported content</Description>
+        </ArgumentReport>
+      </Arguments>
+      <Flags>
+        <FlagReport>
+          <UsageDescription>[-m, --mode GhPagesRooted|GhPagesChildFolder|HtmlDump]</UsageDescription>
+          <Description>Change the way url's are treated in the exported html content</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-i, --include-projects &lt;includeprojects&gt;]</UsageDescription>
+          <Description>Comma separate list of the projects to include in the export (e.g., fubudocs, myproject)</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-m, --message &lt;message&gt;]</UsageDescription>
+          <Description>Specify the git commit message if exporting directly to gh-pages</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-c, --clean]</UsageDescription>
+          <Description>Delete any existing content in the export directory first</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-r, --root]</UsageDescription>
+          <Description>If selected, all url's in the exported pages will be absolute url's</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-n, --no-bottling]</UsageDescription>
+          <Description>Disables the bottle and code snippet scanning while this command runs</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-w, --watched]</UsageDescription>
+          <Description>Open a 'watched' browser with WebDriver to refresh the page on content or application recycles</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-b, --browser Chrome|Firefox]</UsageDescription>
+          <Description>Browser to use in watched.  Default is Firefox because it's more stable. </Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-b, --build &lt;build&gt;]</UsageDescription>
+          <Description>If you are running a class library, sets the preference for the profile to load.  As in bin/[BuildFlag].  Default is debug</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-o, --open]</UsageDescription>
+          <Description>Start the default browser to the home page of this application</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-h, --host &lt;host&gt;]</UsageDescription>
+          <Description>Specify the directory for a hosting application for your documentation.  Will be loaded as a FubuMVC Bottle</Description>
+        </FlagReport>
+      </Flags>
+      <Usages>
+        <UsageReport>
+          <Description>Exports static html content for all of the documentation projects in the specified folder</Description>
+          <Usage>fubudocs export &lt;output&gt; [-m, --mode GhPagesRooted|GhPagesChildFolder|HtmlDump] [-i, --include-projects &lt;includeprojects&gt;] [-m, --message &lt;message&gt;] [-c, --clean] [-r, --root] [-n, --no-bottling] [-w, --watched] [-b, --browser Chrome|Firefox] [-b, --build &lt;build&gt;] [-o, --open] [-h, --host &lt;host&gt;]</Usage>
+        </UsageReport>
+      </Usages>
+    </CommandReport>
+    <CommandReport>
+      <Name>smoke</Name>
+      <Description>Tests each documentation endpoint for Http errors for the doc projects in this folder</Description>
+      <Arguments />
+      <Flags>
+        <FlagReport>
+          <UsageDescription>[-n, --no-bottling]</UsageDescription>
+          <Description>Disables the bottle and code snippet scanning while this command runs</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-w, --watched]</UsageDescription>
+          <Description>Open a 'watched' browser with WebDriver to refresh the page on content or application recycles</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-b, --browser Chrome|Firefox]</UsageDescription>
+          <Description>Browser to use in watched.  Default is Firefox because it's more stable. </Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-b, --build &lt;build&gt;]</UsageDescription>
+          <Description>If you are running a class library, sets the preference for the profile to load.  As in bin/[BuildFlag].  Default is debug</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-o, --open]</UsageDescription>
+          <Description>Start the default browser to the home page of this application</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-h, --host &lt;host&gt;]</UsageDescription>
+          <Description>Specify the directory for a hosting application for your documentation.  Will be loaded as a FubuMVC Bottle</Description>
+        </FlagReport>
+      </Flags>
+      <Usages>
+        <UsageReport>
+          <Description>Tests each documentation endpoint for Http errors for the doc projects in this folder</Description>
+          <Usage>fubudocs smoke [-n, --no-bottling] [-w, --watched] [-b, --browser Chrome|Firefox] [-b, --build &lt;build&gt;] [-o, --open] [-h, --host &lt;host&gt;]</Usage>
+        </UsageReport>
+      </Usages>
+    </CommandReport>
+    <CommandReport>
+      <Name>run</Name>
+      <Description>Runs a FubuDocs documentation project with Katana</Description>
+      <Arguments />
+      <Flags>
+        <FlagReport>
+          <UsageDescription>[-n, --no-bottling]</UsageDescription>
+          <Description>Disables the bottle and code snippet scanning while this command runs</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-w, --watched]</UsageDescription>
+          <Description>Open a 'watched' browser with WebDriver to refresh the page on content or application recycles</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-b, --browser Chrome|Firefox]</UsageDescription>
+          <Description>Browser to use in watched.  Default is Firefox because it's more stable. </Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-b, --build &lt;build&gt;]</UsageDescription>
+          <Description>If you are running a class library, sets the preference for the profile to load.  As in bin/[BuildFlag].  Default is debug</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-o, --open]</UsageDescription>
+          <Description>Start the default browser to the home page of this application</Description>
+        </FlagReport>
+        <FlagReport>
+          <UsageDescription>[-h, --host &lt;host&gt;]</UsageDescription>
+          <Description>Specify the directory for a hosting application for your documentation.  Will be loaded as a FubuMVC Bottle</Description>
+        </FlagReport>
+      </Flags>
+      <Usages>
+        <UsageReport>
+          <Description>Runs a FubuDocs documentation project with Katana</Description>
+          <Usage>fubudocs run [-n, --no-bottling] [-w, --watched] [-b, --browser Chrome|Firefox] [-b, --build &lt;build&gt;] [-o, --open] [-h, --host &lt;host&gt;]</Usage>
         </UsageReport>
       </Usages>
     </CommandReport>
@@ -153,124 +185,6 @@
         <UsageReport>
           <Description>Scrapes the entire solution for files with code snippets and places those files under the '/snippets' directory of the documentation project</Description>
           <Usage>fubudocs snippets [-s, --scan] [-q, --quiet] [-l, --list] [-d, --directory &lt;directory&gt;]</Usage>
-        </UsageReport>
-      </Usages>
-    </CommandReport>
-    <CommandReport>
-      <Name>add-topics</Name>
-      <Description>Add one or more topics to a directory fast</Description>
-      <Arguments />
-      <Flags />
-      <Usages>
-        <UsageReport>
-          <Description>Add one or more topics to a directory fast</Description>
-          <Usage>fubudocs add-topics </Usage>
-        </UsageReport>
-      </Usages>
-    </CommandReport>
-    <CommandReport>
-      <Name>smoke</Name>
-      <Description>Tests each documentation endpoint for Http errors for the doc projects in this folder</Description>
-      <Arguments />
-      <Flags>
-        <FlagReport>
-          <UsageDescription>[-n, --no-bottling]</UsageDescription>
-          <Description>Disables the bottle and code snippet scanning while this command runs</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-u, --url &lt;ur&gt;]</UsageDescription>
-          <Description>If set, the relative starting url at which to open the browser</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-b, --build &lt;build&gt;]</UsageDescription>
-          <Description>If you are running a class library, sets the preference for the profile to load.  As in bin/[BuildFlag].  Default is debug</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-p, --port &lt;port&gt;]</UsageDescription>
-          <Description>IP Port.  Default is 5500</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-a, --application &lt;application&gt;]</UsageDescription>
-          <Description>Specific name of an IApplicationSource class that builds this application</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-d, --directory &lt;directory&gt;]</UsageDescription>
-          <Description>Overrides the directory that is the physical path of the running fubumvc application</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-o, --open]</UsageDescription>
-          <Description>Start the default browser to the home page of this application</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-w, --watched]</UsageDescription>
-          <Description>Open a 'watched' browser with WebDriver to refresh the page on content or application recycles</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-b, --browser Chrome|Firefox]</UsageDescription>
-          <Description>Browser to use in watched.  Default is Firefox because it's more stable. </Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-p, --production-mode]</UsageDescription>
-          <Description>Unless this flag is set, the fubumvc application will run in Development mode</Description>
-        </FlagReport>
-      </Flags>
-      <Usages>
-        <UsageReport>
-          <Description>Tests each documentation endpoint for Http errors for the doc projects in this folder</Description>
-          <Usage>fubudocs smoke [-n, --no-bottling] [-u, --url &lt;ur&gt;] [-b, --build &lt;build&gt;] [-p, --port &lt;port&gt;] [-a, --application &lt;application&gt;] [-d, --directory &lt;directory&gt;] [-o, --open] [-w, --watched] [-b, --browser Chrome|Firefox] [-p, --production-mode]</Usage>
-        </UsageReport>
-      </Usages>
-    </CommandReport>
-    <CommandReport>
-      <Name>run</Name>
-      <Description>Runs a FubuDocs documentation project with Katana</Description>
-      <Arguments />
-      <Flags>
-        <FlagReport>
-          <UsageDescription>[-n, --no-bottling]</UsageDescription>
-          <Description>Disables the bottle and code snippet scanning while this command runs</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-u, --url &lt;ur&gt;]</UsageDescription>
-          <Description>If set, the relative starting url at which to open the browser</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-b, --build &lt;build&gt;]</UsageDescription>
-          <Description>If you are running a class library, sets the preference for the profile to load.  As in bin/[BuildFlag].  Default is debug</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-p, --port &lt;port&gt;]</UsageDescription>
-          <Description>IP Port.  Default is 5500</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-a, --application &lt;application&gt;]</UsageDescription>
-          <Description>Specific name of an IApplicationSource class that builds this application</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-d, --directory &lt;directory&gt;]</UsageDescription>
-          <Description>Overrides the directory that is the physical path of the running fubumvc application</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-o, --open]</UsageDescription>
-          <Description>Start the default browser to the home page of this application</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-w, --watched]</UsageDescription>
-          <Description>Open a 'watched' browser with WebDriver to refresh the page on content or application recycles</Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-b, --browser Chrome|Firefox]</UsageDescription>
-          <Description>Browser to use in watched.  Default is Firefox because it's more stable. </Description>
-        </FlagReport>
-        <FlagReport>
-          <UsageDescription>[-p, --production-mode]</UsageDescription>
-          <Description>Unless this flag is set, the fubumvc application will run in Development mode</Description>
-        </FlagReport>
-      </Flags>
-      <Usages>
-        <UsageReport>
-          <Description>Runs a FubuDocs documentation project with Katana</Description>
-          <Usage>fubudocs run [-n, --no-bottling] [-u, --url &lt;ur&gt;] [-b, --build &lt;build&gt;] [-p, --port &lt;port&gt;] [-a, --application &lt;application&gt;] [-d, --directory &lt;directory&gt;] [-o, --open] [-w, --watched] [-b, --browser Chrome|Firefox] [-p, --production-mode]</Usage>
         </UsageReport>
       </Usages>
     </CommandReport>
