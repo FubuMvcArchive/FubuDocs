@@ -7,13 +7,30 @@
     var adderView = new TopicAdderView();
     var controller = new TopicController(adderView);
 
-    $("#alert").hide();
-
     $('#topic-tree').on('click', 'li.dd-item', function (e) {
         var leaf = new TopicLeaf(this);
         controller.select(leaf);
+
+        $('#pin-current').show();
+
         e.stopImmediatePropagation();
     });
+
+    /*
+    $('#pin-current').click(function () {
+        var leaf = $(controller.current).get(0);
+        while (leaf.sib)
+        
+        $('#unpin').show();
+        $('#pin-current').hide();
+    });
+
+    $('#unpin').click(function() {
+        $('li.dd-item').show();
+        $('#unpin').hide();
+        $('#pin-current').show();
+    });
+    */
 
     $('#add-topic-button').click(function(e) {
         controller.addTopic();
@@ -160,7 +177,7 @@ function TopicController(adder) {
 
         self.current = leaf;
         leaf.markActive();
-        
+
         adder.activate(leaf);
     };
 

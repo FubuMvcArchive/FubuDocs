@@ -96,20 +96,23 @@
 
 <div id="topics" class="tab-pane container-fluid" >
   <div class="row-fluid">
+    <div class="span12 topic-bar">
+<!--
+      <button id="pin-current" style="display:none" title="To conserve space, this will hide everything but the current topic and its children">Pin</button>
+      <button id="unpin" style="display:none" title="Remove pinning and display all">Remove Pin</button>
+-->      
+      <button id="expand-all">Expand All</button>
+      <button id="collapse-all">Collapse All</button>
+
+      <button id="submit" data-url="!{Model.SubmitUrl}">Submit Changes</button>
+      <button id="reset">Reset</button>
+    </div>
+  </div>
+  <div class="row-fluid">
     <div class="span6 topic-pane">
       !{Model.Topics}
     </div>
     <div class="span6 topic-editing">
-      <p>
-        <button id="expand-all" class="btn">Expand All</button>
-        <button id="collapse-all" class="btn">Collapse All</button>
-
-        <span style="margin-right:25px">      </span>
-        
-        <button id="submit" class="btn" data-url="!{Model.SubmitUrl}">Submit Changes</button>
-        <button id="reset" class="btn">Reset</button>
-      </p>
-      
       <div style="display:none">
         !{Model.TopicTemplate}
       </div>

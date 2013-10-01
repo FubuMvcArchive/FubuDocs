@@ -1,10 +1,10 @@
 ﻿<!--Title: Topics-->
-
+<!--Url: working-with-topics-->
 
 
 <markdown>
 
-FubuDocs was heavily influenced by the navigation and organization structure from [readthedocs](https://readthedocs.org).  As such, we had a couple goals in mind:
+FubuDocs was heavily influenced by the navigation and organization structure from [readthedocs.org](https://readthedocs.org).  As such, we had a couple goals in mind:
 
 1. Make it easy and low ceremony to author content
 1. Provide a sensible and maintainable way to establish navigation and organizational structure
@@ -33,9 +33,9 @@ Content here....
 &lt;/markdown&gt;
 </pre>
 
-The title of the topic is embedded as an HTML comment in the pattern <code>&lt;!--Title: [the title]--&gt;</code> anywhere in the file. Using this wellknown comment structure rather than an html element allows FubuDocs to reuse the title for a topic in navigation structures, the actual <code>&lt;title&gt;</code> element on the page, and in the topic "chrome" that FubuDocs wraps around the topic content. 
+The title of the topic is embedded as an HTML comment in the pattern <code>&lt;!--Title: [the title]--&gt;</code> anywhere in the file. Using this well known comment structure rather than an html element allows FubuDocs to reuse the title for a topic in navigation structures, the actual <code>&lt;title&gt;</code> element on the page, and in the topic "chrome" that FubuDocs wraps around the topic content. 
 
-The <code>&lt;markdown&gt;</code> element is not mandatory, but you will probably want to use markdown over html.
+The <code>&lt;markdown&gt;</code> element is not mandatory, but you will probably want to use markdown over html.  The custom Spark bindings in FubuDocs are _mostly_ usable from within markdown markup as well.
 
 </Section>
 
@@ -102,7 +102,7 @@ Topic files are ordered within a folder by these rules:
 </Section>
 
 <Section title="Authoring Toolbar" id="authoring">
-When running in _development_ mode, you'll see an _authoring toolbar_ in the browser for the current topic and documentation project. The file name is a link to open the current topic in a text editor.  The other links lead to commonly used FubuDocs tools and reports.
+When running in _development_ mode, you'll see an _authoring toolbar_ in the left pane of the page for the current topic and documentation project. The file name is a link to open the current topic in a text editor.  The other link leads to the project page described in the next topic.
 </Section>
 
 <Section title="Sample Topic" id="sample">

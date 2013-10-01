@@ -1,16 +1,40 @@
-<!--Title: Authoring Tools-->
+<!--Title: The Topic Manager Tool-->
 
 <markdown>
-If you are running a documentation project in development mode ("development" mode is the default for <code>fubudocs run</code>), you will see an authoring toolbar in each topic page just above the title.  That toolbar contains:
+If you are running a documentation project in development mode ("development" mode is the default for <code>fubudocs run</code>), you will see an authoring toolbox in each topic page in the left pane.  
 
-1. A link showing the full path to the topic on your computer.  Clicking this link will open the topic file in a text editor.  You can change the text editor in the _Tools_ page.
-1. On the top right is the last modified timestamp of the topic file at the time that the page was rendered.
-1. A link to the _Tools_ page.  This page allows you to override the default Notepad as your text editor and shows you all the active projects loaded into the running application.
-1. A link to the current project page.  The project page shows you all the topics, their keys, url's, and a link to edit each file.  
-1. A link to the TODO's page that acts like the _Task List_ window in Visual Studio.Net
-1. A link to the Code Snippets page that shows you all the code snippets by name available to the currently loaded documentation projects
-1. A link to the View Helpers documentation page as a convenience
-  
+The link to the _[Project Name] Project Page_ will take you to the Topic Manager tool.
+
+<Section title="Topics" id="topics">
+The topics tab presents an editable treeview of the entire topic structure of the current project.  You can use the treeview control to organize the navigation structure, add new children topics, delete topics, and edit the title and url of existing topics.
+
+No changes are committed until you click the _Submit Changes_ button.  After submitting the changes, the application will completely recycle and the page will refresh itself when it detects that the server side has recycled.
+
+<div class="alert alert-info">I strongly recommend some caution about large scale reorganizations of the topic structure.  Your best undo strategy is probably going to be combination of granular commits and good ol'fashioned <code>git checkout --force</code></div>
+
+</Section>
+
+<Section title="Properties" id="properties">
+This is simply a data entry screen to edit the project's <code>project.xml</code> file for properties like the project tag line and the url to the user group.
+</Section>
+
+<Section title="Task List" id="tasks">
+This tab presents a table of all the TODO's in the topic pages of the current project, with links to open the containing files.  You can add your own TODO's to a topic page with just text like:
+
+<pre>
+	TODO(I should really do something here)
+</pre>
+
+where the text inside the parantheses is the TODO message.  
+</Section>
+
+<Section title="Code Snippets" id="snippets">
+The Code Snippets tab just shows you the known code snippets by name in the documentation project with links to the containing files and links that preview the snippets.
+</Section>
+
+<Section title="Files" id="files">
+Where the _Topics_ tab shows you all the topics in the tree structure, the _Files_ tab just lists all the existing topics in tabular form with the title, the key you'd use (minus the project name) inside of <code>&lt;TopicLink&gt;</code>, and a link to edit the actual file.
+</Section>
 
 </markdown>
 

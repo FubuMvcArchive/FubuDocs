@@ -2,6 +2,6 @@
 
 <markdown>
   <Command app="fubudocs" command="snippets">
-
+You won't have to run this command very often.  The <code>fubudocs run</code> command does this automatically, and there's an option to trigger snippet updates from the run console.
   </Command>
 </markdown>

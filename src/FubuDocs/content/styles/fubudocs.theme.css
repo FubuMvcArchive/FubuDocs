@@ -153,7 +153,6 @@ pre ul, pre ol {
 	margin-bottom: 40px;
 	font: 300 24px/30px Oswald, Arial, Helvetica, sans-serif;
 	color: #C30;
-	text-transform: uppercase;
 }
 .lead strong {
 	font-weight: 400;
@@ -165,7 +164,6 @@ pre ul, pre ol {
 	border: none;
 	font: 300 18px/20px Oswald, Arial, Helvetica, sans-serif;
 	color: #FFF;
-	text-transform: uppercase;
 	transition: all linear 0.15s;
 	-ms-transition: all linear 0.15s;
 	-moz-transition: all linear 0.15s;
@@ -396,7 +394,6 @@ a.thumb:hover img {
 .accordion-heading .accordion-toggle {
 	padding: 9px 10px;
 	font: 300 16px/20px Oswald, Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
 }
 .accordion-inner {
 	padding: 4px 10px 5px;
@@ -606,7 +603,6 @@ body.boxed .nav-tabs .dropdown a.dropdown-toggle {
 	font: 300 24px/110px Oswald, Arial, Helvetica, sans-serif;
 	color: #FFF;
 	text-align: center;
-	text-transform: uppercase;
 	display: inline-block;
 	transition: all linear 0.15s;
 	-ms-transition: all linear 0.15s;
@@ -782,7 +778,6 @@ body.boxed .navbar {
 	padding: 10px 50px 10px 14px;
 	border-left: 1px solid #E5E5E5;
 	font: 400 18px/35px Oswald, Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
 	color: #666;
 	cursor: default;
 	position: relative;
@@ -804,7 +799,6 @@ body.boxed .navbar {
 }
 .navbar .navbar-inner .nav li span {
 	font: 300 12px/15px Oswald, Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
 	color: #999;
 	display: block;
 }
@@ -878,7 +872,6 @@ body.boxed .navbar .navbar-inner .nav li ul {
 	border-top: none;
 	font-weight: 400;
 	color: #CCC;
-	text-transform: uppercase;
 }
 .navbar .navbar-inner .nav li ul li a {
 	font: normal 12px/34px Arial, Helvetica, sans-serif;
@@ -1238,7 +1231,6 @@ body.boxed .footer hr {
 	font: 300 12px/50px Oswald, Arial, Helvetica, sans-serif;
 	color: #FFF;
 	text-align: center;
-	text-transform: uppercase;
 	cursor: pointer;
 	display: none;
 	opacity: 0.25;

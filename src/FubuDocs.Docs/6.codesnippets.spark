@@ -6,12 +6,12 @@ Unlike normal FubuMVC.CodeSnippets usage, the fubudocs command line tool can fin
 
 See the docs for <ProjectLink name="FubuMVC.CodeSnippets" /> for more information.
 
+<Info>LinkToCodeFile and EmbedFile will only work for files included in the documentation project.</Info>
+
+
 <Section title="Bindings" id="bindings">
 
 FubuDocs adds a couple Spark bindings to make code snippet usage a little easier:
-
-<Info>LinkToCodeFile and EmbedFile will only work for files included in the documentation project.</Info>
-
 
 Display a single code snippet:
 

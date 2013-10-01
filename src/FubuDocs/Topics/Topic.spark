@@ -44,15 +44,18 @@
             <LeftTopicNavigation />
           </div>
           <div class="span9">
-            <h1 class="no-margin"><TopicTitle /></h1>
-            <hr class="header-line"></hr>
+
+            <if condition="this.TopicTitle() != 'Index'">
+              <h1 class="no-margin"><TopicTitle /></h1>
+              <hr class="header-line topic-line"></hr>
+            </if>
 
             <InnerContent />
           </div>
         </div>
       </div>
     </div>
-    
+
     <commonFooter />
   </body>
 </html>

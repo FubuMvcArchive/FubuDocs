@@ -16,6 +16,13 @@ div.single-command-usage {
 
 section h4 span.section-header {
     margin-right: 10px;
+
+}
+
+section h4 {
+    margin-bottom: 10px;
+    color: #CC3300;
+    font-weight: bold;
 }
 
 i.command-description {
@@ -34,7 +41,17 @@ i.command-description {
 text-align: right;
 }
 
-.tag-line {
+hr.topic-line {
+    margin-bottom: 0px !important;
+}
+
+hr.topic-line + p {
+    margin-top: 20px;
+}
+
+hr.topic-line + p + section {
+    padding-top: 10px !important;
+    margin-top: 0px !important;
 }
 
 .header-line {
@@ -55,7 +72,6 @@ text-align: right;
     padding: 0px 5px;
     background-color: #CCC;
     font: 300 16px/30px Oswald, Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
     display: inline-block;
     margin-bottom:5px;
     cursor:default;
@@ -235,5 +251,14 @@ li.new-topic > div.dd3-content {
 
 .topic-editing .topic-title {
     top: 20px;
+}
+
+.topic-bar button {
+    height: 30px;
+    font-size: small;
+    margin-right: 20px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    min-width: 75px;
 }
 

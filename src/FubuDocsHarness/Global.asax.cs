@@ -61,11 +61,12 @@ namespace FubuDocsHarness
         }
     }
 
-    public class HomeEndpoint
-    {
-        public FubuContinuation Index()
-        {
-            return FubuContinuation.RedirectTo("/project/fubudocs");
-        }
-    }
+//    public class HomeEndpoint
+//    {
+//        public FubuContinuation Index()
+//        {
+//            return FubuContinuation.RedirectTo("fubudocs/index");
+//            //return FubuContinuation.RedirectTo("/project/fubudocs");
+//        }
+//    }
 }

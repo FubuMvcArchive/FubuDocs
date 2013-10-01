@@ -14,7 +14,9 @@
     <div class="row">
       <div class="span8">
         <em>
-          FubuDocs is a tool that is built on top of FubuMVC and other members of the Fubu family of frameworks. It is designed to help you keep your documentation right alongside your actual code so that <strong>nothing</strong> gets out of sync.<br>
+          FubuDocs is a tool, heavily influenced by <a href="https://readthedocs.org/">readthedocs.org</a> for publishing and maintaining living technical documentation for code-centric projects.  
+		  
+		  FubuDocs is built on top of FubuMVC and the <a href="http://sparkviewengine.com/">Spark view engine</a>, but it's perfectly usable in other contexts and doesn't make (m)any assumptions about your codebase. It is designed to help you keep your documentation right alongside your actual code so that <strong>nothing</strong> gets out of sync.<br>
             <br>
               To make hosting and deployment <strong>simple</strong>, it exports all of the rendered documentation into plain ol' static html. Host it on GitHub pages, dropbox, wherever you'd like.
             </em>

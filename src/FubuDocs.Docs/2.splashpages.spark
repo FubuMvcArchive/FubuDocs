@@ -1,7 +1,7 @@
 ﻿<!--Title: Splash Pages-->
 
 <markdown>
-You can create a "splash" page for a project separate from the index page by just putting a spark view named _splash.spark_ in the root of your documentation page. If _splash.spark_ exists, it will be treated as the root page for the documentation project.  In this case the url for the splash page will be _[project name]_ and the url
+You can create a "splash" page for a project separate from the index page by just putting a spark view named _splash.spark_ in the root of your documentation project. If _splash.spark_ exists, it will be treated as the root page for the documentation project.  In this case the url for the splash page will be _[project name]_ and the url
 for the _index.spark_ page will be _[project name]/index_.  Again taking _FubuCore_ as the example, the splash page url would be _/fubucore_ and the index page _/fubucore/index_. It's up to you to add a link in the splash page to the index page -- typically like:
 
 <Snippet name="learn-more"/>
@@ -9,5 +9,5 @@ for the _index.spark_ page will be _[project name]/index_.  Again taking _FubuCo
 
 There is no need for any kind of master page layout declaration or any view model declaration.  You do have access to all of the normal view helpers in FubuDocs and FubuMVC itself.
 
-See the [FubuDocs splash page](https://github.com/DarthFubuMVC/FubuWorld/blob/master/src/FubuWorld.Docs/splash.spark) for an example.
+See the [FubuDocs splash page](https://github.com/DarthFubuMVC/FubuDocs/blob/master/src/FubuDocs.Docs/splash.spark) for an example.
 </markdown>

@@ -7,12 +7,16 @@
 				<h2>!{Model.Name}</h2>
 				<p class="lead tag-line half-margin">!{Model.TagLine}</p>
 				<p class="margin">!{Model.Description}</p>
-				<div class="accordion-group">
+				
+        <!--
+        <div class="accordion-group">
 					<div class="accordion-heading">
 						<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#nugets">
 							Associated NuGets
 						</a>
 					</div>
+          
+          
 					<if condition="Model.Nugets.Any()">
 						<div id="nugets" class="accordion-body collapse">
 							<div class="accordion-inner">
@@ -29,16 +33,22 @@
 						</div>
 					</if>
 				</div>
+        
 			</div>
 			<div class="span4" id="status-widget">
+        <!--
 				<h3 class="half-margin">Build Status</h3>
 				<ul class="build-list" id="build-widget" data-build-type="!{Model.TeamCityBuildType}">
 				</ul>
-				<h3 class="half-margin" id="community">Community</h3>
-				<a class="btn btn-info" href="!{Model.GitHubPage}">Github</a>
-				<a class="btn btn-inverse" href="!{Model.UserGroupUrl}">Mailing List</a>
-			</div>
+        -->
+      </div>
+        <div class="span6">
+          <h3 class="half-margin" id="community">Community</h3>
+          <a class="btn btn-info" href="!{Model.GitHubPage}">Github</a>
+          <a class="btn btn-inverse" href="!{Model.UserGroupUrl}">Mailing List</a>
+        </div>
+
+			
 		</div>
 	</div>
 </div>
-<hr/>

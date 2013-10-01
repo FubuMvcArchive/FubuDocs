@@ -1,5 +1,11 @@
 ﻿<!--Title: Exporting to Static Html-->
 
 <Command app="fubudocs" command="export">
+<markdown>
+Exporting can be done in three modes,
 
+1. GhPagesRooted - Use this option if the static content will be hosted at the root of a web application.  Every file is _index.html_ as <a href="http://pages.github.com">GitHub pages</a> expects, but all links are formed as absolute url's in the exported docs.
+1. GhPagesChildFolder - Use this option if the static content will be hosted in a child folder of a web application (i.e. http://darthfubumvc.github.io/fubudocs).  Again, every file is exported as _index.html_, but the links are relative links.
+1. HtmlDump - This option is for when you just want the documentation content to be browseable from the file system.  All topic links include the _index.html_ file and the links are always relative.
+</markdown>
 </Command>

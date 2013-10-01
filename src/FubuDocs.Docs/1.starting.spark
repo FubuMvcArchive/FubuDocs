@@ -2,8 +2,9 @@
 <Section title="Starting a new Document Project" id="csproj">
 The first step is to simply create a new Visual Studio class library project named with the suffix _.Docs_ like _FubuCore.Docs_ or _FubuMVC.Docs_.  You do not need any other references or nugets to get started, but you can add other dependencies as needed for authoring examples if you wish.  
 
-Assuming that you're using <ProjectLink name="FubuRake" /> for the build script, all you need to do is to follow the instructions at <ExternalTopicLink name="fuburake/fubudocs" title="Enabling FubuDocs with FubuRake" />.
-  
+Assuming that you're using <ProjectLink name="FubuRake" /> for the build script, all you need to do is to follow the instructions at <ExternalTopicLink name="fuburake/fubudocs" title="Enabling FubuDocs with FubuRake" />.  Otherwise, see the command line reference at <TopicLink name="cli"/> to use
+fubudocs.exe directly.
+
 You can immediately launch your new FubuDocs project in a FubuMVC hosted website by either running <code>fubudocs run</code> from the command line at the root of your source repository or by using the <code>rake docs:run</code> Rake task.
 FubuDocs will typically run your documentation website at <code>http://localhost:5050</code>, but the actual port number can vary if there's a conflict.
 
@@ -31,6 +32,7 @@ The elements of note are:
 * **NugetWhiteList** - an optional comma delimited list of the nuget's published by this code repository
 * **PluginTo** - optional parent name of another documentation project for relationships like FubuMVC.CodeSnippets to FubuMVC
 * **TeamCityBuildType** - the TeamCity build id.  Should look like "bt93"
+* **TwitterHandle** - optional twitter account for the project
 
 
 Do note that the <code>rake docs:bottle</code> task can make some reasonable guesses about many of these values based on the documentation project name. 
