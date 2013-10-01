@@ -2,8 +2,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>FubuDocs
-    </title>
+    <title>
+      FubuDocs - The Topic Manager Tool</title>
     
 <meta charset="utf-8"/>
 <meta name="description" content="FubuDocs"/>
@@ -12,16 +12,17 @@
 
 
 
-<link href="../_content/styles/toastr.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
 
 <link media="screen" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300">
   </head>
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
+      
     <div class="container">
       
       
@@ -29,8 +30,8 @@
 <div class="row">
   <div class="span6">
     <p class="logo">
-      <a href="../topics" title="Fubu" class="root-link"><span>Fubu</span></a>
-      <a href=".." title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
+      <a href="/topics" title="Fubu" class="root-link"><span>Fubu</span></a>
+      <a href="/" title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
     </p>
   </div>
   <div class="span6">
@@ -39,79 +40,98 @@
         <em><a href="https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel">Join our vibrant mailing list</a></em>
       </em>
       <div class="social">
-        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="../_content/images/twitter-icon.png" /></a>
-<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="../_content/images/github-icon.png" /></a>
+        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="/_content/images/twitter-icon.png" /></a>
+<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="/_content/images/github-icon.png" /></a>
       </div>
     </div>
   </div>
 </div>
+      
 
       <div id="nav-follow" class="navbar">
         <div class="navbar-inner">
           <div class="container">
+            <ul class="nav"><li><a href="/index" data-key="index">Index &#187;</a></li><li class="active"><a href="/tools" data-key="tools">The Topic Manager Tool &#187;</a></li></ul>
+<ul class="nav" style="float:right"><li><a href="/working-with-topics" title="Topics">Previous</a></li><li><a href="/samples" title="Samples">Next</a></li></ul>
           </div>
         </div>
       </div>
       <hr/>
       <div class="row">
+        
+        
+
+        <div class="row">
+          <div class="span3 sidebar">
+            
+            <h3 class="half-margin">Topics</h3>
+            <ul id="page-toc" class="nav nav-tabs nav-stacked affix">
+            </ul>
+            <br/>
+            <h3>
+              FubuDocs v0.9.5
+            </h3>
+
+            <br/>
+            <h3 class="no-margin">Next</h3>
+<p><a href="/samples" data-key="samples">Samples</a></p>
+<h3 class="no-margin">Previous</h3>
+<p><a href="/working-with-topics" data-key="topics">Topics</a></p>
+          </div>
+          <div class="span9">
+            <h1 class="no-margin">The Topic Manager Tool</h1>
+            <hr class="header-line"></hr>
+
+            <!--Title: The Topic Manager Tool-->
+<p>If you are running a documentation project in development mode ("development" mode is the default for <code>fubudocs run</code>), you will see an authoring toolbox in each topic page in the left pane.  </p>
+
+<p>The link to the <em>[Project Name] Project Page</em> will take you to the Topic Manager tool.</p>
+
+<p><section><h4 id="topics" class="section-header">Topics</h4>
+The topics tab presents an editable treeview of the entire topic structure of the current project.  You can use the treeview control to organize the navigation structure, add new children topics, delete topics, and edit the title and url of existing topics.</p>
+
+<p>No changes are committed until you click the <em>Submit Changes</em> button.  After submitting the changes, the application will completely recycle and the page will refresh itself when it detects that the server side has recycled.</p>
+
+<div class="alert alert-info">I strongly recommend some caution about large scale reorganizations of the topic structure.  Your best undo strategy is probably going to be combination of granular commits and good ol'fashioned <code>git checkout --force</code></div>
+
+<p></section></p>
+
+<p><section><h4 id="properties" class="section-header">Properties</h4>
+This is simply a data entry screen to edit the project's <code>project.xml</code> file for properties like the project tag line and the url to the user group.</section></p>
+
+<p><section><h4 id="tasks" class="section-header">Task List</h4>
+This tab presents a table of all the TODO's in the topic pages of the current project, with links to open the containing files.  You can add your own TODO's to a topic page with just text like:</p>
+
+<pre>
+    TODO(I should really do something here)
+</pre>
+
+<p>where the text inside the parantheses is the TODO message.  </section></p>
+
+<p><section><h4 id="snippets" class="section-header">Code Snippets</h4>
+The Code Snippets tab just shows you the known code snippets by name in the documentation project with links to the containing files and links that preview the snippets.</section></p>
+
+<p><section><h4 id="files" class="section-header">Files</h4>
+Where the <em>Topics</em> tab shows you all the topics in the tree structure, the <em>Files</em> tab just lists all the existing topics in tabular form with the title, the key you'd use (minus the project name) inside of <code>&lt;TopicLink&gt;</code>, and a link to edit the actual file.</section></p>
 
 
-<div class="span12">
-  <h1>Tools</h1>
 
-<ul class="thumbnails">
-  <li class="span3">
-    <div class="thumbnail tool">
-      <div class="caption">
-        <h4 class="margin">Text Editor</h4>
-        <form method="post" action="/tools">
-        <div class="control-group">
-          <label for="Editor" class="control-label">Editor</label>
-          <div class="controls">
-            <input type="text" value="C:\Program Files (x86)\Notepad++\notepad++.exe" name="Editor" />
           </div>
         </div>
-        <div class="control-group no-margin">
-          <div class="controls">
-            <button type="submit" class="btn">Change</button>
-          </div>
-        </div>
-        </form>
       </div>
     </div>
-  </li>
-  <li class="span1"></li>
-  <li class="span3">
-    <div class="thumbnail tool">
-      <div class="caption">
-        <h4 class="margin">Projects</h4>
-        <ul><li><a href="../project/FubuDocs">FubuDocs</a></li></ul>
-      </div>
-    </div>
-  </li>
-<li class="span1"></li>
-  <li class="span3">
-    <div class="thumbnail tool">
-      <div class="caption">
-        <h4 class="margin">Helpers</h4>
-        <button type="button" class="btn">TODO List</button>
-      </div>
-    </div>
-  </li>
-</ul>
-</div>
-      </div>
-
-    </div>
-    <script type="text/javascript" src="../_content/scripts/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="../_content/scripts/fubudocs.js"></script>
-<script type="text/javascript" src="../_content/scripts/toastr.js"></script>
-<script type="text/javascript" src="../_content/scripts/fubudocs-tools.js"></script>
+    
     
 
-<script type="text/javascript" src="../_content/scripts/twitter/bootstrap.min.js"></script>
-<script type="text/javascript" src="../_content/scripts/twitter/bootstrap-affix.js"></script>
-<script type="text/javascript" src="../_content/scripts/topics.js"></script>
+<script type="text/javascript" src="/_content/scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs.js"></script>
+<script type="text/javascript" src="/_content/scripts/jquery.nestable.js"></script>
+<script type="text/javascript" src="/_content/scripts/toastr.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs-tools.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap-affix.js"></script>
+<script type="text/javascript" src="/_content/scripts/topics.js"></script>
+
 <footer class="footer">
   <div class="container">
     <p class="pull-right">

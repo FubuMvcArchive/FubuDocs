@@ -12,16 +12,17 @@
 
 
 
-<link href="../../_content/styles/toastr.css" rel="stylesheet" type="text/css" />
-<link href="../../_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="../../_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-<link href="../../_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
-<link href="../../_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
-<link href="../../_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
 
 <link media="screen" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300">
   </head>
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
+      
     <div class="container">
       
       
@@ -29,8 +30,8 @@
 <div class="row">
   <div class="span6">
     <p class="logo">
-      <a href="../../topics" title="Fubu" class="root-link"><span>Fubu</span></a>
-      <a href="../.." title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
+      <a href="/topics" title="Fubu" class="root-link"><span>Fubu</span></a>
+      <a href="/" title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
     </p>
   </div>
   <div class="span6">
@@ -39,40 +40,41 @@
         <em><a href="https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel">Join our vibrant mailing list</a></em>
       </em>
       <div class="social">
-        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="../../_content/images/twitter-icon.png" /></a>
-<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="../../_content/images/github-icon.png" /></a>
+        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="/_content/images/twitter-icon.png" /></a>
+<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="/_content/images/github-icon.png" /></a>
       </div>
     </div>
   </div>
 </div>
+      
 
       <div id="nav-follow" class="navbar">
         <div class="navbar-inner">
           <div class="container">
-            <ul class="nav"><li><a href="../../index" data-key="index">Index &#187;</a></li><li><a href="../../commands" data-key="index">FubuDocs at the command line &#187;</a></li><li class="active"><a href="../../commands/exporting" data-key="exporting">Exporting to Static Html &#187;</a></li></ul>
-<ul class="nav" style="float:right"><li><a href="../../commands/smoke" title="Smoke Testing a Documentation Project">Previous</a></li><li><a href="../../commands/list" title="List Topics">Next</a></li></ul>
+            <ul class="nav"><li><a href="/index" data-key="index">Index &#187;</a></li><li><a href="/commands" data-key="index">FubuDocs at the command line &#187;</a></li><li class="active"><a href="/commands/exporting" data-key="exporting">Exporting to Static Html &#187;</a></li></ul>
+<ul class="nav" style="float:right"><li><a href="/commands/smoke" title="Smoke Testing a Documentation Project">Previous</a></li></ul>
           </div>
         </div>
       </div>
       <hr/>
       <div class="row">
         
+        
 
         <div class="row">
           <div class="span3 sidebar">
+            
             <h3 class="half-margin">Topics</h3>
             <ul id="page-toc" class="nav nav-tabs nav-stacked affix">
             </ul>
             <br/>
             <h3>
-              FubuDocs v0.9.0
+              FubuDocs v0.9.5
             </h3>
 
             <br/>
-            <h3 class="no-margin">Next</h3>
-<p><a href="../../commands/list" data-key="list">List Topics</a></p>
-<h3 class="no-margin">Previous</h3>
-<p><a href="../../commands/smoke" data-key="smoke">Smoke Testing a Documentation Project</a></p>
+            <h3 class="no-margin">Previous</h3>
+<p><a href="/commands/smoke" data-key="smoke">Smoke Testing a Documentation Project</a></p>
           </div>
           <div class="span9">
             <h1 class="no-margin">Exporting to Static Html</h1>
@@ -80,10 +82,16 @@
 
             <!--Title: Exporting to Static Html-->
 
-<section class="command-section"><h4><span id="export" class="section-header">fubudocs export</span><i class="command-description">Exports static html content for all of the documentation projects in the specified folder</i></h4>
-<div class="single-command-usage"><em>fubudocs export</em><output> [-r, --root <rootpath>] [-v, --verbose] [-n, --no-bottling] [-u, --url <ur>] [-b, --build <build>] [-p, --port <port>] [-a, --application <application>] [-d, --directory <directory>] [-o, --open] [-w, --watched] [-b, --browser Chrome|Firefox] [-p, --production-mode]</div>
-<table class="table"><thead><tr><th colspan="2">Arguments</th></tr></thead><tbody><tr><td class="command-arg-name">output</td><td class="command-arg-description">The directory to output the application</td></tr></tbody></table>
-<table class="table"><thead><tr><th colspan="2">Flags</th></tr></thead><tbody><tr><td class="command-flag-usage">[-r, --root &lt;rootpath&gt;]</td><td class="command-flag-description">Override the root path forcing all urls to be relative (e.g., &#39;make everything relative to /ripple&#39;)</td></tr><tr><td class="command-flag-usage">[-v, --verbose]</td><td class="command-flag-description">Output report of all downloaded files</td></tr><tr><td class="command-flag-usage">[-n, --no-bottling]</td><td class="command-flag-description">Disables the bottle and code snippet scanning while this command runs</td></tr><tr><td class="command-flag-usage">[-u, --url &lt;ur&gt;]</td><td class="command-flag-description">If set, the relative starting url at which to open the browser</td></tr><tr><td class="command-flag-usage">[-b, --build &lt;build&gt;]</td><td class="command-flag-description">If you are running a class library, sets the preference for the profile to load.  As in bin/[BuildFlag].  Default is debug</td></tr><tr><td class="command-flag-usage">[-p, --port &lt;port&gt;]</td><td class="command-flag-description">IP Port.  Default is 5500</td></tr><tr><td class="command-flag-usage">[-a, --application &lt;application&gt;]</td><td class="command-flag-description">Specific name of an IApplicationSource class that builds this application</td></tr><tr><td class="command-flag-usage">[-d, --directory &lt;directory&gt;]</td><td class="command-flag-description">Overrides the directory that is the physical path of the running fubumvc application</td></tr><tr><td class="command-flag-usage">[-o, --open]</td><td class="command-flag-description">Start the default browser to the home page of this application</td></tr><tr><td class="command-flag-usage">[-w, --watched]</td><td class="command-flag-description">Open a &#39;watched&#39; browser with WebDriver to refresh the page on content or application recycles</td></tr><tr><td class="command-flag-usage">[-b, --browser Chrome|Firefox]</td><td class="command-flag-description">Browser to use in watched.  Default is Firefox because it&#39;s more stable. </td></tr><tr><td class="command-flag-usage">[-p, --production-mode]</td><td class="command-flag-description">Unless this flag is set, the fubumvc application will run in Development mode</td></tr></tbody></table></section>
+<section class="command-section"><h4><span id="export" class="section-header">fubudocs export</span><i class="command-description">Exports static html content for all of the documentation projects in the specified folder</i></h4><p>Exporting can be done in three modes,</p>
+
+<ol>
+<li>GhPagesRooted - Use this option if the static content will be hosted at the root of a web application.  Every file is <em>index.html</em> as <a href="http://pages.github.com">GitHub pages</a> expects, but all links are formed as absolute url's in the exported docs.</li>
+<li>GhPagesChildFolder - Use this option if the static content will be hosted in a child folder of a web application (i.e. http://darthfubumvc.github.io/fubudocs).  Again, every file is exported as <em>index.html</em>, but the links are relative links.</li>
+<li>HtmlDump - This option is for when you just want the documentation content to be browseable from the file system.  All topic links include the <em>index.html</em> file and the links are always relative.</li>
+</ol>
+<div class="single-command-usage"><em>fubudocs export</em><output> [-m, --mode GhPagesRooted|GhPagesChildFolder|HtmlDump] [-i, --include-projects <includeprojects>] [-m, --message <message>] [-c, --clean] [-r, --root] [-n, --no-bottling] [-w, --watched] [-b, --browser Chrome|Firefox] [-b, --build <build>] [-o, --open] [-h, --host <host>]</div>
+<table class="table"><thead><tr><th colspan="2">Arguments</th></tr></thead><tbody><tr><td class="command-arg-name">output</td><td class="command-arg-description">The directory to output the exported content</td></tr></tbody></table>
+<table class="table"><thead><tr><th colspan="2">Flags</th></tr></thead><tbody><tr><td class="command-flag-usage">[-m, --mode GhPagesRooted|GhPagesChildFolder|HtmlDump]</td><td class="command-flag-description">Change the way url&#39;s are treated in the exported html content</td></tr><tr><td class="command-flag-usage">[-i, --include-projects &lt;includeprojects&gt;]</td><td class="command-flag-description">Comma separate list of the projects to include in the export (e.g., fubudocs, myproject)</td></tr><tr><td class="command-flag-usage">[-m, --message &lt;message&gt;]</td><td class="command-flag-description">Specify the git commit message if exporting directly to gh-pages</td></tr><tr><td class="command-flag-usage">[-c, --clean]</td><td class="command-flag-description">Delete any existing content in the export directory first</td></tr><tr><td class="command-flag-usage">[-r, --root]</td><td class="command-flag-description">If selected, all url&#39;s in the exported pages will be absolute url&#39;s</td></tr><tr><td class="command-flag-usage">[-n, --no-bottling]</td><td class="command-flag-description">Disables the bottle and code snippet scanning while this command runs</td></tr><tr><td class="command-flag-usage">[-w, --watched]</td><td class="command-flag-description">Open a &#39;watched&#39; browser with WebDriver to refresh the page on content or application recycles</td></tr><tr><td class="command-flag-usage">[-b, --browser Chrome|Firefox]</td><td class="command-flag-description">Browser to use in watched.  Default is Firefox because it&#39;s more stable. </td></tr><tr><td class="command-flag-usage">[-b, --build &lt;build&gt;]</td><td class="command-flag-description">If you are running a class library, sets the preference for the profile to load.  As in bin/[BuildFlag].  Default is debug</td></tr><tr><td class="command-flag-usage">[-o, --open]</td><td class="command-flag-description">Start the default browser to the home page of this application</td></tr><tr><td class="command-flag-usage">[-h, --host &lt;host&gt;]</td><td class="command-flag-description">Specify the directory for a hosting application for your documentation.  Will be loaded as a FubuMVC Bottle</td></tr></tbody></table></section>
           </div>
         </div>
       </div>
@@ -91,13 +99,14 @@
     
     
 
-<script type="text/javascript" src="../../_content/scripts/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="../../_content/scripts/fubudocs.js"></script>
-<script type="text/javascript" src="../../_content/scripts/toastr.js"></script>
-<script type="text/javascript" src="../../_content/scripts/twitter/bootstrap.min.js"></script>
-<script type="text/javascript" src="../../_content/scripts/fubudocs-tools.js"></script>
-<script type="text/javascript" src="../../_content/scripts/twitter/bootstrap-affix.js"></script>
-<script type="text/javascript" src="../../_content/scripts/topics.js"></script>
+<script type="text/javascript" src="/_content/scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs.js"></script>
+<script type="text/javascript" src="/_content/scripts/jquery.nestable.js"></script>
+<script type="text/javascript" src="/_content/scripts/toastr.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs-tools.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap-affix.js"></script>
+<script type="text/javascript" src="/_content/scripts/topics.js"></script>
 
 <footer class="footer">
   <div class="container">

@@ -12,17 +12,18 @@
 
 
 
-<link href="../_content/styles/sons-of-obsidian.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/toastr.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/sons-of-obsidian.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
 
 <link media="screen" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300">
   </head>
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
+      
     <div class="container">
       
       
@@ -30,8 +31,8 @@
 <div class="row">
   <div class="span6">
     <p class="logo">
-      <a href="../topics" title="Fubu" class="root-link"><span>Fubu</span></a>
-      <a href=".." title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
+      <a href="/topics" title="Fubu" class="root-link"><span>Fubu</span></a>
+      <a href="/" title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
     </p>
   </div>
   <div class="span6">
@@ -40,40 +41,43 @@
         <em><a href="https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel">Join our vibrant mailing list</a></em>
       </em>
       <div class="social">
-        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="../_content/images/twitter-icon.png" /></a>
-<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="../_content/images/github-icon.png" /></a>
+        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="/_content/images/twitter-icon.png" /></a>
+<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="/_content/images/github-icon.png" /></a>
       </div>
     </div>
   </div>
 </div>
+      
 
       <div id="nav-follow" class="navbar">
         <div class="navbar-inner">
           <div class="container">
-            <ul class="nav"><li><a href="../index" data-key="index">Index &#187;</a></li><li class="active"><a href="../starting" data-key="starting">Starting &#187;</a></li></ul>
-<ul class="nav" style="float:right"><li><a href="../index" title="Index">Previous</a></li><li><a href="../splashpages" title="Splash Pages">Next</a></li></ul>
+            <ul class="nav"><li><a href="/index" data-key="index">Index &#187;</a></li><li class="active"><a href="/starting" data-key="starting">Starting &#187;</a></li></ul>
+<ul class="nav" style="float:right"><li><a href="/index" title="Index">Previous</a></li><li><a href="/splashpages" title="Splash Pages">Next</a></li></ul>
           </div>
         </div>
       </div>
       <hr/>
       <div class="row">
         
+        
 
         <div class="row">
           <div class="span3 sidebar">
+            
             <h3 class="half-margin">Topics</h3>
             <ul id="page-toc" class="nav nav-tabs nav-stacked affix">
             </ul>
             <br/>
             <h3>
-              FubuDocs v0.9.0
+              FubuDocs v0.9.5
             </h3>
 
             <br/>
             <h3 class="no-margin">Next</h3>
-<p><a href="../splashpages" data-key="splashpages">Splash Pages</a></p>
+<p><a href="/splashpages" data-key="splashpages">Splash Pages</a></p>
 <h3 class="no-margin">Previous</h3>
-<p><a href="../index" data-key="index">Index</a></p>
+<p><a href="/index" data-key="index">Index</a></p>
           </div>
           <div class="span9">
             <h1 class="no-margin">Starting</h1>
@@ -82,7 +86,8 @@
             <p><section><h4 id="csproj" class="section-header">Starting a new Document Project</h4>
 The first step is to simply create a new Visual Studio class library project named with the suffix <em>.Docs</em> like <em>FubuCore.Docs</em> or <em>FubuMVC.Docs</em>.  You do not need any other references or nugets to get started, but you can add other dependencies as needed for authoring examples if you wish.  </p>
 
-<p>Assuming that you're using <span>LINK TO PROJECT &#39;FubuRake&#39;</span> for the build script, all you need to do is to follow the instructions at <span><em>LINK TO fuburake/fubudocs</em></span>.</p>
+<p>Assuming that you're using <span>LINK TO PROJECT &#39;FubuRake&#39;</span> for the build script, all you need to do is to follow the instructions at <span><em>LINK TO fuburake/fubudocs</em></span>.  Otherwise, see the command line reference at <a href="/cli" data-key="cli">Command Line Documentation</a> to use
+fubudocs.exe directly.</p>
 
 <p>You can immediately launch your new FubuDocs project in a FubuMVC hosted website by either running <code>fubudocs run</code> from the command line at the root of your source repository or by using the <code>rake docs:run</code> Rake task.
 FubuDocs will typically run your documentation website at <code>http://localhost:5050</code>, but the actual port number can vary if there's a conflict.</p>
@@ -121,6 +126,7 @@ FubuWorld looks for a file named "project.xml" in the root of each documentation
 <li><strong>NugetWhiteList</strong> - an optional comma delimited list of the nuget's published by this code repository</li>
 <li><strong>PluginTo</strong> - optional parent name of another documentation project for relationships like FubuMVC.CodeSnippets to FubuMVC</li>
 <li><strong>TeamCityBuildType</strong> - the TeamCity build id.  Should look like "bt93"</li>
+<li><strong>TwitterHandle</strong> - optional twitter account for the project</li>
 </ul>
 
 <p>Do note that the <code>rake docs:bottle</code> task can make some reasonable guesses about many of these values based on the documentation project name. </section></p>
@@ -132,15 +138,16 @@ FubuWorld looks for a file named "project.xml" in the root of each documentation
     
     
 
-<script type="text/javascript" src="../_content/scripts/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="../_content/scripts/prettify.js"></script>
-<script type="text/javascript" src="../_content/scripts/bootstrap-prettify.js"></script>
-<script type="text/javascript" src="../_content/scripts/fubudocs.js"></script>
-<script type="text/javascript" src="../_content/scripts/toastr.js"></script>
-<script type="text/javascript" src="../_content/scripts/twitter/bootstrap.min.js"></script>
-<script type="text/javascript" src="../_content/scripts/fubudocs-tools.js"></script>
-<script type="text/javascript" src="../_content/scripts/twitter/bootstrap-affix.js"></script>
-<script type="text/javascript" src="../_content/scripts/topics.js"></script>
+<script type="text/javascript" src="/_content/scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/prettify.js"></script>
+<script type="text/javascript" src="/_content/scripts/bootstrap-prettify.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs.js"></script>
+<script type="text/javascript" src="/_content/scripts/jquery.nestable.js"></script>
+<script type="text/javascript" src="/_content/scripts/toastr.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs-tools.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap-affix.js"></script>
+<script type="text/javascript" src="/_content/scripts/topics.js"></script>
 
 <footer class="footer">
   <div class="container">

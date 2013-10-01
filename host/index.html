@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <title>
-      FubuDocs - FubuDocs at the command line</title>
+      FubuDocs - Using a Host Project</title>
     
 <meta charset="utf-8"/>
 <meta name="description" content="FubuDocs"/>
@@ -51,8 +51,8 @@
       <div id="nav-follow" class="navbar">
         <div class="navbar-inner">
           <div class="container">
-            <ul class="nav"><li><a href="/index" data-key="index">Index &#187;</a></li><li class="active"><a href="/commands" data-key="index">FubuDocs at the command line &#187;</a></li></ul>
-<ul class="nav" style="float:right"><li><a href="/skinning" title="Skinning FubuDocs">Previous</a></li><li><a href="/commands/snippets" title="Gathering Code Snippets">Next</a></li></ul>
+            <ul class="nav"><li><a href="/index" data-key="index">Index &#187;</a></li><li class="active"><a href="/host" data-key="host">Using a Host Project &#187;</a></li></ul>
+<ul class="nav" style="float:right"><li><a href="/cli" title="Command Line Documentation">Previous</a></li><li><a href="/skinning" title="Skinning FubuDocs">Next</a></li></ul>
           </div>
         </div>
       </div>
@@ -74,28 +74,36 @@
 
             <br/>
             <h3 class="no-margin">Next</h3>
-<p><a href="/commands/snippets" data-key="snippets">Gathering Code Snippets</a></p>
-<h3 class="no-margin">Previous</h3>
 <p><a href="/skinning" data-key="skinning">Skinning FubuDocs</a></p>
+<h3 class="no-margin">Previous</h3>
+<p><a href="/cli" data-key="cli">Command Line Documentation</a></p>
           </div>
           <div class="span9">
-            <h1 class="no-margin">FubuDocs at the command line</h1>
+            <h1 class="no-margin">Using a Host Project</h1>
             <hr class="header-line"></hr>
 
-            <!--Title: FubuDocs at the command line-->
-<p>The fubudocs executable provides functionality to package, run, export, and organize FubuDocs projects.  The fubudocs executable is distributed as a gem and a Nuget.</p>
+            <!--Title: Using a Host Project-->
+<!--Url: host-->
+<p>For the <a href="http://fubuworld.com">FubuWorld suite of projects</a>, we use a <em>host</em> project called <a href="https://github.com/DarthFubuMVC/FubuWorld">FubuWorld</a> to aggregate the various documentation packages into a single website.  </p>
+
+<p>To set up a project as a host, simply make a new VS.Net class library (yep, that's right, no need to use any kind of ASP.Net template) and install the nuget's for the upstream documentation projects you want to be included.  </p>
+
+<div class="alert alert-info"><i class="icon-info-sign"></i>If you're use the <code>fubudocs bottle</code> command against a FubuDocs project, it will take the necessary steps to bundle up the topic content into the assembly using the <span>LINK TO PROJECT &#39;Bottles&#39;</span> framework.  The <code>bottle</code> command will also create a nuspec file for you in the _packaging/nuget_ folder underneath the root of your code repository.</div>
+
+<p>You do need to at least add an <code>index.spark</code> file to act as the home page for the entire application.  Any text files with the <code>.spark</code> extension will be considered to be topic pages as well.</p>
+
+<p>If you just absolutely don't want to use a Visual Studio.Net assembly for your host, you can just use a directory structure like this:</p>
 
 <pre>
-gem install fubudocs
+index.spark
+/bin
+    /MyProject.Docs.dll
+    /MyOtherProject.Docs.dll
 </pre>
 
-<p>or as a Nuget:</p>
 
-<pre>
-Install-Package FubuDocs
-</pre>
+One of the other advantages of using a _host_ is the ability to skin a FubuDocs website -- just in case you're one of the 6 billion folks out there with better CSS skills than me.  See <a href="/skinning" data-key="skinning">Skinning FubuDocs</a> for more information.
 
-  <div><h2 class="half-margin">Table of Contents</h2><ul class="table-of-contents"><li><a href="/commands/snippets">Gathering Code Snippets</a></li><li><a href="/commands/bottling">Bottling the FubuDocs Projects</a></li><li><a href="/commands/running">Running your FubuDocs Project</a></li><li><a href="/commands/smoke">Smoke Testing a Documentation Project</a></li><li><a href="/commands/exporting">Exporting to Static Html</a></li></ul></div>
 
           </div>
         </div>

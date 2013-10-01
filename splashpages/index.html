@@ -12,17 +12,18 @@
 
 
 
-<link href="../_content/styles/sons-of-obsidian.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/toastr.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
-<link href="../_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/sons-of-obsidian.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
 
 <link media="screen" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300">
   </head>
   <body data-spy="scroll" data-target=".bs-docs-sidebar">
+      
     <div class="container">
       
       
@@ -30,8 +31,8 @@
 <div class="row">
   <div class="span6">
     <p class="logo">
-      <a href="../topics" title="Fubu" class="root-link"><span>Fubu</span></a>
-      <a href=".." title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
+      <a href="/topics" title="Fubu" class="root-link"><span>Fubu</span></a>
+      <a href="/" title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
     </p>
   </div>
   <div class="span6">
@@ -40,56 +41,59 @@
         <em><a href="https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel">Join our vibrant mailing list</a></em>
       </em>
       <div class="social">
-        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="../_content/images/twitter-icon.png" /></a>
-<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="../_content/images/github-icon.png" /></a>
+        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="/_content/images/twitter-icon.png" /></a>
+<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="/_content/images/github-icon.png" /></a>
       </div>
     </div>
   </div>
 </div>
+      
 
       <div id="nav-follow" class="navbar">
         <div class="navbar-inner">
           <div class="container">
-            <ul class="nav"><li><a href="../index" data-key="index">Index &#187;</a></li><li class="active"><a href="../splashpages" data-key="splashpages">Splash Pages &#187;</a></li></ul>
-<ul class="nav" style="float:right"><li><a href="../starting" title="Starting">Previous</a></li><li><a href="../topics" title="Topics">Next</a></li></ul>
+            <ul class="nav"><li><a href="/index" data-key="index">Index &#187;</a></li><li class="active"><a href="/splashpages" data-key="splashpages">Splash Pages &#187;</a></li></ul>
+<ul class="nav" style="float:right"><li><a href="/starting" title="Starting">Previous</a></li><li><a href="/working-with-topics" title="Topics">Next</a></li></ul>
           </div>
         </div>
       </div>
       <hr/>
       <div class="row">
         
+        
 
         <div class="row">
           <div class="span3 sidebar">
+            
             <h3 class="half-margin">Topics</h3>
             <ul id="page-toc" class="nav nav-tabs nav-stacked affix">
             </ul>
             <br/>
             <h3>
-              FubuDocs v0.9.0
+              FubuDocs v0.9.5
             </h3>
 
             <br/>
             <h3 class="no-margin">Next</h3>
-<p><a href="../topics" data-key="topics">Topics</a></p>
+<p><a href="/working-with-topics" data-key="topics">Topics</a></p>
 <h3 class="no-margin">Previous</h3>
-<p><a href="../starting" data-key="starting">Starting</a></p>
+<p><a href="/starting" data-key="starting">Starting</a></p>
           </div>
           <div class="span9">
             <h1 class="no-margin">Splash Pages</h1>
             <hr class="header-line"></hr>
 
             <!--Title: Splash Pages-->
-<p>You can create a "splash" page for a project separate from the index page by just putting a spark view named <em>splash.spark</em> in the root of your documentation page. If <em>splash.spark</em> exists, it will be treated as the root page for the documentation project.  In this case the url for the splash page will be <em>[project name]</em> and the url
+<p>You can create a "splash" page for a project separate from the index page by just putting a spark view named <em>splash.spark</em> in the root of your documentation project. If <em>splash.spark</em> exists, it will be treated as the root page for the documentation project.  In this case the url for the splash page will be <em>[project name]</em> and the url
 for the <em>index.spark</em> page will be <em>[project name]/index</em>.  Again taking <em>FubuCore</em> as the example, the splash page url would be <em>/fubucore</em> and the index page <em>/fubucore/index</em>. It's up to you to add a link in the splash page to the index page -- typically like:</p>
 
-<pre data-linenums="27" class="prettyprint lang-html">
+<pre data-linenums="29" class="prettyprint lang-html">
           &lt;a href=&quot;!{this.ProjectIndexUrl(&quot;fubudocs&quot;)}&quot; class=&quot;btn btn-large btn-primary margin&quot;&gt;Learn more&lt;/a&gt;
 </pre>
 
 <p>There is no need for any kind of master page layout declaration or any view model declaration.  You do have access to all of the normal view helpers in FubuDocs and FubuMVC itself.</p>
 
-<p>See the <a href="https://github.com/DarthFubuMVC/FubuWorld/blob/master/src/FubuWorld.Docs/splash.spark">FubuDocs splash page</a> for an example.</p>
+<p>See the <a href="https://github.com/DarthFubuMVC/FubuDocs/blob/master/src/FubuDocs.Docs/splash.spark">FubuDocs splash page</a> for an example.</p>
 
           </div>
         </div>
@@ -98,15 +102,16 @@ for the <em>index.spark</em> page will be <em>[project name]/index</em>.  Again 
     
     
 
-<script type="text/javascript" src="../_content/scripts/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="../_content/scripts/prettify.js"></script>
-<script type="text/javascript" src="../_content/scripts/bootstrap-prettify.js"></script>
-<script type="text/javascript" src="../_content/scripts/fubudocs.js"></script>
-<script type="text/javascript" src="../_content/scripts/toastr.js"></script>
-<script type="text/javascript" src="../_content/scripts/twitter/bootstrap.min.js"></script>
-<script type="text/javascript" src="../_content/scripts/fubudocs-tools.js"></script>
-<script type="text/javascript" src="../_content/scripts/twitter/bootstrap-affix.js"></script>
-<script type="text/javascript" src="../_content/scripts/topics.js"></script>
+<script type="text/javascript" src="/_content/scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/prettify.js"></script>
+<script type="text/javascript" src="/_content/scripts/bootstrap-prettify.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs.js"></script>
+<script type="text/javascript" src="/_content/scripts/jquery.nestable.js"></script>
+<script type="text/javascript" src="/_content/scripts/toastr.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs-tools.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap-affix.js"></script>
+<script type="text/javascript" src="/_content/scripts/topics.js"></script>
 
 <footer class="footer">
   <div class="container">

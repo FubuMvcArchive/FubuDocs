@@ -1,0 +1,381 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+      FubuDocs - Topics</title>
+    
+<meta charset="utf-8"/>
+<meta name="description" content="FubuDocs"/>
+<meta name="author" content="FubuDocs"/>
+
+
+
+
+<link href="/_content/styles/sons-of-obsidian.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
+
+<link media="screen" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300">
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+      
+    <div class="container">
+      
+      
+
+<div class="row">
+  <div class="span6">
+    <p class="logo">
+      <a href="/topics" title="Fubu" class="root-link"><span>Fubu</span></a>
+      <a href="/" title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
+    </p>
+  </div>
+  <div class="span6">
+    <div class="top-header text-right">
+      <em>
+        <em><a href="https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel">Join our vibrant mailing list</a></em>
+      </em>
+      <div class="social">
+        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="/_content/images/twitter-icon.png" /></a>
+<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="/_content/images/github-icon.png" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+      <div id="nav-follow" class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav"><li><a href="/index" data-key="index">Index &#187;</a></li><li class="active"><a href="/working-with-topics" data-key="topics">Topics &#187;</a></li></ul>
+<ul class="nav" style="float:right"><li><a href="/splashpages" title="Splash Pages">Previous</a></li><li><a href="/tools" title="The Topic Manager Tool">Next</a></li></ul>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="row">
+        
+        
+
+        <div class="row">
+          <div class="span3 sidebar">
+            
+            <h3 class="half-margin">Topics</h3>
+            <ul id="page-toc" class="nav nav-tabs nav-stacked affix">
+            </ul>
+            <br/>
+            <h3>
+              FubuDocs v0.9.5
+            </h3>
+
+            <br/>
+            <h3 class="no-margin">Next</h3>
+<p><a href="/tools" data-key="tools">The Topic Manager Tool</a></p>
+<h3 class="no-margin">Previous</h3>
+<p><a href="/splashpages" data-key="splashpages">Splash Pages</a></p>
+          </div>
+          <div class="span9">
+            <h1 class="no-margin">Topics</h1>
+            <hr class="header-line"></hr>
+
+            <!--Title: Topics-->
+<!--Url: working-with-topics-->
+
+<p>FubuDocs was heavily influenced by the navigation and organization structure from <a href="https://readthedocs.org">readthedocs.org</a>.  As such, we had a couple goals in mind:</p>
+
+<ol>
+<li>Make it easy and low ceremony to author content</li>
+<li>Provide a sensible and maintainable way to establish navigation and organizational structure</li>
+<li>Run the resulting website hosted in FubuMVC;-)</li>
+</ol>
+
+<p>With those goals in mind, FubuDocs uses the <a href="http://sparkviewengine.com">Spark View Engine</a> support within <span>LINK TO PROJECT &#39;FubuMVC&#39;</span> to generate content to utilize its out of the box support for authoring html content with <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> and Spark's very powerful <a href="http://sparkviewengine.com/documentation/bindings">custom html bindings</a>.  </p>
+
+<p>To author content with FubuDocs you simply write content into a spark text file either using Markdown or straight html.  In FubuDocs nomemclature, each spark file is a "topic."</p>
+
+<p>FubuDocs itself handles the basic page layout of each topic and renders standard navigation headers, footers, and a left column table of contents for each page based on the file structure of the topic files within the documentation project and the <code>&lt;section&gt;</code> structure of the rendered topic html. </p>
+
+<div class="alert alert-info"><i class="icon-info-sign"></i>
+FubuDocs uses <a href="http://twitter.github.io/bootstrap/">Twitter Bootstrap</a> for styling and layout -- but I betcha knew that from a single glance at this page.</div>
+
+<p><section><h4 id="file" class="section-header">A Topic File</h4></p>
+
+<p>A topic file is just a text file with the <code>*.spark</code> file extension.  The structure of a topic file is going to follow the basic pattern shown below:</p>
+
+<pre>
+&lt;!--Title: Some title--&gt;
+&lt;markdown&gt;
+
+Content here....
+
+&lt;/markdown&gt;
+</pre>
+
+<p>The title of the topic is embedded as an HTML comment in the pattern <code>&lt;!--Title: [the title]--&gt;</code> anywhere in the file. Using this well known comment structure rather than an html element allows FubuDocs to reuse the title for a topic in navigation structures, the actual <code>&lt;title&gt;</code> element on the page, and in the topic "chrome" that FubuDocs wraps around the topic content. </p>
+
+<p>The <code>&lt;markdown&gt;</code> element is not mandatory, but you will probably want to use markdown over html.  The custom Spark bindings in FubuDocs are <em>mostly</em> usable from within markdown markup as well.
+</section></p>
+
+<p><section><h4 id="sections" class="section-header">Sections within a Topic</h4>
+To break up a longer topic, you can use the <code>&lt;Section&gt;</code> custom element to provide some structure within a topic and FubuDocs will build navigation for you in the left column.  </p>
+
+<p><pre data-linenums="49" class="prettyprint lang-html">
+&lt;Section title=&quot;Topic Url&#39;s&quot; id=&quot;url&quot;&gt;</p>
+
+<p>The url of a topic file is derived from the name of the file, the name of the documentation project, and the folder structure within the documentation project.</p>
+
+<p>Here are some examples from FubuDocs&#39;s own documentation:</p>
+
+<p>&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Relative File Path&lt;/th&gt;
+        &lt;th&gt;Url&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tr&gt;
+    &lt;td&gt;3.topics.spark&lt;/td&gt;
+    &lt;td&gt;/fubudocs/topics&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;6.commands/1.snippets.spark&lt;/td&gt;
+    &lt;td&gt;/fubudocs/commands/snippets&lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt;6.commands/index.spark&lt;/td&gt;
+    &lt;td&gt;/fubudocs/commands&lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt;splash.spark&lt;/td&gt;
+    &lt;td&gt;/fubudocs&lt;/td&gt;
+  &lt;/tr&gt;<br />
+  &lt;tr&gt;
+    &lt;td&gt;index.spark&lt;/td&gt;
+    &lt;td&gt;/fubudocs/index&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</p>
+
+<p>A couple things to note:
+* <em>index.spark</em> has a special meaning as the main topic underneath a folder.<br />
+* The number prefix you use to force the ordering of both folders and topics within a folder is ignored for the url determination
+* If there is a splash page, the file &lt;code&gt;index.spark&lt;/code&gt; will be <em>[project name]/index</em>.
+* The sub folder names are part of the topic url</p>
+
+<p>You can also override the file specific, last part of the url for a topic by embedding &lt;code&gt;&amp;lt;!-- Url: [the url]--&amp;gt;&lt;/code&gt; anywhere in the topic spark file.</p>
+
+<p>&lt;/Section&gt;
+</pre></section></p>
+
+<!-- SAMPLE: using-section -->
+<section><h4 id="url" class="section-header">Topic Url&#39;s</h4>
+
+The url of a topic file is derived from the name of the file, the name of the documentation project, and the folder structure within the documentation project.
+
+Here are some examples from FubuDocs's own documentation:
+
+<table class="table">
+  <thead>
+    <tr>
+        <th>Relative File Path</th>
+        <th>Url</th>
+    </tr>
+  </thead>
+  <tr>
+    <td>3.topics.spark</td>
+    <td>/fubudocs/topics</td>
+  </tr>
+  <tr>
+    <td>6.commands/1.snippets.spark</td>
+    <td>/fubudocs/commands/snippets</td>
+  </tr>
+    <tr>
+    <td>6.commands/index.spark</td>
+    <td>/fubudocs/commands</td>
+  </tr>
+    <tr>
+    <td>splash.spark</td>
+    <td>/fubudocs</td>
+  </tr>  
+  <tr>
+    <td>index.spark</td>
+    <td>/fubudocs/index</td>
+  </tr>
+</table>
+
+A couple things to note:
+* _index.spark_ has a special meaning as the main topic underneath a folder.  
+* The number prefix you use to force the ordering of both folders and topics within a folder is ignored for the url determination
+* If there is a splash page, the file <code>index.spark</code> will be _[project name]/index_.
+* The sub folder names are part of the topic url
+
+You can also override the file specific, last part of the url for a topic by embedding <code>&lt;!-- Url: [the url]--&gt;</code> anywhere in the topic spark file.
+</section>
+<!-- ENDSAMPLE -->
+
+<p><section><h4 id="ordering" class="section-header">Ordering Topics</h4>
+Topic files are ordered within a folder by these rules:</p>
+
+<ol>
+<li>Any file named <em>index.spark</em> is first</li>
+<li>If files are prefixed with a number like <em>3.topics.spark</em> and <em>2.splashpages.spark</em>, the numbers are used to order</li>
+<li>Without any numeric prefixes the files are ordered alphabetically by the file name</li>
+<li>Child folders and files are ordered together</section></li>
+</ol>
+
+<p><section><h4 id="authoring" class="section-header">Authoring Toolbar</h4>
+When running in <em>development</em> mode, you'll see an <em>authoring toolbar</em> in the left pane of the page for the current topic and documentation project. The file name is a link to open the current topic in a text editor.  The other link leads to the project page described in the next topic.</section></p>
+
+<p><section><h4 id="sample" class="section-header">Sample Topic</h4>
+The markup for this page is shown below:
+<pre data-linenums="1" class="prettyprint lang-spark">
+&lt;!--Title: Topics--&gt;
+&lt;!--Url: working-with-topics--&gt;</p>
+
+<p>&lt;markdown&gt;</p>
+
+<p>FubuDocs was heavily influenced by the navigation and organization structure from <a href="https://readthedocs.org">readthedocs.org</a>.  As such, we had a couple goals in mind:</p>
+
+<ol>
+<li>Make it easy and low ceremony to author content</li>
+<li>Provide a sensible and maintainable way to establish navigation and organizational structure</li>
+<li>Run the resulting website hosted in FubuMVC;-)</li>
+</ol>
+
+<p>With those goals in mind, FubuDocs uses the <a href="http://sparkviewengine.com">Spark View Engine</a> support within &lt;ProjectLink name=&quot;FubuMVC&quot;/&gt; to generate content to utilize its out of the box support for authoring html content with <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> and Spark&#39;s very powerful <a href="http://sparkviewengine.com/documentation/bindings">custom html bindings</a>.  </p>
+
+<p>To author content with FubuDocs you simply write content into a spark text file either using Markdown or straight html.  In FubuDocs nomemclature, each spark file is a &quot;topic.&quot;</p>
+
+<p>FubuDocs itself handles the basic page layout of each topic and renders standard navigation headers, footers, and a left column table of contents for each page based on the file structure of the topic files within the documentation project and the &lt;code&gt;&amp;lt;section&amp;gt;&lt;/code&gt; structure of the rendered topic html. </p>
+
+<p>&lt;Info&gt;
+FubuDocs uses &lt;a href=&quot;http://twitter.github.io/bootstrap/&quot;&gt;Twitter Bootstrap&lt;/a&gt; for styling and layout -- but I betcha knew that from a single glance at this page.
+&lt;/Info&gt;</p>
+
+<p>&lt;Section title=&quot;A Topic File&quot; id=&quot;file&quot;&gt;</p>
+
+<p>A topic file is just a text file with the &lt;code&gt;*.spark&lt;/code&gt; file extension.  The structure of a topic file is going to follow the basic pattern shown below:</p>
+
+<p>&lt;pre&gt;
+&amp;lt;!--Title: Some title--&amp;gt;
+&amp;lt;markdown&amp;gt;</p>
+
+<p>Content here....</p>
+
+<p>&amp;lt;/markdown&amp;gt;
+&lt;/pre&gt;</p>
+
+<p>The title of the topic is embedded as an HTML comment in the pattern &lt;code&gt;&amp;lt;!--Title: [the title]--&amp;gt;&lt;/code&gt; anywhere in the file. Using this well known comment structure rather than an html element allows FubuDocs to reuse the title for a topic in navigation structures, the actual &lt;code&gt;&amp;lt;title&amp;gt;&lt;/code&gt; element on the page, and in the topic &quot;chrome&quot; that FubuDocs wraps around the topic content. </p>
+
+<p>The &lt;code&gt;&amp;lt;markdown&amp;gt;&lt;/code&gt; element is not mandatory, but you will probably want to use markdown over html.  The custom Spark bindings in FubuDocs are <em>mostly</em> usable from within markdown markup as well.</p>
+
+<p>&lt;/Section&gt;</p>
+
+<p>&lt;Section title=&quot;Sections within a Topic&quot; id=&quot;sections&quot;&gt;
+To break up a longer topic, you can use the &lt;code&gt;&amp;lt;Section&amp;gt;&lt;/code&gt; custom element to provide some structure within a topic and FubuDocs will build navigation for you in the left column.  </p>
+
+<p>&lt;Snippet name=&quot;using-section&quot; /&gt;
+&lt;/Section&gt;</p>
+
+<p>&lt;Section title=&quot;Topic Url&#39;s&quot; id=&quot;url&quot;&gt;</p>
+
+<p>The url of a topic file is derived from the name of the file, the name of the documentation project, and the folder structure within the documentation project.</p>
+
+<p>Here are some examples from FubuDocs&#39;s own documentation:</p>
+
+<p>&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Relative File Path&lt;/th&gt;
+        &lt;th&gt;Url&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tr&gt;
+    &lt;td&gt;3.topics.spark&lt;/td&gt;
+    &lt;td&gt;/fubudocs/topics&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;6.commands/1.snippets.spark&lt;/td&gt;
+    &lt;td&gt;/fubudocs/commands/snippets&lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt;6.commands/index.spark&lt;/td&gt;
+    &lt;td&gt;/fubudocs/commands&lt;/td&gt;
+  &lt;/tr&gt;
+    &lt;tr&gt;
+    &lt;td&gt;splash.spark&lt;/td&gt;
+    &lt;td&gt;/fubudocs&lt;/td&gt;
+  &lt;/tr&gt;<br />
+  &lt;tr&gt;
+    &lt;td&gt;index.spark&lt;/td&gt;
+    &lt;td&gt;/fubudocs/index&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</p>
+
+<p>A couple things to note:
+* <em>index.spark</em> has a special meaning as the main topic underneath a folder.<br />
+* The number prefix you use to force the ordering of both folders and topics within a folder is ignored for the url determination
+* If there is a splash page, the file &lt;code&gt;index.spark&lt;/code&gt; will be <em>[project name]/index</em>.
+* The sub folder names are part of the topic url</p>
+
+<p>You can also override the file specific, last part of the url for a topic by embedding &lt;code&gt;&amp;lt;!-- Url: [the url]--&amp;gt;&lt;/code&gt; anywhere in the topic spark file.</p>
+
+<p>&lt;/Section&gt;</p>
+
+<p>&lt;Section title=&quot;Ordering Topics&quot; id=&quot;ordering&quot;&gt;
+Topic files are ordered within a folder by these rules:</p>
+
+<ol>
+<li>Any file named <em>index.spark</em> is first</li>
+<li>If files are prefixed with a number like <em>3.topics.spark</em> and <em>2.splashpages.spark</em>, the numbers are used to order</li>
+<li>Without any numeric prefixes the files are ordered alphabetically by the file name</li>
+<li>Child folders and files are ordered together
+&lt;/Section&gt;</li>
+</ol>
+
+<p>&lt;Section title=&quot;Authoring Toolbar&quot; id=&quot;authoring&quot;&gt;
+When running in <em>development</em> mode, you&#39;ll see an <em>authoring toolbar</em> in the left pane of the page for the current topic and documentation project. The file name is a link to open the current topic in a text editor.  The other link leads to the project page described in the next topic.
+&lt;/Section&gt;</p>
+
+<p>&lt;Section title=&quot;Sample Topic&quot; id=&quot;sample&quot;&gt;
+The markup for this page is shown below:
+&lt;EmbedFile name=&quot;3.topics.spark&quot; /&gt;
+&lt;/Section&gt;</p>
+
+<p>&lt;/markdown&gt;
+</pre></section></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+<script type="text/javascript" src="/_content/scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/prettify.js"></script>
+<script type="text/javascript" src="/_content/scripts/bootstrap-prettify.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs.js"></script>
+<script type="text/javascript" src="/_content/scripts/jquery.nestable.js"></script>
+<script type="text/javascript" src="/_content/scripts/toastr.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs-tools.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap-affix.js"></script>
+<script type="text/javascript" src="/_content/scripts/topics.js"></script>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>
+      Powered by <a href="http://github.com/DarthFubuMVC/FubuDocs">FubuDocs</a>.
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

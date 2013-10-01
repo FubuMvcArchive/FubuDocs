@@ -1,0 +1,178 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>
+      FubuDocs - Skinning FubuDocs</title>
+    
+<meta charset="utf-8"/>
+<meta name="description" content="FubuDocs"/>
+<meta name="author" content="FubuDocs"/>
+
+
+
+
+<link href="/_content/styles/toastr.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/twitter/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/toastr-responsive.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.core.css" rel="stylesheet" type="text/css" />
+<link href="/_content/styles/fubudocs.theme.css" rel="stylesheet" type="text/css" />
+
+<link media="screen" type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,300">
+  </head>
+  <body data-spy="scroll" data-target=".bs-docs-sidebar">
+      
+    <div class="container">
+      
+      
+
+<div class="row">
+  <div class="span6">
+    <p class="logo">
+      <a href="/topics" title="Fubu" class="root-link"><span>Fubu</span></a>
+      <a href="/" title="Frictionless documentation tooling" class="project-logo"><span>FubuDocs</span></a>
+    </p>
+  </div>
+  <div class="span6">
+    <div class="top-header text-right">
+      <em>
+        <em><a href="https://groups.google.com/forum/?fromgroups#!forum/fubumvc-devel">Join our vibrant mailing list</a></em>
+      </em>
+      <div class="social">
+        <a href="http://twitter.com/fubumvc" class="ico-twitter"><img alt="Twitter" src="/_content/images/twitter-icon.png" /></a>
+<a href="https://github.com/DarthFubuMVC/FubuDocs" class="ico-github"><img alt="Github" src="/_content/images/github-icon.png" /></a>
+      </div>
+    </div>
+  </div>
+</div>
+      
+
+      <div id="nav-follow" class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav"><li><a href="/index" data-key="index">Index &#187;</a></li><li class="active"><a href="/skinning" data-key="skinning">Skinning FubuDocs &#187;</a></li></ul>
+<ul class="nav" style="float:right"><li><a href="/host" title="Using a Host Project">Previous</a></li><li><a href="/commands" title="FubuDocs at the command line">Next</a></li></ul>
+          </div>
+        </div>
+      </div>
+      <hr/>
+      <div class="row">
+        
+        
+
+        <div class="row">
+          <div class="span3 sidebar">
+            
+            <h3 class="half-margin">Topics</h3>
+            <ul id="page-toc" class="nav nav-tabs nav-stacked affix">
+            </ul>
+            <br/>
+            <h3>
+              FubuDocs v0.9.5
+            </h3>
+
+            <br/>
+            <h3 class="no-margin">Next</h3>
+<p><a href="/commands" data-key="index">FubuDocs at the command line</a></p>
+<h3 class="no-margin">Previous</h3>
+<p><a href="/host" data-key="host">Using a Host Project</a></p>
+          </div>
+          <div class="span9">
+            <h1 class="no-margin">Skinning FubuDocs</h1>
+            <hr class="header-line"></hr>
+
+            <!--Title: Skinning FubuDocs-->
+<!--Url: skinning-->
+<p>FubuDocs can be customized by both CSS and your own layouts to completely control the look and feel of your documentation.</p>
+
+<div class="alert alert-info"><i class="icon-info-sign"></i>The custom style theme and overriden _chrome_ described below is found in the _host_ project if there is more than one FubuDocs project in a website.</div>
+
+<p><section><h4 id="themes" class="section-header">CSS Theme&#39;s</h4>
+You can very happily replace the entire style of the site by simply adding a stylesheet at <code>/content/styles/fubudocs.theme.css</code>.  Do remember that FubuDocs uses Twitter Bootstrap for its basic styling and layout.</section></p>
+
+<p><section><h4 id="chrome" class="section-header">Custom Chrome</h4>
+The basic layout of the site can be altered in any fashion if any of these files can be found in the <em>host</em> project.  Do note that some of these files are named differently than the defaults in FubuDocs for, um, historical reasons that I don't quite recall.</p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>File</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>TopicChrome.spark</td>
+            <td>Layout for all the topic pages</td>
+            <td><a href="https://github.com/DarthFubuMVC/FubuDocs/blob/master/src/FubuDocs/Topics/Topic.spark">The default topic chrome</a> from FubuDocs</td>
+        </tr>
+        <tr>
+            <td>SplashChrome.spark</td>
+            <td>Layout for all the splash pages</td>
+            <td><a href="https://github.com/DarthFubuMVC/FubuDocs/blob/master/src/FubuDocs/Topics/Splash.spark">The default splash chrome</a> from FubuDocs</td>
+        </tr>
+        <tr>
+            <td>NavigationBar.spark</td>
+            <td>The layout of the top navigation bar that will generally appear on almost all pages</td>
+            <td><a href="https://github.com/DarthFubuMVC/FubuDocs/blob/master/src/FubuDocs/Shared/TopNavigation.spark">The default top navigation</a> from FubuDocs</td>
+        </tr>
+    </tbody>
+</table>
+
+<p></section></p>
+
+<p><section><h4 id="helpers" class="section-header">Layout Helpers</h4></p>
+
+<p>In order to make the skinning easier without having to learn FubuMVC and Spark, we've endeavored to add custom html tags for all of the common elements of a FubuDocs layout.</p>
+
+<ul>
+<li><p><code>&lt;MailingList text="some text"/&gt;</code> - Creates a link to the mailing list from the <code>project.xml</code> file with the given text.</p></li>
+<li><p><code>&lt;SocialIcons /&gt;</code> - Creates a link with icons to the GitHub and Twitter pages defined in the <code>project.xml</code> file if they exist.</p></li>
+<li><p><code>&lt;RootLink text="some text" /&gt;</code> - Creates a link to the home page of the doc application.  Using this is important to enable the various export modes described in <a href="/commands/exporting" data-key="exporting">Exporting to Static Html</a> </p></li>
+<li><p><code>&lt;ProjectLogo /&gt;</code> - Creates a link to the root page of the current project </p></li>
+<li><p><code>&lt;TopicTitle /&gt;</code> - Just the title of the current topic, used like <code>&lt;h1&gt;&lt;TopicTitle /&gt;&lt;/h1&gt;</code> </p></li>
+<li><p><code>&lt;ProjectName /&gt;</code> - Just the name of the current project, used like <code>&lt;h1&gt;&lt;ProjectName /&gt;&lt;/h1&gt;</code> </p></li>
+<li><p><code>&lt;CurrentVersion /&gt;</code> - Just the first three digits of the semantic version of the library or application.  Auto-magically determined by trying to find an assembly matching the documentation project name and reading the assembly version.  If the documentation project is <em>FubuCore.Docs</em>, then FubuDocs looks for <em>FubuCore.dll</em>.</p></li>
+<li><p><code>&lt;commonHeader /&gt;</code> - Non visual helper that <strong>must</strong> be in your markup's <code>&lt;head&gt;</code> in order for the necessary CSS and JS assets to be loaded.</p></li>
+<li><p><code>&lt;commonFooter /&gt;</code> - Small helper that should be at the bottom of your markup's <code>&lt;body&gt;</code> tag in order for the necessary JS scripts to be loaded.  </p></li>
+<li><p><code>&lt;InnerContent /&gt;</code> - For splash and topic pages, this binding controls is where the topic content will be rendered within the chrome pages.</p></li>
+<li><p><code>&lt;AuthoringTopic /&gt;</code> - Renders the authoring section for links to edit the existing page and access to the project tools in development mode.  In the left pane of the default layout.</p></li>
+<li><p><code>&lt;TopTopicNavigation /&gt;</code> - Renders the very top row of navigation links.  In this site, this content includes links to the home page, the current project, and social media links.</p></li>
+<li><p><code>&lt;LeftTopicNavigation /&gt;</code> - Renders the navigation links for the next and previous topics that appear in the left pane of this site.</p></li>
+<li><p><code>&lt;TopTopicNavigation /&gt;</code> - Renders the navigation links for the next and previous topics that appear in the 2nd to the top row of this site.</p></li>
+</ul>
+
+<p></section></p>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+<script type="text/javascript" src="/_content/scripts/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs.js"></script>
+<script type="text/javascript" src="/_content/scripts/jquery.nestable.js"></script>
+<script type="text/javascript" src="/_content/scripts/toastr.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap.min.js"></script>
+<script type="text/javascript" src="/_content/scripts/fubudocs-tools.js"></script>
+<script type="text/javascript" src="/_content/scripts/twitter/bootstrap-affix.js"></script>
+<script type="text/javascript" src="/_content/scripts/topics.js"></script>
+
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>
+      Powered by <a href="http://github.com/DarthFubuMVC/FubuDocs">FubuDocs</a>.
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
