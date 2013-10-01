@@ -1,4 +1,4 @@
-﻿<!--Title: Bottling the FubuDocs Projects-->
+<!--Title: Bottling the FubuDocs Projects-->
 
 <markdown>
   <Command app="fubudocs" command="bottle">

@@ -1,4 +1,4 @@
-﻿<!--Title: Running your FubuDocs Project-->
+<!--Title: Running your FubuDocs Project-->
 
 <markdown>
   <Command app="fubudocs" command="run">

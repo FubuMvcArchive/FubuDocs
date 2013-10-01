@@ -1,4 +1,4 @@
-﻿<!--Title: Exporting to Static Html-->
+<!--Title: Exporting to Static Html-->
 
 <Command app="fubudocs" command="export">
 <markdown>

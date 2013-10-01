@@ -38,7 +38,6 @@
   <element name="NavigationBar">this.Partial&lt;FubuDocs.Shared.TopNavigation&gt;()</element>
   <element name="commonHeader">this.Partial&lt;FubuDocs.Shared.CommonHeader&gt;()</element>
   <element name="commonFooter">this.Partial&lt;FubuDocs.Shared.CommonFooter&gt;()</element>
-
   
   <element name="RootLink">this.RootLink('@text')</element>
   <element name="ProjectLogo">this.ProjectLogo()</element>

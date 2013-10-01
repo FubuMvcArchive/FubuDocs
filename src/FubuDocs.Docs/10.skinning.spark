@@ -1,0 +1,89 @@
+<!--Title: Skinning FubuDocs-->
+<!--Url: skinning-->
+
+<markdown>
+
+FubuDocs can be customized by both CSS and your own layouts to completely control the look and feel of your documentation.
+
+<Info>The custom style theme and overriden _chrome_ described below is found in the _host_ project if there is more than one FubuDocs project in a website.</Info>
+
+<Section title="CSS Theme's" id="themes">
+You can very happily replace the entire style of the site by simply adding a stylesheet at <code>/content/styles/fubudocs.theme.css</code>.  Do remember that FubuDocs uses Twitter Bootstrap for its basic styling and layout.
+</Section>
+
+<Section title="Custom Chrome" id="chrome">
+The basic layout of the site can be altered in any fashion if any of these files can be found in the _host_ project.  Do note that some of these files are named differently than the defaults in FubuDocs for, um, historical reasons that I don't quite recall.
+
+<table class="table">
+	<thead>
+	<tr>
+		<th>File</th>
+		<th>Description</th>
+		<th>Example</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>TopicChrome.spark</td>
+			<td>Layout for all the topic pages</td>
+			<td><a href="https://github.com/DarthFubuMVC/FubuDocs/blob/master/src/FubuDocs/Topics/Topic.spark">The default topic chrome</a> from FubuDocs</td>
+		</tr>
+		<tr>
+			<td>SplashChrome.spark</td>
+			<td>Layout for all the splash pages</td>
+			<td><a href="https://github.com/DarthFubuMVC/FubuDocs/blob/master/src/FubuDocs/Topics/Splash.spark">The default splash chrome</a> from FubuDocs</td>
+		</tr>
+		<tr>
+			<td>NavigationBar.spark</td>
+			<td>The layout of the top navigation bar that will generally appear on almost all pages</td>
+			<td><a href="https://github.com/DarthFubuMVC/FubuDocs/blob/master/src/FubuDocs/Shared/TopNavigation.spark">The default top navigation</a> from FubuDocs</td>
+		</tr>
+	</tbody>
+</table>
+
+</Section>
+
+<Section title="Layout Helpers" id="helpers">
+
+In order to make the skinning easier without having to learn FubuMVC and Spark, we've endeavored to add custom html tags for all of the common elements of a FubuDocs layout.
+
+* <code>&lt;MailingList text="some text"/&gt;</code> - Creates a link to the mailing list from the <code>project.xml</code> file with the given text.
+
+* <code>&lt;SocialIcons /&gt;</code> - Creates a link with icons to the GitHub and Twitter pages defined in the <code>project.xml</code> file if they exist.
+
+* <code>&lt;RootLink text="some text" /&gt;</code> - Creates a link to the home page of the doc application.  Using this is important to enable the various export modes described in <TopicLink name="commands/exporting"/> 
+
+* <code>&lt;ProjectLogo /&gt;</code> - Creates a link to the root page of the current project 
+
+* <code>&lt;TopicTitle /&gt;</code> - Just the title of the current topic, used like <code>&lt;h1&gt;&lt;TopicTitle /&gt;&lt;/h1&gt;</code> 
+
+* <code>&lt;ProjectName /&gt;</code> - Just the name of the current project, used like <code>&lt;h1&gt;&lt;ProjectName /&gt;&lt;/h1&gt;</code> 
+
+* <code>&lt;CurrentVersion /&gt;</code> - Just the first three digits of the semantic version of the library or application.  Auto-magically determined by trying to find an assembly matching the documentation project name and reading the assembly version.  If the documentation project is _FubuCore.Docs_, then FubuDocs looks for _FubuCore.dll_.
+
+* <code>&lt;commonHeader /&gt;</code> - Non visual helper that **must** be in your markup's <code>&lt;head&gt;</code> in order for the necessary CSS and JS assets to be loaded.
+
+* <code>&lt;commonFooter /&gt;</code> - Small helper that should be at the bottom of your markup's <code>&lt;body&gt;</code> tag in order for the necessary JS scripts to be loaded.  
+
+* <code>&lt;InnerContent /&gt;</code> - For splash and topic pages, this binding controls is where the topic content will be rendered within the chrome pages.
+
+* <code>&lt;AuthoringTopic /&gt;</code> - Renders the authoring section for links to edit the existing page and access to the project tools in development mode.  In the left pane of the default layout.
+
+* <code>&lt;TopTopicNavigation /&gt;</code> - Renders the very top row of navigation links.  In this site, this content includes links to the home page, the current project, and social media links.
+
+* <code>&lt;LeftTopicNavigation /&gt;</code> - Renders the navigation links for the next and previous topics that appear in the left pane of this site.
+
+* <code>&lt;TopTopicNavigation /&gt;</code> - Renders the navigation links for the next and previous topics that appear in the 2nd to the top row of this site.
+
+
+
+
+
+
+
+
+</Section>
+
+
+</markdown>
+

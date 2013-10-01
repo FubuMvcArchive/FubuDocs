@@ -1,0 +1,26 @@
+<!--Title: Using a Host Project-->
+<!--Url: host-->
+
+<markdown>
+For the [FubuWorld suite of projects](http://fubuworld.com), we use a _host_ project called [FubuWorld](https://github.com/DarthFubuMVC/FubuWorld) to aggregate the various documentation packages into a single website.  
+
+
+To set up a project as a host, simply make a new VS.Net class library (yep, that's right, no need to use any kind of ASP.Net template) and install the nuget's for the upstream documentation projects you want to be included.  
+
+<Info>If you're use the <code>fubudocs bottle</code> command against a FubuDocs project, it will take the necessary steps to bundle up the topic content into the assembly using the <ProjectLink name="Bottles" /> framework.  The <code>bottle</code> command will also create a nuspec file for you in the _packaging/nuget_ folder underneath the root of your code repository.</Info>
+
+You do need to at least add an <code>index.spark</code> file to act as the home page for the entire application.  Any text files with the <code>.spark</code> extension will be considered to be topic pages as well.
+
+If you just absolutely don't want to use a Visual Studio.Net assembly for your host, you can just use a directory structure like this:
+
+<pre>
+index.spark
+/bin
+    /MyProject.Docs.dll
+	/MyOtherProject.Docs.dll
+</pre>
+
+</markdown>
+
+One of the other advantages of using a _host_ is the ability to skin a FubuDocs website -- just in case you're one of the 6 billion folks out there with better CSS skills than me.  See <TopicLink name="skinning" /> for more information.
+

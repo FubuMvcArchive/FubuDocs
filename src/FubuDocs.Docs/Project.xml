@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ProjectRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<ProjectRoot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <TagLine>Frictionless documentation tooling</TagLine>
   <Description>Create technical documentation the idiomatic FubuMVC way</Description>
   <Name>FubuDocs</Name>
@@ -11,6 +11,10 @@
   <BottleName>FubuDocs.Docs</BottleName>
   <PluginTo />
   <Nugets>
+    <PublishedNuget>
+      <Name>FubuDocs</Name>
+      <Description>Frictionless documentation tooling</Description>
+    </PublishedNuget>
   </Nugets>
   <Url>fubudocs</Url>
 </ProjectRoot>
