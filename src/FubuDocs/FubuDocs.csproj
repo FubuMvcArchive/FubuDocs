@@ -34,9 +34,6 @@
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles\lib\Bottles.dll</HintPath>
     </Reference>
-    <Reference Include="Bottles.Services">
-      <HintPath>..\packages\Bottles.Services\lib\net40\Bottles.Services.dll</HintPath>
-    </Reference>
     <Reference Include="Fubu">
       <HintPath>..\packages\fubu\lib\net40\Fubu.exe</HintPath>
     </Reference>
@@ -54,9 +51,6 @@
     </Reference>
     <Reference Include="FubuMVC.CodeSnippets">
       <HintPath>..\packages\FubuMVC.CodeSnippets\lib\net40\FubuMVC.CodeSnippets.dll</HintPath>
-    </Reference>
-    <Reference Include="FubuMVC.CodeSnippets.Docs">
-      <HintPath>..\packages\FubuMVC.CodeSnippets.Docs\lib\net40\FubuMVC.CodeSnippets.Docs.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.Core">
       <HintPath>..\packages\FubuMVC.Core\lib\net40\FubuMVC.Core.dll</HintPath>
