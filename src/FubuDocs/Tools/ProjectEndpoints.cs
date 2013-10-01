@@ -1,5 +1,8 @@
 ﻿using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
+using Bottles.Services.Messaging;
+using Fubu.Running;
 using FubuDocs.Navigation;
 using FubuDocs.Snippets;
 using FubuDocs.Todos;
@@ -50,9 +53,11 @@ namespace FubuDocs.Tools
             var orderedDeltas = collector.OrderedDeltas().ToArray();
             orderedDeltas.Each(x => Debug.WriteLine(x));
             
-            //collector.ExecuteDeltas();
+            collector.ExecuteDeltas();
 
-            // TODO -- need to figure out how to refresh this thing.
+            Task.Factory.StartNew(() => {
+                EventAggregator.SendMessage(new RecycleApplication());
+            });
 
             return AjaxContinuation.Successful();
         }
