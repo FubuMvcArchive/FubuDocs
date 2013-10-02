@@ -29,7 +29,10 @@ namespace FubuDocsRunner.Running
 				.Where(BottlesFilter.ShouldLoad)
 				.Select(dir => {
                     Console.WriteLine("Loading documentation from folder " + dir);
-				    return reader.LoadFromFolder(dir);
+				    var pak = reader.LoadFromFolder(dir).As<PackageInfo>();
+                    pak.RemoveAllAssemblies();
+				    
+                    return pak;
 				});
         }
     }
