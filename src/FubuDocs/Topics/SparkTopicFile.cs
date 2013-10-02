@@ -37,5 +37,10 @@ namespace FubuDocs.Topics
 
             return new SparkViewToken(sparkDescriptor);
         }
+
+        public override string ToString()
+        {
+            return FilePath;
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace FubuDocs.Tools
+﻿using System;
+using FubuCore;
+
+namespace FubuDocs.Tools
 {
     public class MoveTopic : IDelta
     {
@@ -8,6 +11,11 @@
 
         public MoveTopic(string original, string moved)
         {
+            if (moved.IsEmpty())
+            {
+                throw new ArgumentOutOfRangeException("moved", "'moved' cannot be null or empty");
+            }
+
             _original = original;
             _moved = moved;
         }
@@ -15,6 +23,7 @@
         public void Prepare()
         {
             _contents = TopicToken.FileSystem.ReadStringFromFile(_original);
+            TopicToken.FileSystem.DeleteFile(_original);
         }
 
         public void Execute()

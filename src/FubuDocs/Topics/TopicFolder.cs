@@ -11,7 +11,7 @@ namespace FubuDocs.Topics
         private readonly string _url;
         private Topic _root;
 
-        public TopicFolder(string rawName, ProjectRoot project) : base(rawName.Split('/').Last())
+        public TopicFolder(string rawName, ProjectRoot project) : base(rawName)
         {
             _project = project;
 

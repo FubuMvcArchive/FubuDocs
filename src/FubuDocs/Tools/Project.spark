@@ -165,12 +165,6 @@
             <input type="text" id="inputUrl" placeholder="Url" class="url" tabindex="3"/>
           </div>
         </div>
-        <div class="control-group">
-          <label class="control-label" for="inputSections">Sections</label>
-          <div class="controls">
-            <textarea rows="5" placeholder="Section Titles" class="sections" id="inputSections" tabindex="4"></textarea>
-          </div>
-        </div>
         <div class="control-group add-topic-link" >
           <div class="controls">
             <button id="add-topic-button" tabindex="5">Add Topic</button>

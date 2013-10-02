@@ -11,6 +11,7 @@ using FubuDocs.Todos;
 using FubuDocs.Topics;
 using FubuMVC.CodeSnippets;
 using FubuMVC.Core.Ajax;
+using FubuMVC.Core.Diagnostics;
 using FubuMVC.Core.Urls;
 using System.Collections.Generic;
 
@@ -21,12 +22,15 @@ namespace FubuDocs.Tools
         private readonly IUrlRegistry _urls;
         private readonly ITopicTokenCache _tokenCache;
         private readonly ISnippetCache _cache;
+        private readonly AppReloaded _reloaded;
+        private static string _lastTimestamp;
 
-        public ProjectEndpoints(IUrlRegistry urls, ITopicTokenCache tokenCache, ISnippetCache cache)
+        public ProjectEndpoints(IUrlRegistry urls, ITopicTokenCache tokenCache, ISnippetCache cache, AppReloaded reloaded)
         {
             _urls = urls;
             _tokenCache = tokenCache;
             _cache = cache;
+            _reloaded = reloaded;
         }
 
         public ProjectViewModel get_project_Name(ProjectRequest request)
@@ -50,6 +54,8 @@ namespace FubuDocs.Tools
 
         public AjaxContinuation post_project_ProjectName(TopicToken topic)
         {
+            if (_lastTimestamp == _reloaded.Timestamp.ToString()) return AjaxContinuation.Successful();
+
             var existing = _tokenCache.TopicStructureFor(topic.ProjectName);
             var collector = new DeltaCollector(existing, topic);
             var orderedDeltas = collector.OrderedDeltas().ToArray();
@@ -60,6 +66,8 @@ namespace FubuDocs.Tools
             Task.Factory.StartNew(() => {
                 EventAggregator.SendMessage(new RecycleApplication());
             });
+
+            _lastTimestamp = _reloaded.Timestamp.ToString();
 
             return AjaxContinuation.Successful();
         }

@@ -60,26 +60,6 @@ namespace FubuDocs.Tests.Tools
             root.Key.ShouldEqual("index");
         }
 
-        [Test]
-        public void should_load_the_children()
-        {
-            var expected = @"fubumvc/subject3/c
-fubumvc/subject3/a
-fubumvc/subject3/b
-fubumvc/deep/b/subjectA/C
-fubumvc/subject1
-fubumvc/subject2
-fubumvc/colors
-fubumvc/deep/b/subjectB
-fubumvc/deep/b
-fubumvc/deep/a
-fubumvc/nested
-fubumvc/deep/d
-".ReadLines();
-
-            root.Children.Select(x => x.FullKey)
-                .ShouldHaveTheSameElementsAs(expected);
-        }
 
 
         [Test]

@@ -181,20 +181,30 @@ namespace FubuDocs.Tools
         {
             assignOrders();
 
-            var filename = Key.EqualsIgnoreCase("index") ? "index.spark" : "{0}.{1}".ToFormat(Order, Key);
+            var orderedKeyName = "{0}.{1}".ToFormat(Order, Key);
 
             if (Children.Any())
             {
-                var folder = Key.EqualsIgnoreCase("index") ? containingFolder : containingFolder.AppendPath(filename);
-                File = folder.AppendPath("index.spark");
-                Folder = folder;
+                if (Key.EqualsIgnoreCase("index"))
+                {
+                    Folder = containingFolder;
+                    File = containingFolder.AppendPath("index.spark");
+                }
+                else
+                {
+                    Folder = containingFolder.AppendPath(orderedKeyName);
+                    File = Folder.AppendPath("index.spark");
+                }
 
-                Children.Each(x => x.DeterminePaths(folder));
+                Children.Each(x => x.DeterminePaths(Folder));
             }
             else
             {
                 Folder = containingFolder;
-                File = containingFolder.AppendPath(filename + ".spark");
+
+                File = Key.EqualsIgnoreCase("index") 
+                    ? Folder.AppendPath("index.spark") 
+                    : containingFolder.AppendPath(orderedKeyName + ".spark");
             }
         }
 

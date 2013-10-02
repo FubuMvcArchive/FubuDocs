@@ -28,7 +28,7 @@ namespace FubuDocs.Tests.Topics
         [Test]
         public void captures_the_raw_name()
         {
-            theFolder.Raw.ShouldEqual("2.abc");
+            theFolder.Raw.ShouldEqual("1.foo/1.bar/2.abc");
         }
 
         [Test]

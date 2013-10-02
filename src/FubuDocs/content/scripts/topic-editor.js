@@ -13,6 +13,9 @@
 
         $('#pin-current').show();
 
+        var plugin = $('#topic-tree').data("nestable");
+        plugin.expandItem($(this));
+
         e.stopImmediatePropagation();
     });
 
@@ -47,12 +50,14 @@
         window.location.href = window.location.href;
     });
 
-    $('#submit').click(function() {
+    $('#submit').click(function () {
         var clientModel = $('#topic-tree').nestable('serialize');
         var serverModel = transformClientModel(clientModel[0]);
 
         var url = $(this).attr('data-url');
         var json = window.JSON.stringify(serverModel);
+
+        $('#submit').attr('disabled', 'true');
 
         $.ajax({            
            type: "POST",
@@ -63,9 +68,15 @@
                $("#alert").show();
                $('#tabs').hide();
                $('.tab-content').hide();
+           },
+           
+           error: function(data, status, xhr) {
+               alert("The topic update failed.  Check the console window");
+               $('#submit').attr('disabled', 'false');
            }
         });
    });
+    
 
 
     $('#expand-all').click(function() {
