@@ -25,7 +25,7 @@
     <h2>
       Topic Manager for !{Model.Name}
       <span style="float:right;font-size:smaller">
-        <a href="/!{Model.Project.Home.AbsoluteUrl}">back to content</a>
+        <a href="!{Model.Project.Home.AbsoluteUrl}">back to content</a>
       </span>
     </h2>
 
