@@ -34,9 +34,14 @@
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles\lib\Bottles.dll</HintPath>
     </Reference>
-    <Reference Include="Fubu, Version=0.9.9.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Fubu">
+      <HintPath>..\packages\fubu\lib\net40\Fubu.exe</HintPath>
+    </Reference>
     <Reference Include="FubuCore">
       <HintPath>..\packages\FubuCore\lib\FubuCore.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuCsProjFile">
+      <HintPath>..\packages\FubuCsProjFile\lib\net40\FubuCsProjFile.dll</HintPath>
     </Reference>
     <Reference Include="FubuLocalization">
       <HintPath>..\packages\FubuLocalization\lib\FubuLocalization.dll</HintPath>
@@ -62,11 +67,17 @@
     <Reference Include="FubuMVC.JQueryUI">
       <HintPath>..\packages\FubuMVC.JQueryUI\lib\net40\FubuMVC.JQueryUI.dll</HintPath>
     </Reference>
+    <Reference Include="FubuMVC.Katana">
+      <HintPath>..\packages\FubuMVC.Katana\lib\net40\FubuMVC.Katana.dll</HintPath>
+    </Reference>
     <Reference Include="FubuMVC.Media">
       <HintPath>..\packages\FubuMVC.Media\lib\net40\FubuMVC.Media.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.Navigation">
       <HintPath>..\packages\FubuMVC.Navigation\lib\net40\FubuMVC.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.OwinHost">
+      <HintPath>..\packages\FubuMVC.OwinHost\lib\net40\FubuMVC.OwinHost.dll</HintPath>
     </Reference>
     <Reference Include="FubuMVC.SlickGrid">
       <HintPath>..\packages\FubuMVC.SlickGrid\lib\net40\FubuMVC.SlickGrid.dll</HintPath>
@@ -87,11 +98,26 @@
       <HintPath>..\packages\HtmlTags\lib\4.0\HtmlTags.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\FubuMVC.Katana\lib\net40\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener">
+      <HintPath>..\packages\FubuMVC.Katana\lib\net40\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting">
+      <HintPath>..\packages\FubuMVC.Katana\lib\net40\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="nunit.mocks">
       <HintPath>..\packages\NUnit\lib\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="pnunit.framework">
       <HintPath>..\packages\NUnit\lib\pnunit.framework.dll</HintPath>
@@ -115,6 +141,9 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebDriver">
+      <HintPath>..\packages\Selenium.WebDriver\lib\net40\WebDriver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\SnippetsCommandSmokeTester.cs" />

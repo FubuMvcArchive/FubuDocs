@@ -307,4 +307,7 @@
   <ItemGroup>
     <EmbeddedResource Include="pak-Config.zip" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+  </ItemGroup>
 </Project>
