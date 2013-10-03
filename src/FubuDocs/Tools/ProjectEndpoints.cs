@@ -72,10 +72,11 @@ namespace FubuDocs.Tools
             return AjaxContinuation.Successful();
         }
 
-        public AjaxContinuation post_project_Name(ProjectViewModel model)
+        public AjaxContinuation post_project_properties_Name(ProjectViewModel model)
         {
             var project = TopicGraph.AllTopics.TryFindProject(model.Name);
 
+            model.Project.Filename = project.Filename;
             model.Project.WriteTo(project.Filename);
             model.Project.Index = project.Index;
             model.Project.Splash = project.Splash;
