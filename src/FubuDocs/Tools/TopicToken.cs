@@ -133,7 +133,15 @@ namespace FubuDocs.Tools
         }
 
         public string Id = Guid.NewGuid().ToString();
-        public string Key;
+
+
+        private string _key;
+
+        public string Key
+        {
+            get { return _key; }
+            set { _key = value.IsEmpty() ? value : value.Replace(" ", "-"); }
+        }
         public string Title;
         public string Url;
         public int Order;

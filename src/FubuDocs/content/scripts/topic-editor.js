@@ -215,6 +215,10 @@ function TopicController(adder) {
     return self;
 }
 
+function replaceAll(find, replace, str) {
+    return str.replace(new RegExp(find, 'g'), replace);
+}
+
 function EditorPane(form) {
     var self = this;
     self.form = form;
@@ -226,7 +230,7 @@ function EditorPane(form) {
     titleInput.change(function() {
         if (titleInput.val() == '') return;
 
-        var newKey = titleInput.val().toLowerCase().replace(" ", "_");
+        var newKey = replaceAll(" ", "-", titleInput.val().toLowerCase());
 
         if (keyInput.val() == '') {
             keyInput.val(newKey);
