@@ -25,8 +25,16 @@ namespace FubuDocs.Topics
         {
             get
             {
+                return RelativeFile.Split('.').Reverse().Skip(1).Reverse().Join(".").ParentUrl();
+            }
+        }
+
+        public string RelativeFile
+        {
+            get
+            {
                 string relativeFile = _viewDescriptor.RelativePath().Replace("\\", "/");
-                return relativeFile.Split('.').Reverse().Skip(1).Reverse().Join(".").ParentUrl();
+                return relativeFile;
             }
         }
 

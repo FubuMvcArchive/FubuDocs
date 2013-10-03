@@ -7,6 +7,7 @@ namespace FubuDocs.Topics
         string FilePath { get; }
         string Name { get; }
         string Folder { get; }
+        string RelativeFile { get; }
         IViewToken ToViewToken();
     }
 }

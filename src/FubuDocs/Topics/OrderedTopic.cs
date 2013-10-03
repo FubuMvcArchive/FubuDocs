@@ -8,16 +8,16 @@ namespace FubuDocs.Topics
     {
         public OrderedTopic(string text)
         {
-            Raw = text;
+            OrderString = text;
             Name = FindValue(text);
         }
 
-        public string Raw { get; private set; }
+        public string OrderString { get; set; }
         public string Name { get; private set; }
 
         public int CompareTo(OrderedTopic other)
         {
-            return Topic.CompareName(Raw, other.Raw);
+            return Topic.CompareName(OrderString, other.OrderString);
         }
 
         public static string FindValue(string text)

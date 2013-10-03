@@ -131,9 +131,9 @@ namespace FubuDocs.Topics
             });
 
             folders.Each(x => {
-                if (x.Raw == String.Empty) return;
+                if (x.OrderString == String.Empty) return;
 
-                var rawParent = x.Raw.ParentUrl();
+                var rawParent = x.OrderString.ParentUrl();
 
 
                 folders.WithValue(rawParent, parent => parent.Add(x));

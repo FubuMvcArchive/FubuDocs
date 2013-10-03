@@ -25,6 +25,7 @@ namespace FubuDocs.Tests.Topics
         public string Name { get; set; }
 
         public string Folder { get; set; }
+        public string RelativeFile { get; private set; }
 
         public IViewToken ToViewToken()
         {

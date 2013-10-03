@@ -41,7 +41,17 @@ namespace FubuDocs.Topics
             File = file;
 
             IsIndex = Name.EqualsIgnoreCase(Index);
-            Key = IsIndex ? parent.Url : parent.Url.AppendUrl(Name);
+            if (IsIndex)
+            {
+                Key = parent.Url;
+                OrderString = file.RelativeFile.IsEmpty() ? string.Empty : file.RelativeFile.ParentUrl();
+            }
+            else
+            {
+                Key = parent.Url.AppendUrl(Name);
+            }
+
+            OrderString = OrderString.Replace(".spark", "");
 
             TopicBuilder.BuildOut(this);
         }
