@@ -53,7 +53,7 @@ namespace FubuDocsRunner.Running
         {
             return new FubuDocsDirectories
             {
-                Host = HostFlag,
+                Host = HostFlag.ToFullPath(),
                 Solution = Environment.CurrentDirectory,
                 RootUrls = true
             };
