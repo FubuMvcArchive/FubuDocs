@@ -1,0 +1,7 @@
+<!--Title: Versioning-->
+<!--Url: versioning-->
+
+<markdown>
+The version number shown in the left pane of topic pages and in the <code>&lt;ProjectVersion/&gt;</code> helper is simply the first 3 numbers of the **documentation** project assembly.  
+</markdown>
+

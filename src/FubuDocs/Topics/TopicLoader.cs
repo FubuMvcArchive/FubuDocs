@@ -79,12 +79,16 @@ namespace FubuDocs.Topics
         private static void findProjectVersion(string bottleName, string folder, ProjectRoot project)
         {
             var assemblyFileName = bottleName + ".dll";
+
             var file = new FileSystem().FindFiles(folder, FileSet.Deep(assemblyFileName)).FirstOrDefault();
             if (file != null)
             {
+
+
+
                 try
                 {
-                    var assembly = Assembly.LoadFrom(file);
+                    var assembly = Assembly.ReflectionOnlyLoadFrom(file);
                     if (assembly != null)
                     {
                         project.Version = assembly.GetName().Version.ToString().Split('.').Take(3).Join(".");
