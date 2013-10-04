@@ -23,6 +23,7 @@ namespace FubuDocsRunner
 
         [Description("Finds and lists all the existing code snippets, but does not execute anything")]
         public bool ListFlag { get; set; }
+
     }
 
     [CommandDescription(
@@ -34,6 +35,8 @@ namespace FubuDocsRunner
 
         public override bool Execute(SnippetsInput input)
         {
+            Console.WriteLine("Snippets for directory " + Environment.CurrentDirectory);
+
             var documentsFolders = input.DetermineDocumentsFolders();
 
             if (input.ListFlag)

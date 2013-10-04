@@ -32,6 +32,7 @@ namespace FubuDocsRunner.Running
 
             var directories = input.ToDirectories();
 
+            var currentDirectory = Environment.CurrentDirectory;
 
             try
             {
@@ -48,13 +49,19 @@ namespace FubuDocsRunner.Running
                 {
                     if (key.Key == ConsoleKey.R)
                     {
-                        _application.RecycleAppDomain();
+                        Environment.CurrentDirectory = currentDirectory;
                         new SnippetsCommand().Execute(new SnippetsInput());
+                        _application.RecycleAppDomain();
+                        
+                        ConsoleWriter.Write(ConsoleColor.Green, "Recycling successful!");
 
                         tellUserWhatToDo();
                     }
 
                     key = Console.ReadKey();
+
+                    Console.WriteLine();
+                    Console.WriteLine();
                 }
 
                 _application.Shutdown();
