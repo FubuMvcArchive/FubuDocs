@@ -1,3 +1,10 @@
 #!/usr/bin/env ruby
 
-system("#{File.dirname(__FILE__)}/fubudocs_exe/FubuDocsRunner.exe", *ARGV)
+cmd=""
+if(!RUBY_PLATFORM.match("linux|darwin").nil?)
+    cmd << "mono "
+end
+cmd << "#{File.dirname(__FILE__)}/fubudocs_exe/FubuDocsRunner.exe" + ARGV.join(' ')
+
+result = system(cmd)
+exit 1 unless result
