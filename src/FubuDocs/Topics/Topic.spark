@@ -51,11 +51,26 @@
             </if>
 
             <InnerContent />
+
+
+
+
           </div>
         </div>
       </div>
     </div>
 
+    <br></br>
+    <hr></hr>
+    <div class="navbar" >
+      <div class="navbar-inner">
+        <div class="container">
+          <TopTopicNavigation />
+        </div>
+      </div>
+    </div>
+    
+    
     <commonFooter />
   </body>
 </html>
