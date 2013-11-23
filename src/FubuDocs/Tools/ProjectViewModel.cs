@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using FubuCore.Binding;
 using FubuDocs.Topics;
 using HtmlTags;
 
@@ -24,11 +26,24 @@ namespace FubuDocs.Tools
         public string Name { get; set; }
         public ProjectRoot Project { get; set; }
 
+        [DoNothing]
         public string SubmitUrl { get; set; }
+        [DoNothing]
         public HtmlTag TopicTemplate { get; set; }
+        [DoNothing]
         public HtmlTag Topics { get; set; }
+        [DoNothing]
         public HtmlTag Files { get; set; }
+        [DoNothing]
         public HtmlTag Snippets { get; set; }
-        public HtmlTag TodoList { get; set; }
+        [DoNothing]public HtmlTag TodoList { get; set; }
+    }
+
+    public class DoNothingAttribute : BindingAttribute
+    {
+        public override void Bind(PropertyInfo property, IBindingContext context)
+        {
+            // do nothing
+        }
     }
 }
