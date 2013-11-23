@@ -31,14 +31,30 @@ namespace FubuDocs.Navigation
             var project = page.Get<ITopicContext>().Project;
             var snippets = page.Get<ISnippetCache>();
 
-            if (project == null)
+            Snippet snippet = null;
+
+            try
             {
-                return page.CodeSnippet(snippetName);
+                
+                if (project == null)
+                {
+                    snippet = snippets.Find(snippetName);
+                }
+                else
+                {
+                    snippet = snippets.As<SnippetCache>().FindByBottle(snippetName, project.BottleName) ??
+                              snippets.Find(snippetName);
+                }
+            }
+            catch (Exception)
+            {
+                throw new ArgumentOutOfRangeException("snippetName", "Requested snippet '{0}' does not exist".ToFormat(snippetName));
             }
 
-            // TODO -- get rid of the downcast here when the new SlickGrid bottle is ready
-            var snippet = snippets.As<SnippetCache>().FindByBottle(snippetName, project.BottleName) ??
-                          snippets.Find(snippetName);
+            if (snippet == null)
+            {
+                throw new ArgumentOutOfRangeException("snippetName", "Requested snippet '{0}' does not exist".ToFormat(snippetName));
+            }
 
             return page.CodeSnippet(snippet);
         }

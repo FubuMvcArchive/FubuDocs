@@ -28,6 +28,7 @@ Note that in the second usage you'll need to specify the project name as part of
 <Section title="Link to another Project" id="projects">
 
 <Snippet name="ProjectLink" />
+  
 
 <!-- SAMPLE: ProjectLink -->
 <ProjectLink name="FubuMVC.CodeSnippets" />
