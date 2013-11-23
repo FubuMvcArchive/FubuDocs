@@ -35,6 +35,18 @@ namespace FubuDocsRunner.Running
         public string HostFlag { get; set; }
 
 
+        public void TryToCleanOutFubuContentFolder()
+        {
+            var directory = ToRequest().DirectoryFlag.AppendPath("fubu-content");
+            var system = new FileSystem();
+            if (system.DirectoryExists(directory))
+            {
+                Console.WriteLine("Trying to clean out the contents of " + directory);
+                system.ForceClean(directory);
+            }
+
+        }
+
 
         public ApplicationRequest ToRequest()
         {

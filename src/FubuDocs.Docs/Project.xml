@@ -10,4 +10,11 @@
   <TeamCityBuildType>bt88</TeamCityBuildType>
   <BottleName>FubuDocs.Docs</BottleName>
   <PluginTo />
+  <Nugets>
+    <PublishedNuget>
+      <Name>FubuDocs</Name>
+      <Description>Frictionless documentation tooling</Description>
+    </PublishedNuget>
+  </Nugets>
+  <Url>fubudocs</Url>
 </ProjectRoot>

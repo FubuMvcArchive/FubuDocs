@@ -26,9 +26,15 @@ namespace FubuDocsRunner.Running
             });
 
             Task cleaning = Task.Factory.StartNew(() => { cleanExplodedBottleContents(runnerDirectory); });
+            var hostCleaning = Task.Factory.StartNew(() =>
+            {
+                if (input.HostFlag.IsNotEmpty())
+                {
+                    input.TryToCleanOutFubuContentFolder();
+                }
+            });
 
-
-            Task.WaitAll(bottling, cleaning);
+            Task.WaitAll(bottling, cleaning, hostCleaning);
 
             var directories = input.ToDirectories();
 
