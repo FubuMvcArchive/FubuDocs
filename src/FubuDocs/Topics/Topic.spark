@@ -33,7 +33,7 @@
           <div class="span3 sidebar">
             <AuthoringTopic />
             <h3 class="half-margin">Topics</h3>
-            <ul id="page-toc" class="nav nav-tabs nav-stacked affix">
+            <ul id="page-toc" class="nav nav-tabs nav-stacked affix bs-docs-sidebar">
             </ul>
             <br/>
             <h3>

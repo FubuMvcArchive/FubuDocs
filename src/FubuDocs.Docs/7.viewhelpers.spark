@@ -16,11 +16,16 @@ which renders:
 <Section title="Link to a Topic in a different Project" id="external-link">
 
 To link to a topic in a different project, use:
+
+<Snippet name="using-external-link" />
+
+which renders:
+
 <!-- SAMPLE: using-external-link -->
 <ExternalTopicLink title="More about Code Snippets" name="fubudocs/codesnippets" />
 <!-- ENDSAMPLE -->
 
-Note that in the second usage you'll need to specify the project name as part of the name.  
+Note that in the usage of <code>&lt;ExternalTopicLink&gt;</code> you'll need to specify the project name as part of the name attribute.  
 
 </Section>
 
