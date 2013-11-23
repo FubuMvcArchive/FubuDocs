@@ -19,6 +19,12 @@ namespace FubuDocs.Navigation
              return new SectionTag(text, id).NoClosingTag();
          }
 
+        public static bool IsIndex(this IFubuPage page)
+        {
+            var context = page.Get<ITopicContext>();
+            return context.IsIndex();
+        }
+
         public static bool ShouldRenderAuthoringTopic(this IFubuPage page)
         {
             if (!FubuMode.InDevelopment()) return false;

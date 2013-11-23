@@ -10,6 +10,7 @@ namespace FubuDocs.Topics
         ProjectRoot Project { get; }
 
         string File { get; }
+        bool IsIndex();
     }
 
     public class TopicContext : ITopicContext
@@ -46,6 +47,13 @@ namespace FubuDocs.Topics
         public string File
         {
             get { return _topic.Value == null ? null : _topic.Value.File.FilePath; }
+        }
+
+        public bool IsIndex()
+        {
+            if (Current == null) return false;
+
+            return Current == Current.Project.Index;
         }
     }
 }
