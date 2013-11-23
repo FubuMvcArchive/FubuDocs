@@ -78,6 +78,8 @@ namespace FubuDocs.Topics
 
         private static void findProjectVersion(string bottleName, string folder, ProjectRoot project)
         {
+            if (bottleName == "Application") return; // hokey, but it stops an error.
+
             var assemblyFileName = bottleName + ".dll";
 
             var file = new FileSystem().FindFiles(folder, FileSet.Deep(assemblyFileName)).FirstOrDefault();

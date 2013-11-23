@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -135,8 +135,6 @@
       <Link>CommonAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AllProjectsModel.cs" />
-    <Compile Include="FubuDocsDirectories.cs" />
-    <Compile Include="HomeEndpoint.cs" />
     <Compile Include="CLI\ArgumentsTag.cs" />
     <Compile Include="CLI\CommandDocumentationSource.cs" />
     <Compile Include="CLI\CommandSectionTag.cs" />
@@ -149,12 +147,14 @@
     <Compile Include="Exporting\ExportAttribute.cs" />
     <Compile Include="Exporting\UrlList.cs" />
     <Compile Include="Exporting\UrlQueryEndpoint.cs" />
+    <Compile Include="FubuDocsDirectories.cs" />
     <Compile Include="FubuDocsExtension.cs" />
     <Compile Include="FubuWorldRegistry.cs" />
+    <Compile Include="HomeEndpoint.cs" />
     <Compile Include="Infrastructure\Binders\RequestLogPropertyBinder.cs" />
+    <Compile Include="Infrastructure\BottlesFilter.cs" />
     <Compile Include="Infrastructure\EditorLauncher.cs" />
     <Compile Include="Infrastructure\FubuDocsPackageLoader.cs" />
-    <Compile Include="Infrastructure\BottlesFilter.cs" />
     <Compile Include="Navigation\FubuDocsPageExtensions.cs" />
     <Compile Include="Navigation\NamedTopicLinkTag.cs" />
     <Compile Include="Navigation\SectionTag.cs" />
@@ -171,8 +171,8 @@
     <Compile Include="Skinning\OverrideChrome.cs" />
     <Compile Include="Skinning\SpecialView.cs" />
     <Compile Include="Skinning\SpecialViewWriter.cs" />
-    <Compile Include="Snippets\SnippetRequest.cs" />
     <Compile Include="Snippets\SnippetEndpoints.cs" />
+    <Compile Include="Snippets\SnippetRequest.cs" />
     <Compile Include="Snippets\SnippetsModel.cs" />
     <Compile Include="Snippets\SnippetsTableTag.cs" />
     <Compile Include="Todos\TodoTableTag.cs" />
@@ -226,20 +226,20 @@
     <Content Include="content\images\header-bg.jpg" />
     <Content Include="content\images\twitter-icon.png" />
     <Content Include="content\scripts\build-status.js" />
-    <Content Include="content\scripts\topic-editor.js" />
     <Content Include="content\scripts\fubudocs.js" />
     <Content Include="content\scripts\fubudocs-tools.js" />
     <Content Include="content\scripts\jquery.nestable.js" />
     <Content Include="content\scripts\request-diagnostics.js" />
     <Content Include="content\scripts\snippets.js" />
     <Content Include="content\scripts\toastr.js" />
+    <Content Include="content\scripts\topic-editor.js" />
     <Content Include="content\scripts\topics.js" />
     <Content Include="content\styles\fubudocs.core.css" />
     <Content Include="content\styles\fubudocs.theme.css" />
     <Content Include="content\styles\sons-of-obsidian.css" />
     <Content Include="content\styles\sunburst.css" />
-    <Content Include="content\styles\toastr-responsive.css" />
     <Content Include="content\styles\toastr.css" />
+    <Content Include="content\styles\toastr-responsive.css" />
     <Content Include="Shared\bindings.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -256,10 +256,8 @@
     <None Include="project.spark">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Shared\_global.spark" />
     <None Include="Shared\Application.spark">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Shared\TopNavigation.spark">
       <SubType>Designer</SubType>
     </None>
     <None Include="Shared\commonFooter.spark">
@@ -268,9 +266,11 @@
     <None Include="Shared\commonHeader.spark">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Shared\_global.spark" />
-    <None Include="Snippets\snippets.spark" />
+    <None Include="Shared\TopNavigation.spark">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Snippets\snippet.spark" />
+    <None Include="Snippets\snippets.spark" />
     <None Include="Tools\Project.spark">
       <SubType>Designer</SubType>
     </None>
@@ -302,10 +302,8 @@
     <EmbeddedResource Include="pak-WebContent.zip" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="pak-Data.zip" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="pak-Config.zip" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\" />

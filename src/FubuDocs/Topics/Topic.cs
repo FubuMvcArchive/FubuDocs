@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using FubuCore;
@@ -131,13 +132,9 @@ namespace FubuDocs.Topics
                 throw new InvalidOperationException("The view model has to be Topic here.");
             }
 
-            if (Key.EndsWith("/splash"))
+            if (Project.Name != "Host")
             {
-                chain.AddToEnd(new ChromeNode(typeof(SplashChrome)) { Title = () => Title });
-            }
-            else
-            {
-                chain.AddToEnd(new ChromeNode(typeof(TopicChrome)) { Title = () => Title });
+                applyChrome(chain);
             }
 
             
@@ -145,6 +142,18 @@ namespace FubuDocs.Topics
             chain.AddToEnd(new TopicBehaviorNode(this, new ViewNode(viewToken)));
 
             return chain;
+        }
+
+        private void applyChrome(BehaviorChain chain)
+        {
+            if (Key.EndsWith("/splash"))
+            {
+                chain.AddToEnd(new ChromeNode(typeof (SplashChrome)) {Title = () => Title});
+            }
+            else
+            {
+                chain.AddToEnd(new ChromeNode(typeof (TopicChrome)) {Title = () => Title});
+            }
         }
 
         public string Url
