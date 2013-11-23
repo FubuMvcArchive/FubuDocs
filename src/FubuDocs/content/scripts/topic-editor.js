@@ -7,7 +7,7 @@
     var adderView = new TopicAdderView();
     var controller = new TopicController(adderView);
 
-    $('#topic-tree').on('click', 'li.dd-item', function (e) {
+    $('#topic-tree').on('click', 'li.dd-item > span.topic-title', function (e) {
         var leaf = new TopicLeaf(this);
         controller.select(leaf);
 

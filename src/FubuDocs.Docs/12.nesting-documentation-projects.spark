@@ -1,0 +1,21 @@
+<!--Title: Nesting Documentation Projects-->
+<!--Url: nesting-documentation-projects-->
+
+<markdown>
+In some cases you may want to host the documentation for several closely related code repositories in one logical FubuDocs project.  FubuDocs provides the ability to _nest_ one topic project as a leaf of a another project.
+
+For example, we use this feature very heavily with the [FubuMVC documentation](http://fubuworld.com/fubumvc) to nest the documentation for different view engines and the diagnostics plugin as sub topics of FubuMVC.
+
+Let's say that I have a documentation project for <code>FubuMVC.Diagnostics</code> that I want to be nested within the documentation for <code>FubuMVC</code>.
+
+At whatever point I want the nested documentation to appear, I create a placeholder topic with this text in its body:
+
+<pre>
+&lt;!-- Import: FubuMVC.Diagnostics --&gt;
+</pre>
+</markdown>
+
+Assuming that the <code>FubuMVC.Diagnostics.Docs</code> assembly is installed side by side with <code>FubuMVC.Docs</code>, the content for diagnostics will be imported into the FubuMVC documentation tree.
+
+TODO(add a link to the working import)
+
