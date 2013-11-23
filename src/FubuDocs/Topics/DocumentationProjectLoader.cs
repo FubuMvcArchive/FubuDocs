@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Bottles;
 using FubuCore;
 using FubuCore.Logging;
@@ -19,23 +20,22 @@ namespace FubuDocs.Topics
         public void Configure(BehaviorGraph graph)
         {
             _loader = new TopicLoader(graph);
-            PackageRegistry.Packages.Where(x => x.Name.EndsWith(".Docs"))
-                .Each(pak => {
+
+            var tasks = PackageRegistry.Packages.Where(x => x.Name.EndsWith(".Docs")).Select(pak => {
+                return Task.Factory.StartNew(() => {
                     pak.ForFolder(BottleFiles.WebContentFolder, dir => LoadPackage(pak, dir, graph));
                 });
+            }).ToArray();
 
             var directories = graph.Settings.Get<FubuDocsDirectories>();
             if (directories.Host.IsNotEmpty() && !directories.Host.EndsWith(".Docs"))
             {
-                var project = _loader.LoadProject("Application", directories.Host);
-                project.Name = "Host";
-                project.Url = "";
-                project.Home.Url = string.Empty;
-
-                project.Index.Descendents().Each(x => x.Url = x.Url.TrimStart('/'));
+                var project = loadProject(directories);
 
                 TopicGraph.AllTopics.AddProject(project);
             }
+
+            Task.WaitAll(tasks);
 
             TopicGraph.AllTopics.ConfigureRelationships();
 
@@ -55,6 +55,17 @@ namespace FubuDocs.Topics
                     graph.AddChain(project.Splash.BuildChain());
                 }
             });
+        }
+
+        private ProjectRoot loadProject(FubuDocsDirectories directories)
+        {
+            var project = _loader.LoadProject("Application", directories.Host);
+            project.Name = "Host";
+            project.Url = "";
+            project.Home.Url = string.Empty;
+
+            project.Index.Descendents().Each(x => x.Url = x.Url.TrimStart('/'));
+            return project;
         }
 
         public void LoadPackage(IPackageInfo pak, string directory, BehaviorGraph graph)
