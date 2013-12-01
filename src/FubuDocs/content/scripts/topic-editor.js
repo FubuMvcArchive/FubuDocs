@@ -7,14 +7,20 @@
     var adderView = new TopicAdderView();
     var controller = new TopicController(adderView);
 
-    $('#topic-tree').on('click', 'li.dd-item > span.topic-title', function (e) {
-        var leaf = new TopicLeaf(this);
+    var activateLeaf = function(li) {
+        var leaf = new TopicLeaf(li);
         controller.select(leaf);
 
         $('#pin-current').show();
 
         var plugin = $('#topic-tree').data("nestable");
         plugin.expandItem($(this));
+    };
+
+    $('#topic-tree').on('click', 'span.topic-title', function (e) {
+        var li = $(this).closest('li.dd-item');
+        activateLeaf(li);
+
 
         e.stopImmediatePropagation();
     });
@@ -92,7 +98,7 @@
     var plugin = $('#topic-tree').data("nestable");
     plugin.expandItem(firstItem);
 
-    firstItem.click();
+    activateLeaf(firstItem);
 });
 
 function transformClientModel(client) {

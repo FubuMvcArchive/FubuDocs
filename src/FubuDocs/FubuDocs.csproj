@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -226,6 +226,7 @@
     <Content Include="content\images\header-bg.jpg" />
     <Content Include="content\images\twitter-icon.png" />
     <Content Include="content\scripts\build-status.js" />
+    <Content Include="content\scripts\diagnostics\bootstrap-scrollspy.js" />
     <Content Include="content\scripts\fubudocs.js" />
     <Content Include="content\scripts\fubudocs-tools.js" />
     <Content Include="content\scripts\jquery.nestable.js" />
@@ -302,10 +303,9 @@
     <EmbeddedResource Include="pak-WebContent.zip" />
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Commands\" />
   </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
 </Project>

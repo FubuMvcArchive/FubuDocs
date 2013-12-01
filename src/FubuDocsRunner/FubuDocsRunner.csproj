@@ -11,7 +11,8 @@
     <RootNamespace>FubuDocsRunner</RootNamespace>
     <AssemblyName>FubuDocsRunner</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile></TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -37,9 +38,6 @@
   <ItemGroup>
     <Reference Include="Bottles">
       <HintPath>..\packages\Bottles\lib\Bottles.dll</HintPath>
-    </Reference>
-    <Reference Include="Bottles.Services">
-      <HintPath>..\packages\Bottles.Services\lib\net40\Bottles.Services.dll</HintPath>
     </Reference>
     <Reference Include="Fubu">
       <HintPath>..\packages\fubu\lib\net40\Fubu.exe</HintPath>

@@ -16,7 +16,6 @@
         }
     }
 
-    $('#page-toc').affix();
 
     $('a.edit-link').click(function (e) {
         $.ajax({
@@ -29,5 +28,7 @@
         e.preventDefault();
         return false;
     });
+
+    $('.bs-docs-sidebar').scrollspy();
 });
 

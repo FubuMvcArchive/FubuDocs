@@ -2312,7 +2312,7 @@ form.bs-docs-example {
   opacity: 1;
 }
 .sidebar.affix {
-  top: 40px;
+  top: 100px;
 }
 .sidebar.affix-bottom {
   position: absolute;
