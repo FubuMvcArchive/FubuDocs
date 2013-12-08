@@ -57,6 +57,7 @@ namespace FubuDocs.Topics
 
         public ProjectRoot Parent { get; set; }
 
+        [XmlIgnore] // XmlIgnore for Mono
         public IList<ProjectRoot> Plugins
         {
             get { return _plugins; }
