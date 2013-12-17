@@ -5,7 +5,7 @@ using FubuCore;
 
 namespace FubuDocs.Tests.Commands
 {
-    [TestFixture, Explicit("CI doesn't like this test w/ dependency problems")]
+    [TestFixture]
     public class SnippetsCommandSmokeTester
     {
         [Test]

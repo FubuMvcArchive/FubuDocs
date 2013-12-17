@@ -4,7 +4,7 @@ using FubuTestingSupport;
 
 namespace FubuDocs.Tests.Running
 {
-    [TestFixture, Explicit("Blows up on CI w/ dependency problems.")]
+    [TestFixture]
     public class RunInputTester
     {
         [Test]

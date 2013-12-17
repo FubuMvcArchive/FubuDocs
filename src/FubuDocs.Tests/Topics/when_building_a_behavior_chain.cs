@@ -1,16 +1,15 @@
-﻿using FubuDocs.Topics;
+﻿using System.Linq;
+using FubuCore;
+using FubuDocs.Topics;
 using FubuMVC.Core.Registration.Nodes;
 using FubuTestingSupport;
 using NUnit.Framework;
-using System.Linq;
-using FubuCore;
 
 namespace FubuDocs.Tests.Topics
 {
     [TestFixture]
     public class when_building_a_behavior_chain
     {
-        private StubTopicFile theFile;
         private Topic theTopic;
         private BehaviorChain theChain;
 
