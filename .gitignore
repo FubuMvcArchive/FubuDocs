@@ -46,3 +46,6 @@ src/FubuDocs.Docs/snippets
 src/Host/fubu-content
 fubudocs-export
 src/FubuDocsHarness/refresh.config
+
+# Kde directory browser config file
+.directory
