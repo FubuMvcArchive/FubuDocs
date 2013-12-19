@@ -12,6 +12,9 @@
     <end>"&lt;/section&gt;"</end>
   </element>
 
+  <element name="Nuget">this.Nuget('@name')</element>
+  <element name="Gem">this.Gem('@name')</element>
+  
   <element name="Command">
     <start>this.SectionForCommand('@app', '@command')</start>
     <end>this.BodyForCommand('@app', '@command') + "&lt;/section&gt;"</end>

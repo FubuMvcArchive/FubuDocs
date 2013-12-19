@@ -1,9 +1,5 @@
 ﻿<ProjectSummary />
 
-<p>FubuDocs is distributed as a Ruby Gem at <a href="http://rubygems.org/gems/fubudocs">http://rubygems.org/gems/fubudocs</a>
-</p>
+<Gem name="FubuDocs" />
 
-<pre>
-  gem install fubudocs
-</pre>
 <TableOfContents />

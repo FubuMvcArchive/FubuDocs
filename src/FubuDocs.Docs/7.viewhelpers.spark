@@ -57,6 +57,31 @@ As a convenience method, use the <code>&lt;Info&gt;[text]&lt;/Info&gt;</code> bi
 <Info>I'm an informational bullet!</Info>
 </Section>
 
+
+  <Section title="Nugets" id="nugets">
+Use this helper:
+
+<Snippet name="nuget-helper" />
+
+which renders:   
+    
+<!-- SAMPLE: nuget-helper-->
+    <Nuget name="FubuMVC.Core" />
+<!-- ENDSAMPLE -->    
+  </Section>
+
+  <Section title="Gems" id="gems">
+    Use this helper:
+
+    <Snippet name="gem-helper" />
+
+    which renders:
+
+    <!-- SAMPLE: gem-helper-->
+    <Gem name="ripple-cli" />
+    <!-- ENDSAMPLE -->
+  </Section>
+  
 </markdown>
 
 
