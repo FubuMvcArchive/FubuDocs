@@ -59,6 +59,11 @@ namespace FubuDocs.Navigation
             return page.CodeSnippet(snippet);
         }
 
+        public static HtmlTag AllProjectsTable(this IFubuPage page)
+        {
+            return page.Get<AllProjectsModel>().Topics;
+        }
+
 
         public static IHtmlString ProjectSummary(this IFubuPage page)
         {

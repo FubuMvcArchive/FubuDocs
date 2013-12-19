@@ -26,6 +26,8 @@
   <element name="LinkToCodeFile">this.LinkToCodeFile('@name')</element>
   <element name="EmbedFile">this.CodeFile('@name')</element>
 
+  <element name="AllProjectsTable">this.AllProjectsTable()</element>
+  
   <element name="TopicLink">this.LinkToTopic('@name', null)</element>
   <element name="ExternalTopicLink">this.LinkToExternalTopic('@name', '@title')</element>
 
