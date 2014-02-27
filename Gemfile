@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source :rubygems
 
 gem "rake", "~>10.0"
 gem "bundler", ">=1.3.5"
