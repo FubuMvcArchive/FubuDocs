@@ -4,6 +4,7 @@ using System.Reflection;
 using Fubu.Running;
 using FubuCore;
 using FubuDocs;
+using FubuMVC.OwinHost;
 
 namespace FubuDocsRunner.Running
 {
@@ -57,7 +58,8 @@ namespace FubuDocsRunner.Running
                 WatchedFlag = WatchedFlag,
                 BrowserFlag = BrowserFlag,
                 BuildFlag = BuildFlag,
-                OpenFlag = OpenFlag
+                OpenFlag = OpenFlag,
+                PortFlag = PortFinder.FindPort(5500)
             };
         }
 
